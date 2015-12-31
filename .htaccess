@@ -1,4 +1,4 @@
-<Directory /*/>
+<Directory ./*/>
      Order Deny,Allow
      Deny from All
 </Directory>
