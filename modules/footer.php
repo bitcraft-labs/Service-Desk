@@ -1,0 +1,10 @@
+<!-- Main Footer -->
+<footer class="main-footer">
+	<!-- To the right -->
+	<div class="pull-right hidden-xs">
+		<a href="?page=about">
+		<strong>Version</strong> <?php echo $app_version; ?></a>
+	</div>
+	<!-- Default to the left -->
+	<strong>Copyright &copy; 2015 <a href="http://bitcraftlabs.net/">BitCraft Labs</a>.</strong> All rights reserved.
+</footer>
