@@ -1,4 +1,2 @@
-<Directory ./*/>
-     Order Deny,Allow
-     Deny from All
-</Directory>
+#Prevents direct folder access
+Options -Indexes
