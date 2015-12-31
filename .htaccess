@@ -1,1 +1,4 @@
-#test
+<Directory */>
+     Order Deny,Allow
+     Deny from All
+</Directory>
