@@ -36,8 +36,14 @@
       <li <?php if (($url == '') || ($url == 'index.php')) echo "class='active'"; ?> ><a href="./"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
       <li <?php if (($url == 'service-record.php') && ($_GET['sr'] == "new")) echo "class='active'"; ?> ><a href="service-record.php?sr=new"><i class="fa fa-plus"></i> <span>Add New Service Record</span></a></li>
       <li <?php if (($url == 'service-record.php') && ($_GET['sr'] != "new")) echo "class='active'"; ?> ><a href="service-record.php?sr=all"><i class="fa fa-list-alt"></i> <span>View Service Records</span></a></li>
-      <!--<li><a href="./?page=report"><i class="fa fa-file"></i> <span>Run Report</span></a></li>-->
+      <li><a href="#"><i class="fa fa-file"></i> <span>Run Report</span></a></li>
       <li <?php if (($url == 'customer.php') && ($_GET['id'] != "new")) echo "class='active'"; ?> ><a href="customer.php?id=all"><i class="fa fa-list-alt"></i> <span>View Customers</span></a></li>
+
+      <li class="header">Staff</li>
+      <li <?php if (($url == 'staff.php') && ($_GET['id'] == "all")) echo "class='active'"; ?> ><a href="staff.php?id=all"><i class="fa fa-users"></i> <span>View Staff</span></a></li>
+
+      <li class="header">Admin</li>
+      <li <?php if (($url == 'admin.php')) echo "class='active'"; ?> ><a href="admin.php"><i class="fa fa-cogs"></i> <span>Site Settings</span></a></li>
     </ul><!-- /.sidebar-menu -->
   </section>
   <!-- /.sidebar -->
