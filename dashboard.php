@@ -9,7 +9,7 @@
 	<section class="content">
 	<div class="container-fluid">
 	<div class="row">
-		<div class="col-lg-6 col-md-6">
+		<div class="col-md-6">
 	<!-- Content Header (Page header) -->
 
 		<h2>Dashboard</h2>
@@ -26,7 +26,7 @@
 		    <p>Write login from scratch. Reusing old code isn't working. Not easily adaptable. get rid of includes; move everything to modules.</p>
 			<p><a href="updates/">Download Desktop Application</a></p>
 		</div>
-		<div class="col-lg-6 col-md-6">
+		<div class="col-md-6">
 		</div>
 	</div></div>
 	</section><!-- /.content -->
