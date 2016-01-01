@@ -1,6 +1,6 @@
 # Tronic CRM
 ### Cloud-based IT Help Desk Management Software
-Well this is where the description will go
+Based on AdminLTE
 
 Tronic CRM aims to eliminate paperwork in computer repairs.
 
