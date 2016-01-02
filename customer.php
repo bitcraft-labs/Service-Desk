@@ -64,7 +64,7 @@ if(!$authenticator->CheckLogin())
 				if ($cus_id == "all") {
 					$now = getdate();
 					$now = array($now[mday],$now[mon],$now[year]);
-					echo "All Customers <small>As of $now[1]-$now[0]-$now[2]</small>";
+					echo "Customer Relation Central <small>As of $now[1]-$now[0]-$now[2]</small>";
 				}
 				elseif (isset($cus_id) && is_numeric($cus_id))
 					echo "View Customer";

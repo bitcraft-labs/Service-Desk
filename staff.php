@@ -16,7 +16,7 @@ Status:     Staging; Idea Testing; Development
 		// build the user interface
 		include_once 'modules/header.php';
 		include_once 'modules/left_sidebar.php';
-		
+		include_once 'modules/staff/staff_handler.php';
     //include_once 'modules/page_handling.php';
 		include_once 'modules/footer.php'; 
 		include_once 'modules/control_sidebar.php';?>
