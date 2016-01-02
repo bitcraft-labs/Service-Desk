@@ -22,11 +22,11 @@
 				<div class="row">
 					<div class="col-xs-12">
 					  <?php //Show all customer records ?>
-					  <?php if ($cus_id == "all") {
+					  <?php if ($id == "all") {
 					  	include_once 'modules/staff/staff_list.php';
 		    		  } 
 		    		  //show individual service record
-		    		  elseif (isset($cus_id) && is_numeric($cus_id)) {
+		    		  elseif (isset($id) && is_numeric($id)) {
 		    		  	include_once 'modules/staff/staff_info.php';
 		    		  	?>
 		    		  	
