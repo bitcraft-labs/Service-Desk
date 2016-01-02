@@ -3,8 +3,8 @@
 
 			<section class="content-header">
 				<h1><?php
-				$cus_id = $_GET['id'];
-				if ($cus_id == "all") {
+				$staff_id = $_GET['id'];
+				if ($staff_id == "all") {
 					$now = getdate();
 					$now = array($now[mday],$now[mon],$now[year]);
 					echo "All Staff";
@@ -22,11 +22,11 @@
 				<div class="row">
 					<div class="col-xs-12">
 					  <?php //Show all customer records ?>
-					  <?php if ($id == "all") {
+					  <?php if ($staff_id == "all") {
 					  	include_once 'modules/staff/staff_list.php';
 		    		  } 
 		    		  //show individual service record
-		    		  elseif (isset($id) && is_numeric($id)) {
+		    		  elseif (isset($staff_id) && is_numeric($staff_id)) {
 		    		  	include_once 'modules/staff/staff_info.php';
 		    		  	?>
 		    		  	
