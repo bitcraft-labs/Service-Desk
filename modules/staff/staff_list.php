@@ -8,10 +8,11 @@
 			<?php $tabhead="
 				<tr>
 					<td>#</td>
-					<td>Username</td>
 					<td>First Name</td>
 					<td>Last Name</td>
-					<td>Access Level</td>
+					<td>User Group</td>
+					<td>Active SR #</td>
+					<td>Last Online</td>
 				</tr>"; echo $tabhead; ?>
 			</thead>
 			<tbody>
