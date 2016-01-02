@@ -1,7 +1,7 @@
 <!-- search form (Optional) -->
     <form class="navbar-form navbar-left" role="search">
       <div class="form-group">
-        <input type="text" class="form-control" id="navbar-search-input" placeholder="Search">
+        <input type="text" class="form-control" id="navbar-search-input" placeholder="Search SR...">
       </div>
     </form>
     <!-- /.search form -->
