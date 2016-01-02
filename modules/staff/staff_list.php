@@ -5,14 +5,14 @@
 	<div class="box-body">
 		<table id="records" class="table table-bordered table-striped">
 			<thead>
-			<?php $tablehead="
+			<?php $tabhead="
 				<tr>
 					<td>#</td>
 					<td>Username</td>
 					<td>First Name</td>
 					<td>Last Name</td>
 					<td>Access Level</td>
-				</tr>";?>
+				</tr>"; echo $tabhead; ?>
 			</thead>
 			<tbody>
 				<?php /*
@@ -45,7 +45,7 @@
 				-->
 			</tbody>
 			<tfoot>
-				<?php echo $tablehead; ?>
+				<?php echo $tabhead; ?>
 			</tfoot>
 		</table>
 	</div>
