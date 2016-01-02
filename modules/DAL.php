@@ -24,6 +24,7 @@ class DAL {
  
   public function __construct(){}
   
+  //---------- Customer Module ---------->
   public function checkPersonExists($id) {
     $sql = "SELECT * FROM directory where user_id = '$id'";
     $result = $this->query($sql);
@@ -53,6 +54,14 @@ class DAL {
   public function getPersonCheckups($name){
     return false;
   }
+  // <-------- /Customer Module -----------
+
+  //---------- Staff Module -------------->
+  public function checkStaffMemberExists($name) {
+    return false;
+  }
+  
+  // <-------- /Staff Module --------------
 
   private function dbconnect() {
     $conn = mysql_connect(DB_HOST, DB_USER, DB_PASSWORD)
