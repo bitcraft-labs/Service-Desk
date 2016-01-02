@@ -1,10 +1,7 @@
 <!-- search form (Optional) -->
-    <form action="<?=($_SERVER['PHP_SELF'])?>" method="get" class="sidebar-form">
-      <div class="input-group">
-        <input type="text" name="sr" class="form-control col-md-3" placeholder="SR Lookup...">
-        <span class="input-group-btn">
-          <button type="submit" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
-        </span>
+    <form class="navbar-form navbar-left" role="search">
+      <div class="form-group">
+        <input type="text" class="form-control" id="navbar-search-input" placeholder="Search">
       </div>
     </form>
     <!-- /.search form -->
