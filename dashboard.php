@@ -1,9 +1,12 @@
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-	<ol class="breadcrumb">
-	    <li><a href="?page=dashboard"><i class="fa fa-dashboard"></i> Top</a></li>
-	    <li class="active">Dashboard</li>
-	</ol>
+	<section class="content-header">
+		<h2>Dashboard</h2>
+		<ol class="breadcrumb">
+		    <li><a href="?page=dashboard"><i class="fa fa-dashboard"></i> Top</a></li>
+		    <li class="active">Dashboard</li>
+		</ol>
+	</section>
 
 	<!-- Main content -->
 	<section class="content">
