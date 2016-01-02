@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--
-Project:    Honey Badger (PHB) - Working Title
-Lead Devs:  Joshua Nasiatka & Allen Perry
+Project:    Tronic CRM (Working Title)
+Lead Devs:  Joshua Nasiatka, Allen Perry, Eugene Duffy
 For:        Software Engineering
 Dev Date:   Spring 2016
 Status:     Staging; Idea Testing; Development
