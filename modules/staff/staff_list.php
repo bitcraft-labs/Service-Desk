@@ -5,18 +5,17 @@
 	<div class="box-body">
 		<table id="records" class="table table-bordered table-striped">
 			<thead>
+			<?php $tablehead="
 				<tr>
 					<td>#</td>
-					<td>Name</td>
-					<td>Banner ID</td>
-					<td>Type</td>
-					<td>Primary Phone</td>
-					<td>Email</td>
-					<td>Lastest Visit</td>
-				</tr>
+					<td>Username</td>
+					<td>First Name</td>
+					<td>Last Name</td>
+					<td>Access Level</td>
+				</tr>";?>
 			</thead>
 			<tbody>
-				<?php
+				<?php /*
 				$dal = new DAL();
 				$personinfo = $dal->getPersonInfo('all');
 				if ($personinfo) {
@@ -31,7 +30,7 @@
 					    	<td>12/1/2015</td>
 					    	</tr>";
 				  	}
-				}
+				} */
 				?>
 				<!--
 				<tr>
@@ -46,15 +45,7 @@
 				-->
 			</tbody>
 			<tfoot>
-				<tr>
-					<td>#</td>
-					<td>Name</td>
-					<td>Banner ID</td>
-					<td>Type</td>
-					<td>Primary Phone</td>
-					<td>Email</td>
-					<td>Lastest Visit</td>
-				</tr>
+				<?php echo $tablehead; ?>
 			</tfoot>
 		</table>
 	</div>
