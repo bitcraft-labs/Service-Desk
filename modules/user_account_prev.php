@@ -1,3 +1,14 @@
+<!-- search form (Optional) -->
+    <form action="<?=($_SERVER['PHP_SELF'])?>" method="get" class="sidebar-form">
+      <div class="input-group">
+        <input type="text" name="sr" class="form-control" placeholder="SR Lookup...">
+        <span class="input-group-btn">
+          <button type="submit" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+        </span>
+      </div>
+    </form>
+    <!-- /.search form -->
+    
 <!-- User Account Menu -->
 <li class="dropdown user user-menu">
   <!-- Menu Toggle Button -->
