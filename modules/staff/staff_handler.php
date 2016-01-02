@@ -5,7 +5,7 @@
 		if ($staff_id == "all") {
 			$now = getdate();
 			$now = array($now[mday],$now[mon],$now[year]);
-			echo "Directory Listing";
+			echo "Help Desk Staff";
 		}
 		else
 			echo "View Staff Member";
