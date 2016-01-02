@@ -12,7 +12,7 @@
 
 	<!-- Main content -->
 	<section class="content">
-	<div class="container-fluid">
+	<!--<div class="container-fluid">-->
 	<div class="row">
 		<div class="col-md-6">
 	<!-- Content Header (Page header) -->
@@ -33,6 +33,6 @@
 		</div>
 		<div class="col-md-6">
 		</div>
-	</div></div>
+	</div>
 	</section><!-- /.content -->
 </div><!-- /.content-wrapper -->
