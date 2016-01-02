@@ -1,7 +1,7 @@
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
 	<section class="content-header">
-		<h2>Dashboard</h2>
+		<h1>Dashboard</h1>
 		<ol class="breadcrumb">
 		    <li><a href="?page=dashboard"><i class="fa fa-dashboard"></i> Top</a></li>
 		    <li class="active">Dashboard</li>
