@@ -3,7 +3,7 @@
 	  <h3 class="box-title">Directory Listing</h3>
 	</div><!-- /.box-header -->
 	<div class="box-body">
-		<table id="records" class="table table-bordered table-striped">
+		<table id="staff_list" class="table table-bordered table-striped">
 			<thead>
 			<?php $tabhead="
 				<tr>
