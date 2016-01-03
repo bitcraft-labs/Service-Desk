@@ -16,7 +16,7 @@
           <!-- Widget: user widget style 1 -->
           <div class="box box-widget widget-user-2">
             <!-- Add the bg color to the header using any of the bg-* classes -->
-            <div class="widget-user-header bg-yellow">
+            <div class="widget-user-header bg-aqua">
               <div class="widget-user-image">
                 <img class="img-circle" src="dist/img/avatar5.png" alt="User Avatar">
               </div><!-- /.widget-user-image -->
@@ -34,7 +34,7 @@
         </div><!-- /.col -->
 		<div class="col-sm-6 col-xs-12">
 			<div class="info-box">
-	        <span class="info-box-icon bg-aqua"><i class="fa fa-envelope-o"></i></span>
+	        <span class="info-box-icon bg-yellow"><i class="fa fa-envelope-o"></i></span>
 	        <div class="info-box-content">
 	          <span class="info-box-text">Messages</span>
 	          <span class="info-box-number">5</span>
