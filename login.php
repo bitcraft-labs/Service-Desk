@@ -38,7 +38,7 @@ include_once './modules/authentication/auth-head.php';
       <div class="row">
         <div class="col-xs-8">    
           <div class="checkbox icheck">
-            <label class="checkbox ichec"kpro>
+            <label class="checkbox icheck">
               <input type="checkbox" name="remember_me" value="1" <?php ?> /> Remember Me
             </label>
           </div>                        

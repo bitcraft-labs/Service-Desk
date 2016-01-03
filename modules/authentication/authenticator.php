@@ -125,10 +125,10 @@ class Authenticator
         $_SESSION[$this->GetLoginSessionVar()] = $username;
         
         //set remember me cookie
-		if($_POST['remember_me']) {
-		setcookie('remember_me', $username, $year);
-		} elseif(!$_POST['remember_me']) {
-			if(isset($_COOKIE['remember_me'])) {
+		if ($_POST['remember_me']) {
+			setcookie('remember_me', $username, $year);
+		} elseif (!$_POST['remember_me']) {
+			if (isset($_COOKIE['remember_me'])) {
 				$past = time() - 100;
 				setcookie('remember_me', gone, $past);
 			}
