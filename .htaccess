@@ -5,4 +5,4 @@
 #RewriteRule . index.php [L]          # otherwise, rewrite to index.php
 
 #Prevents direct folder access
-Option -Indexes
+Options -Indexes
