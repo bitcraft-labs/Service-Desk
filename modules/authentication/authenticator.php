@@ -124,6 +124,10 @@ class Authenticator
         
         $_SESSION[$this->GetLoginSessionVar()] = $username;
         
+        //set remember me cookie
+		$year = time() + 31536000; //save for one year
+		setcookie('remember_me',$username,$year);
+
         return true;
     }
     
@@ -321,11 +325,8 @@ class Authenticator
         }
 
         $host = $_SERVER['SERVER_NAME'];
-
-        //$from = "nobody@$host";
         $from = "no-reply@$host";
-        //$fromname = "Support";
-        //$fromarr[] = array($from,$fromname);
+
         return $from;
     } 
     
