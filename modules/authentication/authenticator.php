@@ -644,7 +644,8 @@ class Authenticator
         }
         
         $validator = new FormValidator();
-        $validator->addValidation("name","req","Please fill in Name");
+        $validator->addValidation("fname","req","Please fill in First Name");
+        $validator->addValidation("lname","req","Please fill in Last Name");
         $validator->addValidation("email","email","The input for Email should be a valid email value");
         $validator->addValidation("email","req","Please fill in Email");
   
