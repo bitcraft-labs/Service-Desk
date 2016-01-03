@@ -17,7 +17,7 @@
       </div>
     </div>
 
-    <!-- search form (Optional) 
+    <!-- search form (Optional) -->
     <form action="<?=($_SERVER['PHP_SELF'])?>" method="get" class="sidebar-form">
       <div class="input-group">
         <input type="text" name="sr" class="form-control" placeholder="SR Lookup...">
@@ -26,7 +26,7 @@
         </span>
       </div>
     </form>
-     /.search form -->
+    <!-- /.search form -->
 
     <!-- Sidebar Menu -->
     <ul class="sidebar-menu">
