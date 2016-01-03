@@ -390,7 +390,7 @@ class Authenticator
         }
 
 
-        $qry = "Select name, email from $this->tablename where username='$username' and password='$hash' and confirmcode='y'";
+        $qry = "Select fname, lname, email from $this->tablename where username='$username' and password='$hash' and confirmcode='y'";
         
         $result = mysql_query($qry,$this->connection);
         
