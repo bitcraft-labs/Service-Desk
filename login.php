@@ -8,6 +8,17 @@ if(isset($_POST['submitted']))
         $authenticator->RedirectToURL("index.php");
    }
 }
+
+$emailsent = false;
+if(isset($_POST['submitted_pass']))
+{
+   if($authenticator->EmailResetPasswordLink())
+   {
+        $authenticator->RedirectToURL("reset-pwd-link-sent.html");
+        exit;
+   }
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -54,10 +65,43 @@ include_once './modules/authentication/auth-head.php';
       </div>
       <div class="form-group">
           <!--<span><a href="javascript:;" data-toggle="modal" data-target="#help">Need help?</a></span>-->
-          <span class="pull-left"><a href="reset-pass.php">Forgot Password?</a></span>
+          <span><a href="javascript:;" data-toggle="modal" data-target="#forgot">Forgot Password?</a></span>
       </div>
     </form>
   </div>
+
+  <!-- Help Modal -->
+  <div id="forgot" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Forgot Password?</h4>
+        </div>
+        <div class="modal-body">
+          <p>If you forgot your password, enter your FSU Email Address to reset it. A password reset link will be sent to that account.</p>
+          <form id='resetreq' class="col-md-12" action='<?php echo $authenticator->GetSelfScript(); ?>' method='post' accept-charset='UTF-8'>
+            <input type='hidden' name='submitted_pass' id='submitted_pass' value='1'/>
+            <div><span class='error'><?php echo $authenticator->GetErrorMessage(); ?></span></div>
+            <div class="form-group">
+                <input type='text' name='email' class="form-control input-lg" id='email' value='<?php echo $authenticator->SafeDisplay('email') ?>' placeholder="FSU Email Address" />
+                <span id='resetreq_email_errorloc' class='error'></span>
+            </div>
+            <div class="form-group">
+                <button name='Submit' type='submit' class="btn btn-primary btn-lg btn-block">Reset Password</button>
+            </div>
+        </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
     <!-- jQuery 2.1.4 -->
     <script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <!-- Bootstrap 3.3.5 -->
