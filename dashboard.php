@@ -18,9 +18,9 @@
             <!-- Add the bg color to the header using any of the bg-* classes -->
             <div class="widget-user-header bg-yellow">
               <div class="widget-user-image">
-                <img class="img-circle" src="../dist/img/user7-128x128.jpg" alt="User Avatar">
+                <img class="img-circle" src="dist/img/avatar5.png" alt="User Avatar">
               </div><!-- /.widget-user-image -->
-              <h3 class="widget-user-username">Nadia Carmichael</h3>
+              <h3 class="widget-user-username">><?= $authenticator->UserFullName() ?></h3>
               <h5 class="widget-user-desc">Lead Developer</h5>
             </div>
             <div class="box-footer no-padding">
@@ -33,7 +33,7 @@
             </div>
           </div><!-- /.widget-user -->
         </div><!-- /.col -->
-		<div class="col-md-3 col-sm-6 col-xs-12">
+		<div class="col-sm-6 col-xs-12">
 			<div class="info-box">
 	        <span class="info-box-icon bg-aqua"><i class="fa fa-envelope-o"></i></span>
 	        <div class="info-box-content">
@@ -49,15 +49,7 @@
             </div><!-- /.info-box-content -->
           </div><!-- /.info-box -->
 		</div>
-		<div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-yellow"><i class="fa fa-files-o"></i></span>
-            <div class="info-box-content">
-              <span class="info-box-text">Assigned Tickets</span>
-              <span class="info-box-number">8</span>
-            </div><!-- /.info-box-content -->
-          </div><!-- /.info-box -->
-        </div><!-- /.col -->
+		
 	</div>
 	</section><!-- /.content -->
 </div><!-- /.content-wrapper -->
