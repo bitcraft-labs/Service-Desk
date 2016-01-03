@@ -4,5 +4,8 @@
 #RewriteCond %{REQUEST_FILENAME} !-f  # do not rewrite if file exists
 #RewriteRule . index.php [L]          # otherwise, rewrite to index.php
 
+RewriteEngine On
+RewriteRule ^(admin)/(system)/ index.php?page=$1&setting=$2 [L,QSA]
+
 #Prevents direct folder access
 Options -Indexes
