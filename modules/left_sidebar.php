@@ -44,8 +44,8 @@
       <li <?php if (($url == 'staff.php') && ($_GET['id'] == "all")) echo "class='active'"; ?> ><a href="staff.php?id=all"><i class="fa fa-users"></i> <span>View Staff</span></a></li>
 
       <li class="header">Admin</li>
-      <li <?php if (($url == 'admin.php')) echo "class='active'"; ?> ><a href="/?page=admin,setting=system"><i class="fa fa-cogs"></i> <span>Site Settings</span></a></li>
-      <li <?php if (($url == 'admin.php')) echo "class='active'"; ?> ><a href="/?page=admin,setting=access"><i class="fa fa-user"></i> <span>Access Control</span></a></li>
+      <li <?php if (($url == 'admin.php')) echo "class='active'"; ?> ><a href="/?page=admin&setting=system"><i class="fa fa-cogs"></i> <span>Site Settings</span></a></li>
+      <li <?php if (($url == 'admin.php')) echo "class='active'"; ?> ><a href="/?page=admin&setting=access"><i class="fa fa-user"></i> <span>Access Control</span></a></li>
     </ul><!-- /.sidebar-menu -->
   </section>
   <!-- /.sidebar -->
