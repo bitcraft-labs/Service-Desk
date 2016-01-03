@@ -22,36 +22,13 @@ Status:     Staging; Idea Testing; Development
     </div><!-- ./wrapper -->
 
     <!-- REQUIRED JS SCRIPTS -->
+
     <!-- jQuery 2.1.4 -->
-    <script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <script src="/plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <!-- Bootstrap 3.3.5 -->
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-    <!-- DataTables -->
-    <script src="plugins/datatables/jquery.dataTables.js"></script>
-    <script src="plugins/datatables/dataTables.bootstrap.js"></script>
-    <!-- SlimScroll -->
-    <script src="plugins/slimScroll/jquery.slimscroll.js"></script>
-    <!-- FastClick -->
-    <script src="plugins/fastclick/fastclick.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
     <!-- AdminLTE App -->
-    <script src="dist/js/app.min.js"></script>
-    <!-- InputMask -->
-    <script src="plugins/input-mask/jquery.inputmask.js"></script>
-    <script src="plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
-    <script src="plugins/input-mask/jquery.inputmask.extensions.js"></script>
-    <!-- page script -->
-    <script>
-      $(function () {
-        $('#staff_list').DataTable({
-          "paging": true,
-          "lengthChange": true,
-          "searching": true,
-          "ordering": true,
-          "info": true,
-          "autoWidth": false
-        });
-      });
-    </script>
+    <script src="/dist/js/app.min.js"></script>
 
     <!-- Optionally, you can add Slimscroll and FastClick plugins.
          Both of these plugins are recommended to enhance the
