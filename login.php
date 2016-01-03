@@ -38,14 +38,26 @@ include_once './modules/authentication/auth-head.php';
         <input type="password" name="password" class="form-control input-lg" placeholder="Password" />
         <span id='login_password_errorloc' class='error'></span>
     </div>
+    <div class="row">
+      <div class="col-xs-8">    
+        <div class="checkbox icheck">
+          <label>
+            <input type="checkbox" name="remember_me" value="1"> Remember Me
+          </label>
+        </div>                        
+      </div><!-- /.col -->
+      <div class="col-xs-4">
+        <button name="Submit" type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+      </div><!-- /.col -->
+    </div><!--
     <div class="form-group">
         <label class="checkbox pull-left">
         <input type="checkbox" name="remember_me" value="1" />
         Remember me
         </label>
-    </div>
+    </div>-->
     <div class="form-group">
-        <button name='Submit' type='submit' class="btn btn-primary btn-lg btn-block">Sign In</button>
+        <!--<button name='Submit' type='submit' class="btn btn-primary btn-lg btn-block">Sign In</button>-->
         <span><a href="javascript:;" data-toggle="modal" data-target="#help">Need help?</a></span>
         <span class="pull-right"><a href="reset-pass.php">Forgot Password?</a></span>
     </div>
