@@ -58,7 +58,7 @@ include_once './modules/authentication/auth-head.php';
     </div>-->
     <div class="form-group">
         <!--<button name='Submit' type='submit' class="btn btn-primary btn-lg btn-block">Sign In</button>-->
-        <span><a href="javascript:;" data-toggle="modal" data-target="#help">Need help?</a></span>
+        <!--<span><a href="javascript:;" data-toggle="modal" data-target="#help">Need help?</a></span>-->
         <span class="pull-right"><a href="reset-pass.php">Forgot Password?</a></span>
     </div>
 <fieldset>
