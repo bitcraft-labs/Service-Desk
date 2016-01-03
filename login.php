@@ -39,7 +39,10 @@ include_once './modules/authentication/auth-head.php';
         <span id='login_password_errorloc' class='error'></span>
     </div>
     <div class="form-group">
-        <input type="checkbox" name="remember_me" class="form-control input-lg" value="1" />Remember me
+        <label class="checkbox pull-left">
+        <input type="checkbox" name="remember_me" value="1" />
+        Remember me
+        </label>
     </div>
     <div class="form-group">
         <button name='Submit' type='submit' class="btn btn-primary btn-lg btn-block">Sign In</button>
