@@ -21,8 +21,13 @@ Status:     Staging; Idea Testing; Development
 		include_once 'modules/control_sidebar.php';?>
     </div><!-- ./wrapper -->
 
-
 <!-- REQUIRED JS SCRIPTS -->
+<!-- jQuery 2.1.4 -->
+<script src="/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+<!-- Bootstrap 3.3.5 -->
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/dist/js/app.min.js"></script>
 <!-- DataTables -->
 <script src="plugins/datatables/jquery.dataTables.js"></script>
 <script src="plugins/datatables/dataTables.bootstrap.js"></script>
