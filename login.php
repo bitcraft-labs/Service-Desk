@@ -30,13 +30,16 @@ include_once './modules/authentication/auth-head.php';
 <fieldset>
     <input type='hidden' name='submitted' id='submitted' value='1'/>
     <div class="form-group">
-        <input type='text' name='username' class="form-control input-lg" id='username' value='<?php echo $authenticator->SafeDisplay('username') ?>' placeholder="Username" />
+        <input type='text' name='username' class="form-control input-lg" id='username' value="<?php echo $_COOKIE['remember_me']; ?>" placeholder="Username" /><?php //echo $authenticator->SafeDisplay('username') ?>
         <!-- <input type="text" name='username' class="form-control input-lg" placeholder="Username" /> -->
         <span id='login_username_errorloc' class='error'></span>
     </div>
     <div class="form-group">
         <input type="password" name="password" class="form-control input-lg" placeholder="Password" />
         <span id='login_password_errorloc' class='error'></span>
+    </div>
+    <div class="form-group">
+        <input type="checkbox" name="remember_me" class="form-control input-lg" value="1" />Remember me
     </div>
     <div class="form-group">
         <button name='Submit' type='submit' class="btn btn-primary btn-lg btn-block">Sign In</button>
