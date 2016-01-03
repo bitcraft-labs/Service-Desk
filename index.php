@@ -57,10 +57,10 @@ Status:     Staging; Idea Testing; Development
 <script>
   $(function () {
     $('#recent_activity').DataTable({
-      "paging": true,
-      "lengthChange": true,
-      "searching": true,
-      "ordering": true,
+      "paging": false,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": false,
       "info": true,
       "autoWidth": false
     });
