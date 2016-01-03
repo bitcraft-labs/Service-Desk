@@ -426,14 +426,15 @@ class Authenticator
         }   
         $confirmcode = $this->SanitizeForSQL($_GET['code']);
         
-        $result = mysql_query("Select name, email from $this->tablename where confirmcode='$confirmcode'",$this->connection);   
+        $result = mysql_query("Select fname, lname, email from $this->tablename where confirmcode='$confirmcode'",$this->connection);   
         if(!$result || mysql_num_rows($result) <= 0)
         {
             $this->HandleError("Wrong confirm code.");
             return false;
         }
         $row = mysql_fetch_assoc($result);
-        $user_rec['name'] = $row['name'];
+        $user_rec['fname'] = $row['fname'];
+        $user_rec['lname'] = $row['lname'];
         $user_rec['email']= $row['email'];
         
         $qry = "Update $this->tablename Set confirmcode='y' Where  confirmcode='$confirmcode'";
@@ -505,7 +506,7 @@ class Authenticator
         
         $mailer->CharSet = 'utf-8';
         
-        $mailer->AddAddress($user_rec['email'],$user_rec['name']);
+        $mailer->AddAddress($user_rec['email'],$user_rec['fname']);
         
         $mailer->Subject = "Welcome to ".$this->sitename;
 
@@ -513,7 +514,7 @@ class Authenticator
         $mailer->From = $fromthings[0];
         $mailer->FromName = $fromthings[1];
 
-        $mailer->Body ="Hello ".$user_rec['name'].",\r\n\r\n".
+        $mailer->Body ="Hello ".$user_rec['fname']." ".$user_rec['lname'].",\r\n\r\n".
         "Welcome! Your registration with ".$this->sitename." is completed.\r\n".
         "\r\n".
         "Regards,\r\n".
@@ -540,14 +541,14 @@ class Authenticator
         
         $mailer->AddAddress($this->admin_email);
         
-        $mailer->Subject = "Registration Completed: ".$user_rec['name'];
+        $mailer->Subject = "Registration Completed: ".$user_rec['fname']." ".$user_rec['lname'];
 
         $fromthings = $this->GetFromAddress2();
         $mailer->From = $fromthings[0];
         $mailer->FromName = $fromthings[1];
 
         $mailer->Body ="A new user registered at ".$this->sitename."\r\n".
-        "Name: ".$user_rec['name']."\r\n".
+        "Name: ".$user_rec['fname']." ".$user_rec['lname']."\r\n".
         "Email address: ".$user_rec['email']."\r\n";
         
         if(!$mailer->Send())
@@ -570,7 +571,7 @@ class Authenticator
         
         $mailer->CharSet = 'utf-8';
         
-        $mailer->AddAddress($email,$user_rec['name']);
+        $mailer->AddAddress($email,$user_rec['fname']);
         
         $mailer->Subject = "Your reset password request at ".$this->sitename;
 
@@ -583,7 +584,7 @@ class Authenticator
                 urlencode($email).'&code='.
                 urlencode($this->GetResetPasswordCode($email));
 
-        $mailer->Body ="Hello ".$user_rec['name'].",\r\n\r\n".
+        $mailer->Body ="Hello ".$user_rec['fname']." ".$user_rec['lname'].",\r\n\r\n".
         "There was a request to reset your password at ".$this->sitename."\r\n".
         "Please click the link below to complete the request: \r\n".$link."\r\n".
         "Regards,\r\n".
@@ -605,7 +606,7 @@ class Authenticator
         
         $mailer->CharSet = 'utf-8';
         
-        $mailer->AddAddress($email,$user_rec['name']);
+        $mailer->AddAddress($email,$user_rec['fname']);
         
         $mailer->Subject = "Your new password for ".$this->sitename;
 
@@ -613,7 +614,7 @@ class Authenticator
         $mailer->From = $fromthings[0];
         $mailer->FromName = $fromthings[1];
 
-        $mailer->Body ="Hello ".$user_rec['name'].",\r\n\r\n".
+        $mailer->Body ="Hello ".$user_rec['fname']." ".$user_rec['lname'].",\r\n\r\n".
         "Your password is reset successfully. ".
         "Here is your updated login:\r\n".
         "username:".$user_rec['username']."\r\n".
@@ -666,7 +667,8 @@ class Authenticator
     
     function CollectRegistrationSubmission(&$formvars)
     {
-        $formvars['name'] = $this->Sanitize($_POST['name']);
+        $formvars['fname'] = $this->Sanitize($_POST['fname']);
+        $formvars['lname'] = $this->Sanitize($_POST['lname']);
 	    $formvars['username'] = $this->Sanitize($_POST['username']);
         $formvars['email'] = $this->Sanitize($_POST['email']);
         $formvars['password'] = $this->Sanitize($_POST['password']);
@@ -690,7 +692,7 @@ class Authenticator
 
         $mailer->CharSet = 'utf-8';
         
-        $mailer->AddAddress($formvars['email'],$formvars['name']);
+        $mailer->AddAddress($formvars['email'],$formvars['fname']);
         
         $mailer->Subject = "Your registration with ".$this->sitename;
 
@@ -702,7 +704,7 @@ class Authenticator
         
         $confirm_url = $this->GetAbsoluteURLFolder().'/confirmreg.php?code='.$confirmcode;
         
-        $mailer->Body ="Hello ".$formvars['name'].",\r\n\r\n".
+        $mailer->Body ="Hello ".$formvars['fname']." ".$formvars['lname'].",\r\n\r\n".
         "Thanks for your registration with ".$this->sitename."\r\n".
         "Please click the link below to confirm your registration.\r\n".
         "$confirm_url\r\n".
@@ -746,14 +748,14 @@ class Authenticator
         
         $mailer->AddAddress($this->admin_email);
         
-        $mailer->Subject = "New registration: ".$formvars['name'];
+        $mailer->Subject = "New registration: ".$formvars['fname']." ".$formvars['lname'];
 
         $fromthings = $this->GetFromAddress2();
         $mailer->From = $fromthings[0];
         $mailer->FromName = $fromthings[1];         
         
         $mailer->Body ="A new user registered at ".$this->sitename."\r\n".
-        "Name: ".$formvars['name']."\r\n".
+        "Name: ".$formvars['fname']." ".$formvars['lname']."\r\n".
         "Email address: ".$formvars['email']."\r\n".
         "UserName: ".$formvars['username'];
         
@@ -781,7 +783,7 @@ class Authenticator
             return false;
         }
         
-	if(!$this->IsFieldUnique($formvars,'username'))
+    	if(!$this->IsFieldUnique($formvars,'username'))
         {
             $this->HandleError("This UserName is already used. Please try another username");
             return false;
@@ -845,14 +847,15 @@ class Authenticator
        
     	$auth = "Create Table $this->tablename (".
                 "id_user INT NOT NULL AUTO_INCREMENT ,".
-                "name VARCHAR( 128 ) NOT NULL ,".
+                "fname VARCHAR( 128 ) NOT NULL ,".
+                "lname VARCHAR( 128 ) NOT NULL ,".
                 "email VARCHAR( 64 ) NOT NULL ,".
                 "phone_number VARCHAR( 16 ) NOT NULL ,".
                 "username VARCHAR( 16 ) NOT NULL ,".
                 "salt VARCHAR( 50 ) NOT NULL ,".
                 "password VARCHAR( 80 ) NOT NULL ,".
                 "confirmcode VARCHAR(32) ,".
-                "user_type INT( 2 ) ,".
+                "type varchar( 3 ) ,".
                 "PRIMARY KEY ( id_user )".
                 ")";
 	    
@@ -879,19 +882,15 @@ class Authenticator
 
         $formvars['confirmcode'] = $confirmcode;
 
-	$hash = $this->hashSSHA($formvars['password']);
+    	$hash = $this->hashSSHA($formvars['password']);
 
-	$encrypted_password = $hash["encrypted"];
+    	$encrypted_password = $hash["encrypted"];
         
- 
-
-	$salt = $hash["salt"];
+    	$salt = $hash["salt"];
         
-      
-
- 
         $insert_query = 'insert into '.$this->tablename.'(
-		name,
+		fname,
+        lname,
 		email,
 		username,	
 		password,
@@ -900,7 +899,8 @@ class Authenticator
 		)
 		values
 		(
-		"' . $this->SanitizeForSQL($formvars['name']) . '",
+		"' . $this->SanitizeForSQL($formvars['fname']) . '",
+        "' . $this->SanitizeForSQL($formvars['lname']) . '",
 		"' . $this->SanitizeForSQL($formvars['email']) . '",
 		"' . $this->SanitizeForSQL($formvars['username']) . '",
 		"' . $encrypted_password . '",

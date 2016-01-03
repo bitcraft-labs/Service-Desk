@@ -35,11 +35,20 @@ include_once 'modules/authentication/auth-head.php';
     <input type='text'  class='spmhidip' name='<?php echo $authenticator->GetSpamTrapInputName(); ?>' />
     -->
     <div><span class='error'><?php echo $authenticator->GetErrorMessage(); ?></span></div>
-
+    <div class="form-group">
+        <input name="fname" type="text" id='fname' class="form-control input-lg" value='<?php echo $authenticator->SafeDisplay('fname') ?>' placeholder="First Name">
+        <span id='register_name_errorloc' class='error'></span>
+    </div>
+    <div class="form-group">
+        <input name="lname" type="text" id='lname' class="form-control input-lg" value='<?php echo $authenticator->SafeDisplay('lname') ?>' placeholder="Last Name">
+        <span id='register_name_errorloc' class='error'></span>
+    </div>
+    <!--
     <div class="form-group">
         <input name="name" type="text" id='name' class="form-control input-lg" value='<?php echo $authenticator->SafeDisplay('name') ?>' placeholder="Full Name">
         <span id='register_name_errorloc' class='error'></span>
     </div>
+    -->
     <div class="form-group">
         <!-- Potentially add email validation down the road -->
         <input name="email" type="text" id='email' class="form-control input-lg" value='<?php echo $authenticator->SafeDisplay('email') ?>' placeholder="FSU Email Address">
