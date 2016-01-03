@@ -39,7 +39,7 @@ include_once './modules/authentication/auth-head.php';
         <div class="col-xs-8">    
           <div class="checkbox icheck">
             <label class="checkbox ichec"kpro>
-              <input type="checkbox" name="remember_me" value="1" checked="yes"> Remember Me
+              <input type="checkbox" name="remember_me" value="1" <?php if ($_COOKIE['remember_me']) echo "checked"; ?> /> Remember Me
             </label>
           </div>                        
         </div><!-- /.col -->
