@@ -56,7 +56,7 @@
 				  <h3 class="box-title">Recent Activity</h3>
 				</div><!-- /.box-header -->
 				<div class="box-body">
-					<table id="staff_list" class="table table-bordered table-striped">
+					<table id="recent_activity" class="table table-bordered table-striped">
 						<thead>
 						<?php $tabhead="
 							<tr>
@@ -111,7 +111,7 @@
 				  <h3 class="box-title">Active Staff Users</h3>
 				</div><!-- /.box-header -->
 				<div class="box-body">
-					<table id="staff_list" class="table table-bordered table-striped">
+					<table id="active_staff" class="table table-bordered table-striped">
 						<thead>
 						<?php $tabhead="
 							<tr>
@@ -163,3 +163,30 @@
 	</div>
 	</section><!-- /.content -->
 </div><!-- /.content-wrapper -->
+
+<!-- page script -->
+<script>
+  $(function () {
+    $('#active_staff').DataTable({
+      "paging": true,
+      "lengthChange": true,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false
+    });
+  });
+</script>
+
+<script>
+  $(function () {
+    $('#recent_activity').DataTable({
+      "paging": true,
+      "lengthChange": true,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false
+    });
+  });
+</script>
