@@ -125,8 +125,14 @@ class Authenticator
         $_SESSION[$this->GetLoginSessionVar()] = $username;
         
         //set remember me cookie
-		$year = time() + 31536000; //save for one year
-		setcookie('remember_me',$username,$year);
+		if($_POST['remember_me']) {
+		setcookie('remember_me', $username, $year);
+		} elseif(!$_POST['remember_me']) {
+			if(isset($_COOKIE['remember_me'])) {
+				$past = time() - 100;
+				setcookie('remember_me', gone, $past);
+			}
+		}
 
         return true;
     }
