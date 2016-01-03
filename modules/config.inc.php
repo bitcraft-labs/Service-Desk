@@ -16,6 +16,7 @@ $restrict_ips = "no";
 
 $allowed_pages = array( //do not modify this array
    'about',
+   'admin',
    'dashboard',
    'profile',
    'service-record'
