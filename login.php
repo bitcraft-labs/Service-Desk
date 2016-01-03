@@ -25,9 +25,8 @@ include_once './modules/authentication/auth-head.php';
     <form id='login' class="col-md-12" action='<?php echo $authenticator->GetSelfScript(); ?>' name="login_form" method='post' accept-charset='UTF-8'>
       <input type='hidden' name='submitted' id='submitted' value='1'/>
       <div class="form-group has-feedback">
-          <input type='text' name='username' class="form-control" id='username' value="<?php echo $_COOKIE['remember_me']; ?>" placeholder="Username" /><?php //echo $authenticator->SafeDisplay('username') ?>
-          <!-- <input type="text" name='username' class="form-control input-lg" placeholder="Username" /> -->
-          <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+          <input type='text' name='username' class="form-control" id='username' value="<?php echo $_COOKIE['remember_me']; ?>" placeholder="Username" />
+          <span class="glyphicon glyphicon-user form-control-feedback"></span>
           <span id='login_username_errorloc' class='error'></span>
       </div>
       <div class="form-group has-feedback">
@@ -52,15 +51,8 @@ include_once './modules/authentication/auth-head.php';
         <div class="col-xs-4">
           <button name="Submit" type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
         </div><!-- /.col -->
-      </div><!--
+      </div>
       <div class="form-group">
-          <label class="checkbox pull-left">
-          <input type="checkbox" name="remember_me" value="1" />
-          Remember me
-          </label>
-      </div>-->
-      <div class="form-group">
-          <!--<button name='Submit' type='submit' class="btn btn-primary btn-lg btn-block">Sign In</button>-->
           <!--<span><a href="javascript:;" data-toggle="modal" data-target="#help">Need help?</a></span>-->
           <span class="pull-left"><a href="reset-pass.php">Forgot Password?</a></span>
       </div>
