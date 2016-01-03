@@ -82,7 +82,9 @@ include_once 'modules/authentication/auth-head.php';
     var frmvalidator  = new Validator("register");
     frmvalidator.EnableOnPageErrorDisplay();
     frmvalidator.EnableMsgsTogether();
-    frmvalidator.addValidation("name","req","Please provide your name");
+    frmvalidator.addValidation("fname","req","Please provide your first name");
+
+    frmvalidator.addValidation("lname","req","Please provide your last name");
 
     frmvalidator.addValidation("email","req","Please provide your email address");
 
