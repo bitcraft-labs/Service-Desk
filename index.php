@@ -44,10 +44,10 @@ Status:     Staging; Idea Testing; Development
 <script>
   $(function () {
     $('#active_staff').DataTable({
-      "paging": true,
-      "lengthChange": true,
-      "searching": true,
-      "ordering": true,
+      "paging": false,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": false,
       "info": true,
       "autoWidth": false
     });
