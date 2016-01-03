@@ -155,6 +155,16 @@ class Authenticator
         return isset($_SESSION['name_of_user'])?$_SESSION['name_of_user']:'';
     }
     
+    function UserFirstName()
+    {
+        return isset($_SESSION['first_name'])?$_SESSION['first_name']:'';
+    }
+
+    function UserLastName()
+    {
+        return isset($_SESSION['last_name'])?$_SESSION['last_name']:'';
+    }
+
     function UserEmail()
     {
         return isset($_SESSION['email_of_user'])?$_SESSION['email_of_user']:'';
@@ -392,9 +402,10 @@ class Authenticator
         
         $row = mysql_fetch_assoc($result);
         
-        
-        $_SESSION['name_of_user']  = $row['name'];
-        $_SESSION['email_of_user'] = $row['email'];
+        $_SESSION['first_name']     = $row['fname'];
+        $_SESSION['last_name']      = $row['lname'];
+        $_SESSION['name_of_user']   = $row['fname'] ." ". $row['lname'];
+        $_SESSION['email_of_user']  = $row['email'];
         
         return true;
     }
