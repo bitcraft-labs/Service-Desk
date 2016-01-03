@@ -81,8 +81,8 @@ include_once './modules/authentication/auth-head.php';
           <h4 class="modal-title">Forgot Password?</h4>
         </div>
         <div class="modal-body">
-          <p>If you forgot your password, enter your FSU Email Address to reset it. A password reset link will be sent to that account.</p>
           <form id='resetreq' class="col-md-12" action='<?php echo $authenticator->GetSelfScript(); ?>' method='post' accept-charset='UTF-8'>
+            <p>If you forgot your password, enter your FSU Email Address to reset it. A password reset link will be sent to that account.</p>
             <input type='hidden' name='submitted_pass' id='submitted_pass' value='1'/>
             <div><span class='error'><?php echo $authenticator->GetErrorMessage(); ?></span></div>
             <div class="form-group">
