@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/dist/css/login.css">
     <!-- iCheck -->
     <link href="/plugins/iCheck/square/blue.css" rel="stylesheet" type="text/css" />
+    <script src="/plugins/iCheck/icheck.min.js" type="text/javascript"></script>
     <!-- Marked for deletion
     <script type="text/javascript" src="modules/authentication/pwdwidget.js"></script>
     -->
