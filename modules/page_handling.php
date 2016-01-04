@@ -24,7 +24,7 @@ if (isset($_GET['page'])) {
 		}
 	}
 } else { 
-	if ($_SESSION['user_type'] == 1) {
+	if ($_SESSION['user_type'] == 3) {
 		include_once '404.php';
 	} else {
 		include_once 'dashboard.php'; 
