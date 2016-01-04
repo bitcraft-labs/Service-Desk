@@ -1,7 +1,14 @@
 <?php
 if (isset($_GET['page'])) {
 	$requested_page = $_GET['page'];
-	if (!in_array($requested_page, $allowed_pages)) {
+	if ($_SESSION['user_type'] == 1) {
+		$allowed_sector = $allowed_pages_admin;
+	} elseif ($_SESSION['user_type'] == 2) {
+		$allowed_sector = $allowed_pages;
+	} else {
+		$allowed_sector = array();
+	}
+	if (!in_array($requested_page, $allowed_sector)) {
 		include_once '404.php';
 	} else {
 		if (file_exists($requested_page.'.php')) {

@@ -14,9 +14,16 @@ Do not modify in risk of breaking application
 /* ------------------- SECURITY SETTINGS ------------------ */
 $restrict_ips = "no";
 
-$allowed_pages = array( //do not modify this array
+$allowed_pages_admin = array( //do not modify this array
    'about',
    'admin',
+   'dashboard',
+   'profile',
+   'service-record'
+);
+
+$allowed_pages = array( //do not modify this array
+   'about',
    'dashboard',
    'profile',
    'service-record'
