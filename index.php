@@ -8,6 +8,12 @@ Status:     Staging; Idea Testing; Development
 -->
 <html>
 	<!-- head.php contains the stylesheets -->
+    <?php
+      if ($_SESSION['user_type'] == 3) { 
+        header('Location: ./EndUserPortal.php');
+        die;
+      }
+    ?>
   	<?php 
     include_once 'modules/head.php'; ?>
     <?php echo "<body class='hold-transition skin-$skin sidebar-mini'>"; ?>
