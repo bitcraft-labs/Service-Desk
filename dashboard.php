@@ -2,6 +2,7 @@
 <div class="content-wrapper">
 	<section class="content-header">
 		<h1>Dashboard</h1>
+		<p><?php echo $_SESSION['user_type']; ?></p>
 			<ol class="breadcrumb">
 		    <li><a href="?page=dashboard"><i class="fa fa-dashboard"></i> Top</a></li>
 		    <li class="active">Dashboard</li>
@@ -56,7 +57,7 @@
 				  <h3 class="box-title">Recent Activity</h3>
 				</div><!-- /.box-header -->
 				<div class="box-body">
-					<p><?= $_SESSION['user_type']; ?>
+
 					<table id="recent_activity" class="table table-bordered table-striped">
 						<thead>
 						<?php $tabhead="
