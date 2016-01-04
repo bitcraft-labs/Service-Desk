@@ -56,6 +56,7 @@
 				  <h3 class="box-title">Recent Activity</h3>
 				</div><!-- /.box-header -->
 				<div class="box-body">
+					<p><?= $_SESSION['user_type']; ?>
 					<table id="recent_activity" class="table table-bordered table-striped">
 						<thead>
 						<?php $tabhead="
