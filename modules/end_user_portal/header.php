@@ -4,10 +4,7 @@
 	    <div class="navbar-header">
 	      <!-- Logo -->
 		  <a href="./" class="logo">
-		    <!-- mini logo for sidebar mini 50x50 pixels -->
-		    <span class="logo-mini"><?php echo "<img src='$logo_dark' width='25' />"?></span>
-		    <!-- logo for regular state and mobile devices -->
-		    <span class="logo-lg"><?php echo "$formatted_logo_top"?></span>
+			<?php echo "$formatted_logo_top"?>
 		  </a>
 	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
 	        <i class="fa fa-bars"></i>
