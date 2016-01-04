@@ -2,7 +2,13 @@
 	<nav class="navbar navbar-static-top">
 	  <div class="container">
 	    <div class="navbar-header">
-	      <a href="../../index2.html" class="navbar-brand"><b>Admin</b>LTE</a>
+	      <!-- Logo -->
+		  <a href="./" class="logo">
+		    <!-- mini logo for sidebar mini 50x50 pixels -->
+		    <span class="logo-mini"><?php echo "<img src='$logo_dark' width='25' />"?></span>
+		    <!-- logo for regular state and mobile devices -->
+		    <span class="logo-lg"><?php echo "$formatted_logo_top"?></span>
+		  </a>
 	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
 	        <i class="fa fa-bars"></i>
 	      </button>
