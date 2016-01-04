@@ -2,7 +2,7 @@
 if (isset($_GET['page'])) {
 	$requested_page = $_GET['page'];
 	if ($_SESSION['user_type'] == 1) {
-		$allowed_sector = $allowed_pages_admin;
+		$allowed_sector = $admin_pages;
 	} elseif ($_SESSION['user_type'] == 2) {
 		$allowed_sector = $allowed_pages;
 	} else {
@@ -24,7 +24,9 @@ if (isset($_GET['page'])) {
 		}
 	}
 } else { 
-	if ($_SESSION['user_type'] != 3) {
+	if ($_SESSION['user_type'] == 1) {
+		include_once '404.php';
+	} else {
 		include_once 'dashboard.php'; 
 	}
 } ?>
