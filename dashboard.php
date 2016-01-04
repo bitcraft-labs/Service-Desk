@@ -2,7 +2,7 @@
 <div class="content-wrapper">
 	<section class="content-header">
 		<h1>Dashboard</h1>
-		<p><?php echo $_SESSION['user_type']; ?></p>
+		<p>User Type: <?php echo $_SESSION['user_type']; ?></p>
 			<ol class="breadcrumb">
 		    <li><a href="?page=dashboard"><i class="fa fa-dashboard"></i> Top</a></li>
 		    <li class="active">Dashboard</li>
