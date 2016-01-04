@@ -88,7 +88,8 @@ if(!$authenticator->CheckLogin())
           </section><!-- /.content -->
         </div><!-- /.container -->
       </div><!-- /.content-wrapper -->
-      <?php	include_once 'modules/footer.php'; ?>
+      <?php include_once 'modules/end_user_portal/footer.php'; ?>
+      
     </div><!-- ./wrapper -->
 
     <!-- jQuery 2.1.4 -->
