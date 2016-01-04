@@ -1,4 +1,10 @@
 <?php
+if ($_SESSION['user_type'] == 3) {
+echo "<script type='text/javascript'>
+  window.location.replace('EndUserPortal.php');
+  </script>";
+exit;
+}
 if (isset($_GET['page'])) {
 	$requested_page = $_GET['page'];
 	if ($_SESSION['user_type'] == 1) {
