@@ -7,6 +7,7 @@ if (isset($_GET['page'])) {
 		$allowed_sector = $allowed_pages;
 	} else {
 		$allowed_sector = array('');
+		header('Location: /EndUserPortal.php');
 	}
 	if (!in_array($requested_page, $allowed_sector)) {
 		include_once '404.php';
