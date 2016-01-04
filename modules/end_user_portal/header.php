@@ -2,7 +2,7 @@
 	<nav class="navbar navbar-static-top">
 	  <div class="container">
 	    <div class="navbar-header">
-	      <a class="navbar-brand"><?php echo "$formatted_logo_top"?></a>
+	      <a href="./" class="navbar-brand logo"><?php echo "$formatted_logo_top"?></a>
 	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
 	        <i class="fa fa-bars"></i>
 	      </button>
