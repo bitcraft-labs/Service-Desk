@@ -7,7 +7,7 @@ $authenticator->LogOut();
 <html>
 <head>
 	<meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
-	<META http-equiv="refresh" content="5;URL=./">
+	<META http-equiv="refresh" content="3;URL=./">
 	<title>Logged Out</title>
 	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
 	<link rel="stylesheet" type="text/css" href="//bitcraftlabs.net/assets/css/style.css" />
