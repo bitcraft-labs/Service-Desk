@@ -33,7 +33,7 @@
       <?php $url = $_SERVER['PHP_SELF'];
       $url = substr($url, strrpos($url, '/') + 1); //preg_replace('/.php$/', '', basename($_SERVER['REQUEST_URI'])); ?>
       <li class="header">Main Menu</li>
-      <li <?php if (($url == '') || ($url == 'HelpDesk.php') || (!isset($_GET['page'])) echo "class='active'"; ?> ><a href="./"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+      <li <?php if (($url == '') || ($url == 'HelpDesk.php')) echo "class='active'"; ?> ><a href="./"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
       <li class="header">Service Central</li>
       <li <?php if (($url == 'service-record.php') && ($_GET['sr'] == "new")) echo "class='active'"; ?> ><a href="service-record.php?sr=new"><i class="fa fa-plus"></i> <span>Add New Service Record</span></a></li>
       <li <?php if (($url == 'service-record.php') && ($_GET['sr'] != "new")) echo "class='active'"; ?> ><a href="service-record.php?sr=all"><i class="fa fa-list-alt"></i> <span>View Service Records</span></a></li>
