@@ -6,7 +6,7 @@ if (isset($_GET['page'])) {
 	} elseif ($_SESSION['user_type'] == 2) {
 		$allowed_sector = $allowed_pages;
 	} else {
-		$allowed_sector = array();
+		$allowed_sector = array('');
 	}
 	if (!in_array($requested_page, $allowed_sector)) {
 		include_once '404.php';
