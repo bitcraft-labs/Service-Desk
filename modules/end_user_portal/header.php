@@ -11,10 +11,10 @@
 	    <!-- Collect the nav links, forms, and other content for toggling -->
 	    <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
 	      <ul class="nav navbar-nav">
-	        <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
-	        <li><a href="#">Checkups</a></li>
-	        <li><a href="#">Profile</a></li>
-	        <li><a href="#">WebMail</a></li>
+	        <li class="active"><a href="./">Home <span class="sr-only">(current)</span></a></li>
+	        <li><a href="?page=checkups">Checkups</a></li>
+	        <li><a href="?page=profile">Profile</a></li>
+	        <li><a href="?page=webmail">WebMail</a></li>
 	      </ul>
 	    </div><!-- /.navbar-collapse -->
 	    <!-- Navbar Right Menu -->
