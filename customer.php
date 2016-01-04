@@ -17,6 +17,12 @@ if(!$authenticator->CheckLogin())
     $authenticator->RedirectToURL("login.php");
     exit;
 }
+if ($_SESSION['user_type'] == 3) {
+echo "<script type='text/javascript'>
+  window.location.replace('EndUserPortal.php');
+  </script>";
+exit;
+}
 ?>
 <head>
     <meta charset="utf-8">
