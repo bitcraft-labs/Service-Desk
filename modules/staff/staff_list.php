@@ -18,16 +18,16 @@
 			<tbody>
 				<?php /*
 				$dal = new DAL();
-				$personinfo = $dal->getPersonInfo('all');
-				if ($personinfo) {
-					foreach($personinfo as $row) {
+				$staffinfo = $dal->getStaffInfo('all');
+				if ($staffinfo) {
+					foreach($staffinfo as $row) {
 				    echo "<tr>
 					    	<td><a href='?id=$row->user_id'>$row->user_id</a></td>
-					    	<td>$row->name</td>
-					    	<td>@$row->banner_id</td>
-					    	<td>$row->user_type</td>
-					    	<td>$row->phone</td>
-					    	<td>$row->email</td>
+					    	<td>$row->f_name</td>
+					    	<td>$row->l_name</td>
+					    	<td>$row->user_group</td>
+					    	<td>$row->act_servrec</td>
+					    	<td>$row->last_on</td>
 					    	<td>12/1/2015</td>
 					    	</tr>";
 				  	}

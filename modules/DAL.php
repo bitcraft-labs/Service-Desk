@@ -60,7 +60,15 @@ class DAL {
   public function checkStaffMemberExists($name) {
     return false;
   }
-  
+  /*
+  public function getStaffInfo($name){          //Function outlined
+    if ($name = 'all'){
+      $sql = "SELECT * FROM ";
+    } else {
+      $sql = "SELECT * FROM WHERE = '$name'";
+    }
+    }
+  }*/
   // <-------- /Staff Module --------------
 
   private function dbconnect() {
