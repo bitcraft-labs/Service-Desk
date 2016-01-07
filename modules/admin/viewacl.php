@@ -27,12 +27,12 @@
 						$ulist = $dal->getStaffUserInfo();
 						if ($ulist) {
 							foreach($ulist as $row) {
-							    echo "<tr><a href='?page=admin&action=ViewACL&for=$row->id&do=ViewUser'>
+							    echo "<tr href='?page=admin&action=ViewACL&for=$row->id&do=ViewUser'>
 								<td>$row->id</td>
 								<td>$row->fname</td>
 								<td>$row->lname</td>
 								<td>$row->email</td>
-								<td>$row->type</td></a>
+								<td>$row->type</td>
 								<td>Options</td>
 								</tr>";
 						  	}
