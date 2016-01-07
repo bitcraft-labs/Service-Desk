@@ -22,18 +22,19 @@
 					</thead>
 					<tbody>
 						<?php
+						require_once('modules/config-func.php');
 						$dal = new DAL();
-						$userlist = $dal->getStaffUserInfo();
-						if ($userlist) {
-							foreach($userlist as $row) {
-						    echo "<tr>
-							    	<td>$row->id_user</td>
-							    	<td>$row->fname</td>
-							    	<td>$row->lname</td>
-							    	<td>$row->email</td>
-							    	<td>$row->type</td>
-							    	<td>Options</td>
-							    	</tr>";
+						$ulist = $dal->getStaffUserInfo();
+						if ($ulist) {
+							foreach($ulist as $row) {
+							    echo "<tr>
+								<td>$row->id_user</td>
+								<td>$row->fname</td>
+								<td>$row->lname</td>
+								<td>$row->email</td>
+								<td>$row->type</td>
+								<td>Options</td>
+								</tr>";
 						  	}
 						}
 						?>
