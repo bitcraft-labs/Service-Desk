@@ -7,8 +7,8 @@
 			<div class="box-header">
 			  <h3 class="box-title"><?= $adminsub ?></h3>
 			</div><!-- /.box-header -->
-			<div class="box-body">
-				<table id="adm_acl" class="table table-bordered table-responsive">
+			<div class="box-body table-responsive no-padding">
+				<table id="adm_acl" class="table table-responsive">
 					<thead>
 					<?php $tabhead="
 						<tr>
