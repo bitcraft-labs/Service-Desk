@@ -77,7 +77,8 @@ class DAL {
       auth.lname as lname, 
       auth.email as email
       FROM auth 
-      INNER JOIN user_type ON user_type.id=auth.type";
+      INNER JOIN user_type ON user_type.id=auth.type
+      WHERE auth.type='1' OR auth.type='2'";
     return $this->query($sql);
   }
 
