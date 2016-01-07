@@ -15,7 +15,7 @@
 							<td>#</td>
 							<td>First Name</td>
 							<td>Last Name</td>
-							<td>Primary Email</
+							<td>Primary Email</td>
 							<td>User Group</td>
 							<td>Modify</td>
 						</tr>"; echo $tabhead; ?>
@@ -26,14 +26,14 @@
 						$userlist = $dal->getStaffUserInfo('all');
 						if ($userlist) {
 							foreach($userlist as $row) {
-						    echo "<a href='?id=$row->id_user'><tr>
+						    echo "<tr>
 							    	<td>$row->id_user</td>
 							    	<td>$row->fname</td>
 							    	<td>$row->lname</td>
 							    	<td>$row->email</td>
 							    	<td>$row->type</td>
 							    	<td>Options</td>
-							    	</tr></a>";
+							    	</tr>";
 						  	}
 						}
 						?>
