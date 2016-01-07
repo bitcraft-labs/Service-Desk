@@ -5,7 +5,7 @@
 		?>
 		<div class="box">
 			<div class="box-header">
-			  <h3 class="box-title">$adminsub</h3>
+			  <h3 class="box-title"><?= $adminsub ?></h3>
 			</div><!-- /.box-header -->
 			<div class="box-body">
 				<table id="staff_list" class="table table-bordered table-striped">
@@ -23,7 +23,7 @@
 					<tbody>
 						<?php
 						$dal = new DAL();
-						$userlist = $dal->getStaffUserInfo('all');
+						$userlist = $dal->getStaffUserInfo();
 						if ($userlist) {
 							foreach($userlist as $row) {
 						    echo "<tr>

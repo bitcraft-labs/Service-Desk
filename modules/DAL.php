@@ -71,7 +71,7 @@ class DAL {
   }*/
 
   public function getStaffUserInfo() {
-    $sql = "SELECT id_user,fname,lname,email,type FROM auth";
+    $sql = "SELECT * FROM auth"; // id_user,fname,lname,email,type FROM auth";
     return $this->query($sql);
   }
 
