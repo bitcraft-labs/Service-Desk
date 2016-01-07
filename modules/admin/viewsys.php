@@ -1,5 +1,8 @@
 <div class="row">
 	<div class="col-md-12">
-		<p>View System Settings</p>
+		<p><?php $adminsub = 'View System Settings'; 
+				 echo $adminsub; 
+				 $adminhsub = '<small>'.$adminsub.'</small>';
+		?></p>
 	</div>
 </div>

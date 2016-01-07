@@ -1,7 +1,7 @@
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
 	<section class="content-header">
-		<h1>Admin Panel</h1>
+		<h1>Admin Panel <?= $adminsub ?></h1>
 		<ol class="breadcrumb">
 		    <li><a href="?page=dashboard"><i class="fa fa-dashboard"></i> Top</a></li>
 		    <li class="active">Admin</li>
