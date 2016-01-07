@@ -71,7 +71,9 @@ class DAL {
   }*/
 
   public function getStaffUserInfo() {
-    $sql = "SELECT * FROM auth"; // id_user,fname,lname,email,type FROM auth";
+    $sql = "SELECT auth.id_user as user_id,auth.fname as fname,auth.lname as lname,auth.email as email,auth.type as type,user_type.type as utype 
+    FROM auth
+    INNER JOIN user_type ON auth.type=user_type.type";
     return $this->query($sql);
   }
 
