@@ -11,10 +11,12 @@
 	<!-- Main content -->
 	<section class="content">
 	<!--<div class="container-fluid">-->
-	<div class="row">
-		<div class="col-md-6">
-			<p></p>
-		</div>
-	</div>
+	<?php
+	$action = $_GET['action'];
+	if (($action == '') || ($action == 'ViewSystemSettings')) {
+		include 'modules/admin/viewsys.php';
+	} elseif ($action == 'ViewACL') {
+		include 'modules/admin/viewacl.php'
+	} ?>
 	</section><!-- /.content -->
 </div><!-- /.content-wrapper -->
