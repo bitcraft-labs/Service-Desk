@@ -28,7 +28,7 @@
 						if ($ulist) {
 							foreach($ulist as $row) {
 							    echo "<tr>
-								<td>$row->id_user</td>
+								<td>$row->id</td>
 								<td>$row->fname</td>
 								<td>$row->lname</td>
 								<td>$row->email</td>
