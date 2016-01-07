@@ -72,7 +72,7 @@ class DAL {
 
   public function getStaffUserInfo() {
     $sql = "SELECT auth.id_user as id, 
-      user_type.type as utype, 
+      user_type.type as type, 
       auth.fname as fname, 
       auth.lname as lname, 
       auth.email as email
