@@ -14,9 +14,10 @@
 	<?php
 	$action = $_GET['action'];
 	if (($action == '') || ($action == 'ViewSystemSettings')) {
-		include 'modules/admin/viewsys.php';
+		include_once 'modules/admin/viewsys.php';
 	} elseif ($action == 'ViewACL') {
-		include 'modules/admin/viewacl.php'
-	} ?>
+		include_once 'modules/admin/viewacl.php';
+	}
+	?>
 	</section><!-- /.content -->
 </div><!-- /.content-wrapper -->
