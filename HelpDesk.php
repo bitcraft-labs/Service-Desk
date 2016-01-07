@@ -60,9 +60,7 @@ Status:     Staging; Idea Testing; Development
       "autoWidth": false
     });
   });
-</script>
 
-<script>
   $(function () {
     $('#recent_activity').DataTable({
       "paging": false,
@@ -73,9 +71,7 @@ Status:     Staging; Idea Testing; Development
       "autoWidth": false
     });
   });
-</script>
 
-<script>
   $(function () {
     $('#adm_acl').DataTable({
       "paging": true,
@@ -84,6 +80,12 @@ Status:     Staging; Idea Testing; Development
       "ordering": true,
       "info": true,
       "autoWidth": false
+    });
+  });
+
+  jQuery(document).ready(function($) {
+    $(".clickable-row").click(function() {
+        window.document.location = $(this).data("href");
     });
   });
 </script>
