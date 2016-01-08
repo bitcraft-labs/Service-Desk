@@ -7,6 +7,8 @@ Dev Date:   Spring 2016
 Status:     Staging; Idea Testing; Development
 -->
 <?php
+  echo $_SESSION['user_type'];
+  exit;
   if ($_SESSION['user_type'] == 3) {
     echo "<script type='text/javascript'>
       window.location.replace('EndUserPortal.php');
