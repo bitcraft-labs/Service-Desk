@@ -2,7 +2,7 @@
 include_once 'modules/config.inc.php'; 
 //include_once 'modules/login_auth/_validate.php';
 require_once("./modules/authentication/config.php");
-require_once("./modules/authentication/config2.php");
+include_once "./modules/admin/config2.php";
 
 if(!$authenticator->CheckLogin())
 {
