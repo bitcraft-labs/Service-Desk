@@ -37,7 +37,7 @@
       <li class="header">Service Central</li>
       <li <?php if (($url == 'ServiceRecord.php') && ($_GET['sr'] == "new")) echo "class='active'"; ?> ><a href="ServiceRecord.php?sr=new"><i class="fa fa-plus"></i> <span>Add New Service Record</span></a></li>
       <li <?php if (($url == 'ServiceRecord.php') && ($_GET['sr'] != "new")) echo "class='active'"; ?> ><a href="ServiceRecord.php?sr=all"><i class="fa fa-list-alt"></i> <span>View Service Records</span></a></li>
-      <li <?php if (($url == 'EndUser.php') && ($_GET['id'] != "new")) echo "class='active'"; ?> ><a href="EndUser.php?id=all"><i class="fa fa-list-alt"></i> <span>View Customers</span></a></li>
+      <li <?php if (($url == 'EndUser.php') && ($_GET['id'] != "new")) echo "class='active'"; ?> ><a href="EndUser.php?id=all"><i class="fa fa-list-alt"></i> <span>View End Users</span></a></li>
       <!--<li><a href="#"><i class="fa fa-file-text"></i> <span>Run Report</span></a></li>-->
 
       <li class="header">Staff</li>
