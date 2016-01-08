@@ -6,20 +6,7 @@ For:        Software Engineering
 Dev Date:   Spring 2016
 Status:     Staging; Idea Testing; Development
 -->
-<?php
-  echo 'Session Type: '.$_SESSION['user_type'];
-  exit;
-
-  if ($_SESSION['user_type'] == 3) {
-    echo "<script type='text/javascript'>
-      window.location.replace('EndUserPortal.php');
-      </script>";
-    exit;
-  }
-?>
-
 <html>
-	<!-- head.php contains the stylesheets -->
   	<?php 
     include_once 'modules/admin/head.php'; ?>
     <?php echo "<body class='hold-transition skin-red sidebar-mini'>"; ?>
