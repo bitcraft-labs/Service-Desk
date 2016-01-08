@@ -73,7 +73,7 @@
 			  <label class="col-md-4 control-label" for="skin">Select Theme</label>
 			  <div class="col-md-4">
 			    <select id="skin" name="skin" class="form-control">
-			      <option value="Select Skin" disabled  <?php if (!$conf['customize']['skin']) echo 'selected';?>>
+			      <option value="" disabled  <?php if (!$conf['customize']['skin']) echo 'selected';?>>Select Skin</option>
 			      <option value="green" <?php if ('green' == $conf['customize']['skin']) echo 'selected';?>>green</option>
 			      <option value="yellow" <?php if ('yellow' == $conf['customize']['skin']) echo 'selected';?>>yellow</option>
 			      <option value="blue" <?php if ('blue' == $conf['customize']['skin']) echo 'selected';?>>blue</option>
