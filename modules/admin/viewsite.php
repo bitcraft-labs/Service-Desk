@@ -10,7 +10,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="db_host">Database Host</label>  
 			  <div class="col-md-4">
-			  <input id="db_host" name="db_host" type="text" placeholder="db_host" class="form-control input-md" value="<?=$conf['sql']['host']?>" required="">
+			  <?php echo "<input id='db_host' name='db_host' type='text' placeholder='db_host' class='form-control input-md' value='".$conf['sql']['host']."' required=''>";?>
 			    
 			  </div>
 			</div>
@@ -19,7 +19,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="db_user">Database User</label>  
 			  <div class="col-md-4">
-			  <input id="db_user" name="db_user" type="text" placeholder="db_user" class="form-control input-md" value="<?=$conf['sql']['user']?>" required="">
+			  <?php echo "<input id='db_user' name='db_user' type='text' placeholder='db_user' class='form-control input-md' value='".$conf['sql']['user']."' required=''>";?>
 			    
 			  </div>
 			</div>
@@ -28,7 +28,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="db_pass">Database Pass</label>  
 			  <div class="col-md-4">
-			  <input id="db_pass" name="db_pass" type="text" placeholder="db_pass" class="form-control input-md" value="<?=$conf['sql']['pass']?>" required="">
+			  <?php echo "<input id='db_pass' name='db_pass' type='text' placeholder='db_pass' class='form-control input-md' value='".$conf['sql']['pass']."' required=''>";?>
 			    
 			  </div>
 			</div>
@@ -37,7 +37,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="db_name">Database Name</label>  
 			  <div class="col-md-4">
-			  <input id="db_name" name="db_name" type="text" placeholder="db_name" class="form-control input-md" value="<?=$conf['sql']['name']?>" required="">
+			  <?php echo "<input id='db_name' name='db_name' type='text' placeholder='db_name' class='form-control input-md' value='".$conf['sql']['name']."' required=''>";?>
 			    
 			  </div>
 			</div>
@@ -46,7 +46,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="company_name">Company Name</label>  
 			  <div class="col-md-4">
-			  <input id="company_name" name="company_name" type="text" placeholder="Bitcraft Labs" value="<?=$conf['site']['company_name']?>" class="form-control input-md">
+			  <?php echo "<input id='company_name' name='company_name' type='text' placeholder='Bitcraft Labs' value='".$conf['site']['company_name']."' class='form-control input-md'>";?>
 			    
 			  </div>
 			</div>
@@ -63,7 +63,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="sysemail">Security Notifications Email</label>  
 			  <div class="col-md-4">
-			  <input id="sysemail" name="sysemail" type="text" placeholder="security@domain.com" class="form-control input-md" value="<?=$conf['customize']['sysemail']?>" required="">
+			  <?php echo "<input id='sysemail' name='sysemail' type='text' placeholder='security@domain.com' class='form-control input-md' value='".$conf['customize']['sysemail']"' required=''>";?>
 			    
 			  </div>
 			</div>
