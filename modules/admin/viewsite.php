@@ -1,12 +1,10 @@
 <div class="row">
 	<div class="col-md-12">
-		<p><?php $adminsub = 'View System Settings'; 
+		<p><?php $adminsub = 'View Site Settings'; 
 				 echo $adminsub; 
 				 $adminhsub = '<small>'.$adminsub.'</small>';
 		?></p>
 		<form class="form-horizontal">
-			<!-- Form Name -->
-			<legend>Site Settings</legend>
 
 			<!-- Text input-->
 			<div class="form-group">
