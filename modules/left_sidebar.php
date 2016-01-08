@@ -37,15 +37,15 @@
       <li class="header">Service Central</li>
       <li <?php if (($url == 'ServiceRecord.php') && ($_GET['sr'] == "new")) echo "class='active'"; ?> ><a href="ServiceRecord.php?sr=new"><i class="fa fa-plus"></i> <span>Add New Service Record</span></a></li>
       <li <?php if (($url == 'ServiceRecord.php') && ($_GET['sr'] != "new")) echo "class='active'"; ?> ><a href="ServiceRecord.php?sr=all"><i class="fa fa-list-alt"></i> <span>View Service Records</span></a></li>
-      <li <?php if (($url == 'customer.php') && ($_GET['id'] != "new")) echo "class='active'"; ?> ><a href="EndUser.php?id=all"><i class="fa fa-list-alt"></i> <span>View Customers</span></a></li>
+      <li <?php if (($url == 'EndUser.php') && ($_GET['id'] != "new")) echo "class='active'"; ?> ><a href="EndUser.php?id=all"><i class="fa fa-list-alt"></i> <span>View Customers</span></a></li>
       <!--<li><a href="#"><i class="fa fa-file-text"></i> <span>Run Report</span></a></li>-->
 
       <li class="header">Staff</li>
       <li <?php if (($url == 'staff.php') && ($_GET['id'] == "all")) echo "class='active'"; ?> ><a href="Staff.php?id=all"><i class="fa fa-users"></i> <span>View Staff</span></a></li>
       <?php if ($_SESSION['user_type'] == 1) { ?>
       <li class="header">Admin</li>
-      <li <?php if (($url == 'HelpDesk.php') && ($_GET['page'] == 'admin') && (($_GET['action'] == '') || ($_GET['action'] == 'ViewSystemSettings'))) echo "class='active'"; ?> ><a href="/HelpDesk.php?page=admin&action=ViewSystemSettings"><i class="fa fa-cogs"></i> <span>Site Settings</span></a></li>
-      <li <?php if (($url == 'HelpDesk.php') && ($_GET['page'] == 'admin') && ($_GET['action'] == 'ViewACL')) echo "class='active'"; ?> ><a href="/HelpDesk.php?page=admin&action=ViewACL"><i class="fa fa-user"></i> <span>Access Control</span></a></li>
+      <li <?php if (($url == 'Admin.php') && (($_GET['action'] == '') || ($_GET['action'] == 'ViewSystemSettings'))) echo "class='active'"; ?> ><a href="/Admin.php?action=ViewSystemSettings"><i class="fa fa-cogs"></i> <span>Site Settings</span></a></li>
+      <li <?php if (($url == 'Admin.php') && ($_GET['action'] == 'ViewACL')) echo "class='active'"; ?> ><a href="/Admin.php?action=ViewACL"><i class="fa fa-user"></i> <span>Access Control</span></a></li>
       <?php } ?>
     </ul><!-- /.sidebar-menu -->
   </section>

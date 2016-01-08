@@ -16,7 +16,7 @@ $restrict_ips = "no";
 
 $admin_pages = array( //do not modify this array
    'about',
-   'admin',
+   //'admin',
    'dashboard',
    'profile',
    'service-record'
