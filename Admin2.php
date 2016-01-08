@@ -7,10 +7,14 @@ Dev Date:   Spring 2016
 Status:     Staging; Idea Testing; Development
 -->
 <?php
-  if ($_SESSION['user_type'] != 1) {
-    include '404.php';
+  if ($_SESSION['user_type'] == 3) {
+    echo "<script type='text/javascript'>
+      window.location.replace('EndUserPortal.php');
+      </script>";
+    exit;
   }
 ?>
+
 <html>
 	<!-- head.php contains the stylesheets -->
   	<?php 
@@ -21,7 +25,12 @@ Status:     Staging; Idea Testing; Development
 		// build the user interface
 		include_once 'modules/header.php';
 		include_once 'modules/left_sidebar.php';
-		include_once 'modules/admin/admin.php';
+    
+    if ($_SESSION['user_type'] != 1) {
+      include_once '404.php';
+    } else { 
+      include_once 'modules/admin/admin.php';
+    }
 		include_once 'modules/footer.php'; 
 		include_once 'modules/control_sidebar.php';?>
     </div><!-- ./wrapper -->
