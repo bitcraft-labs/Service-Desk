@@ -13,8 +13,8 @@
 	<!--<div class="container-fluid">-->
 	<?php
 	$action = $_GET['action'];
-	if (($action == '') || ($action == 'ViewSystemSettings')) {
-		include_once 'modules/admin/viewsys.php';
+	if (($action == '') || ($action == 'ViewSiteSettings')) {
+		include_once 'modules/admin/viewsite.php';
 	} elseif ($action == 'ViewACL') {
 		include_once 'modules/admin/viewacl.php';
 	}
