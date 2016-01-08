@@ -63,7 +63,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="sysemail">Security Notifications Email</label>  
 			  <div class="col-md-4">
-			  <?php echo "<input id='sysemail' name='sysemail' type='text' placeholder='security@domain.com' class='form-control input-md' value='".$conf['customize']['sysemail']"' required=''>";?>
+			  <?php echo "<input id='sysemail' name='sysemail' type='text' placeholder='security@domain.com' class='form-control input-md' value='".$conf['customize']['sysemail']."' required=''>";?>
 			    
 			  </div>
 			</div>
