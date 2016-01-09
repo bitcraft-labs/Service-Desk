@@ -3,8 +3,8 @@
 
   <!-- Select Basic -->
   <div class="form-group">
-    <label class="col-md-8 control-label" for="access-type">Select Access Type</label>
     <div class="col-md-8">
+      <label class="control-label" for="access-type">Select Access Type</label>
       <?php
       $types = $dal->getAccessTypes();
       $selected_user = $_GET['for'];
