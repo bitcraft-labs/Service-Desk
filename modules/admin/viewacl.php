@@ -32,7 +32,7 @@
 								} else {
 									$highlight = false;
 								}
-							    echo "<tr class='clickableRow $highlight' data-href='?page=admin&action=ViewACL&for=$row->id&do=ViewUser' $highlight>
+							    echo "<tr class='clickableRow $highlight' data-href='?action=ViewACL&for=$row->id&do=EditUser' $highlight>
 								<td>$row->id</td>
 								<td>$row->fname</td>
 								<td>$row->lname</td>
