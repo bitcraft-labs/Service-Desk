@@ -71,7 +71,7 @@ class DAL {
   }*/
 
   public function getAccessTypes() {
-    $sql = "SELECT type FROM user_type";
+    $sql = "SELECT * FROM user_type";
     return $this->query($sql);
   }
 

@@ -12,7 +12,8 @@
         $selected_user = $_GET['for'];
         $curr = $dal->getUserAccessLevel($selected_user);
         foreach ($types as $row) {
-          $level_options = "<option value='".$row['type']."'>$row['type']</option>";
+          $level_options = "<option value='".$row['id']."'>".$row['type']."</option>";
+          echo $level_options;
         }
         /*
         if ($types) {
