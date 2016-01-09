@@ -27,7 +27,7 @@
 						$ulist = $dal->getStaffUserInfo();
 						if ($ulist) {
 							foreach($ulist as $row) {
-								if ($_GET['id'] == $row->id) {
+								if ($_GET['for'] == $row->id) {
 									$highlight = 'row-selected';
 								} else {
 									$highlight = false;
