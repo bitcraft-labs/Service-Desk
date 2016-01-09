@@ -7,22 +7,25 @@ Dev Date:   Spring 2016
 Status:     Staging; Idea Testing; Development
 -->
 <html>
-  	<?php 
+  	<?php
     include_once 'modules/admin/head.php'; ?>
     <?php echo "<body class='hold-transition skin-red sidebar-mini'>"; ?>
     <div class="wrapper">
-		<?php 
+		<?php
 		// build the user interface
 		include_once 'modules/header.php';
 		include_once 'modules/left_sidebar.php';
-    
+
     if ($_SESSION['user_type'] != 1) {
       include_once '404.php';
-    } else { 
+    } else {
       include_once 'modules/admin/admin.php';
     }
-		include_once 'modules/footer.php'; 
-		include_once 'modules/control_sidebar.php';?>
+		include_once 'modules/footer.php';
+		include_once 'modules/control_sidebar.php';
+    require_once('modules/config-func.php');
+    $dal = new DAL();
+    ?>
     </div><!-- ./wrapper -->
 
 <!-- REQUIRED JS SCRIPTS -->

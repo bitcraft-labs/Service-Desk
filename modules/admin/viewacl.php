@@ -22,8 +22,6 @@
 					</thead>
 					<tbody>
 						<?php
-						require_once('modules/config-func.php');
-						$dal = new DAL();
 						$ulist = $dal->getStaffUserInfo();
 						if ($ulist) {
 							foreach($ulist as $row) {
