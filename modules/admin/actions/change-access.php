@@ -13,7 +13,7 @@
         $curr = $dal->getUserAccessLevel($selected_user);
         $level_options = '';
         foreach ($types as $row) {
-          return false;
+          return '';
           //$level_options .= "<option value=".$row['id'].">".$row['type']."</option>";
         }
         echo $level_options;
