@@ -11,6 +11,7 @@
         $types = $dal->getAccessTypes();
         $selected_user = $_GET['for'];
         $curr = $dal->getUserAccessLevel($selected_user);
+        /*
         if ($types) {
           foreach ($types as $row) {
             $option = "<option value='".$row['type']."' ";

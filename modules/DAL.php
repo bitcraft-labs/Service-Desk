@@ -76,7 +76,7 @@ class DAL {
   }
 
   public function getUserAccessLevel($user) {
-    $sql = "SELECT type
+    $sql = "SELECT auth.type as type
       FROM auth
       INNER JOIN user_type ON user_type.id=auth.type
       WHERE auth.id_user='$user'";
