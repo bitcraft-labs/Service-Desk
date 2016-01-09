@@ -1,1 +1,5 @@
 tr.clickableRow { cursor: pointer; }
+.table-hover>tbody>tr:hover>td, .table-hover>tbody>tr:hover>th, .row-selected>tbody>tr {
+  background-color: #550055;
+  color:#eeeeee;
+}

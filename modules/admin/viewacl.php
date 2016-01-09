@@ -7,8 +7,8 @@
 			<div class="box-header">
 			  <h3 class="box-title"><?= $adminsub ?></h3>
 			</div><!-- /.box-header -->
-			<div class="box-body table-responsive">
-				<table id="adm_acl" class="table table-bordered table-hover">
+			<div class="box-body">
+				<table id="adm_acl" class="table table-striped table-hover">
 					<thead>
 					<?php $tabhead="
 						<tr>
@@ -28,11 +28,11 @@
 						if ($ulist) {
 							foreach($ulist as $row) {
 								if ($_GET['id'] == $row->id) {
-									$highlight = true;
+									$highlight = 'row-selected';
 								} else {
 									$highlight = false;
 								}
-							    echo "<tr class='clickableRow' data-href='?page=admin&action=ViewACL&for=$row->id&do=ViewUser' $highlight>
+							    echo "<tr class='clickableRow $highlight' data-href='?page=admin&action=ViewACL&for=$row->id&do=ViewUser' $highlight>
 								<td>$row->id</td>
 								<td>$row->fname</td>
 								<td>$row->lname</td>
