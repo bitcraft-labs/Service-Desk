@@ -6,10 +6,10 @@
     <label class="col-md-4 control-label" for="access-type">Select Access Type</label>
     <div class="col-md-4">
       <select id="access-type" name="access-type" class="form-control">
-        <option value="" disabled>Select Access Type</option>
+        <option disabled>Select Access Type</option>
         <?php
         $types = $dal->getAccessTypes();
-        $curr = $dal->getUserAccessLevel("$_GET['for']");
+        //$curr = $dal->getUserAccessLevel("$_GET['for']");
         if ($types) {
           foreach ($types as $row) {
             $option = "<option value='".$row['type']."' ";
