@@ -5,13 +5,15 @@
   <div class="form-group">
     <label class="col-md-8 control-label" for="access-type">Select Access Type</label>
     <div class="col-md-8">
+      <?php
+      $types = $dal->getAccessTypes();
+      $selected_user = $_GET['for'];
+      $curr = $dal->getUserAccessLevel($selected_user);
+      $level_options = '';
+      ?>
       <select id="access-type" name="access-type" class="form-control">
         <option disabled>Select Access Type</option>
         <?php
-        $types = $dal->getAccessTypes();
-        $selected_user = $_GET['for'];
-        $curr = $dal->getUserAccessLevel($selected_user);
-        $level_options = '';
         foreach ($types as $row) {
           return '';
           //$level_options .= "<option value=".$row['id'].">".$row['type']."</option>";
