@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-md-8">
-		<?php $adminsub = 'Access Control List'; 
+		<?php $adminsub = 'Access Control List';
  			  $adminhsub = '<small>'.$adminsub.'</small>';
 		?>
 		<div class="box">
@@ -27,7 +27,12 @@
 						$ulist = $dal->getStaffUserInfo();
 						if ($ulist) {
 							foreach($ulist as $row) {
-							    echo "<tr class='clickableRow' data-href='?page=admin&action=ViewACL&for=$row->id&do=ViewUser'>
+								if ($_GET['id'] == $row->id) {
+									$highlight = true;
+								} else {
+									$highlight = false;
+								}
+							    echo "<tr class='clickableRow' data-href='?page=admin&action=ViewACL&for=$row->id&do=ViewUser' $highlight>
 								<td>$row->id</td>
 								<td>$row->fname</td>
 								<td>$row->lname</td>
