@@ -38,7 +38,7 @@
 								<td>$row->lname</td>
 								<td>$row->email</td>
 								<td>$row->type</td>
-								<td>Options</td>
+								<td><img src='$icon_dir/user_edit_icon.png' height='16' /> <img src='$icon_dir/group_key_icon.png' height='16' />  <img src='$icon_dir/user_delete_icon.png' height='16' /></td>
 								</tr>";
 						  	}
 						}

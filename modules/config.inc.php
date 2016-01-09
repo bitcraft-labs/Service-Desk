@@ -29,6 +29,8 @@ $allowed_pages = array( //do not modify this array
    'service-record'
 );
 
+$icon_dir = 'dist/icons';
+
 /* --------------------- CUSTOMIZATION --------------------- */
 /* ---------- PRESETS ---------- */
 $skin = "purple";
