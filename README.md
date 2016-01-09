@@ -3,5 +3,3 @@
 Based on AdminLTE
 
 Bitcraft Service Desk aims to eliminate paperwork in computer repairs.
-
-
