@@ -9,6 +9,7 @@
         <option disabled>Select Access Type</option>
         <?php
         $types = $dal->getAccessTypes();
+        /*
         $curr = $dal->getUserAccessLevel("$_GET['for']");
         if ($types) {
           foreach ($types as $row) {
@@ -21,7 +22,7 @@
             echo $option;
           }
         }
-
+        */
         ?>
       </select>
     </div>
