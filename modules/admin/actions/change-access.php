@@ -15,8 +15,7 @@
         <option disabled>Select Access Type</option>
         <?php
         foreach ($types as $row) {
-          $level_options .= '';
-          //$level_options .= "<option value=".$row['id'].">".$row['type']."</option>";
+          $level_options .= "<option value=".$row['id'].">".$row['type']."</option>";
         }
         echo $level_options;
         /*
