@@ -23,7 +23,7 @@ Status:     Staging; Idea Testing; Development
     }
 		include_once 'modules/footer.php';
 		include_once 'modules/control_sidebar.php';
-    require_once('modules/config-func.php');
+    include_once 'modules/config-func.php';
     //$dal = new DAL();
     ?>
     </div><!-- ./wrapper -->
