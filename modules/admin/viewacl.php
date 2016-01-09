@@ -38,7 +38,7 @@
 								<td>$row->lname</td>
 								<td>$row->email</td>
 								<td>$row->type</td>
-								<td><img src='$icon_dir/user-edit-icon.png' height='24' /> <a href='?action=ViewACL&for=4&do=ChangeAccess'><img src='$icon_dir/group-key-icon.png' height='24' /></a>  <a href='?action=ViewACL&for=4&do=DeleteUser'><img src='$icon_dir/user-delete-icon.png' height='24' /></a></td>
+								<td><img src='$icon_dir/user-edit-icon.png' height='24' /> <a href='?action=ViewACL&for=$row->id&do=ChangeAccess'><img src='$icon_dir/group-key-icon.png' height='24' /></a>  <a href='?action=ViewACL&for=$row->id&do=DeleteUser'><img src='$icon_dir/user-delete-icon.png' height='24' /></a></td>
 								</tr>";
 						  	}
 						}
