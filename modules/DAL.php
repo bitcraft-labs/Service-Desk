@@ -79,7 +79,7 @@ class DAL {
     $sql = "SELECT auth.type as type
       FROM auth
       INNER JOIN user_type ON user_type.id=auth.type
-      WHERE auth.id_user='$user'";
+      WHERE auth.id_user='".$user."'";
     return $this->query($sql);
   }
 
