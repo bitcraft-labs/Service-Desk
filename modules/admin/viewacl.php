@@ -66,7 +66,7 @@
 			<h3 class="box-title">User Settings</h3>
 		</div><!-- /.box-header -->
 		<div class="box-body">
-			<?php if ($_GET['do'] == 'ChangeAccess') include 'modules/admin/actions/change-access.php'; ?>
+			<?php if ($_GET['do'] == 'ChangeAccess') include_once 'modules/admin/actions/change-access.php'; ?>
 		</div>
 	</div>
 </div>

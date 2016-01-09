@@ -8,7 +8,7 @@
       <select id="access-type" name="access-type" class="form-control">
         <option disabled>Select Access Type</option>
         <?php
-        $types = $dal->getAccessTypes();
+        //$types = $dal->getAccessTypes();
         //$curr = $dal->getUserAccessLevel("$_GET['for']");
         if ($types) {
           foreach ($types as $row) {
