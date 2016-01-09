@@ -17,7 +17,7 @@
 							<td>Last Name</td>
 							<td>Primary Email</td>
 							<td>User Group</td>
-							<td>Modify</td>
+							<td>Actions</td>
 						</tr>"; echo $tabhead; ?>
 					</thead>
 					<tbody>
