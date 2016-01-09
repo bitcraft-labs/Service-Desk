@@ -11,10 +11,11 @@
         $types = $dal->getAccessTypes();
         $selected_user = $_GET['for'];
         $curr = $dal->getUserAccessLevel($selected_user);
+        $level_options = '';
         foreach ($types as $row) {
-          $level_options = "<option value='".$row['id']."'>".$row['type']."</option>";
-          echo $level_options;
+          $level_options .= "<option value=".$row['id'].">".$row['type']."</option>";
         }
+        echo $level_options;
         /*
         if ($types) {
           foreach ($types as $row) {
