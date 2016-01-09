@@ -8,8 +8,8 @@
       <select id="access-type" name="access-type" class="form-control">
         <option disabled>Select Access Type</option>
         <?php
-        //$types = $dal->getAccessTypes();
-        //$curr = $dal->getUserAccessLevel("$_GET['for']");
+        /*$types = $dal->getAccessTypes();
+        $curr = $dal->getUserAccessLevel("$_GET['for']");
         if ($types) {
           foreach ($types as $row) {
             $option = "<option value='".$row['type']."' ";
@@ -21,6 +21,7 @@
             echo $option;
           }
         }
+        */
         ?>
       </select>
     </div>
