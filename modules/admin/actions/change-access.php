@@ -3,12 +3,12 @@
 
   <!-- Select Basic -->
   <div class="form-group">
-    <label class="col-md-4 control-label" for="access-type">Select Access Type</label>
-    <div class="col-md-4">
+    <label class="col-md-8 control-label" for="access-type">Select Access Type</label>
+    <div class="col-md-8">
       <select id="access-type" name="access-type" class="form-control">
         <option disabled>Select Access Type</option>
         <?php
-        /*$types = $dal->getAccessTypes();
+        $types = $dal->getAccessTypes();
         $curr = $dal->getUserAccessLevel("$_GET['for']");
         if ($types) {
           foreach ($types as $row) {
@@ -21,7 +21,7 @@
             echo $option;
           }
         }
-        */
+
         ?>
       </select>
     </div>
@@ -29,8 +29,8 @@
 
   <!-- Button -->
   <div class="form-group">
-    <label class="col-md-4 control-label" for="submit"></label>
-    <div class="col-md-4">
+    <label class="col-md-8 control-label" for="submit"></label>
+    <div class="col-md-8">
       <button id="submit" name="submit" class="btn btn-primary">Update</button>
     </div>
   </div>

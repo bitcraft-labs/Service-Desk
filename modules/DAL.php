@@ -74,12 +74,12 @@ class DAL {
     $sql = "SELECT type FROM user_type";
     return $this->query($sql);
   }
-  
+
   public function getUserAccessLevel($user) {
     $sql = "SELECT auth.type as type
       FROM auth
       INNER JOIN user_type ON user_type.id=auth.type
-      WHERE auth.id_user=$user";
+      WHERE auth.id_user='$user'";
     return $this->query($sql);
   }
 
