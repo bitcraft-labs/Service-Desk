@@ -18,12 +18,7 @@ $authenticator->InitDB(/*hostname*/   $db_hostname,
 					  /*username*/   $db_username,
 					  /*password*/   $db_password,
 					  /*database*/   $db_name,
-					  /*table name*/ 'staff');
-//$fgmembersite->InitDB(/*hostname'localhost',
-                      /*username'bcl_admin',
-                      /*password'X2z7cMG4Tnphnavr',
-                      /*database name'bcl_tronic_auth',
-                      /*table name 'auth'); */
+					  /*table name*/ 'users');
 
 //For better security. Get a random string from this link: http://tinyurl.com/randstr
 // and put it here

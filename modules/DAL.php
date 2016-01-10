@@ -76,10 +76,10 @@ class DAL {
   }
 
   public function getUserAccessLevel($user) {
-    $sql = "SELECT staff.type as type
-      FROM staff
-      INNER JOIN user_type ON user_type.id=staff.type
-      WHERE staff.id_user='$user'";
+    $sql = "SELECT users.type as type
+      FROM users
+      INNER JOIN user_type ON user_type.id=users.type
+      WHERE users.id_user='$user'";
     return $this->query($sql);
   }
 
@@ -98,14 +98,14 @@ class DAL {
   }
 
   public function getStaffUserInfo() {
-    $sql = "SELECT staff.id_user as id,
+    $sql = "SELECT users.id_user as id,
       user_type.type as type,
-      staff.fname as fname,
-      staff.lname as lname,
-      staff.email as email
-      FROM staff
-      INNER JOIN user_type ON user_type.id=staff.type
-      WHERE staff.type='1' OR staff.type='2'";
+      users.fname as fname,
+      users.lname as lname,
+      users.email as email
+      FROM users
+      INNER JOIN user_type ON user_type.id=users.type
+      WHERE users.type='1' OR users.type='2'";
     return $this->query($sql);
   }
 
