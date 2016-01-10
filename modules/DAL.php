@@ -89,7 +89,7 @@ class DAL {
       FROM user_type
       WHERE id='$acc'";
     $this->dbconnect();
-    $i = mysql_query();
+    $i = mysql_query($sql);
     while ($j = mysql_fetch_array($i)) {
       $res = $j['type'];
       break;
