@@ -34,6 +34,7 @@
       $url = substr($url, strrpos($url, '/') + 1); //preg_replace('/.php$/', '', basename($_SERVER['REQUEST_URI'])); ?>
       <li class="header">Main Menu</li>
       <li <?php if ((($url == '') || ($url == 'HelpDesk.php')) && (($_GET['page'] == '') || ($_GET['page'] == 'dashboard'))) echo "class='active'"; ?> ><a href="/HelpDesk.php"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+      <li <?php if ($url == 'WebMail.php') echo "class='active'"; ?> ><a href="WebMail.php"><i class="fa fa-envelope"></i> <span>WebMail</span></a></li>
       <li class="header">Service Central</li>
       <li <?php if (($url == 'ServiceRecord.php') && ($_GET['sr'] == "new")) echo "class='active'"; ?> ><a href="ServiceRecord.php?sr=new"><i class="fa fa-plus"></i> <span>Add New Service Record</span></a></li>
       <li <?php if (($url == 'ServiceRecord.php') && ($_GET['sr'] != "new")) echo "class='active'"; ?> ><a href="ServiceRecord.php?sr=all"><i class="fa fa-list-alt"></i> <span>View Service Records</span></a></li>
