@@ -21,7 +21,7 @@
                 <img class="img-circle" src="dist/img/avatar5.png" alt="User Avatar">
               </div><!-- /.widget-user-image -->
               <h3 class="widget-user-username"><?= $authenticator->UserFullName() ?></h3>
-              <h5 class="widget-user-desc">Lead Developer</h5>
+              <h5 class="widget-user-desc"><?= $dal->getVerbatimUserAccessLevel() ?></h5>
             </div>
             <div class="box-footer no-padding">
               <ul class="nav nav-stacked">

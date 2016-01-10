@@ -83,6 +83,14 @@ class DAL {
     return $this->query($sql);
   }
 
+  public function getVerbatimUserAccessLevel() {
+    $acc = $_SESSION['user_type'];
+    $sql = "SELECT type
+      FROM user_type
+      WHERE id='$acc'";
+    return $this->query($sql);
+  }
+
   public function getStaffUserInfo() {
     $sql = "SELECT staff.id_user as id,
       user_type.type as type,
