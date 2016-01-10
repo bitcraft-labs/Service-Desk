@@ -88,7 +88,13 @@ class DAL {
     $sql = "SELECT type
       FROM user_type
       WHERE id='$acc'";
-    return $this->query($sql);
+    $this->dbconnect();
+    $i = mysql_query();
+    while ($j = mysql_fetch_array($i)) {
+      $res = $j['type'];
+      break;
+    }
+    return $res;
   }
 
   public function getStaffUserInfo() {
