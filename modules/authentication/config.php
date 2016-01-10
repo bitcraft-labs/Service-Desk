@@ -18,7 +18,7 @@ $authenticator->InitDB(/*hostname*/   $db_hostname,
 					  /*username*/   $db_username,
 					  /*password*/   $db_password,
 					  /*database*/   $db_name,
-					  /*table name*/ 'auth');
+					  /*table name*/ 'staff');
 //$fgmembersite->InitDB(/*hostname'localhost',
                       /*username'bcl_admin',
                       /*password'X2z7cMG4Tnphnavr',
