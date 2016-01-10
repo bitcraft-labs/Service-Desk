@@ -52,7 +52,7 @@ if(!$authenticator->CheckLogin())
 
       <?php
       include_once 'modules/end_user_portal/header.php';
-      if (isset($_GET['page']) {
+      if (isset($_GET['page'])) {
         if ($_GET['page'] == 'mailbox') {
           include_once 'modules/mailbox/mailbox-ui.php';
         }
