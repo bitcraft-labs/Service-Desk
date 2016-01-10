@@ -2,7 +2,6 @@
 <div class="content-wrapper">
 	<section class="content-header">
 		<h1>Dashboard</h1>
-		<p>User Type: <?php echo $_SESSION['user_type']; ?></p>
 			<ol class="breadcrumb">
 		    <li><a href="?page=dashboard"><i class="fa fa-dashboard"></i> Top</a></li>
 		    <li class="active">Dashboard</li>
@@ -48,7 +47,7 @@
               <span class="info-box-number">31</span>
             </div><!-- /.info-box-content -->
           </div><!-- /.info-box -->
-		</div>	
+		</div>
 	</div>
 	<div class="row">
 		<div class="col-md-6 col-xs-12">
@@ -165,4 +164,3 @@
 	</div>
 	</section><!-- /.content -->
 </div><!-- /.content-wrapper -->
-
