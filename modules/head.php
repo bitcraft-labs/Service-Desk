@@ -1,7 +1,9 @@
-<?php 
-include_once 'modules/config.inc.php'; 
+<?php
+include_once 'modules/config.inc.php';
 //include_once 'modules/login_auth/_validate.php';
 require_once("./modules/authentication/config.php");
+include_once 'modules/config-func.php';
+$dal = new DAL();
 
 if(!$authenticator->CheckLogin())
 {
