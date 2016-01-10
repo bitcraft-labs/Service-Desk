@@ -4,7 +4,7 @@
     <h1>WebMail</h1>
     <ol class="breadcrumb">
         <li><a href="?page=dashboard"><i class="fa fa-dashboard"></i> Top</a></li>
-        <li class="active">WebMail</li>
+        <li class="active">Mailbox</li>
     </ol>
   </section>
 
