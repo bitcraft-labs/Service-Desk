@@ -7,8 +7,8 @@ Dev Date:   Spring 2016
 Status:     Staging; Idea Testing; Development
 -->
 <html>
-<?php 
-include_once 'modules/config.inc.php'; 
+<?php
+include_once 'modules/config.inc.php';
 require_once("./modules/authentication/config.php");
 
 if(!$authenticator->CheckLogin())
@@ -50,7 +50,11 @@ if(!$authenticator->CheckLogin())
   <?php echo "<body class='hold-transition skin-$skin layout-top-nav'>"; ?>
     <div class="wrapper">
 
-      <?php include_once 'modules/end_user_portal/header.php'; ?>
+      <?php
+      include_once 'modules/end_user_portal/header.php';
+      if ($page='mailbox') {
+        include_once 'modules/mailbox/mailbox-ui.php';
+      } else { ?>
       <!-- Full Width Column -->
       <div class="content-wrapper">
         <div class="container">
@@ -58,7 +62,7 @@ if(!$authenticator->CheckLogin())
           <section class="content-header">
             <h1>
               End User Portal
-              <small>Tronic CRM <?= $app_version?></small>
+              <small>Fitchburg State Service Desk <?= $app_version?></small>
             </h1>
             <ol class="breadcrumb">
               <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -81,14 +85,15 @@ if(!$authenticator->CheckLogin())
                 <h3 class="box-title">The End User Gateway Portal</h3>
               </div>
               <div class="box-body">
-                Welcome back! Feel free to take a look at your previous computer checkups, webmail messages, or what have you.<br />Have a wonderful day!
+                Welcome back! Feel free to take a look at your previous computer checkups, mailbox messages, or what have you.<br />Have a wonderful day!
               </div><!-- /.box-body -->
             </div><!-- /.box -->
           </section><!-- /.content -->
         </div><!-- /.container -->
       </div><!-- /.content-wrapper -->
-      <?php include_once 'modules/end_user_portal/footer.php'; ?>
-      
+      <?php }
+      include_once 'modules/end_user_portal/footer.php'; ?>
+
     </div><!-- ./wrapper -->
 
     <!-- jQuery 2.1.4 -->

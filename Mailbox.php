@@ -14,25 +14,8 @@ Status:     Staging; Idea Testing; Development
 		<?php
 		// build the user interface
 		include_once 'modules/header.php';
-		include_once 'modules/left_sidebar.php'; ?>
-
-    <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-    	<section class="content-header">
-    		<h1>WebMail</h1>
-    		<ol class="breadcrumb">
-    		    <li><a href="?page=dashboard"><i class="fa fa-dashboard"></i> Top</a></li>
-    		    <li class="active">WebMail</li>
-    		</ol>
-    	</section>
-
-    	<!-- Main content -->
-    	<section class="content">
-        <p>I need some content</p>
-    	</section><!-- /.content -->
-    </div><!-- /.content-wrapper -->
-
-		<?php
+		include_once 'modules/left_sidebar.php';
+    include_once 'modules/mailbox/mailbox-ui.php';
     include_once 'modules/footer.php';
 		include_once 'modules/control_sidebar.php';
     ?>

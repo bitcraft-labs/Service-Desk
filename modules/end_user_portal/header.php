@@ -14,7 +14,7 @@
 	        <li class="active"><a href="./">Home <span class="sr-only">(current)</span></a></li>
 	        <li><a href="?page=checkups">Checkups</a></li>
 	        <li><a href="?page=profile">Profile</a></li>
-	        <li><a href="?page=webmail">WebMail</a></li>
+	        <li><a href="?page=mailbox">Mailbox</a></li>
 	      </ul>
 	    </div><!-- /.navbar-collapse -->
 	    <!-- Navbar Right Menu -->
