@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Project:    Tronic CRM (Working Title)
+Project:    Bitcraft Service Desk (Working Title)
 Lead Devs:  Joshua Nasiatka, Allen Perry, Eugene Duffy
 For:        Software Engineering
 Dev Date:   Spring 2016
@@ -66,44 +66,44 @@ exit;
 
 			<section class="content-header">
 				<h1><?php
-				$cus_id = $_GET['id'];
-				if ($cus_id == "all") {
+				$eu_id = $_GET['id'];
+				if ($eu_id == "all") {
 					$now = getdate();
 					$now = array($now[mday],$now[mon],$now[year]);
-					echo "Customer Relation Central <small>As of $now[1]-$now[0]-$now[2]</small>";
+					echo "End User Relation Central <small>As of $now[1]-$now[0]-$now[2]</small>";
 				}
-				elseif (isset($cus_id) && is_numeric($cus_id))
-					echo "View Customer";
-				elseif (isset($cus_id) && $cus_id == 'new')
-					echo "Add New Customer Record";
+				elseif (isset($eu_id) && is_numeric($eu_id))
+					echo "View End User";
+				elseif (isset($eu_id) && $eu_id == 'new')
+					echo "Add New End User Record";
 				else
-					echo "Welcome to Customer Relation Central";
+					echo "Welcome to End User Relation Central";
 				?></h1>
 				<ol class="breadcrumb">
 				    <li><a href="?page=dashboard"><i class="fa fa-dashboard"></i> Top</a></li>
-				    <li class="active">Customer Records</li>
+				    <li class="active">End User Records</li>
 				</ol>
 			</section>
 
 			<section class="content">
 				<div class="row">
 					<div class="col-xs-12">
-					  <?php //Show all customer records ?>
-					  <?php if ($cus_id == "all") {
-					  	include_once 'modules/customer_record/customer_list.php';
+					  <?php //Show all end user records ?>
+					  <?php if ($eu_id == "all") {
+					  	include_once 'modules/enduser_record/enduser_list.php';
 		    		  } 
 		    		  //show individual service record
-		    		  elseif (isset($cus_id) && is_numeric($cus_id)) {
-		    		  	include_once 'modules/customer_record/customer_info.php';
+		    		  elseif (isset($eu_id) && is_numeric($eu_id)) {
+		    		  	include_once 'modules/enduser_record/enduser_info.php';
 		    		  	?>
 		    		  	
 		    		  	<?php
-		    		  } elseif (isset($cus_id) && ($cus_id == "new")) {
-		    		  	echo "<p>Add new customer page</p>";
+		    		  } elseif (isset($eu_id) && ($eu_id == "new")) {
+		    		  	echo "<p>Add new End User page</p>";
 		    		  } else {
 		    		  	//show welcome page
 		    		  	echo "<p>You have reached this page in error</p>";
-		    		  	echo "<p>Please return to the <a href='./'>Dashboard</a> or <a href='?id=all'>Search for a Customer</a></p>";
+		    		  	echo "<p>Please return to the <a href='./'>Dashboard</a> or <a href='?id=all'>Search for a End User</a></p>";
 		    		  	echo "<script type='text/javascript'>window.location.href = './';</script>";
 		    		  }
 		    		  ?>
