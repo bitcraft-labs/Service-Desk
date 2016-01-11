@@ -8,6 +8,7 @@ Status:     Staging; Idea Testing; Development
 -->
 <html>
   	<?php
+    $page_title = 'Mailbox';
     include_once 'modules/head.php'; ?>
     <?php echo "<body class='hold-transition skin-$skin sidebar-mini'>"; ?>
     <div class="wrapper">

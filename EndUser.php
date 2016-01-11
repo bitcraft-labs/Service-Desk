@@ -7,7 +7,8 @@ Dev Date:   Spring 2016
 Status:     Staging; Idea Testing; Development
 -->
 <html>
-<?php 
+<?php
+$page_title = 'End User';
 include_once 'modules/config.inc.php';
 require_once('modules/config-func.php');
 require_once("./modules/authentication/config.php");
@@ -27,7 +28,7 @@ exit;
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title><?php echo $title; ?></title>
+    <title><?= $title ?></title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -55,14 +56,14 @@ exit;
 </head>
     <?php echo "<body class='hold-transition skin-$skin sidebar-mini'>"; ?>
     <div class="wrapper">
-		<?php 
+		<?php
 		// build the user interface
 		include_once 'modules/header.php';
 		include_once 'modules/left_sidebar.php';
 		?>
 
 		<div class="content-wrapper">
-			
+
 
 			<section class="content-header">
 				<h1><?php
@@ -91,12 +92,12 @@ exit;
 					  <?php //Show all end user records ?>
 					  <?php if ($eu_id == "all") {
 					  	include_once 'modules/enduser_record/enduser_list.php';
-		    		  } 
+		    		  }
 		    		  //show individual service record
 		    		  elseif (isset($eu_id) && is_numeric($eu_id)) {
 		    		  	include_once 'modules/enduser_record/enduser_info.php';
 		    		  	?>
-		    		  	
+
 		    		  	<?php
 		    		  } elseif (isset($eu_id) && ($eu_id == "new")) {
 		    		  	echo "<p>Add new End User page</p>";
@@ -113,7 +114,7 @@ exit;
 			</section><!-- /.content -->
 		</div><!-- /.content-wrapper -->
 		<?php
-		include_once 'modules/footer.php'; 
+		include_once 'modules/footer.php';
 		include_once 'modules/control_sidebar.php'; ?>
     </div><!-- ./wrapper -->
 

@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <!--
-Project:    Honey Badger (PHB) - Working Title
-Lead Devs:  Joshua Nasiatka & Allen Perry
+Project:    Bitcraft Service Desk (Working Title)
+Lead Devs:  Joshua Nasiatka, Allen Perry, Eugene Duffy
 For:        Software Engineering
 Dev Date:   Spring 2016
 Status:     Staging; Idea Testing; Development
 -->
 <html>
-<?php 
-include_once 'modules/config.inc.php'; 
+<?php
+$page_title = 'Service Record';
+include_once 'modules/config.inc.php';
 require_once("./modules/authentication/config.php");
 
 if(!$authenticator->CheckLogin())
@@ -26,7 +27,7 @@ exit;
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title><?php echo $title; ?></title>
+    <title><?= $title ?></title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -54,14 +55,14 @@ exit;
 </head>
     <?php echo "<body class='hold-transition skin-$skin sidebar-mini'>"; ?>
     <div class="wrapper">
-		<?php 
+		<?php
 		// build the user interface
 		include_once 'modules/header.php';
 		include_once 'modules/left_sidebar.php';
 		?>
 
 		<div class="content-wrapper">
-			
+
 
 			<section class="content-header">
 				<h1><?php
@@ -164,7 +165,7 @@ exit;
 				    		</table>
 			    		</div>
 		    		  </div>
-		    		  <?php } 
+		    		  <?php }
 		    		  //show individual service record
 		    		  elseif (isset($sr) && is_numeric($sr)) {
 		    		  	echo "<p>Database table information is currently unavailable</p>";
@@ -212,7 +213,7 @@ exit;
 			</section><!-- /.content -->
 		</div><!-- /.content-wrapper -->
 		<?php
-		include_once 'modules/footer.php'; 
+		include_once 'modules/footer.php';
 		include_once 'modules/control_sidebar.php'; ?>
     </div><!-- ./wrapper -->
 

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Project:    Tronic CRM (Working Title)
+Project:    Bitcraft Service Desk (Working Title)
 Lead Devs:  Joshua Nasiatka, Allen Perry, Eugene Duffy
 For:        Software Engineering
 Dev Date:   Spring 2016
@@ -16,16 +16,16 @@ Status:     Staging; Idea Testing; Development
 ?>
 <html>
 	<!-- head.php contains the stylesheets -->
-  	<?php 
+  	<?php
     include_once 'modules/head.php'; ?>
     <?php echo "<body class='hold-transition skin-$skin sidebar-mini'>"; ?>
     <div class="wrapper">
-		<?php 
+		<?php
 		// build the user interface
 		include_once 'modules/header.php';
 		include_once 'modules/left_sidebar.php';
 		include_once 'modules/page_handling.php';
-		include_once 'modules/footer.php'; 
+		include_once 'modules/footer.php';
 		include_once 'modules/control_sidebar.php';?>
     </div><!-- ./wrapper -->
 

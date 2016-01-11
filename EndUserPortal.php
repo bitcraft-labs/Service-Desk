@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <!--
-Project:    Honey Badger (PHB) - Working Title
-Lead Devs:  Joshua Nasiatka & Allen Perry
+Project:    Bitcraft Service Desk (Working Title)
+Lead Devs:  Joshua Nasiatka, Allen Perry, Eugene Duffy
 For:        Software Engineering
 Dev Date:   Spring 2016
 Status:     Staging; Idea Testing; Development
 -->
 <html>
 <?php
+$page_title = 'End User Portal';
 include_once 'modules/config.inc.php';
 require_once("./modules/authentication/config.php");
 
@@ -20,7 +21,7 @@ if(!$authenticator->CheckLogin())
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title><?php echo $title; ?></title>
+    <title><?=$title ?></title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
