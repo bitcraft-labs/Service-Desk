@@ -15,17 +15,16 @@
 	//foreach ($personinfo as $prow) {}
 ?>
 <div class="col-md-12">
-  <div class="col-md-8">
-    <h1>Service Record #1307</h1>
-    <h3>Request for Computer Repair (Hardware)</h3>
-  </div>
-  <div class="col-md-4">
-    <p>Status: Waiting for Pickup<br />
-      Last Updated: 1 minute ago<br />
-      Assigned to: Student HD Tech Group</p>
-  </div>
+  <h1>Service Record #1307<br /><small>Request for Computer Repair (Hardware)</small></h1>
 </div>
-<div class="col-md-12">
+<!--
+<div class="col-md-4">
+  <p>Status: Waiting for Pickup<br />
+    Last Updated: 1 minute ago<br />
+    Assigned to: Student HD Tech Group</p>
+</div>
+-->
+
   <!-- Contact Information -->
   <div class="col-md-6">
   	<div class="box box-solid box-primary">
@@ -73,19 +72,18 @@
                   <input type="text" class="form-control" value="(508) 353-3875" data-inputmask='"mask": "(999) 999-9999"' data-mask>
                 </div><!-- /.input group -->
               </div><!-- /.form group -->
-  		    <p>Edit</p>
   		</fieldset>
   		</form>
-  	  </div><!-- /.box-body
+    </div><!-- /.box-body -->
   	  <div class="box-footer">
-  	    <button type="button" class="btn btn-primary">Update</button>
-  	  </div> box-footer -->
+  	    <a href="#">Edit</a>
+  	  </div>
   	</div><!-- /.box -->
   </div>
 
   <!-- Systems -->
-  <div class="col-md-6">
-  	<div class="box box-primary">
+  <div class="col-md-6" style="height:inherit">
+  	<div class="box box-solid box-primary">
   	  <div class="box-header with-border">
   	    <h3 class="box-title"><i class="fa fa-desktop"> </i> System Information</h3>
   	    <div class="box-tools pull-right">
@@ -95,23 +93,22 @@
   	  </div><!-- /.box-header -->
   	  <div class="box-body">
   	    <p>
-          Model: Apple Macbook Pro (2011) 13"<br />
-          Serial: CXNUA137XW92<br />
-          Warranty: Apple Care Expired</br />
-          Password: P@ssw0rd!
-          Bitlocker: N/A</p>
+          <strong>Model:</strong> Apple Macbook Pro (2011) 13"<br />
+          <strong>Serial:</strong> CXNUA137XW92<br />
+          <strong>Warranty:</strong> Apple Care Expired</br />
+          <strong>Password:</strong> P@ssw0rd!<br />
+          <strong>Bitlocker:</strong> N/A</p>
   	  </div><!-- /.box-body -->
   	  <div class="box-footer">
   	    <div class="col-md-6"><p><a href="#">Edit</a> <a href="#">+ Add</a></p></div>
-        <div class="col-md-6"><p style="text-align:right">Generate Labels</p></div>
+        <div class="col-md-6"><p style="text-align:right"><a href="#">Generate Labels</a></p></div>
   	  </div><!-- box-footer -->
   	</div><!-- /.box -->
   </div><!-- /systems -->
-</div> <!-- /contact & /sysinfo -->
 
 <!-- Checkup Record -->
 <div class="col-md-12">
-	<div class="box box-primary">
+	<div class="box box-solid box-primary">
 	  <div class="box-header with-border">
 	    <h3 class="box-title"><i class="fa fa-file-text"> </i> Checkup Record</h3>
 	    <div class="box-tools pull-right">
@@ -120,16 +117,16 @@
 	    </div><!-- /.box-tools -->
 	  </div><!-- /.box-header -->
 	  <div class="box-body">
-      <div class="col-md-6"> <!-- Problem -->
-        <p><strong>Problem:</strong> Broken Screen<br />
-          Additional Details:<br />
-          <input type="textbox" name="addl_details" value="Accidently dropped it the other day. Fell off bed while watching Netflix." /></p>
+      <div class="col-md-8"> <!-- Problem -->
+        <p><strong>Problem:</strong> Broken Screen</p>
+        <p><strong>Additional Details:</strong></p>
+          <input type="textarea" name="addl_details" style="width:100%;height:125px;" value="Accidently dropped it the other day. Fell off bed while watching Netflix." /></p>
       </div> <!-- /Problem -->
-      <div class="col-md-6"> <!-- Submission Notes -->
+      <div class="col-md-4"> <!-- Submission Notes -->
         <p>Assigned to: Student HD Tech Group<br />
           Submitted by: Rose Tyler (Clerk)<br />
           Submitted: 01/07/2016 at 12:29pm</p>
-        <p><img src='https://chart.googleapis.com/chart?cht=qr&chl=http%3A%2F%2Fhelpdesk.bitcraftlabs.net%2FServiceRecord.php%3Fsr%3Dnew%26type%3D1&chs=180x180&choe=UTF-8&chld=L|2' width="80" alt="qr" /> Scan to mobile</p>
+        <p><img src='https://chart.googleapis.com/chart?cht=qr&chl=http%3A%2F%2Fhelpdesk.bitcraftlabs.net%2FServiceRecord.php%3Fsr%3Dnew%26type%3D1&chs=180x180&choe=UTF-8&chld=L|2' width="120" alt="qr" /> Scan to mobile</p>
       </div> <!-- /Submission notes -->
       <div class="col-md-12"> <!-- Notes -->
         <h4>Notes</h4>
@@ -151,10 +148,10 @@
 </div><!-- /checkup -->
 
 <div class="col-md-12"> <!-- footer -->
-  <div class="col-md-6">
-    <button type="button" class="btn btn-primary">Save</button> <button type="button" class="btn btn-primary">Print</button><br />Record Saved.
+  <div class="col-md-8">
+    <button type="button" class="btn btn-primary"><i href="fa fa-floppy-o pull-left">Save</i></button> <button type="button" class="btn btn-primary"><i href="fa fa-floppy-o pull-left">Print</i></button><br />Record Saved.
   </div>
-  <div class="col-md-6">
+  <div class="col-md-4">
     <p>Last Updated: 01/9/2016 06:23pm</p>
   </div>
 </div> <!-- /footer -->
