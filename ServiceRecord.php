@@ -198,8 +198,13 @@ exit;
 		    		  	</p>
 		    		  	<?php
 		    		  } elseif (isset($sr) && ($sr == "new")) {
-		    		  	echo "<p>Add new service record page</p>";
-		    		  	//echo $customerinfo->GetProfileReport('1');
+                $type = $_GET['type'];
+                if (isset($type) && ($type == '1')){
+                  include_once 'modules/service_record/templates/computer_repair.php';
+                } else {
+  		    		  	echo "<p>Add new service record page</p>";
+  		    		  	//echo $customerinfo->GetProfileReport('1');
+                }
 		    		  } else {
 		    		  	//show welcome page
 		    		  	echo "<p>You have reached this page in error</p>";
