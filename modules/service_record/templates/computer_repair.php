@@ -126,7 +126,7 @@
         <p>Assigned to: Student HD Tech Group<br />
           Submitted by: Rose Tyler (Clerk)<br />
           Submitted: 01/07/2016 at 12:29pm</p>
-        <p><?=$dal->getQRCode()?> Scan to mobile</p>
+        <p><?= $dal->getQRCode(); ?> Scan to mobile</p>
         <!--<p><img src='https://chart.googleapis.com/chart?cht=qr&chl=http%3A%2F%2Fhelpdesk.bitcraftlabs.net%2FServiceRecord.php%3Fsr%3Dnew%26type%3D1&chs=180x180&choe=UTF-8&chld=L|2' width="120" alt="qr" /> Scan to mobile</p>-->
       </div> <!-- /Submission notes -->
       <div class="col-md-12"> <!-- Notes -->
