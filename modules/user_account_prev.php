@@ -1,4 +1,4 @@
-<!-- search form (Optional) 
+<!-- search form (Optional)
     <form class="navbar-form navbar-left" role="search">
       <div class="form-group">
         <input type="text" class="form-control" id="navbar-search-input" placeholder="Search SR...">
@@ -34,14 +34,14 @@
       <div class="col-xs-4 text-center">
         <a href="#">Recent</a>
       </div>
-      <div class="col-xs-4 text-center">
+      <div clsas="col-xs-4 text-center">
         <a href="#">Inbox</a>
       </div>
     </li>-->
     <!-- Menu Footer-->
     <li class="user-footer">
       <div class="pull-left">
-        <a href="/?page=profile" class="btn btn-default btn-flat">Profile</a>
+        <a href="profile.php" class="btn btn-default btn-flat">Profile</a>
       </div>
       <div class="pull-right">
         <a href="logout.php" class="btn btn-default btn-flat">Sign out</a>
