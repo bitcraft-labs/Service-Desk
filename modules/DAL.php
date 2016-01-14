@@ -33,7 +33,7 @@ class DAL {
 
   public function getQRCode() {
     $link = $this->myUrlEncode("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
-    return "<img src='https://chart.googleapis.com/chart?cht=qr&chl=<?=$link?>&chs=150x150' width='120' alt='qr-mobile' />";
+    return "<img src='https://chart.googleapis.com/chart?cht=qr&chl=$link&chs=150x150' width='120' alt='qr-mobile' />";
   }
 
   //---------- Customer Module ---------->
