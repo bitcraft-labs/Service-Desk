@@ -24,6 +24,18 @@ class DAL {
 
   public function __construct(){}
 
+  //---------QR Code Generation---------->
+  public function myUrlEncode($string) {
+      $entities = array('%21', '%2A', '%27', '%28', '%29', '%3B', '%3A', '%40', '%26', '%3D', '%2B', '%24', '%2C', '%2F', '%3F', '%25', '%23', '%5B', '%5D');
+      $replacements = array('!', '*', "'", "(", ")", ";", ":", "@", "&", "=", "+", "$", ",", "/", "?", "%", "#", "[", "]");
+      return str_replace($entities, $replacements, urlencode($string));
+  }
+
+  public function getQRCode() {
+    $link = myUrlEncode("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
+    return "<img src='https://chart.googleapis.com/chart?cht=qr&chl=<?=$link?>&chs=150x150' width='120' alt='qr-mobile' />";
+  }
+
   //---------- Customer Module ---------->
   public function checkPersonExists($id) {
     $sql = "SELECT * FROM directory where user_id = '$id'";

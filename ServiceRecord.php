@@ -10,6 +10,7 @@ Status:     Staging; Idea Testing; Development
 <?php
 $page_title = 'Service Record';
 include_once 'modules/config.inc.php';
+include_once 'modules/config-func.php';
 require_once("./modules/authentication/config.php");
 
 if(!$authenticator->CheckLogin())

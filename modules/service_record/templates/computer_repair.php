@@ -1,6 +1,6 @@
 <!-- Computer Repair -->
 <?php
-	//$dal = new DAL();
+	$dal = new DAL();
 	//$person = $_GET['id'];
 	/*
 	$exists = $dal->checkPersonExists('1');
@@ -126,15 +126,7 @@
         <p>Assigned to: Student HD Tech Group<br />
           Submitted by: Rose Tyler (Clerk)<br />
           Submitted: 01/07/2016 at 12:29pm</p>
-          <?php
-          function myUrlEncode($string) {
-              $entities = array('%21', '%2A', '%27', '%28', '%29', '%3B', '%3A', '%40', '%26', '%3D', '%2B', '%24', '%2C', '%2F', '%3F', '%25', '%23', '%5B', '%5D');
-              $replacements = array('!', '*', "'", "(", ")", ";", ":", "@", "&", "=", "+", "$", ",", "/", "?", "%", "#", "[", "]");
-              return str_replace($entities, $replacements, urlencode($string));
-          }
-          $link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-          ?>
-        <p><img src='https://chart.googleapis.com/chart?cht=qr&chl=<?=$link?>&chs=150x150' width="120" alt="qr-mobile" /> Scan to mobile</p>
+        <p><?=$dal->getQRCode?> Scan to mobile</p>
         <!--<p><img src='https://chart.googleapis.com/chart?cht=qr&chl=http%3A%2F%2Fhelpdesk.bitcraftlabs.net%2FServiceRecord.php%3Fsr%3Dnew%26type%3D1&chs=180x180&choe=UTF-8&chld=L|2' width="120" alt="qr" /> Scan to mobile</p>-->
       </div> <!-- /Submission notes -->
       <div class="col-md-12"> <!-- Notes -->
