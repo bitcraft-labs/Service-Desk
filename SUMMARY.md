@@ -15,4 +15,5 @@
 * [Managing Service Records](ch3/managing_service_records.md)
    * [The Generic SR Template](ch3/the_generic_sr_template.md)
    * [Creating Custom Templates](ch3/creating_custom_templates.md)
+* Modules
 
