@@ -17,7 +17,7 @@
    * [The Generic SR Template](ch4/the_generic_sr_template.md)
    * [Creating Custom Templates](ch4/creating_custom_templates.md)
 * [NOC Change Notifications](ch5/noc_change_notifications.md)
-* [Communication / Inbox](ch6/mailbox.md)
+* [Communication / Mailbox](ch6/mailbox.md)
 * [End-User Manager](ch7/enduser_manager.md)
 * [End-User Self-Service Portal](ch8/enduser_portal.md)
 
