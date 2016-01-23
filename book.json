@@ -4,7 +4,8 @@
     },
     "plugins": [
         "copy-code-button",
-        "customheader"
+        "customheader",
+        "google_code_prettify"
     ],
     "pluginsConfig": {}
 }
