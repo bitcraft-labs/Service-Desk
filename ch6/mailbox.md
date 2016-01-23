@@ -1,2 +1,2 @@
-# Communication / Inbox
+# Communication / Mailbox
 
