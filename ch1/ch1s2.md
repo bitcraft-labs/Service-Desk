@@ -1,2 +1,0 @@
-# Initial Configuration Setup
-
