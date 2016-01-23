@@ -4,8 +4,8 @@
 - Service Records
 - Change Notifications
 - Communication / Inbox
-- End User Manager
-- End User Portal
+- End-User Manager
+- End-User Portal
 
 Each of these are the key parts in making the application function as it does. Each module interacts with each of the other ones in order to bring together this seamless application.
 
