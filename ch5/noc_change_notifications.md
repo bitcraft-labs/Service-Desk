@@ -1,2 +1,2 @@
-# Network Operation Control (NOC) Change Notifications
+# NOC Change Notifications
 
