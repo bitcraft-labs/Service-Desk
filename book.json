@@ -3,7 +3,8 @@
         "readme": "Introduction.md"
     },
     "plugins": [
-        "copy-code-button"
+        "copy-code-button",
+        "customheader"
     ],
     "pluginsConfig": {}
 }
