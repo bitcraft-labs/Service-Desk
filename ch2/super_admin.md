@@ -1,2 +1,2 @@
-# Jump Start Guide for Super Admin
+# Jump Start Guide for Application Super Admin
 
