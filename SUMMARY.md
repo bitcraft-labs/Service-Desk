@@ -9,7 +9,7 @@
        * [Customization Options](ch1/ch1s2a3.md)
 * [Managing Service Records](ch2/managing_service_records.md)
    * [The Generic SR Template](ch2/the_generic_sr_template.md)
-   * Creating Custom Templates
+   * [Creating Custom Templates](ch2/creating_custom_templates.md)
 * [Getting Started](ch1/getting_started.md)
    * [Jump Start Guide for Regular Users](ch1/ch1s3.md)
 
