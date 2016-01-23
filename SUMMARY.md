@@ -1,7 +1,7 @@
 # Summary
 
 * [Introduction](Introduction.md)
-* [Installation](ch1/installationmd.md)
+* [Installation](ch1/installation.md)
    * [Retrieving source from Github Repository](ch1/ch1s1.md)
    * [Initial Configuration Setup](ch1/ch1s2.md)
        * [Server Prerequisites](ch1/ch1s2a1.md)
