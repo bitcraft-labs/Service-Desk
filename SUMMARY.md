@@ -4,7 +4,7 @@
 * [Installation](ch1/installationmd.md)
    * [Retrieving source from Github Repository](ch1/ch1s1.md)
    * [Initial Configuration Setup](ch1/ch1s2.md)
-       * Server Prerequisites
+       * [Server Prerequisites](ch1/ch1s2a1.md)
        * Application Setup
        * Customization Options
 * [Getting Started](ch1/getting_started.md)
