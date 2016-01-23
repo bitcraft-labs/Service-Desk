@@ -2,10 +2,4 @@
     "structure": {
         "readme": "Introduction.md"
     },
-    "plugins": [
-        "copy-code-button",
-        "customheader",
-        "google_code_prettify"
-    ],
-    "pluginsConfig": {}
 }
