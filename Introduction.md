@@ -6,3 +6,5 @@ Bitcraft Service Desk (Working Title) is an ITSM application that aims to enhanc
 We are currently in the pre-alpha development stage. Stay tuned for progress updates. Version 0.0.1 is on its way.
 
 Any questions regarding this project, contact [support@bitcraftlabs.net](mailto:support@bitcraftlabs.net) with the keyword *ITSM* in the subject line.
+
+For more information about the application/project, visit our website [http://itsm.bitcraftlabs.net](http://itsm.bitcraftlabs.net).
