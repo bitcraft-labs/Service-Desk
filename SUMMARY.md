@@ -17,4 +17,5 @@
    * [The Generic SR Template](ch4/the_generic_sr_template.md)
    * [Creating Custom Templates](ch4/creating_custom_templates.md)
 * [NOC Change Notifications](ch5/noc_change_notifications.md)
+* Communication / Inbox
 
