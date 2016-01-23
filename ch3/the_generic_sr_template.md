@@ -1,2 +1,0 @@
-# The Generic SR Template
-
