@@ -1,5 +1,9 @@
 {
     "structure": {
         "readme": "Introduction.md"
-    }
+    },
+    "plugins": [
+        "copy-code-button"
+    ],
+    "pluginsConfig": {}
 }
