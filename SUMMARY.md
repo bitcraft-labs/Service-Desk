@@ -18,4 +18,5 @@
    * [Creating Custom Templates](ch4/creating_custom_templates.md)
 * [NOC Change Notifications](ch5/noc_change_notifications.md)
 * [Communication / Inbox](ch6/inbox.md)
+* End-User Manager
 
