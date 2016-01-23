@@ -13,7 +13,7 @@
    * [Jump Start Guide for Help Desk Staff](ch2/hd_staff.md)
    * [Jump Start Guide for Regular Users](ch2/regular.md)
 * [Modules](ch3/modules.md)
-* [Managing Service Records](ch3/managing_service_records.md)
-   * [The Generic SR Template](ch3/the_generic_sr_template.md)
-   * [Creating Custom Templates](ch3/creating_custom_templates.md)
+* [Managing Service Records](ch4/managing_service_records.md)
+   * [The Generic SR Template](ch4/the_generic_sr_template.md)
+   * [Creating Custom Templates](ch4/creating_custom_templates.md)
 
