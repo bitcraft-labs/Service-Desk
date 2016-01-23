@@ -9,4 +9,5 @@
        * [Customization Options](ch1/ch1s2a3.md)
 * [Getting Started](ch1/getting_started.md)
    * [Jump Start Guide for Regular Users](ch1/ch1s3.md)
+* Managing Service Records
 
