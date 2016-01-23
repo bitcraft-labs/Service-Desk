@@ -20,5 +20,5 @@
 * [Communication / Mailbox](ch6/mailbox.md)
 * [End-User Manager](ch7/enduser_manager.md)
 * [End-User Self-Service Portal](ch8/enduser_portal.md)
-* About the Project
+* [About the Project](about_the_project.md)
 
