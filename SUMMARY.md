@@ -16,4 +16,5 @@
 * [Managing Service Records](ch4/managing_service_records.md)
    * [The Generic SR Template](ch4/the_generic_sr_template.md)
    * [Creating Custom Templates](ch4/creating_custom_templates.md)
+* NOC Change Notifications
 
