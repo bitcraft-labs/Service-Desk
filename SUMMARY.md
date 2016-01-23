@@ -8,7 +8,7 @@
        * [Application Setup](ch1/app_setup.md)
        * [Customization Options](ch1/customization.md)
 * [Getting Started](ch2/getting_started.md)
-    * [Jump Start Guide for Server Administrator](ch2/server_admin.md)
+    * [Jump Start Guide for Server Administrator](ch2/super_admin.md)
     * [Jump Start Guide for Help Desk Staff](ch2/hd_staff.md)
     * [Jump Start Guide for Regular Users](ch2/regular.md)
 * [Managing Service Records](ch3/managing_service_records.md)
