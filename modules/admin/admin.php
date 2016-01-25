@@ -12,6 +12,7 @@
 	<section class="content">
 	<!--<div class="container-fluid">-->
 	<?php
+	$admin = new ADMIN();
 	$action = $_GET['action'];
 	if (($action == '') || ($action == 'ViewSiteSettings')) {
 		include_once 'modules/admin/viewsite.php';

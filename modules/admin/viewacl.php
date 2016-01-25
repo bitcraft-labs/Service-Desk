@@ -1,10 +1,6 @@
 <?php
     if(isset($_POST['submit_acl'])) {
-        $for=$_GET['for'];
-        $query = "UPDATE users SET type='".$_POST['access_level']."' WHERE id=$for";
-        mysql_connect($conf['sql']['host'],$conf['sql']['user'],$conf['sql']['pass']);
-        mysql_select_db($conf['sql']['name']);
-        mysql_query($query);
+		  $admin->updateAccess($_GET['for'],$_POST['access_level']);
     }
 ?>
 <div class="row">
