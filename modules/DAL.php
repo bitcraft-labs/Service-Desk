@@ -55,10 +55,14 @@ class DAL {
   }
 
   public function getPersonInfo($name){
-    if ($name = 'all') {
-      $sql = "SELECT * FROM directory";
+    if ($name == 'all') {
+      $sql = "SELECT users.id as id, users.fname as fname, users.lname as lname, 
+          user_group.type as type, users.email as email, users.banner_id as banner_id
+        FROM users 
+        INNER JOIN user_group ON users.type=user_group.id
+        WHERE users.type = 3";
     } else {
-      $sql = "SELECT * FROM directory WHERE user_id = '$name'";
+      $sql = "SELECT * FROM users WHERE id = '$name'";
     }
     return $this->query($sql);
   }
@@ -83,15 +87,15 @@ class DAL {
   }*/
 
   public function getAccessTypes() {
-    $sql = "SELECT * FROM user_type";
+    $sql = "SELECT * FROM user_group";
     return $this->query($sql);
   }
 
   public function getUserAccessLevel($user) {
     $sql = "SELECT users.type as type
       FROM users
-      INNER JOIN user_type ON user_type.id=users.type
-      WHERE users.id_user='$user'";
+      INNER JOIN user_group ON user_group.id=users.type
+      WHERE users.id='$user'";
     return $this->query($sql);
   }
 
@@ -110,13 +114,13 @@ class DAL {
   }
 
   public function getStaffUserInfo() {
-    $sql = "SELECT users.id_user as id,
-      user_type.type as type,
+    $sql = "SELECT users.id as id,
+      user_group.type as type,
       users.fname as fname,
       users.lname as lname,
       users.email as email
       FROM users
-      INNER JOIN user_type ON user_type.id=users.type
+      INNER JOIN user_group ON user_group.id=users.type
       WHERE users.type='1' OR users.type='2'";
     return $this->query($sql);
   }

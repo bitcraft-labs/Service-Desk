@@ -368,6 +368,17 @@ class Authenticator
         return $retvar;
     }
 
+    function ChangeAccessGroup($user) {
+        if(!$this->DBLogin())
+        {
+            $this->HandleError("Database login failed!");
+            return false;
+        }
+
+        $nresult = mysql_query("UPDATE users SET type='".$_POST['access_level']."' WHERE id=$user", $this->connection) or die(mysql_error());
+        return true;
+    }
+
     function CheckLoginInDB($username,$password)
     {
         if(!$this->DBLogin())
@@ -388,7 +399,6 @@ class Authenticator
 
 
         }
-
 
         $qry = "Select * from $this->tablename where username='$username' and password='$hash' and confirmcode='y'";
 
