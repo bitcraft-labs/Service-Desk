@@ -1,38 +1,39 @@
 <h3>Change Access</h3>
-<form class="form-horizontal">
+
+<form class="form-horizontal" action="<?=$authenticator->ChangeAccessGroup; ?>" method="POST">
 
   <!-- Select Basic -->
   <div class="form-group">
     <div class="col-md-8">
       <label class="control-label" for="access-type">Select Access Type</label>
       <?php
-      $types = $dal->getAccessTypes();
+      //db connection
+      mysql_connect($conf['sql']['host'],$conf['sql']['user'],$conf['sql']['pass']);
+      mysql_select_db($conf['sql']['name']);
+
+      //query
       $selected_user = $_GET['for'];
-      $curr = $dal->getUserAccessLevel($selected_user);
-      $level_options = '';
+      $groups=mysql_query("SELECT * FROM user_group");
+      $access=mysql_query("SELECT users.type as type
+                            FROM users
+                            INNER JOIN user_group ON user_group.id=users.type
+                            WHERE users.id='$selected_user'");
+      $curr=mysql_fetch_array($access);
+      if(mysql_num_rows($groups)){
+      $select= '<select name="access_level" id="access_level">';
+      $select .= '<option disabled>Select Access</option>';
+      while($rs=mysql_fetch_array($groups)){
+            $select.='<option value="'.$rs['id'].'"';
+            if ($rs['id'] == $curr['type'])
+              $select.='selected>'.$rs['type'].'</option>';
+            else
+              $select.='>'.$rs['type'].'</option>';
+        }
+      }
+      $select.='</select>';
+      echo $select;
       ?>
-      <select id="access-type" name="access-type" class="form-control">
-        <option disabled>Select Access Type</option>
-        <?php
-        foreach ($types as $row) {
-          $level_options .= "<option value=".$row['id'].">".$row['type']."</option>";
-        }
-        echo $level_options;
-        /*
-        if ($types) {
-          foreach ($types as $row) {
-            $option = "<option value='".$row['type']."' ";
-            if ($row['type'] == $curr) {
-              $option .= "selected>$row['type']</option>";
-            } else {
-              $option .= ">$row['type']</option>";
-            }
-            echo $option;
-          }
-        }
-        */
-        ?>
-      </select>
+      <!--</select>-->
     </div>
   </div>
 
@@ -40,7 +41,7 @@
   <div class="form-group">
     <label class="col-md-8 control-label" for="submit"></label>
     <div class="col-md-8">
-      <button id="submit" name="submit" class="btn btn-primary">Update</button>
+      <button id="submit_acl" name="submit_acl" class="btn btn-primary">Update</button>
     </div>
   </div>
 </form>

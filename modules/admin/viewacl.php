@@ -1,3 +1,12 @@
+<?php
+    if(isset($_POST['submit_acl'])) {
+        $for=$_GET['for'];
+        $query = "UPDATE users SET type='".$_POST['access_level']."' WHERE id=$for";
+        mysql_connect($conf['sql']['host'],$conf['sql']['user'],$conf['sql']['pass']);
+        mysql_select_db($conf['sql']['name']);
+        mysql_query($query);
+    }
+?>
 <div class="row">
 	<div class="col-md-8">
 		<?php $adminsub = 'Access Control List';
@@ -8,6 +17,18 @@
 			  <h3 class="box-title"><?= $adminsub ?></h3>
 			</div><!-- /.box-header -->
 			<div class="box-body">
+				<?php
+				mysql_connect($conf['sql']['host'],$conf['sql']['user'],$conf['sql']['pass']);
+				mysql_select_db($conf['sql']['name']);
+				$list = mysql_query("SELECT users.id as id,
+				                        user_group.type as type,
+				                        users.fname as fname,
+				                        users.lname as lname,
+				                        users.email as email
+				                        FROM users
+				                        INNER JOIN user_group ON user_group.id=users.type
+				                        WHERE users.type='1' OR users.type='2'");
+				?>
 				<table id="adm_acl" class="table table-striped table-hover">
 					<thead>
 					<?php $tabhead="
@@ -22,36 +43,22 @@
 					</thead>
 					<tbody>
 						<?php
-						$ulist = $dal->getStaffUserInfo();
-						if ($ulist) {
-							foreach($ulist as $row) {
-								if ($_GET['for'] == $row->id) {
-									$highlight = 'row-selected';
-								} else {
-									$highlight = false;
-								}
-							    echo "<tr class='clickableRow $highlight' data-href='?action=ViewACL&for=$row->id&do=EditUser' $highlight>
-								<td>$row->id</td>
-								<td>$row->fname</td>
-								<td>$row->lname</td>
-								<td>$row->email</td>
-								<td>$row->type</td>
-								<td><img src='$icon_dir/user-edit-icon.png' height='24' /> <a href='?action=ViewACL&for=$row->id&do=ChangeAccess'><img src='$icon_dir/group-key-icon.png' height='24' /></a>  <a href='?action=ViewACL&for=$row->id&do=DeleteUser'><img src='$icon_dir/user-delete-icon.png' height='24' /></a></td>
-								</tr>";
-						  	}
-						}
-						?>
-						<!--
-						<tr>
-							<td><a href="?id=1">1</a></td>
-							<td>Jo Shmo</td>
-							<td>@01234567</td>
-							<td>Student</td>
-							<td>555.555.5555</td>
-							<td>jshmo1@student.fitchburgstate.edu</td>
-							<td>12/3/2015</td>
-						</tr>
-						-->
+						$highlight = '';
+						while($row=mysql_fetch_array($list)){
+							if ($_GET['for'] == $row[0]) {
+								$highlight = 'row-selected';
+							} else {
+								$highlight = false;
+							}
+						    echo "<tr class='clickableRow $highlight' data-href='?action=ViewACL&for=$row[0]&do=EditUser' $highlight>
+									<td>$row[0]</td>
+									<td>$row[2]</td>
+									<td>$row[3]</td>
+									<td>$row[4]</td>
+									<td>$row[1]</td>
+									<td><img src='$icon_dir/user-edit-icon.png' height='24' /> <a href='?action=ViewACL&for=$row[0]&do=ChangeAccess'><img src='$icon_dir/group-key-icon.png' height='24' /></a>  <a href='?action=ViewACL&for=$row[0]&do=DeleteUser'><img src='$icon_dir/user-delete-icon.png' height='24' /></a></td>
+									</tr>";
+						}?>
 					</tbody>
 					<tfoot>
 						<?php echo $tabhead; ?>
