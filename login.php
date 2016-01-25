@@ -67,6 +67,7 @@ include_once './modules/authentication/auth-head.php';
           <!--<span><a href="javascript:;" data-toggle="modal" data-target="#help">Need help?</a></span>-->
           <span><a href="javascript:;" data-toggle="modal" data-target="#forgot">Forgot Password?</a></span>
       </div>
+      <p style='text-align:center;color:rgba(0,0,0,0.5)'><br />powered by <a href='http://itsm.bitcraftlabs.net' target="_blank"><?=$app_name?></a></p>
     </form>
   </div>
 
@@ -82,11 +83,11 @@ include_once './modules/authentication/auth-head.php';
         </div>
         <div class="modal-body">
           <form id='resetreq' class="col-md-12" action='<?php echo $authenticator->GetSelfScript(); ?>' method='post' accept-charset='UTF-8'>
-            <p>If you forgot your password, enter your FSU Email Address to reset it. A password reset link will be sent to that account.</p>
+            <p>If you forgot your password, enter the email address associated with your account to reset it. A password reset link will be sent to that account.</p>
             <input type='hidden' name='submitted_pass' id='submitted_pass' value='1'/>
             <div><span class='error'><?php echo $authenticator->GetErrorMessage(); ?></span></div>
             <div class="form-group">
-                <input type='text' name='email' class="form-control input-lg" id='email' value='<?php echo $authenticator->SafeDisplay('email') ?>' placeholder="FSU Email Address" />
+                <input type='text' name='email' class="form-control input-lg" id='email' value='<?php echo $authenticator->SafeDisplay('email') ?>' placeholder="Email Address" />
                 <span id='resetreq_email_errorloc' class='error'></span>
             </div>
             <div class="form-group">
