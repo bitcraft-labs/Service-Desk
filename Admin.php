@@ -19,6 +19,7 @@ Status:     Staging; Idea Testing; Development
     if ($_SESSION['user_type'] != 1) {
       include_once '404.php';
     } else {
+      include_once 'modules/admin/functions.php';
       include_once 'modules/config-func.php';
       $dal = new DAL();
       include_once 'modules/admin/admin.php';
