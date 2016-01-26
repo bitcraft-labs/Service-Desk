@@ -20,6 +20,7 @@ class ADMIN {
 	 }
 
 	 private function connect() {
+		  //var_dump($conf['sql']);
 		  $conn = mysql_connect(DB_HOST,DB_USER,DB_PASSWORD)
 				or die ("<br />Could not establish connection to MySQL server");
 		  mysql_select_db(DB_DB,$conn)
