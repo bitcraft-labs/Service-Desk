@@ -1,12 +1,12 @@
 <?php
- 
+
 // Include DAL
 require_once('modules/DAL.php');
- 
+
 // Database
-define ( 'DB_HOST', 'localhost' );
-define ( 'DB_USER', 'bcl_admin' );
-define ( 'DB_PASSWORD', 'X2z7cMG4Tnphnavr' );
-define ( 'DB_DB', 'bcl_tronic' );
- 
+define ( 'DB_HOST',     $conf['sql']['host']);
+define ( 'DB_USER',     $conf['sql']['user']);
+define ( 'DB_PASSWORD', $conf['sql']['pass']);
+define ( 'DB_DB',       $conf['sql']['name']);
+
 ?>
