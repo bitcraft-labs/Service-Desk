@@ -38,7 +38,7 @@ class DAL {
 
   //---------- Customer Module ---------->
   public function checkPersonExists($id) {
-    $sql = "SELECT * FROM directory where user_id = '$id'";
+    $sql = "SELECT * FROM users where id = '$id'";
     $result = $this->query($sql);
     if (mysql_num_rows($result) > 0)
       return true;
@@ -50,15 +50,15 @@ class DAL {
     $sql = "SELECT machine.mach_id as mach_id, manufacturer.mfr as mfr, machine.model as model, machine.serial_num as serial, machine.warr_status as warr_status, machine.purchaser as purchaser
             FROM machine
             INNER JOIN manufacturer ON manufacturer.mfr_id=machine.mfr_id
-            INNER JOIN directory ON directory.user_id=machine.user_id";
+            INNER JOIN users ON users.id=machine.user_id";
     return $this->query($sql);
   }
 
   public function getPersonInfo($name){
     if ($name == 'all') {
-      $sql = "SELECT users.id as id, users.fname as fname, users.lname as lname, 
+      $sql = "SELECT users.id as id, users.fname as fname, users.lname as lname,
           user_group.type as type, users.email as email, users.banner_id as banner_id
-        FROM users 
+        FROM users
         INNER JOIN user_group ON users.type=user_group.id
         WHERE users.type = 3";
     } else {
@@ -102,7 +102,7 @@ class DAL {
   public function getVerbatimUserAccessLevel() {
     $acc = $_SESSION['user_type'];
     $sql = "SELECT type
-      FROM user_type
+      FROM user_group
       WHERE id='$acc'";
     $this->dbconnect();
     $i = mysql_query($sql);
