@@ -39,7 +39,8 @@ if(!$authenticator->CheckLogin())
           apply the skin class to the body tag so the changes take effect.
     -->
     <?php echo "<link rel='stylesheet' href='dist/css/skins/skin-$skin.min.css'>"; ?>
-
+    <link rel="stylesheet" href="dist/css/moreTabs.css">
+    <link rel="stylesheet" href="dist/css/sspTitle.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -58,7 +59,7 @@ if(!$authenticator->CheckLogin())
           include_once 'modules/mailbox/mailbox-ui.php';
         }
       } else {
-        include_once 'modules/end_user_portal/dashboard.php';
+        include_once 'modules/end_user_portal/submit.php';
       }
       include_once 'modules/end_user_portal/footer.php'; ?>
 

@@ -1,0 +1,56 @@
+.ssp-title {
+	background: rgb(250,250,250);
+	border-bottom: 1px solid #eee; 
+	margin-bottom: 20px;
+	min-height: 90px;
+}
+
+.ssp-title > table > tr > td > h3 {
+	padding-top: 0px;
+	padding-bottom: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+.content-wrapper {
+	background: #fff;
+}
+
+i.align {
+    margin-left: 10px;
+    font-size: 30px;
+    height: 30px;
+    vertical-align: middle;
+}
+
+i.m-red {
+	color: #ea4335;
+}
+
+i.m-blue {
+	color: #00a1f1;
+}
+
+i.m-yellow {
+	color: #ffbb00;
+}
+
+i.m-green {
+	color: #34a853;
+}
+
+i.m-orange {
+	color: #f65314;
+}
+
+.ssp-options > div > h4 {
+	margin-bottom: 25px;
+}
+
+.m-width {
+	min-width: 250px;
+}
+
+.nav-tabs > .active {
+	font-weight: bold;
+}
