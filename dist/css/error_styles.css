@@ -1,0 +1,19 @@
+.row p, h1 {
+	color: #fff;
+	padding-top: 15px;
+	text-shadow: 2px 1px #999;
+}
+p {
+	padding-top: 15px;
+}
+.header-background {
+	background: #00A65A;
+	border-bottom: solid 1px #00A65A;
+	padding-left: 50px;
+}
+.error-btn {
+	margin: 30px 20px;
+}
+.error-img {
+	border-radius: 50px;
+}

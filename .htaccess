@@ -6,6 +6,9 @@
 
 RewriteEngine On
 RewriteRule ^(admin)/(system|acl)/ index.php?page=$1&setting=$2 [L,QSA]
-
+ErrorDocument 401 /error_handling/error.php
+ErrorDocument 403 /error_handling/error.php
+ErrorDocument 404 /error_handling/error.php
+ErrorDocument 500 /error_handling/error.php
 #Prevents direct folder access
 Options -Indexes
