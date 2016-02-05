@@ -2,7 +2,7 @@
 <footer class="main-footer">
 	<!-- To the right -->
 	<div class="pull-right hidden-xs">
-		<a href="?page=about">
+		<a href="http://itsm.bitcraftlabs.net">
 		<strong>Version</strong> <?php echo $app_version; ?></a>
 	</div>
 	<!-- Default to the left -->
