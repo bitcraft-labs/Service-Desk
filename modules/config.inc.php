@@ -50,22 +50,7 @@ $formatted_coname = "";
 $loginHeader = "<p style='padding-top:15px;'><img src='$logo' width='320' /></p>";
 $loginHeader .= "<h1><small>Login</small></h1>";
 
-/* CUSTOM ERROR PAGE HANDLING  */
-$path = $_SERVER['DOCUMENT_ROOT'];
-$path .= "/error_handling/error.php";
-if(file_exists($path)) {
-	include_once('../custom/config.php');
-	$cusimg = '../custom/img';
-	$main_logo_top	 	= $cusimg.'/'.$conf['customize']['main_logo_top'];
-}
-
 /* --- CUSTOM FILE HANDLING --- */
-<<<<<<< HEAD
-if (file_exists('custom/config.php')) {
-	include_once 'custom/config.php';
-	$custom = 'custom';
-	$cusimg = 'custom/img';
-=======
 $path = $_SERVER['DOCUMENT_ROOT'];
 $urlpath = '//'.$_SERVER['SERVER_NAME'];
 if (file_exists($path.'/custom/config.php')) {
@@ -73,13 +58,13 @@ if (file_exists($path.'/custom/config.php')) {
 	$custom = $urlpath.'/custom';
 	$cusimg = $urlpath.'/custom/img';
 
->>>>>>> f782091b6e70c6689a6e3eb03b6c5384de65d1b1
 	$skin 				= $conf['customize']['skin'];
 	$coname 			= $conf['site']['company_name'];
 	$formatted_coname 	= $conf['site']['formatted_company_name'];
 	$main_logo 			= $cusimg.'/'.$conf['customize']['main_logo'];
 	$main_logo_small 	= $cusimg.'/'.$conf['customize']['main_logo_small'];
 	$main_logo_top 		= $cusimg.'/'.$conf['customize']['main_logo_top'];
+
 	if ($main_logo) {
 		if (file_exists($main_logo)) {
 			$logo = $main_logo;             //main logo
