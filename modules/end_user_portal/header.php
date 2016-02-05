@@ -12,7 +12,7 @@
 	    <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
 	      <ul class="nav navbar-nav">
 	        <li class="active"><a href="./">Home <span class="sr-only">(current)</span></a></li>
-	        <li><a href="?page=checkups">Checkups</a></li>
+	        <li><a href="?page=checkups">Requests</a></li>
 	        <li><a href="?page=profile">Profile</a></li>
 	        <li><a href="?page=mailbox">Mailbox</a></li>
 	      </ul>
@@ -36,7 +36,9 @@
 	                    <a href="#">
 	                      <div class="pull-left">
 	                        <!-- User Image -->
-	                        <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+	                        <!-- Does not exist - Eugene -->
+	                        <!-- <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image"> -->
+	                      	<i class="text-aqua fa fa-envelope-o "></i>
 	                      </div>
 	                      <!-- Message title and timestamp -->
 	                      <h4>
