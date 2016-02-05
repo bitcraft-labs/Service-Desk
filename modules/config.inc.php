@@ -51,12 +51,10 @@ $loginHeader = "<p style='padding-top:15px;'><img src='$logo' width='320' /></p>
 $loginHeader .= "<h1><small>Login</small></h1>";
 
 /* --- CUSTOM FILE HANDLING --- */
-$path = $_SERVER['DOCUMENT_ROOT'];
-$urlpath = '//'.$_SERVER['SERVER_NAME'];
-if (file_exists($path.'/custom/config.php')) {
-	include_once $path.'/custom/config.php';
-	$custom = $urlpath.'/custom';
-	$cusimg = $urlpath.'/custom/img';
+if (file_exists('custom/config.php')) {
+	include_once 'custom/config.php';
+	$custom = 'custom';
+	$cusimg = 'custom/img';
 
 	$skin 				= $conf['customize']['skin'];
 	$coname 			= $conf['site']['company_name'];
@@ -85,12 +83,13 @@ if (file_exists($path.'/custom/config.php')) {
 
 /* ------------- APP NAME, VERSION NUMBER, ETC. ------------ */
 $app_name = "Bitcraft Service Desk";
+$app_name_short = "Service Desk";
 $app_version = "0.0.1";
 
 /* Sets the title in the header. This is what the page will be named by default when you
    make a "favorite" or "bookmark" in your browser. Change as you see fit. */
 
-$title = "$coname $app_name";
+$title = "$coname $app_name_short";
 
 /* ------------------- DEVELOPER SETTINGS ------------------ */
 $debugger = true;
