@@ -51,10 +51,12 @@ $loginHeader = "<p style='padding-top:15px;'><img src='$logo' width='320' /></p>
 $loginHeader .= "<h1><small>Login</small></h1>";
 
 /* --- CUSTOM FILE HANDLING --- */
-if (file_exists('custom/config.php')) {
-	include_once 'custom/config.php';
-	$custom = 'custom';
-	$cusimg = 'custom/img';
+$path = $_SERVER['DOCUMENT_ROOT'];
+$urlpath = '//'.$_SERVER['SERVER_NAME'];
+if (file_exists($path.'/custom/config.php')) {
+	include_once $path.'/custom/config.php';
+	$custom = $urlpath.'/custom';
+	$cusimg = $urlpath.'/custom/img';
 
 	$skin 				= $conf['customize']['skin'];
 	$coname 			= $conf['site']['company_name'];
