@@ -1,0 +1,20 @@
+p {
+	padding-top: 15px;
+}
+.header-background {
+	background: #FAFAFA;
+	border-bottom: solid 1px #EEEEEE;
+	padding-left: 50px;
+}
+.error-btn {
+	background: #33CCFF;
+	border: solid 1px #33CCFF;
+	margin: 15px 20px;
+}
+.error-btn:hover {
+	background: #01BDFB;
+	border: solid 1px #01BDFB;
+}
+.error-img {
+	border-radius: 50px;
+}
