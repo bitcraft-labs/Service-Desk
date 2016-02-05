@@ -60,10 +60,20 @@ if(file_exists($path)) {
 }
 
 /* --- CUSTOM FILE HANDLING --- */
+<<<<<<< HEAD
 if (file_exists('custom/config.php')) {
 	include_once 'custom/config.php';
 	$custom = 'custom';
 	$cusimg = 'custom/img';
+=======
+$path = $_SERVER['DOCUMENT_ROOT'];
+$urlpath = '//'.$_SERVER['SERVER_NAME'];
+if (file_exists($path.'/custom/config.php')) {
+	include_once $path.'/custom/config.php';
+	$custom = $urlpath.'/custom';
+	$cusimg = $urlpath.'/custom/img';
+
+>>>>>>> f782091b6e70c6689a6e3eb03b6c5384de65d1b1
 	$skin 				= $conf['customize']['skin'];
 	$coname 			= $conf['site']['company_name'];
 	$formatted_coname 	= $conf['site']['formatted_company_name'];

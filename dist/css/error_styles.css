@@ -1,18 +1,36 @@
+<<<<<<< HEAD
 .row p, h1 {
 	color: #fff;
 	padding-top: 15px;
 	text-shadow: 2px 1px #999;
 }
+=======
+>>>>>>> f782091b6e70c6689a6e3eb03b6c5384de65d1b1
 p {
 	padding-top: 15px;
 }
 .header-background {
+<<<<<<< HEAD
 	background: #00A65A;
 	border-bottom: solid 1px #00A65A;
 	padding-left: 50px;
 }
 .error-btn {
 	margin: 30px 20px;
+=======
+	background: #FAFAFA;
+	border-bottom: solid 1px #EEEEEE;
+	padding-left: 50px;
+}
+.error-btn {
+	background: #33CCFF;
+	border: solid 1px #33CCFF;
+	margin: 15px 20px;
+}
+.error-btn:hover {
+	background: #01BDFB;
+	border: solid 1px #01BDFB;
+>>>>>>> f782091b6e70c6689a6e3eb03b6c5384de65d1b1
 }
 .error-img {
 	border-radius: 50px;
