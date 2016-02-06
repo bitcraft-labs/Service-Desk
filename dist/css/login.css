@@ -1,7 +1,13 @@
-body {
-  /*
+body.dark {
+  background: #151616;
+}
 
-  */
+.darktext {
+  color: rgba(255,255,255,0.7);
+}
+
+.copyright {
+  text-align: center;
 }
 
 .container {
