@@ -23,13 +23,19 @@ if(isset($_POST['submitted_pass']))
 <!DOCTYPE html>
 <html>
 <?php
-$pagetitle = "Login"; 
+$pagetitle = "Login";
 include_once './modules/config.inc.php';
 include_once './modules/authentication/auth-head.php';
+
+if ($conf['customize']['darkmode'] == 'dark') {
+  $bodydark = 'dark';
+  $darktext = 'darktext';
+}
+
 ?>
 
-<body class="hold-transition skin-blue">
-  <div class="container">
+<body class="hold-transition skin-blue <?=$bodydark?>">
+  <div class="container <?=$darktext?>">
     <div class="page-header" style="text-align:center">
         <?php echo $loginHeader; ?>
     </div>
@@ -46,7 +52,7 @@ include_once './modules/authentication/auth-head.php';
           <span id='login_password_errorloc' class='error'></span>
       </div>
       <div class="row">
-        <div class="col-xs-8">    
+        <div class="col-xs-8">
           <div class="checkbox icheck">
             <label class="checkbox icheck">
               <input type="checkbox" name="remember_me" value="1" <?php if(isset($_COOKIE['remember_me'])) {
@@ -57,7 +63,7 @@ include_once './modules/authentication/auth-head.php';
                                                                         }
                                                                         ?> /> Remember Me
             </label>
-          </div>                        
+          </div>
         </div><!-- /.col -->
         <div class="col-xs-4">
           <button name="Submit" type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
@@ -67,7 +73,7 @@ include_once './modules/authentication/auth-head.php';
           <!--<span><a href="javascript:;" data-toggle="modal" data-target="#help">Need help?</a></span>-->
           <span><a href="javascript:;" data-toggle="modal" data-target="#forgot">Forgot Password?</a></span>
       </div>
-      <p style='text-align:center;color:rgba(0,0,0,0.5)'><br />powered by <a href='http://itsm.bitcraftlabs.net' target="_blank"><?=$app_name?></a></p>
+      <p class="copyright <?=$darktext?>"><br />powered by <a href='http://itsm.bitcraftlabs.net' target="_blank"><?=$app_name?></a></p>
     </form>
   </div>
 
