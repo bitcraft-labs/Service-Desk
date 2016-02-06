@@ -71,7 +71,7 @@ if (file_exists('custom/config.php')) {
 	if ($main_logo) {
 		if (file_exists($main_logo)) {
 			$logo = $main_logo;             //main logo
-			$loginHeader = "<p style='padding-top:15px;'><img src='$logo' height='$login_size' /></p>";
+			$loginHeader = "<p style='padding-top:15px;'><img src='$logo' width='$login_size' /></p>";
 		    $loginHeader .= "<h1>$formatted_coname<br /><small>Login</small></h1>";
 		}
 	}
