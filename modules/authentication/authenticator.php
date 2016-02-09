@@ -379,7 +379,7 @@ class Authenticator
         return true;
     }
 
-    function CheckLoginInDB($username,$password)
+    public function CheckLoginInDB($username,$password)
     {
         if(!$this->DBLogin())
         {
@@ -396,8 +396,6 @@ class Authenticator
             $salt = $nresult['salt'];
             $encrypted_password = $nresult['password'];
             $hash = $this->checkhashSSHA($salt, $password);
-
-
         }
 
         $qry = "Select * from $this->tablename where username='$username' and password='$hash' and confirmcode='y'";
@@ -411,7 +409,8 @@ class Authenticator
         }
 
         $row = mysql_fetch_assoc($result);
-
+ 
+        $_SESSION['user_id']        = $row['id'];
         $_SESSION['first_name']     = $row['fname'];
         $_SESSION['last_name']      = $row['lname'];
         $_SESSION['name_of_user']   = $row['fname'] ." ". $row['lname'];

@@ -10,6 +10,7 @@ Status:     Staging; Idea Testing; Development
 <?php
 $page_title = 'End User Portal';
 include_once 'modules/config.inc.php';
+include_once 'modules/config-func.php';
 require_once("./modules/authentication/config.php");
 
 if(!$authenticator->CheckLogin())
@@ -17,6 +18,7 @@ if(!$authenticator->CheckLogin())
     $authenticator->RedirectToURL("login.php");
     exit;
 }
+$dal = new DAL(); 
 ?>
 <head>
     <meta charset="utf-8">
@@ -51,12 +53,17 @@ if(!$authenticator->CheckLogin())
   <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
   <?php echo "<body class='hold-transition skin-$skin layout-top-nav'>"; ?>
     <div class="wrapper">
-
       <?php
       include_once 'modules/end_user_portal/header.php';
       if (isset($_GET['page'])) {
-        if ($_GET['page'] == 'mailbox') {
+        if ($_GET['page'] == 'Mailbox') {
           include_once 'modules/mailbox/mailbox-ui.php';
+        } else if(($_GET['page'] == 'ViewRequests') && (!$_GET['sr'])) {
+          include_once 'modules/end_user_portal/requests.php';
+        } else if($_GET['page'] == 'Profile') {
+          include_once 'modules/end_user_portal/profile.php';
+        } else if (($_GET['page'] == "ViewRequests") && ($_GET['sr'])) {
+          include_once 'modules/end_user_portal/request_view.php';
         }
       } else {
         include_once 'modules/end_user_portal/submit.php';
@@ -75,6 +82,20 @@ if(!$authenticator->CheckLogin())
     <script src="../../plugins/fastclick/fastclick.min.js"></script>
     <!-- AdminLTE App -->
     <script src="../../dist/js/app.min.js"></script>
-   
+    <!-- DataTables -->
+    <script src="plugins/datatables/jquery.dataTables.js"></script>
+    <script src="plugins/datatables/dataTables.bootstrap.js"></script>
+    <script>
+      $(function () {
+        $('#records').DataTable({
+          "paging": true,
+          "lengthChange": true,
+          "searching": true,
+          "ordering": true,
+          "info": true,
+          "autoWidth": false
+        });
+      });
+    </script>
   </body>
 </html>

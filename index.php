@@ -13,7 +13,8 @@ Status:     Staging; Idea Testing; Development
 include_once 'modules/head.php'; ?>
 <body>
 <?php
-  if ($_SESSION['user_type'] == 3) {
+  // If not 1 or 2
+  if ($_SESSION['user_type'] == 5) {
   	echo "If page is stuck, click <a href='EndUserPortal.php'>here</a> to continue.";
     echo "<script type='text/javascript'>
       window.location.replace('EndUserPortal.php');
