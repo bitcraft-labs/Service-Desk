@@ -1,4 +1,4 @@
-<ul class="nav nav-tabs" id="interest_tabs">
+<ul class="nav nav-tabs" id="admin_tabs">
     <!--top level tabs-->
   <li><a href="#site" data-toggle="tab">Site Settings</a></li>
   <li><a href="#access" data-toggle="tab">Access Control</a></li>
