@@ -6,13 +6,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/dist/css/AdminLTE.min.css">
     <link rel="stylesheet" href="/dist/css/login.css">
-    <!-- iCheck -->
-    <link href="/plugins/iCheck/square/blue.css" rel="stylesheet" type="text/css" />
-    <script src="/plugins/iCheck/icheck.min.js" type="text/javascript"></script>
+    <!--<script src="/plugins/iCheck/icheck.min.js" type="text/javascript"></script>-->
     <!-- Marked for deletion
     <script type="text/javascript" src="modules/authentication/pwdwidget.js"></script>
     -->
-    <script type="text/javascript" src="/modules/authentication/gen_validatorv31.js"></script>
-    <script type="text/javascript" src="/plugins/jQuery/jQuery-2.1.4.min.js"></script>
-    <script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
+    <!--<script type="text/javascript" src="/modules/authentication/gen_validatorv31.js"></script>-->
 </head>

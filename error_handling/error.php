@@ -25,7 +25,7 @@
 	<title><?php echo $title_page; ?></title>
 </head>
 <body>
-	<div class="container-fluid header-background">
+	<div class="container ">
 		<a href="/"><p style="padding-top:15px; margin-left:-15px;"><?php echo "<img src='$main_logo_top' width='300' />"?></p></a>
 		<div class="row">
 		 	<h1><strong>Whoops!</strong></h1>
