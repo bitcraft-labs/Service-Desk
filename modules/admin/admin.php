@@ -14,10 +14,8 @@
 	<?php
 	$admin = new ADMIN();
 	$action = $_GET['action'];
-	if (($action == '') || ($action == 'ViewSiteSettings')) {
-		include_once 'modules/admin/viewsite.php';
-	} elseif ($action == 'ViewACL') {
-		include_once 'modules/admin/viewacl.php';
+	if (($action == '') || ($action == 'ViewAdmin')) {
+		include_once 'modules/admin/viewadmin.php';
 	}
 	?>
 	</section><!-- /.content -->
