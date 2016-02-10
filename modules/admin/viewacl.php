@@ -46,13 +46,13 @@
 							} else {
 								$highlight = false;
 							}
-						    echo "<tr class='clickableRow $highlight' data-href='?action=ViewACL&for=$row[0]&do=EditUser' $highlight>
+						    echo "<tr class='clickableRow $highlight' data-href='?action=ViewAdmin&for=$row[0]&do=EditUser#access_users' $highlight>
 									<td>$row[0]</td>
 									<td>$row[2]</td>
 									<td>$row[3]</td>
 									<td>$row[4]</td>
 									<td>$row[1]</td>
-									<td><img src='$icon_dir/user-edit-icon.png' height='24' /> <a href='?action=ViewACL&for=$row[0]&do=ChangeAccess'><img src='$icon_dir/group-key-icon.png' height='24' /></a>  <a href='?action=ViewACL&for=$row[0]&do=DeleteUser'><img src='$icon_dir/user-delete-icon.png' height='24' /></a></td>
+									<td><img src='$icon_dir/user-edit-icon.png' height='24' /> <a href='?action=ViewAdmin&for=$row[0]&do=ChangeAccess#access_users'><img src='$icon_dir/group-key-icon.png' height='24' /></a>  <a href='?action=ViewACL&for=$row[0]&do=DeleteUser'><img src='$icon_dir/user-delete-icon.png' height='24' /></a></td>
 									</tr>";
 						}?>
 					</tbody>
@@ -65,11 +65,12 @@
 	</div>
 	<div class="col-md-4">
 		<div class="box">
-		<div class="box-header">
-			<h3 class="box-title">User Settings</h3>
-		</div><!-- /.box-header -->
-		<div class="box-body">
-			<?php if ($_GET['do'] == 'ChangeAccess') include_once 'modules/admin/actions/change-access.php'; ?>
-		</div>
-	</div>
+  		<div class="box-header">
+  			<h3 class="box-title">User Settings</h3>
+  		</div><!-- /.box-header -->
+  		<div class="box-body">
+  			<?php if ($_GET['do'] == 'ChangeAccess') include_once 'modules/admin/actions/change-access.php'; ?>
+  		</div>
+  	</div>
+  </div>
 </div>

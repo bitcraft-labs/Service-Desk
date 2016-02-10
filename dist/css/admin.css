@@ -1,0 +1,43 @@
+.content-header {
+  background: #ffe3e3;
+}
+
+.nav-pills > li {
+  background: #fff;
+}
+
+.nav-tabs > li, .nav-pills > li {
+    float:none;
+    display:inline-block;
+    *display:inline; /* ie7 fix */
+     zoom:1; /* hasLayout ie7 trigger */
+}
+
+.nav-tabs, .nav-pills {
+    text-align:center;
+}
+
+.content-wrapper {
+  /* background: #eee; */
+}
+
+.content-wrapper > .head-area {
+  text-align: center;
+  color: #fff;
+}
+
+.head-area {
+  background: rgba(252, 54, 10, 0.7);
+  border-bottom: 2px solid rgba(255,255,255,0.9);
+  min-height: 0px;
+  padding: 0px;
+  padding-top: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.head-area > h2 > small {
+  color: #fff;
+}
