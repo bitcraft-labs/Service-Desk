@@ -3,4 +3,5 @@
 *.zip
 TODO.*
 test/
+test.*
 custom/
