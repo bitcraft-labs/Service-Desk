@@ -1,9 +1,5 @@
 <div class="row">
 	<div class="col-md-12">
-		<p><?php $adminsub = 'View Site Settings';
-				 echo $adminsub;
-				 $adminhsub = '<small>'.$adminsub.'</small>';
-		?></p>
 		<form class="form-horizontal">
 
 			<!-- Text input-->
