@@ -66,7 +66,7 @@ $dal = new DAL();
           include_once 'modules/end_user_portal/request_view.php';
         }
       } else {
-        include_once 'modules/end_user_portal/submit.php';
+          include_once 'modules/end_user_portal/submit.php';
       }
       include_once 'modules/end_user_portal/footer.php'; ?>
 
@@ -74,6 +74,8 @@ $dal = new DAL();
 
     <!-- jQuery 2.1.4 -->
     <script src="../../plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <!-- jQuery Ui -->
+    <script src="../../plugins/jQueryUI/jquery-ui.min.js"></script>
     <!-- Bootstrap 3.3.5 -->
     <script src="../../bootstrap/js/bootstrap.min.js"></script>
     <!-- SlimScroll -->
@@ -96,6 +98,12 @@ $dal = new DAL();
           "autoWidth": false
         });
       });
+      $(function() {
+        $("#accordion").accordion({
+          collapsible: true
+        });
+      });
+
     </script>
   </body>
 </html>
