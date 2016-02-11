@@ -1,10 +1,10 @@
 <?php
 	$status = $_SERVER['REDIRECT_STATUS'];
 	$codes = array(
-		401 => array('401 Unauthorized', "User is denied due to invalid credentials"),
-		403 => array('403 Forbidden', "Server has refused to fulfill your request"),
-		404 => array('404 Not Found', "That file does not exist on this server"),
-		500 => array('500 Internal Server Error', 'The request was unsuccessful due to an unexpected condition encountered by the server'),
+		401 => array('401', "User is denied due to invalid credentials"),
+		403 => array('403', "Server has refused to fulfill your request"),
+		404 => array('404', "That file does not exist on this server"),
+		500 => array('500', 'The request was unsuccessful due to an unexpected condition encountered by the server'),
 	);
 	$title_page = $codes[$status][0];
 	$message = $codes[$status][1];
@@ -25,23 +25,19 @@
 	<title><?php echo $title_page; ?></title>
 </head>
 <body>
-	<div class="container ">
-		<a href="/"><p style="padding-top:15px; margin-left:-15px;"><?php echo "<img src='$main_logo_top' width='300' />"?></p></a>
-		<div class="row">
-		 	<h1><strong>Whoops!</strong></h1>
-		 	<p class="lead"><?php echo $title_page ." - ". $message; ?></p>
-		</div>
-	</div>
-	<div class="container">
-	 	<p style="font-size: 1.6em; margin-left: -68px;" class="lead">This holy kitten saved the day!</p>
-	 	<?php if ($title_page == 404) { ?>
-	 	<div class="text-center">
-			<img class="error-img" style="margin-bottom: 15px; padding: 20px 0;" src="../dist/img/404-center" width="600" alt="404 Error Page Image">
-		</div>
-		<?php } ?>
-		<div class="text-center">
-			<a href="login.php"><button class="error-btn btn btn-lg btn-success">Login</button></a>
-			<a href="/"><button class="error-btn btn btn-lg btn-success">Back to safety</button></a>
+	<div class="error-background">
+		<div class="container">
+			<div class="row">
+				<div class="center">
+					<h1 class="error-title"><?= $title_page ?></h1>
+					<?php if($title_page == "404") { ?>
+					<h1><?php echo "Not Found"; ?></h1>
+					<?php } ?>
+					<p>Unfortunatly, we're having trouble loading the page you are looking for. <br> Please wait a moment and try again or use the actions below.</p>
+					<a href="index.php"><button class="btn btn-lg btn-info">Back to safety</button></a>
+					<a href="/"><button class="btn btn-lg btn-info">Previous page</button></a>
+				</div>
+			</div>
 		</div>
 	</div>
 	<div style="border-top: solid 1px #D2D6DE; padding: 20px;">
@@ -50,4 +46,9 @@
 	<script src="/plugins/JQuery/jQuery-2.1.4.min.js"></script>
 	<script src="/bootstrap/js/bootstrap.min.js"></script>
 </body>
+<!-- Unauthorized
+Forbidden
+Not Found
+Internal Server Error -->
 </html>
+
