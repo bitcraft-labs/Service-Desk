@@ -1,50 +1,79 @@
 <div class="container container-mobile">
-  <div id="accordion">
-    <h3>Section 1</h3>
-    <div>
-      <p>
-      Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer
-      ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit
-      amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut
-      odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.
-      </p>
-    </div>
-    <h3>Section 2</h3>
-    <div>
-      <p>
-      Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet
-      purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor
-      velit, faucibus interdum tellus libero ac justo. Vivamus non quam. In
-      suscipit faucibus urna.
-      </p>
-    </div>
-    <h3>Section 3</h3>
-    <div>
-      <p>
-      Nam enim risus, molestie et, porta ac, aliquam ac, risus. Quisque lobortis.
-      Phasellus pellentesque purus in massa. Aenean in pede. Phasellus ac libero
-      ac tellus pellentesque semper. Sed ac felis. Sed commodo, magna quis
-      lacinia ornare, quam ante aliquam nisi, eu iaculis leo purus venenatis dui.
-      </p>
-      <ul>
-        <li>List item one</li>
-        <li>List item two</li>
-        <li>List item three</li>
-      </ul>
-    </div>
-    <h3>Section 4</h3>
-    <div>
-      <p>
-      Cras dictum. Pellentesque habitant morbi tristique senectus et netus
-      et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in
-      faucibus orci luctus et ultrices posuere cubilia Curae; Aenean lacinia
-      mauris vel est.
-      </p>
-      <p>
-      Suspendisse eu nisl. Nullam ut libero. Integer dignissim consequat lectus.
-      Class aptent taciti sociosqu ad litora torquent per conubia nostra, per
-      inceptos himenaeos.
-      </p>
+  <div class="row">
+    <div class="col-md-12">
+      <div id="accordion">
+        <h3><a href="">1. Common Requests</a></h3>
+        <div>
+          <h4><i class="fa fa-exclamation-triangle fa-2x pull-left align m-orange"></i> <a data-toggle="modal" data-target="#incidentModal" href="#">Generic incident</a><br />
+          <small>Some odd thing just happened. It's being very wonky.</small></h4>
+
+          <h4><i class="fa fa-wifi fa-2x pull-left align m-green"></i> <a data-toggle="modal" data-target="#incidentModal" href="#">Wireless</a><br />
+          <small>Slow internet in dorm. Chromecast not streaming.</small></h4>
+
+          <h4><i class="fa fa-unlock fa-2x pull-left align m-orange"></i> <a data-toggle="modal" data-target="#incidentModal" href="#">Password Expired</a><br />
+          <small>Password must have expired, unable to login to anything.</small></h4>
+
+          <h4><i class="fa fa-print fa-2x pull-left align m-blue"></i> <a data-toggle="modal" data-target="#incidentModal" href="#">Printer not working</a><br />
+          <small>Paper jam. Out of paper. Blinking with an error. Scanning not working.</small></h4>
+
+          <h4><i class="fa fa-exclamation-triangle fa-2x pull-left align m-red"></i> <a data-toggle="modal" data-target="#incidentModal" href="#">Service Problem</a><br />
+          <small>Having an issue with Blackboard or another web application?</small></h4>
+        </div>
+        <h3><a href="">2. Logins &amp; Accounts</a></h3>
+        <div>
+          <h4><i class="fa fa-google fa-2x pull-left align m-red"></i> <a data-toggle="modal" data-target="#incidentModal" href="#">Google Apps Account</a><br />
+            <small>Unable to login. Something odd happened. Suspicious email.</small></h4>
+
+          <h4><i class="fa fa-windows fa-2x pull-left align m-blue"></i> <a data-toggle="modal" data-target="#incidentModal" href="#">Microsoft Exchange</a><br />
+            <small>Some odd thing just happened. It's being very wonky. I can't login.</small></h4>
+
+          <h4><i class="fa fa-key fa-2x pull-left align m-yellow"></i> <a data-toggle="modal" data-target="#incidentModal" href="#">Keychain</a><br />
+            <small>Changed my password and now my keychain is broken.</small></h4>
+
+          <h4><i class="fa fa-unlock fa-2x pull-left align m-orange"></i> <a data-toggle="modal" data-target="#incidentModal" href="#">Password Expired</a><br />
+            <small>Password must have expired, unable to login to anything.</small></h4>
+        </div>
+        <h3><a href="">3. Computer Labs</a></h3>
+        <div>
+          <h4><i class="fa fa-exclamation-triangle fa-2x pull-left align m-red"></i> <a data-toggle="modal" data-target="#incidentModal" href="#">General Computer Help</a><br />
+          <small>Unable to print. Blue screen. Hard disk is full. No logon servers.</small></h4>
+
+          <h4><i class="fa fa-upload fa-2x pull-left align m-blue"></i> <a data-toggle="modal" data-target="#incidentModal" href="#">Software Install Request</a><br />
+          <small>I'd like all lab machines to have &lt;software&gt; installed.</small></h4>         
+        </div>
+        <h3><a href="">4. Desktops &amp; Laptops</a></h3>
+        <div>
+          <h4><i class="fa fa-exclamation-triangle fa-2x pull-left align m-red"></i> <a data-toggle="modal" data-target="#incidentModal" data-toggle="modal" data-target="#incidentModal" href="#">Get IT Help (general problem/question)</a><br />
+          <small>Unable to print. Blue screen. Direly slow. No logon servers.</small></h4>
+
+          <h4><i class="fa fa-upload fa-2x pull-left align m-blue"></i> <a data-toggle="modal" data-target="#incidentModal" href="#">Software Install Request</a><br />
+          <small>I'd like to have &lt;software&gt; installed on my machine.</small></h4>
+
+          <h4><i class="fa fa-laptop fa-2x pull-left align m-green"></i> <a data-toggle="modal" data-target="#incidentModal" href="#">Schedule Upgrade/Refresh</a><br />
+          <small>Wow, it's been three years already. I'd like my new computer now.</small></h4>
+        </div>
+        <h3><a href="">5. Telecom</a></h3>
+        <div>
+           <h4><i class="fa fa-television fa-2x pull-left align m-orange"></i> <a data-toggle="modal" data-target="#incidentModal" href="#">Cable TV</a><br />
+           <small>Not getting channels. Wall port broken.</small></h4>
+
+           <h4><i class="fa fa-phone fa-2x pull-left align m-blue"></i> <a data-toggle="modal" data-target="#incidentModal" href="#">Phone</a><br />
+           <small>Avaya phone not turning on. No dial tone. Moved office, not working.</small></h4>
+
+           <h4><i class="fa fa-wifi fa-2x pull-left align m-green"></i> <a data-toggle="modal" data-target="#incidentModal" href="#">Wireless</a><br />
+           <small>Slow internet in dorm. Chromecast not streaming.</small></h4>
+        </div>
+        <h3><a href="">6. Virtual Environment</a></h3>
+        <div>
+           <h4><i class="fa fa-exclamation-triangle fa-2x pull-left align m-red"></i> <a data-toggle="modal" data-target="#incidentModal" href="#">Mission Critical Outage</a><br />
+           <small>Unable to connect to desktop. Keeps disconnecting.</small></h4>
+        </div>
+        <h3><a href="">7. Web Service</a></h3>
+        <div>
+           <h4><i class="fa fa-exclamation-triangle fa-2x pull-left align m-red"></i> <a data-toggle="modal" data-target="#incidentModal" href="#">Service Problem</a><br />
+            <small>Having an issue with Blackboard or another web application?</small></h4>
+        </div>
+      </div>
     </div>
   </div>
 </div>

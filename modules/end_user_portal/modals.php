@@ -36,7 +36,7 @@
 						<label for="incident-description">Description</label>
 						<textarea rows="8" name="incident-description" class="form-control input-md" id="incident-description"></textarea>
 					</div>
-					<button type="submit" class="btn btn-success">Send!</button>
+					<button type="submit" class="btn btn-lg btn-success">Send!</button>
 				</form>
 				<hr>
 			</div><!-- modal-body -->

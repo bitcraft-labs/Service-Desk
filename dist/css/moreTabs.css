@@ -105,9 +105,12 @@
   border-color: #ddd #ddd #ddd transparent;
   border-left-color: #ffffff;
 }
-/* END-USER FIXES */
+/* END-USER FIXES AND ADDITIONS */
 .end-user-padding {
   padding-top: 24px;  
+}
+.container-mobile {
+  display: none;
 }
 
 /* MEDIA QUERIES */
@@ -135,9 +138,12 @@
   .mobile-table {
       display: none;
   }
-  .ssp-options {
-    padding-top: 20px;
-    clear: both;
+  .container-reg {
+    display: none;
+  }
+  .container-mobile {
+    display: inline-block;
+    padding-bottom: 20px;
   }
 }
 @media screen and (max-width : 568px) {
@@ -147,7 +153,24 @@
   .logout-end-user {
     display: none;
   }
+  h3 {
+    padding-bottom: 10px;
+    font-size: 1.3em;
+  }
+  h4 {
+    font-size: 1.3em;
+    padding-bottom: 10px;
+  }
+  i {
+    padding-bottom: 10px;
+  }
 }
 @media screen and (max-width : 438px) {
-  
+  .fa.fa-sign-out {
+    display: none;
+  }
+  .mobile-fix {
+    display: none;
+  }
+
 }
