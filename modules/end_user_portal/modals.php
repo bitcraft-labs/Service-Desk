@@ -4,10 +4,10 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-				<h4 class="modal-title" id=""><i class="fa fa-envelope"></i> Describe your Issue for Us: </h4>
+				<h4 class="modal-title" id=""><i class="fa fa-envelope"></i> Describe your issue for us: </h4>
 			</div><!-- modal-header -->
 			<div class="modal-body">
-				<form class="form" role="form">
+				<form action="" class="form" role="form">
 					<div class="form-group">
 						<label for="incident-title">Title</label>
 						<input type="text" class="form-control input-md" id="incident-title" name="incident-title" placeholder="">

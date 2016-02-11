@@ -109,7 +109,6 @@
 .end-user-padding {
   padding-top: 24px;  
 }
-/* See TODO */
 
 /* MEDIA QUERIES */
 @media screen and (max-width : 991px) {
@@ -125,6 +124,9 @@
    #records tr td {
       padding-right: 23px;
    }
+   .end-user-padding {
+      padding-top: 8px;
+   }
 }
 @media screen and (max-width : 668px) {
   .navbar li {
@@ -132,6 +134,10 @@
   }
   .mobile-table {
       display: none;
+  }
+  .ssp-options {
+    padding-top: 20px;
+    clear: both;
   }
 }
 @media screen and (max-width : 568px) {
