@@ -126,13 +126,21 @@
       padding-right: 23px;
    }
 }
-@media screen and (max-width : 767px) {
+@media screen and (max-width : 668px) {
   .navbar li {
     font-size: 15px;
   }
+  .mobile-table {
+      display: none;
+  }
 }
 @media screen and (max-width : 568px) {
-  
+  .app-version-mobile {
+    display: none;
+  }
+  .logout-end-user {
+    display: none;
+  }
 }
 @media screen and (max-width : 438px) {
   
