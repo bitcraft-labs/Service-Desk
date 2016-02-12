@@ -68,7 +68,7 @@ $dal = new DAL();
       } else {
           include_once 'modules/end_user_portal/submit.php';
       }
-      include_once 'modules/end_user_portal/footer.php'; ?>
+      include_once 'modules/footer.php'; ?>
 
     </div><!-- ./wrapper -->
 
@@ -100,10 +100,13 @@ $dal = new DAL();
       });
       $(function() {
         $("#accordion").accordion({
-          collapsible: true
+          collapsible : true,
+          animate : {
+            easing : "linear",
+            duration : 500
+          }
         });
       });
-
     </script>
   </body>
 </html>
