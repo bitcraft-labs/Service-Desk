@@ -7,7 +7,7 @@
 				<h4 class="modal-title" id=""><i class="fa fa-envelope"></i> Describe your issue for us: </h4>
 			</div><!-- modal-header -->
 			<div class="modal-body">
-				<form action="" class="form" role="form">
+				<form method="" action="" class="form" role="form">
 					<div class="form-group">
 						<label for="incident-title">Title</label>
 						<input type="text" class="form-control input-md" id="incident-title" name="incident-title" placeholder="">

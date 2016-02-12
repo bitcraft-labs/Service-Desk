@@ -1,5 +1,4 @@
 /* custom inclusion of right, left and below tabs */
-/* ADD media quierys here */
 
 .tabs-below > .nav-tabs,
 .tabs-right > .nav-tabs,
@@ -112,7 +111,15 @@
 .container-mobile {
   display: none;
 }
-
+.input-md {
+  border-radius: 5px;
+}
+.center {
+  position: absolute;
+  margin: auto;
+  top: 50%;
+  left: 50%;
+}
 /* MEDIA QUERIES */
 @media screen and (max-width : 991px) {
    .navbar li {
@@ -172,5 +179,4 @@
   .mobile-fix {
     display: none;
   }
-
 }
