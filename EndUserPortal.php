@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Project:    Bitcraft Service Desk (Working Title)
+Project:    Bitcraft Service Desk (An Open Source ITSM Web App)
 Lead Devs:  Joshua Nasiatka, Allen Perry, Eugene Duffy
 For:        Software Engineering
 Dev Date:   Spring 2016
@@ -26,23 +26,23 @@ $dal = new DAL();
     <title><?=$title ?></title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <!-- Bootstrap 3.3.5 -->
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/bower/bootstrap/dist/css/bootstrap.min.css">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/bower/font-awesome/css/font-awesome.min.css">
     <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="/bower/Ionicons/css/ionicons.min.css">
     <!-- DataTables -->
-    <link rel="stylesheet" href="plugins/datatables/dataTables.bootstrap.css">
+    <link rel="stylesheet" href="/bower/AdminLTE/plugins/datatables/dataTables.bootstrap.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="/bower/AdminLTE/dist/css/AdminLTE.min.css">
     <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
           page. However, you can choose any other skin. Make sure you
           apply the skin class to the body tag so the changes take effect.
     -->
-    <?php echo "<link rel='stylesheet' href='dist/css/skins/skin-$skin.min.css'>"; ?>
-    <link rel="stylesheet" href="dist/css/moreTabs.css">
-    <link rel="stylesheet" href="dist/css/sspTitle.css">
+    <?php echo "<link rel='stylesheet' href='/bower/AdminLTE/dist/css/skins/skin-$skin.min.css'>"; ?>
+    <link rel="stylesheet" href="/dist/css/moreTabs.css">
+    <link rel="stylesheet" href="/dist/css/sspTitle.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -72,17 +72,25 @@ $dal = new DAL();
 
     </div><!-- ./wrapper -->
 
+<<<<<<< HEAD
     <!-- jQuery 2.1.4 -->
     <script src="../../plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <!-- jQuery Ui -->
     <script src="../../plugins/jQueryUI/jquery-ui.min.js"></script>
     <!-- Bootstrap 3.3.5 -->
     <script src="../../bootstrap/js/bootstrap.min.js"></script>
+=======
+    <!-- jQuery -->
+    <script src="/bower/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="/bower/bootstrap/dist/js/bootstrap.min.js"></script>
+>>>>>>> 6c5ad37752c0a345f25a3e15589d1add0a995721
     <!-- SlimScroll -->
-    <script src="../../plugins/slimScroll/jquery.slimscroll.min.js"></script>
+    <script src="/bower/AdminLTE/plugins/slimScroll/jquery.slimscroll.min.js"></script>
     <!-- FastClick -->
-    <script src="../../plugins/fastclick/fastclick.min.js"></script>
+    <script src="/bower/AdminLTE/plugins/fastclick/fastclick.min.js"></script>
     <!-- AdminLTE App -->
+<<<<<<< HEAD
     <script src="../../dist/js/app.min.js"></script>
     <!-- DataTables -->
     <script src="plugins/datatables/jquery.dataTables.js"></script>
@@ -108,5 +116,9 @@ $dal = new DAL();
         });
       });
     </script>
+=======
+    <script src="/bower/AdminLTE/dist/js/app.min.js"></script>
+
+>>>>>>> 6c5ad37752c0a345f25a3e15589d1add0a995721
   </body>
 </html>
