@@ -114,7 +114,7 @@ if ($conf['customize']['darkmode'] == 'dark') {
     <!-- Bootstrap -->
     <script src="/bower/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- iCheck -->
-    <script src="/bower/adminlte/plugins/iCheck/icheck.min.js"></script>
+    <script src="/bower/AdminLTE/plugins/iCheck/icheck.min.js"></script>
     <script>
       $(function () {
         $('input').iCheck({

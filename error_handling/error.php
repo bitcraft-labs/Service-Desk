@@ -21,7 +21,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="/bower/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/dist/css/error_styles.css">
-	<?php echo "<link rel='stylesheet' href='/bower/adminlte/dist/css/skins/skin-$skin.min.css'>"; ?>
+	<?php echo "<link rel='stylesheet' href='/bower/AdminLTE/dist/css/skins/skin-$skin.min.css'>"; ?>
 	<title><?php echo $title_page; ?></title>
 </head>
 <body>

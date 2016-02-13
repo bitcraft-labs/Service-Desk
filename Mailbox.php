@@ -28,7 +28,7 @@ Status:     Staging; Idea Testing; Development
     <!-- Bootstrap -->
     <script src="/bower/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- AdminLTE App -->
-    <script src="/bower/adminlte/dist/js/app.min.js"></script>
+    <script src="/bower/AdminLTE/dist/js/app.min.js"></script>
 
   </body>
 </html>
