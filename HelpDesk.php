@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Project:    Bitcraft Service Desk (Working Title)
+Project:    Bitcraft Service Desk (An Open Source ITSM Web App)
 Lead Devs:  Joshua Nasiatka, Allen Perry, Eugene Duffy
 For:        Software Engineering
 Dev Date:   Spring 2016
@@ -30,23 +30,23 @@ Status:     Staging; Idea Testing; Development
     </div><!-- ./wrapper -->
 
 <!-- REQUIRED JS SCRIPTS -->
-<!-- jQuery 2.1.4 -->
-<script src="/plugins/jQuery/jQuery-2.1.4.min.js"></script>
-<!-- Bootstrap 3.3.5 -->
-<script src="/bootstrap/js/bootstrap.min.js"></script>
+<!-- jQuery -->
+<script src="/bower/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="/bower/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
-<script src="/dist/js/app.min.js"></script>
+<script src="/bower/adminlte/dist/js/app.min.js"></script>
 <!-- DataTables -->
-<script src="plugins/datatables/jquery.dataTables.js"></script>
-<script src="plugins/datatables/dataTables.bootstrap.js"></script>
+<script src="/bower/adminlte/plugins/datatables/jquery.dataTables.js"></script>
+<script src="/bower/adminlte/plugins/datatables/dataTables.bootstrap.js"></script>
 <!-- SlimScroll -->
-<script src="plugins/slimScroll/jquery.slimscroll.js"></script>
+<script src="/bower/adminlte/plugins/slimScroll/jquery.slimscroll.js"></script>
 <!-- FastClick -->
-<script src="plugins/fastclick/fastclick.min.js"></script>
+<script src="/bower/adminlte/plugins/fastclick/fastclick.min.js"></script>
 <!-- InputMask -->
-<script src="plugins/input-mask/jquery.inputmask.js"></script>
-<script src="plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
-<script src="plugins/input-mask/jquery.inputmask.extensions.js"></script>
+<script src="/bower/adminlte/plugins/input-mask/jquery.inputmask.js"></script>
+<script src="/bower/adminlte/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+<script src="/bower/adminlte/plugins/input-mask/jquery.inputmask.extensions.js"></script>
 
 <!-- page script -->
 <script>

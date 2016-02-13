@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Project:    Bitcraft Service Desk (Working Title)
+Project:    Bitcraft Service Desk (An Open Source ITSM Web App)
 Lead Devs:  Joshua Nasiatka, Allen Perry, Eugene Duffy
 For:        Software Engineering
 Dev Date:   Spring 2016
@@ -23,12 +23,12 @@ Status:     Staging; Idea Testing; Development
     </div><!-- ./wrapper -->
 
     <!-- REQUIRED JS SCRIPTS -->
-    <!-- jQuery 2.1.4 -->
-    <script src="/plugins/jQuery/jQuery-2.1.4.min.js"></script>
-    <!-- Bootstrap 3.3.5 -->
-    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <!-- jQuery -->
+    <script src="/bower/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="/bower/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- AdminLTE App -->
-    <script src="/dist/js/app.min.js"></script>
+    <script src="/bower/adminlte/dist/js/app.min.js"></script>
 
   </body>
 </html>
