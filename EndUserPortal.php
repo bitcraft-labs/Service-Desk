@@ -72,25 +72,24 @@ $dal = new DAL();
 
     </div><!-- ./wrapper -->
 
-<<<<<<< HEAD
     <!-- jQuery 2.1.4 -->
     <script src="../../plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <!-- jQuery Ui -->
     <script src="../../plugins/jQueryUI/jquery-ui.min.js"></script>
     <!-- Bootstrap 3.3.5 -->
     <script src="../../bootstrap/js/bootstrap.min.js"></script>
-=======
+
     <!-- jQuery -->
     <script src="/bower/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
     <script src="/bower/bootstrap/dist/js/bootstrap.min.js"></script>
->>>>>>> 6c5ad37752c0a345f25a3e15589d1add0a995721
+
     <!-- SlimScroll -->
     <script src="/bower/AdminLTE/plugins/slimScroll/jquery.slimscroll.min.js"></script>
     <!-- FastClick -->
     <script src="/bower/AdminLTE/plugins/fastclick/fastclick.min.js"></script>
     <!-- AdminLTE App -->
-<<<<<<< HEAD
+
     <script src="../../dist/js/app.min.js"></script>
     <!-- DataTables -->
     <script src="plugins/datatables/jquery.dataTables.js"></script>
@@ -116,9 +115,9 @@ $dal = new DAL();
         });
       });
     </script>
-=======
+
     <script src="/bower/AdminLTE/dist/js/app.min.js"></script>
 
->>>>>>> 6c5ad37752c0a345f25a3e15589d1add0a995721
+
   </body>
 </html>

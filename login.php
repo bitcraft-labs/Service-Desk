@@ -109,21 +109,20 @@ if ($conf['customize']['darkmode'] == 'dark') {
     </div>
   </div>
 
-<<<<<<< HEAD
     <!-- jQuery 2.1.4 -->
     <script src="/plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <!-- Bootstrap 3.3.5 -->
     <script src="/bootstrap/js/bootstrap.min.js"></script>
     <!-- iCheck -->
     <script src="/plugins/iCheck/icheck.min.js"></script>
-=======
+
     <!-- jQuery -->
     <script src="/bower/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
     <script src="/bower/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- iCheck -->
     <script src="/bower/AdminLTE/plugins/iCheck/icheck.min.js"></script>
->>>>>>> 6c5ad37752c0a345f25a3e15589d1add0a995721
+
     <script>
       $(function () {
         $('input').iCheck({
