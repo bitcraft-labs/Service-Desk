@@ -36,16 +36,16 @@ exit;
     <!-- Font Awesome -->
     <link rel="stylesheet" href="/bower/font-awesome/css/font-awesome.min.css">
     <!-- Ionicons -->
-    <link rel="stylesheet" href="/bower/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="/bower/Ionicons/css/ionicons.min.css">
     <!-- DataTables -->
-    <link rel="stylesheet" href="/bower/adminlte/plugins/datatables/dataTables.bootstrap.css">
+    <link rel="stylesheet" href="/bower/AdminLTE/plugins/datatables/dataTables.bootstrap.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="/bower/adminlte/dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="/bower/AdminLTE/dist/css/AdminLTE.min.css">
     <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
           page. However, you can choose any other skin. Make sure you
           apply the skin class to the body tag so the changes take effect.
     -->
-    <?php echo "<link rel='stylesheet' href='/bower/adminlte/dist/css/skins/skin-$skin.min.css'>"; ?>
+    <?php echo "<link rel='stylesheet' href='/bower/AdminLTE/dist/css/skins/skin-$skin.min.css'>"; ?>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -229,14 +229,14 @@ exit;
     <!-- Bootstrap -->
     <script src="/bower/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- DataTables -->
-    <script src="/bower/adminlte/plugins/datatables/jquery.dataTables.js"></script>
-    <script src="/bower/adminlte/plugins/datatables/dataTables.bootstrap.js"></script>
+    <script src="/bower/AdminLTE/plugins/datatables/jquery.dataTables.js"></script>
+    <script src="/bower/AdminLTE/plugins/datatables/dataTables.bootstrap.js"></script>
     <!-- SlimScroll -->
-    <script src="/bower/adminlte/plugins/slimScroll/jquery.slimscroll.js"></script>
+    <script src="/bower/AdminLTE/plugins/slimScroll/jquery.slimscroll.js"></script>
     <!-- FastClick -->
-    <script src="/bower/adminlte/plugins/fastclick/fastclick.min.js"></script>
+    <script src="/bower/AdminLTE/plugins/fastclick/fastclick.min.js"></script>
     <!-- AdminLTE App -->
-    <script src="/bower/adminlte/dist/js/app.min.js"></script>
+    <script src="/bower/AdminLTE/dist/js/app.min.js"></script>
     <!-- page script -->
     <script>
       $(function () {
