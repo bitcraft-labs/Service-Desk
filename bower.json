@@ -1,0 +1,30 @@
+{
+  "name": "Bitcraft Service Desk",
+  "homepage": "https://bitcraftlabs.net",
+  "authors": [
+    "Joshua Nasiatka <joshuanasiatka@gmail.com>"
+  ],
+  "description": "An Open Source ITSM Web App",
+  "main": "",
+  "moduleType": [],
+  "keywords": [
+    "itsm",
+    "bootstrap",
+    "sengi"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.0",
+    "bootstrap": "^3.3.6",
+    "AdminLTE": "adminlte#^2.3.2",
+    "font-awesome": "fontawesome#^4.5.0",
+    "Ionicons": "ionicons#^2.0.1"
+  }
+}

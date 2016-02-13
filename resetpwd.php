@@ -14,9 +14,9 @@ if($authenticator->ResetPassword())
       <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
       <title>Reset Password</title>
       <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
-      <link rel="stylesheet" type="text/css" href="//bitcraftlabs.net/assets/css/style.css" />
-      <link rel="STYLESHEET" type="text/css" href="style/fg_membersite.css" />
-      <script type='text/javascript' src='scripts/gen_validatorv31.js'></script>
+      <link rel="stylesheet" type="text/css" href="/dist/css/authpage.css" />
+      <link rel="STYLESHEET" type="text/css" href="/dist/css/authpage.css" />
+      <script type='text/javascript' src="/modules/authentication/gen_validatorv31.js"></script>
 </head>
 <body>
 <div id='fg_membersite_content'>

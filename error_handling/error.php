@@ -19,9 +19,9 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/bower/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/dist/css/error_styles.css">
-	<?php echo "<link rel='stylesheet' href='/dist/css/skins/skin-$skin.min.css'>"; ?>
+	<?php echo "<link rel='stylesheet' href='/bower/adminlte/dist/css/skins/skin-$skin.min.css'>"; ?>
 	<title><?php echo $title_page; ?></title>
 </head>
 <body>
@@ -47,7 +47,7 @@
 	<div style="border-top: solid 1px #D2D6DE; padding: 20px;">
 		<?php include_once '../modules/footer.php'; ?>
 	</div>
-	<script src="/plugins/JQuery/jQuery-2.1.4.min.js"></script>
-	<script src="/bootstrap/js/bootstrap.min.js"></script>
+	<script src="/bower/jquery/dist/jquery.min.js"></script>
+	<script src="/bower/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
 </html>
