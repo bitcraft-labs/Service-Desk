@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Project:    Bitcraft Service Desk (Working Title)
+Project:    Bitcraft Service Desk (An Open Source ITSM Web App)
 Lead Devs:  Joshua Nasiatka, Allen Perry, Eugene Duffy
 For:        Software Engineering
 Dev Date:   Spring 2016
@@ -31,21 +31,21 @@ exit;
     <title><?= $title ?></title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <!-- Bootstrap 3.3.5 -->
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/bower/bootstrap/dist/css/bootstrap.min.css">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/bower/font-awesome/css/font-awesome.min.css">
     <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="/bower/ionicons/css/ionicons.min.css">
     <!-- DataTables -->
-    <link rel="stylesheet" href="plugins/datatables/dataTables.bootstrap.css">
+    <link rel="stylesheet" href="/bower/adminlte/plugins/datatables/dataTables.bootstrap.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="/bower/adminlte/dist/css/AdminLTE.min.css">
     <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
           page. However, you can choose any other skin. Make sure you
           apply the skin class to the body tag so the changes take effect.
     -->
-    <?php echo "<link rel='stylesheet' href='dist/css/skins/skin-$skin.min.css'>"; ?>
+    <?php echo "<link rel='stylesheet' href='/bower/adminlte/dist/css/skins/skin-$skin.min.css'>"; ?>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -224,19 +224,19 @@ exit;
     </div><!-- ./wrapper -->
 
     <!-- REQUIRED JS SCRIPTS -->
-	<!-- jQuery 2.1.4 -->
-    <script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
-    <!-- Bootstrap 3.3.5 -->
-    <script src="bootstrap/js/bootstrap.min.js"></script>
+	<!-- jQuery -->
+    <script src="/bower/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="/bower/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- DataTables -->
-    <script src="plugins/datatables/jquery.dataTables.js"></script>
-    <script src="plugins/datatables/dataTables.bootstrap.js"></script>
+    <script src="/bower/adminlte/plugins/datatables/jquery.dataTables.js"></script>
+    <script src="/bower/adminlte/plugins/datatables/dataTables.bootstrap.js"></script>
     <!-- SlimScroll -->
-    <script src="plugins/slimScroll/jquery.slimscroll.js"></script>
+    <script src="/bower/adminlte/plugins/slimScroll/jquery.slimscroll.js"></script>
     <!-- FastClick -->
-    <script src="plugins/fastclick/fastclick.min.js"></script>
+    <script src="/bower/adminlte/plugins/fastclick/fastclick.min.js"></script>
     <!-- AdminLTE App -->
-    <script src="dist/js/app.min.js"></script>
+    <script src="/bower/adminlte/dist/js/app.min.js"></script>
     <!-- page script -->
     <script>
       $(function () {
