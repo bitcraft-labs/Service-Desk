@@ -1,5 +1,5 @@
 # Bitcraft Service Desk
-### Cloud-based IT Help Desk Management Software
+### An Open Source Web-based IT Service Management Software
 
 Bitcraft Service Desk is an ITSM application that aims to enhance the workflow of IT Professionals as well as keep track of technical issues involving end-users. This application will have features that allow for service record (SR) submissions (request/incident reports), change notifications, and communication between staff and end-users pertaining to the individual SRs.
 
@@ -22,6 +22,7 @@ Download from [Github](https://github.com/bitcraft-labs/Service-Desk/archive/pre
 - Clone to your machine/server
 ```
 git clone https://github.com/YOUR_USERNAME/Service-Desk.git
+bower install
 ```
 
 Documentation

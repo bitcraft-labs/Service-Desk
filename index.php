@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Project:    Tronic CRM (Working Title)
+Project:    Bitcraft Service Desk (An Open Source ITSM Web App)
 Lead Devs:  Joshua Nasiatka, Allen Perry, Eugene Duffy
 For:        Software Engineering
 Dev Date:   Spring 2016
