@@ -21,24 +21,24 @@ if ($_SESSION['user_type'] == 3) {
     <title><?php echo $title; ?></title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <!-- Bootstrap 3.3.5 -->
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/bower/bootstrap/dist/css/bootstrap.min.css">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/bower/font-awesome/css/font-awesome.min.css">
     <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="/bower/Ionicons/css/ionicons.min.css">
     <!-- DataTables -->
-    <link rel="stylesheet" href="plugins/datatables/dataTables.bootstrap.css">
+    <link rel="stylesheet" href="/bower/AdminLTE/plugins/datatables/dataTables.bootstrap.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="/bower/AdminLTE/dist/css/AdminLTE.min.css">
     <!-- Table Styles -->
-    <link rel="stylesheet" href="dist/css/tables.css">
+    <link rel="stylesheet" href="/bower/AdminLTE/dist/css/tables.css">
     <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
           page. However, you can choose any other skin. Make sure you
           apply the skin class to the body tag so the changes take effect.
     -->
-    <?php echo "<link rel='stylesheet' href='dist/css/skins/skin-red.min.css'>";?>
-    <link rel="stylesheet" href="dist/css/admin.css">
+    <?php echo "<link rel='stylesheet' href='/bower/AdminLTE/dist/css/skins/skin-red.min.css'>";?>
+    <link rel="stylesheet" href="/dist/css/admin.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
