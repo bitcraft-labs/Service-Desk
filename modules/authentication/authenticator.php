@@ -412,12 +412,12 @@ class Authenticator
 
         $row = mysql_fetch_assoc($result);
 
+        $_SESSION['userID']         = $row['id'];
         $_SESSION['first_name']     = $row['fname'];
         $_SESSION['last_name']      = $row['lname'];
         $_SESSION['name_of_user']   = $row['fname'] ." ". $row['lname'];
         $_SESSION['email_of_user']  = $row['email'];
-        $_SESSION['user_type']      = $row['type'];
-
+        
         return true;
     }
 

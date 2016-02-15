@@ -8,10 +8,8 @@ if(!$authenticator->CheckLogin())
     exit;
 }
 
-if ($_SESSION['user_type'] == 3) {
-    echo "<script type='text/javascript'>
-      window.location.replace('EndUserPortal.php');
-      </script>";
+if (!($myACL->hasPermission('access_admin')) && (!$myACL->hasPermission('manage_templates')) && (!$myACL->hasPermission('manage_users'))) {
+    header("location: /");
     exit;
 }
 ?>

@@ -6,19 +6,26 @@ For:        Software Engineering
 Dev Date:   Spring 2016
 Status:     Staging; Idea Testing; Development
 -->
+<?php
+  include("modules/mainhead.php");
+  if ($myACL->hasPermission('hd_portal') != true) {
+    header("location: /");
+    exit;
+  }
+?>
 <html>
   	<?php
     $page_title = 'Mailbox';
     include_once 'modules/head.php'; ?>
     <?php echo "<body class='hold-transition skin-$skin sidebar-mini'>"; ?>
     <div class="wrapper">
-		<?php
-		// build the user interface
-		include_once 'modules/header.php';
-		include_once 'modules/left_sidebar.php';
+    <?php
+    // build the user interface
+    include_once 'modules/header.php';
+    include_once 'modules/left_sidebar.php';
     include_once 'modules/mailbox/mailbox-ui.php';
     include_once 'modules/footer.php';
-		include_once 'modules/control_sidebar.php';
+    include_once 'modules/control_sidebar.php';
     ?>
     </div><!-- ./wrapper -->
 
