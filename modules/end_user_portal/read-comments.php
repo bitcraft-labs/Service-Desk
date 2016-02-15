@@ -4,7 +4,7 @@
 <div class="content-wrapper">
   <div class="container">
   <section class="content-header">
-    <h1>WebMail</h1>
+    <h1>WebMail (<?= $_GET['mb']; ?>)</h1>
     <ol class="breadcrumb">
         <li><a href="/"><i class="fa fa-dashboard"></i> Top</a></li>
         <li class="active">Mailbox</li>

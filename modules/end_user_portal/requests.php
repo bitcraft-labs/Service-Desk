@@ -1,3 +1,7 @@
+<?php 
+	$row_number = 1;
+
+ ?>
 <div class="content-wrapper">
 	<div class="ssp-title">
 		<div class="container">
@@ -13,7 +17,7 @@
 			      <h3 class="box-title">Service Records</h3>
 			    </div><!-- /.box-header -->
 			    <div class="box-body">
-			    	<table id="records" class="table table-bordered table-striped">
+			    	<table id="records" class="table table-bordered table-striped table-hover">
 			    		<thead>
 			    			<tr>
 			    				<?php $tabhead = '
@@ -28,8 +32,8 @@
 			    			</tr>
 			    		</thead>
 			    		<tbody>
-			    			<tr>
-			    				<td><a href="?page=ViewRequests&sr=1">1</a></td>
+			    			<tr data-href="?page=ViewRequests&sr=<?php echo $row_number; ?>">
+			    				<td><?php echo $row_number++; ?></td>
 			    				<td class="mobile-table">Hardware</td>
 			    				<td>In Progress</td>
 			    				<td>TT</td>
@@ -37,8 +41,8 @@
 			    				<td class="mobile-table">12/1/2015</td>
 			    				<td>12/2/2015</td>
 			    			</tr>
-			    			<tr>
-			    				<td><a href="?page=ViewRequests&sr=2">2</a></td>
+			    			<tr data-href="?page=ViewRequests&sr=<?php echo $row_number; ?>">
+			    				<td><?php echo $row_number++; ?></td>
 			    				<td class="mobile-table">Software</td>
 			    				<td>Waiting for Pickup</td>
 			    				<td>TT</td>
@@ -46,8 +50,8 @@
 			    				<td class="mobile-table">11/30/2015</td>
 			    				<td>12/2/2015</td>
 			    			</tr>
-			    			<tr>
-			    				<td><a href="?page=ViewRequests&sr=3">3</a></td>
+			    			<tr data-href="?page=ViewRequests&sr=<?php echo $row_number; ?>">
+			    				<td><?php echo $row_number++; ?></td>
 			    				<td class="mobile-table">Software</td>
 			    				<td>Completed</td>
 			    				<td>TT</td>
