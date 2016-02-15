@@ -28,14 +28,14 @@
 	<div class="error-background">
 		<div class="container">
 			<div class="row">
-				<div class="center">
+				<div class="col-lg-12 center">
 					<h1 class="error-title"><?= $title_page ?></h1>
 					<?php if($title_page == "404") { ?>
 					<h1><?php echo "Not Found"; ?></h1>
 					<?php } ?>
 					<p>Unfortunatly, we're having trouble loading the page you are looking for. <br> Please wait a moment and try again or use the actions below.</p>
 					<a href="index.php"><button class="btn btn-lg btn-info">Back to safety</button></a>
-					<a href="/"><button class="btn btn-lg btn-info">Previous page</button></a>
+					<a href="javascript:history.go(-1)"><button class="btn btn-lg btn-info">Previous page</button></a>
 				</div>
 			</div>
 		</div>

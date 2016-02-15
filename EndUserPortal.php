@@ -56,14 +56,16 @@ $dal = new DAL();
       <?php
       include_once 'modules/end_user_portal/header.php';
       if (isset($_GET['page'])) {
-        if ($_GET['page'] == 'Mailbox') {
-          include_once 'modules/mailbox/mailbox-ui.php';
+        if (($_GET['page'] == 'Mailbox') && (!$_GET['mb'])) {
+          include_once 'modules/end_user_portal/mailbox.php';
         } else if(($_GET['page'] == 'ViewRequests') && (!$_GET['sr'])) {
           include_once 'modules/end_user_portal/requests.php';
         } else if($_GET['page'] == 'Profile') {
           include_once 'modules/end_user_portal/profile.php';
         } else if (($_GET['page'] == "ViewRequests") && ($_GET['sr'])) {
           include_once 'modules/end_user_portal/request_view.php';
+        } else if(($_GET['page'] == "Mailbox") && ($_GET['mb'])) {
+          include_once 'modules/end_user_portal/read-comments.php';
         }
       } else {
           include_once 'modules/end_user_portal/submit.php';
@@ -72,15 +74,10 @@ $dal = new DAL();
 
     </div><!-- ./wrapper -->
 
-    <!-- jQuery 2.1.4 -->
-    <script src="../../plugins/jQuery/jQuery-2.1.4.min.js"></script>
-    <!-- jQuery Ui -->
-    <script src="../../plugins/jQueryUI/jquery-ui.min.js"></script>
-    <!-- Bootstrap 3.3.5 -->
-    <script src="../../bootstrap/js/bootstrap.min.js"></script>
-
     <!-- jQuery -->
     <script src="/bower/jquery/dist/jquery.min.js"></script>
+    <!-- jQuery UI -->
+    <script src="/bower/AdminLTE/plugins/jQueryUI/jquery-ui.min.js"></script>
     <!-- Bootstrap -->
     <script src="/bower/bootstrap/dist/js/bootstrap.min.js"></script>
 
@@ -90,10 +87,10 @@ $dal = new DAL();
     <script src="/bower/AdminLTE/plugins/fastclick/fastclick.min.js"></script>
     <!-- AdminLTE App -->
 
-    <script src="../../dist/js/app.min.js"></script>
+    <script src="/bower/AdminLTE/dist/js/app.min.js"></script>
     <!-- DataTables -->
-    <script src="plugins/datatables/jquery.dataTables.js"></script>
-    <script src="plugins/datatables/dataTables.bootstrap.js"></script>
+    <script src="/bower/AdminLTE/plugins/datatables/jquery.dataTables.js"></script>
+    <script src="/bower/AdminLTE/plugins/datatables/dataTables.bootstrap.js"></script>
     <script>
       $(function () {
         $('#records').DataTable({
@@ -115,9 +112,5 @@ $dal = new DAL();
         });
       });
     </script>
-
-    <script src="/bower/AdminLTE/dist/js/app.min.js"></script>
-
-
   </body>
 </html>
