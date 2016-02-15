@@ -1,47 +1,75 @@
-<h3>Change Access</h3>
+<h2>Manage User Group: (<?= $myACL->getUsername($_GET['for']); ?>)</h2>
+<form action=<?= htmlspecialchars($_SERVER["PHP_SELF"]) ?> method="post">
+  <table class="acList">
+    <tr>
+      <th>&nbsp;</th>
+      <th>Member</th>
+      <th>Not Member</th>
+    </tr>
+    <?php
+    $roleACL = new ACL($_GET['for']);
+    $roles = $roleACL->getAllRoles('full');
+      foreach ($roles as $k => $v)
+      {
+          echo "<tr><td><label>" . $v['Name'] . "</label></td>";
+          echo "<td><input type=\"radio\" name=\"role_" . $v['ID'] . "\" id=\"role_" . $v['ID'] . "_1\" value=\"1\"";
+          if ($roleACL->userHasRole($v['ID'])) { echo " checked=\"checked\""; }
+          echo " /></td>";
+          echo "<td><input type=\"radio\" name=\"role_" . $v['ID'] . "\" id=\"role_" . $v['ID'] . "_0\" value=\"0\"";
+          if (!$roleACL->userHasRole($v['ID'])) { echo " checked=\"checked\""; }
+          echo " /></td>";
+          echo "</tr>";
+      }
+    ?>
+  </table>
+  <input type="hidden" name="action" value="saveRoles" />
+  <input type="hidden" name="userID" value="<?= $_GET['for']; ?>" />
+  <br>
+  <div class="btn-group" role="group">
+    <button id="submit" name="Submit" class="btn btn-primary">Apply Group Membership</button>
+    <a id="cancel" name="Cancel" class="btn btn-danger" onclick="window.location='?action=ViewAdmin#access_users'">Cancel</a>
+  </div>
+</form>
 
-<form class="form-horizontal" action="<?=$authenticator->ChangeAccessGroup; ?>" method="POST">
-
-  <!-- Select Basic -->
-  <div class="form-group">
-    <div class="col-md-8">
-      <label class="control-label" for="access-type">Select Access Type</label>
-      <?php
-      //db connection
-      mysql_connect($conf['sql']['host'],$conf['sql']['user'],$conf['sql']['pass']);
-      mysql_select_db($conf['sql']['name']);
-
-      //query
-      $selected_user = $_GET['for'];
-      $groups=mysql_query("SELECT * FROM user_group");
-      $access=mysql_query("SELECT users.type as type
-                            FROM users
-                            INNER JOIN user_group ON user_group.id=users.type
-                            WHERE users.id='$selected_user'");
-      $curr=mysql_fetch_array($access);
-      if(mysql_num_rows($groups)){
-      $select= '<select name="access_level" id="access_level">';
-      $select .= '<option disabled>Select Access</option>';
-      while($rs=mysql_fetch_array($groups)){
-            $select.='<option value="'.$rs['id'].'"';
-            if ($rs['id'] == $curr['type'])
-              $select.='selected>'.$rs['type'].'</option>';
-            else
-              $select.='>'.$rs['type'].'</option>';
+<h2>Manage User Permissions: (<?= $myACL->getUsername($_GET['for']); ?>)</h2>
+<form action=<?= htmlspecialchars($_SERVER["PHP_SELF"]) ?> method="post">
+  <table class="acList">
+    <tr>
+      <th></th>
+      <th></th>
+    </tr>
+    <?php
+    $userACL = new ACL($_GET['for']);
+    $rPerms = $userACL->perms;
+    $aPerms = $userACL->getAllPerms('full');
+    foreach ($aPerms as $k => $v) {
+      echo "<tr><td>" . $v['Name'] . "</td>";
+      echo "<td><select name=\"perm_" . $v['ID'] . "\">";
+      echo "<option value=\"1\"";
+      if ($userACL->hasPermission($v['Key']) && $rPerms[$v['Key']]['inheritted'] != true) { echo " selected=\"selected\""; }
+      echo ">Allow</option>";
+      echo "<option value=\"0\"";
+      if ($rPerms[$v['Key']]['value'] === false && $rPerms[$v['Key']]['inheritted'] != true) { echo " selected=\"selected\""; }
+      echo ">Deny</option>";
+      echo "<option value=\"x\"";
+      if ($rPerms[$v['Key']]['inheritted'] == true || !array_key_exists($v['Key'],$rPerms)) {
+        echo " selected=\"selected\"";
+        if ($rPerms[$v['Key']]['value'] === true ) {
+          $iVal = '(Allow)';
+        } else {
+          $iVal = '(Deny)';
         }
       }
-      $select.='</select>';
-      echo $select;
-      ?>
-      <!--</select>-->
-    </div>
-  </div>
-
-  <!-- Button -->
-  <div class="form-group">
-    <label class="col-md-8 control-label" for="submit"></label>
-    <div class="col-md-8">
-      <button id="submit_acl" name="submit_acl" class="btn btn-primary">Update</button>
-    </div>
+      echo ">Inherit $iVal</option>";
+      echo "</select></td></tr>";
+    }
+  ?>
+  </table>
+  <input type="hidden" name="action" value="savePerms" />
+  <input type="hidden" name="userID" value="<?= $_GET['for']; ?>" />
+  <br>
+  <div class="btn-group" role="group">
+    <button id="submit" name="Submit" class="btn btn-primary">Apply Permission Override</button>
+    <a id="cancel" name="Cancel" class="btn btn-danger" onclick="window.location='?action=ViewAdmin#access_users'">Cancel</a>
   </div>
 </form>
