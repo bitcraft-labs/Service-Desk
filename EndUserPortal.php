@@ -70,7 +70,7 @@ $dal = new DAL();
       } else {
           include_once 'modules/end_user_portal/submit.php';
       }
-      include_once 'modules/footer.php'; ?>
+      include_once 'modules/end_user_portal/footer.php'; ?>
 
     </div><!-- ./wrapper -->
 
