@@ -8,7 +8,7 @@ Status:     Staging; Idea Testing; Development
 -->
 <?php
   include("modules/mainhead.php");
-  if ($myACL->hasPermission('access_eup') != true) {
+  if ($myACL->hasPermission('eu_portal') != true) {
     header("location: /");
     exit;
   }
