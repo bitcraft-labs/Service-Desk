@@ -1,4 +1,8 @@
-<?php include_once 'modules/admin/actions/makeConfig.php'; ?>
+<?php
+if (!($myACL->hasPermission('access_admin'))) {
+	echo "Unauthorized access!";
+} else {
+include_once 'modules/admin/actions/makeConfig.php'; ?>
 <div class="row">
 	<div class="col-md-12">
 		<form class="form-horizontal" action='<?php echo $authenticator->GetSelfScript(); ?>' method="post">
@@ -104,3 +108,4 @@
 		</form>
 	</div>
 </div>
+<?php } ?>

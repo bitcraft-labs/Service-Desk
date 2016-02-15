@@ -1,16 +1,3 @@
-<?php
-include_once 'modules/config.inc.php';
-//include_once 'modules/login_auth/_validate.php';
-require_once("./modules/authentication/config.php");
-include_once 'modules/config-func.php';
-$dal = new DAL();
-
-if(!$authenticator->CheckLogin())
-{
-    $authenticator->RedirectToURL("login.php");
-    exit;
-}
-?>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
