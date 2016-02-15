@@ -25,7 +25,8 @@ Status:     Staging; Idea Testing; Development
 		include_once 'modules/left_sidebar.php';
 		include_once 'modules/page_handling.php';
 		include_once 'modules/footer.php';
-		include_once 'modules/control_sidebar.php';?>
+		include_once 'modules/control_sidebar.php';
+    include_once 'modules/recent_act';?>
     </div><!-- ./wrapper -->
 
 <!-- REQUIRED JS SCRIPTS -->
