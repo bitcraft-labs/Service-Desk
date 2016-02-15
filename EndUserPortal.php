@@ -6,17 +6,12 @@ For:        Software Engineering
 Dev Date:   Spring 2016
 Status:     Staging; Idea Testing; Development
 -->
-<html>
 <?php
-$page_title = 'End User Portal';
-include_once 'modules/config.inc.php';
-require_once("./modules/authentication/config.php");
-
-if(!$authenticator->CheckLogin())
-{
-    $authenticator->RedirectToURL("login.php");
+  include("modules/mainhead.php");
+  if ($myACL->hasPermission('access_eup') != true) {
+    header("location: /");
     exit;
-}
+  }
 ?>
 <head>
     <meta charset="utf-8">

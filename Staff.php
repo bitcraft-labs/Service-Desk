@@ -6,6 +6,13 @@ For:        Software Engineering
 Dev Date:   Spring 2016
 Status:     Staging; Idea Testing; Development
 -->
+<?php
+  include("modules/mainhead.php");
+  if ($myACL->hasPermission('hd_portal') != true) {
+    header("location: /");
+    exit;
+  }
+?>
 <html>
 	<!-- head.php contains the stylesheets -->
   	<?php

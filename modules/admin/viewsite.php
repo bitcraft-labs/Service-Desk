@@ -1,7 +1,12 @@
+<?php
+if (!($myACL->hasPermission('access_admin'))) {
+	echo "Unauthorized access!";
+} else {
+include_once 'modules/admin/actions/makeConfig.php'; ?>
 <div class="row">
 	<div class="col-md-12">
-		<form class="form-horizontal">
-
+		<form class="form-horizontal" action='<?php echo $authenticator->GetSelfScript(); ?>' method="post">
+			<input type='hidden' name='config_submitted' id='submitted' value='1'/>
 			<!-- Text input-->
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="db_host">Database Host</label>
@@ -24,7 +29,7 @@
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="db_pass">Database Pass</label>
 			  <div class="col-md-4">
-			  <?php echo "<input id='db_pass' name='db_pass' type='text' placeholder='db_pass' class='form-control input-md' value='".$conf['sql']['pass']."' required=''>";?>
+			  <?php echo "<input id='db_pass' name='db_pass' type='text' placeholder='(blank)' class='form-control input-md' value='".$conf['sql']['pass']."'>";?>
 
 			  </div>
 			</div>
@@ -103,3 +108,4 @@
 		</form>
 	</div>
 </div>
+<?php } ?>
