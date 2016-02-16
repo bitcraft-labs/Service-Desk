@@ -6,19 +6,12 @@ For:        Software Engineering
 Dev Date:   Spring 2016
 Status:     Staging; Idea Testing; Development
 -->
-<html>
 <?php
-$page_title = 'End User Portal';
-include_once 'modules/config.inc.php';
-include_once 'modules/config-func.php';
-require_once("./modules/authentication/config.php");
-
-if(!$authenticator->CheckLogin())
-{
-    $authenticator->RedirectToURL("login.php");
+  include("modules/mainhead.php");
+  if ($myACL->hasPermission('eu_portal') != true) {
+    header("location: /");
     exit;
-}
-$dal = new DAL(); 
+  }
 ?>
 <head>
     <meta charset="utf-8">
@@ -69,7 +62,7 @@ $dal = new DAL();
         }
       } else {
           include_once 'modules/end_user_portal/submit.php';
-      }
+      } 
       include_once 'modules/end_user_portal/footer.php'; ?>
 
     </div><!-- ./wrapper -->

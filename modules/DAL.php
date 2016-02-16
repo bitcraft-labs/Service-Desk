@@ -91,8 +91,11 @@ class DAL {
     return $this->query($sql);
   }
 
-  public function getAllBuildings() {
-    $sql = "SELECT * FROM building";
+  /* End user function */
+  public function getBuildingsRow($name) {
+    if($name == 'all') {
+      $sql = "SELECT * FROM building";
+    }
     return $this->query($sql);
   }
 
@@ -133,21 +136,17 @@ class DAL {
   // <-------- /Staff Module --------------
 
   private function dbconnect() {
-    $conn = mysql_connect(DB_HOST, DB_USER, DB_PASSWORD)
-        or die ("<br/>Could not connect to MySQL server");
-
-    mysql_select_db(DB_DB,$conn)
-        or die ("<br/>Could not select the indicated database");
+    $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD)
+        or die ("<br/>Could not connect to MySQL server " . mysqli_error());
+    // mysql_select_db(DB_DB,$conn)
+    //     or die ("<br/>Could not select the indicated database");
 
     return $conn;
   }
 
   private function query($sql){
-
-    $this->dbconnect();
-
-    $res = mysql_query($sql);
-
+    $res = mysqli_query($this->dbconnect(), $sql);
+    echo $res;
     if ($res){
       if (strpos($sql,'SELECT') === false){
         return true;
@@ -164,7 +163,7 @@ class DAL {
 
     $results = array();
 
-    while ($row = mysql_fetch_array($res)){
+    while ($row = mysqli_fetch_array($res)){
 
       $result = new DALQueryResult();
 
