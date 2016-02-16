@@ -38,7 +38,6 @@
                     <h4><i class="fa fa-exclamation-triangle fa-2x pull-left align m-red"></i> <a data-toggle="modal" data-target="#incidentModal" name="submit-value" href="#">Service Problem</a><br />
                       <small>Having an issue with Blackboard or another web application?</small></h4>
                   </div>
-
                   <!-- Logins & Accounts -->
                   <div class="tab-pane" id="1">
                     <h4><i class="fa fa-google fa-2x pull-left align m-red"></i> <a data-toggle="modal" data-target="#incidentModal" name="submit-value" href="#">Google Apps Account</a><br />

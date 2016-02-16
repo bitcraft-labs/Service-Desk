@@ -16,17 +16,13 @@
 					<div class="form-group">
 						<label for="incident-building">Building</label>
 						<select name="incident-building" class="form-control input-md" id="incident-building" >
-							<option selected disabled>Choose your building</option>
-							<option value="1">Campus Police</option>
-							<option value="2">Russell Towers</option>
-							<option value="3">McKay Complex</option>
-							<option value="4">Miller</option>
-							<option value="5">Percival</option>
-							<option value="6">Holmes Dining Commons</option>
-							<option value="7">Thompson</option>
-							<option value="8">Mara Commons</option>
-							<option value="9">Edgerly</option>
-							<option value="10">Condike Science</option>
+							<?php  
+								$option_html = '<option selected disabled>Choose your building</option>';
+								foreach($dal->getAllBuildings() as $results) {
+									$option_html .= '<option value="'.$results[0].'">'.$results[1].'</option>';
+								}
+								echo $option_html;
+							?>
 						</select>
 					</div>
 					<div class="form-group">
@@ -35,7 +31,7 @@
 					</div>
 					<div class="form-group">
 						<label for="incident-description">Description</label>
-						<textarea rows="8" name="incident-description" class="form-control input-md" id="incident-description"></textarea>
+						<textarea rows="8" name="incident-description" class="form-control input-md" id="incident-description" style="resize: none;"></textarea>
 					</div>
 					<button type="submit" class="btn btn-lg btn-success">Send!</button>
 				</form>

@@ -120,6 +120,9 @@
   top: 50%;
   left: 50%;
 }
+tbody tr {
+  cursor: pointer;
+}
 /* MEDIA QUERIES */
 @media screen and (max-width : 991px) {
    .navbar li {
@@ -143,7 +146,7 @@
     font-size: 15px;
   }
   .mobile-table {
-      display: none;
+    display: none;
   }
   .container-reg {
     display: none;
@@ -151,6 +154,9 @@
   .container-mobile {
     display: inline-block;
     padding-bottom: 20px;
+  }
+  .mobile-align {
+    padding-left: 54px;
   }
 }
 @media screen and (max-width : 568px) {
