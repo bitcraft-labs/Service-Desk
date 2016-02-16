@@ -9,7 +9,7 @@ Status:     Staging; Idea Testing; Development
 <?php
   include("modules/mainhead.php");
   //redirect per certain permissions
-  if (($myACL->hasPermission('hd_portal') != true) && ($myACL->hasPermission('eu_portal'))) {
+  if ((!$myACL->hasPermission('hd_portal')) && ($myACL->hasPermission('eu_portal'))) {
     echo "If page is stuck, click <a href='EndUserPortal.php'>here</a> to continue.";
     header("location: ../EndUserPortal.php");
     exit;
@@ -23,7 +23,7 @@ Status:     Staging; Idea Testing; Development
   }
 ?>
 <html>
-<?php 
+<?php
 include_once 'modules/head.php'; ?>
 <body></body>
 </html>
