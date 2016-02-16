@@ -1,19 +1,7 @@
 <?php
-if ($_SESSION['user_type'] == 3) {
-echo "<script type='text/javascript'>
-  window.location.replace('EndUserPortal.php');
-  </script>";
-exit;
-}
 if (isset($_GET['page'])) {
 	$requested_page = $_GET['page'];
-	if ($_SESSION['user_type'] == 1) {
-		$allowed_sector = $admin_pages;
-	} elseif ($_SESSION['user_type'] == 2) {
-		$allowed_sector = $allowed_pages;
-	} else {
-		$allowed_sector = array('');
-	}
+	$allowed_sector = $allowed_pages;
 	if (!in_array($requested_page, $allowed_sector)) {
 		include_once '404.php';
 	} else {
@@ -30,9 +18,5 @@ if (isset($_GET['page'])) {
 		}
 	}
 } else { 
-	if ($_SESSION['user_type'] == 3) {
-		include_once '404.php';
-	} else {
-		include_once 'dashboard.php'; 
-	}
+	include_once 'dashboard.php'; 
 } ?>

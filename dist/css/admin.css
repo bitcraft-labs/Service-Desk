@@ -41,3 +41,8 @@
 .head-area > h2 > small {
   color: #fff;
 }
+
+td, th {
+  padding-left: 20px;
+  
+}

@@ -6,7 +6,84 @@ For:        Software Engineering
 Dev Date:   Spring 2016
 Status:     Staging; Idea Testing; Development
 -->
-<html>
+<?php
+  include("modules/mainhead.php");
+  if (!($myACL->hasPermission('access_admin')) && !($myACL->hasPermission('manage_templates')) && !($myACL->hasPermission('manage_users'))) {
+    header("location: /");
+    exit;
+  }
+?>
+<?php
+if (isset($_POST['action'])) {
+  switch($_POST['action']) {
+    case 'saveRoles':
+      $redir = "?action=ViewAdmin&for=" . $_POST['userID'] . "&do=ChangeAccess#access_users";
+      foreach ($_POST as $k => $v) {
+        if (substr($k,0,5) == "role_") {
+          $roleID = str_replace("role_","",$k);
+          if ($v == '0' || $v == 'x') {
+            $strSQL = sprintf("DELETE FROM `user_roles` WHERE `userID` = %u AND `roleID` = %u",$_POST['userID'],$roleID);
+          } else {
+            $strSQL = sprintf("REPLACE INTO `user_roles` SET `userID` = %u, `roleID` = %u, `addDate` = '%s'",$_POST['userID'],$roleID,date ("Y-m-d H:i:s"));
+          }
+          mysql_query($strSQL);
+        }
+      }
+      
+    break;
+    case 'savePerms':
+      $redir = "?action=ViewAdmin&for=" . $_POST['userID'] . "&do=ChangeAccess#access_users";
+      foreach ($_POST as $k => $v) {
+        if (substr($k,0,5) == "perm_") {
+          $permID = str_replace("perm_","",$k);
+          if ($v == 'x') {
+            $strSQL = sprintf("DELETE FROM `user_perms` WHERE `userID` = %u AND `permID` = %u",$_POST['userID'],$permID);
+          } else {
+            $strSQL = sprintf("REPLACE INTO `user_perms` SET `userID` = %u, `permID` = %u, `value` = %u, `addDate` = '%s'",$_POST['userID'],$permID,$v,date ("Y-m-d H:i:s"));
+          }
+          mysql_query($strSQL);
+        }
+      }
+    break;
+    case 'saveRoleInfo':
+      $redir = "?action=ViewAdmin&for=" . $_POST['roleID'] . "&do=EditGroup#access_groups";
+      $strSQL = sprintf("REPLACE INTO `roles` SET `ID` = %u, `roleName` = '%s'",$_POST['roleID'],$_POST['roleName']);
+      mysql_query($strSQL);
+      if (mysql_affected_rows() > 1)
+      {
+        $roleID = $_POST['roleID'];
+      } else {
+        $roleID = mysql_insert_id();
+      }
+      foreach ($_POST as $k => $v)
+      {
+        if (substr($k,0,5) == "perm_")
+        {
+          $permID = str_replace("perm_","",$k);
+          if ($v == 'X')
+          {
+            $strSQL = sprintf("DELETE FROM `role_perms` WHERE `roleID` = %u AND `permID` = %u",$roleID,$permID);
+            mysql_query($strSQL);
+            continue;
+          }
+          $strSQL = sprintf("REPLACE INTO `role_perms` SET `roleID` = %u, `permID` = %u, `value` = %u, `addDate` = '%s'",$roleID,$permID,$v,date ("Y-m-d H:i:s"));
+          mysql_query($strSQL);
+        }
+      }
+    break;
+    case 'deleteRole':
+      $redir = "?action=ViewAdmin#access_groups";
+      $strSQL = sprintf("DELETE FROM `roles` WHERE `ID` = %u LIMIT 1",$_POST['roleID']);
+      mysql_query($strSQL);
+      $strSQL = sprintf("DELETE FROM `user_roles` WHERE `roleID` = %u",$_POST['roleID']);
+      mysql_query($strSQL);
+      $strSQL = sprintf("DELETE FROM `role_perms` WHERE `roleID` = %u",$_POST['roleID']);
+      mysql_query($strSQL);
+    break;
+  }
+  header("location: Admin.php" . $redir);
+}
+?>
   	<?php
     include_once 'modules/admin/head.php'; ?>
     <?php echo "<body class='hold-transition skin-red sidebar-mini'>"; ?>
@@ -15,15 +92,8 @@ Status:     Staging; Idea Testing; Development
 		// build the user interface
 		include_once 'modules/header.php';
 		include_once 'modules/left_sidebar.php';
-
-    if ($_SESSION['user_type'] != 1) {
-      include_once '404.php';
-    } else {
-      include_once 'modules/admin/functions.php';
-      include_once 'modules/config-func.php';
-      $dal = new DAL();
-      include_once 'modules/admin/admin.php';
-    }
+    include_once 'modules/admin/functions.php';
+    include_once 'modules/admin/admin.php';
 		include_once 'modules/footer.php';
 		include_once 'modules/control_sidebar.php';
     ?>
@@ -67,41 +137,29 @@ Status:     Staging; Idea Testing; Development
     });
   });
 
-  $('#admin_tabs').on('click', 'a[data-toggle="tab"]', function(e) {
-      e.preventDefault();
-
-      var $link = $(this);
-
-      if (!$link.parent().hasClass('active')) {
-
-        //remove active class from other tab-panes
-        $('.tab-content:not(.' + $link.attr('href').replace('#','') + ') .tab-pane').removeClass('active');
-
-        // click first submenu tab for active section
-        $('a[href="' + $link.attr('href') + '_all"][data-toggle="tab"]').click();
-
-        // activate tab-pane for active section
-        $('.tab-content.' + $link.attr('href').replace('#','') + ' .tab-pane:first').addClass('active');
-      }
-
-    });
-  	// Javascript to enable link to tab
-  	var url = document.location.toString();
-  	if (url.match('#')) {
-  	    $('.nav-pills a[href=#'+url.split('#')[1]+']').tab('show') ;
-  	}
-
-  	// Change hash for page-reload
-  	$('.nav-pills a').on('shown.bs.tab', function (e) {
-  	    window.location.hash = e.target.hash;
-  	});
-</script>
-
-    <!-- Optionally, you can add Slimscroll and FastClick plugins.
-         Both of these plugins are recommended to enhance the
-         user experience. Slimscroll is required when using the
-         fixed layout. -->
-    <?php
-    //include_once 'modules/admin/modals.php'; ?>
+  $(document).ready(function(){
+    //Manage hash in URL to open the right pill
+    var hash = window.location.hash;
+    // If a hash is provided 
+    if(hash && hash.length>0)
+    {
+        // Manage Pill titles
+        $('ul.nav-pills li a').each(function( index ) {
+            if($(this).attr('href')==hash)
+                $(this).parent('li').addClass('active');
+            else
+                $(this).parent('li').removeClass('active');
+        });
+        // Manage Tab content
+        var hash = hash.substring(1); // Remove the #
+        $('div.tab-content div').each(function( index ) {
+            if($(this).attr('id')==hash)
+                $(this).addClass('active');
+            else
+                $(this).removeClass('active');
+        });
+    }
+  });
+  </script>
   </body>
 </html>

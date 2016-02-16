@@ -43,7 +43,7 @@
 
       <li class="header">Staff</li>
       <li <?php if (($url == 'Staff.php') && ($_GET['id'] == "all")) echo "class='active'"; ?> ><a href="Staff.php?id=all"><i class="fa fa-users"></i> <span>View Staff</span></a></li>
-      <?php if ($_SESSION['user_type'] == 1) { ?>
+      <?php if (($myACL->hasPermission('access_admin')) || ($myACL->hasPermission('manage_templates')) || ($myACL->hasPermission('manage_users'))) { ?>
       <li class="header">Admin</li>
       <li <?php if (($url == 'Admin.php') && (($_GET['action'] == '') || ($_GET['action'] == 'ViewAdmin'))) echo "class='active'"; ?> ><a href="/Admin.php?action=ViewAdmin"><i class="fa fa-cogs"></i> <span>Admin Panel</span></a></li>
       <?php } ?>
