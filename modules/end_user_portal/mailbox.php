@@ -56,8 +56,7 @@
 		                <table class="table table-hover table-striped">
 		                  <tbody>
 		                  <tr data-href="?page=Mailbox&mb=<?= $read_comments_number++; ?>">
-		                    <td><input type="checkbox"></td>
-		                    <td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>
+		                    <td><?= $read_comments_number - 1; ?></td>
 		                    <td class="mailbox-name">Alexander Pierce</td>
 		                    <td class="mailbox-subject"><strong>Computer Issue</strong> - Trying to find a solution to this problem...
 		                    </td>
@@ -65,8 +64,7 @@
 		                    <td class="mailbox-date">5 mins ago</td>
 		                  </tr>
 		                  <tr data-href="?page=Mailbox&mb=<?= $read_comments_number++; ?>">
-		                    <td><input type="checkbox"></td>
-		                    <td class="mailbox-star"><a href="#"><i class="fa fa-star-o text-yellow"></i></a></td>
+		                    <td><?= $read_comments_number - 1; ?></td>		                    
 		                    <td class="mailbox-name">Alexander Pierce</td>
 		                    <td class="mailbox-subject"><strong>Computer Issue</strong> - Trying to find a solution to this problem...
 		                    </td>
@@ -74,8 +72,7 @@
 		                    <td class="mailbox-date">28 mins ago</td>
 		                  </tr>
 		                  <tr data-href="?page=Mailbox&mb=<?= $read_comments_number++; ?>">
-		                    <td><input type="checkbox"></td>
-		                    <td class="mailbox-star"><a href="#"><i class="fa fa-star-o text-yellow"></i></a></td>
+		                    <td><?= $read_comments_number - 1; ?></td>
 		                    <td class="mailbox-name">Alexander Pierce</td>
 		                    <td class="mailbox-subject"><strong>Computer Issue</strong> - Trying to find a solution to this problem...
 		                    </td>
@@ -83,8 +80,7 @@
 		                    <td class="mailbox-date">11 hours ago</td>
 		                  </tr>
 		                  <tr data-href="?page=Mailbox&mb=<?= $read_comments_number++; ?>">
-		                    <td><input type="checkbox"></td>
-		                    <td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>
+		                    <td><?= $read_comments_number - 1; ?></td>
 		                    <td class="mailbox-name">Alexander Pierce</td>
 		                    <td class="mailbox-subject"><strong>Computer Issue</strong> - Trying to find a solution to this problem...
 		                    </td>
@@ -92,8 +88,7 @@
 		                    <td class="mailbox-date">15 hours ago</td>
 		                  </tr>
 		                  <tr data-href="?page=Mailbox&mb=<?= $read_comments_number++; ?>">
-		                    <td><input type="checkbox"></td>
-		                    <td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>
+		                    <td><?= $read_comments_number - 1; ?></td>
 		                    <td class="mailbox-name">Alexander Pierce</td>
 		                    <td class="mailbox-subject"><strong>Computer Issue</strong> - Trying to find a solution to this problem...
 		                    </td>
@@ -101,8 +96,7 @@
 		                    <td class="mailbox-date">Yesterday</td>
 		                  </tr>
 		                  <tr data-href="?page=Mailbox&mb=<?= $read_comments_number++; ?>">
-		                    <td><input type="checkbox"></td>
-		                    <td class="mailbox-star"><a href="#"><i class="fa fa-star-o text-yellow"></i></a></td>
+		                    <td><?= $read_comments_number - 1; ?></td>		                    
 		                    <td class="mailbox-name">Alexander Pierce</td>
 		                    <td class="mailbox-subject"><strong>Computer Issue</strong> - Trying to find a solution to this problem...
 		                    </td>
@@ -110,8 +104,7 @@
 		                    <td class="mailbox-date">2 days ago</td>
 		                  </tr>
 		                  <tr data-href="?page=Mailbox&mb=<?= $read_comments_number++; ?>">
-		                    <td><input type="checkbox"></td>
-		                    <td class="mailbox-star"><a href="#"><i class="fa fa-star-o text-yellow"></i></a></td>
+		                    <td><?= $read_comments_number - 1; ?></td>		                  
 		                    <td class="mailbox-name">Alexander Pierce</td>
 		                    <td class="mailbox-subject"><strong>Computer Issue</strong> - Trying to find a solution to this problem...
 		                    </td>
@@ -119,8 +112,7 @@
 		                    <td class="mailbox-date">2 days ago</td>
 		                  </tr>
 		                  <tr data-href="?page=Mailbox&mb=<?= $read_comments_number++; ?>">
-		                    <td><input type="checkbox"></td>
-		                    <td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>
+		                    <td><?= $read_comments_number - 1; ?></td>
 		                    <td class="mailbox-name">Alexander Pierce</td>
 		                    <td class="mailbox-subject"><strong>Computer Issue</strong> - Trying to find a solution to this problem...
 		                    </td>
@@ -128,8 +120,7 @@
 		                    <td class="mailbox-date">2 days ago</td>
 		                  </tr>
 		                  <tr data-href="?page=Mailbox&mb=<?= $read_comments_number++; ?>">
-		                    <td><input type="checkbox"></td>
-		                    <td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>
+		                    <td><?= $read_comments_number - 1; ?></td>
 		                    <td class="mailbox-name">Alexander Pierce</td>
 		                    <td class="mailbox-subject"><strong>Computer Issue</strong> - Trying to find a solution to this problem...
 		                    </td>
@@ -137,8 +128,7 @@
 		                    <td class="mailbox-date">2 days ago</td>
 		                  </tr>
 		                  <tr data-href="?page=Mailbox&mb=<?= $read_comments_number++; ?>">
-		                    <td><input type="checkbox"></td>
-		                    <td class="mailbox-star"><a href="#"><i class="fa fa-star-o text-yellow"></i></a></td>
+		                    <td><?= $read_comments_number - 1; ?></td>		                    
 		                    <td class="mailbox-name">Alexander Pierce</td>
 		                    <td class="mailbox-subject"><strong>Computer Issue</strong> - Trying to find a solution to this problem...
 		                    </td>
@@ -146,8 +136,7 @@
 		                    <td class="mailbox-date">2 days ago</td>
 		                  </tr>
 		                  <tr data-href="?page=Mailbox&mb=<?= $read_comments_number++; ?>">
-		                    <td><input type="checkbox"></td>
-		                    <td class="mailbox-star"><a href="#"><i class="fa fa-star-o text-yellow"></i></a></td>
+		                    <td><?= $read_comments_number - 1; ?></td>		                  
 		                    <td class="mailbox-name">Alexander Pierce</td>
 		                    <td class="mailbox-subject"><strong>Computer Issue</strong> - Trying to find a solution to this problem...
 		                    </td>
@@ -155,8 +144,7 @@
 		                    <td class="mailbox-date">4 days ago</td>
 		                  </tr>
 		                  <tr data-href="?page=Mailbox&mb=<?= $read_comments_number++; ?>">
-		                    <td><input type="checkbox"></td>
-		                    <td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>
+		                    <td><?= $read_comments_number - 1; ?></td>
 		                    <td class="mailbox-name">Alexander Pierce</td>
 		                    <td class="mailbox-subject"><strong>Computer Issue</strong> - Trying to find a solution to this problem...
 		                    </td>
@@ -164,8 +152,8 @@
 		                    <td class="mailbox-date">12 days ago</td>
 		                  </tr>
 		                  <tr data-href="?page=Mailbox&mb=<?= $read_comments_number++; ?>">
-		                    <td><input type="checkbox"></td>
-		                    <td class="mailbox-star"><a href="#"><i class="fa fa-star-o text-yellow"></i></a></td>
+		                    <td><?= $read_comments_number - 1; ?></td>
+		                    
 		                    <td class="mailbox-name">Alexander Pierce</td>
 		                    <td class="mailbox-subject"><strong>Computer Issue</strong> - Trying to find a solution to this problem...
 		                    </td>
@@ -173,8 +161,7 @@
 		                    <td class="mailbox-date">12 days ago</td>
 		                  </tr>
 		                  <tr data-href="?page=Mailbox&mb=<?= $read_comments_number++; ?>">
-		                    <td><input type="checkbox"></td>
-		                    <td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>
+		                    <td><?= $read_comments_number - 1; ?></td>
 		                    <td class="mailbox-name">Alexander Pierce</td>
 		                    <td class="mailbox-subject"><strong>Computer Issue</strong> - Trying to find a solution to this problem...
 		                    </td>
@@ -182,8 +169,7 @@
 		                    <td class="mailbox-date">14 days ago</td>
 		                  </tr>
 		                  <tr data-href="?page=Mailbox&mb=<?= $read_comments_number++; ?>">
-		                    <td><input type="checkbox"></td>
-		                    <td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>
+		                    <td><?= $read_comments_number - 1; ?></td>
 		                    <td class="mailbox-name">Alexander Pierce</td>
 		                    <td class="mailbox-subject"><strong>Computer Issue</strong> - Trying to find a solution to this problem...
 		                    </td>

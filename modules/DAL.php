@@ -91,6 +91,11 @@ class DAL {
     return $this->query($sql);
   }
 
+  public function getAllBuildings() {
+    $sql = "SELECT * FROM building";
+    return $this->query($sql);
+  }
+
   public function getUserAccessLevel($user) {
     $sql = "SELECT users.type as type
       FROM users

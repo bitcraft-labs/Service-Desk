@@ -113,7 +113,7 @@ $dal = new DAL();
       });
       $('.table > tbody > tr').on('click', function (event) {
         document.location = $(this).attr('data-href');
-      })
+      });
     </script>
   </body>
 </html>
