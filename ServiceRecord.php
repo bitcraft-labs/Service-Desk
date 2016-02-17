@@ -63,8 +63,10 @@ Status:     Staging; Idea Testing; Development
 				}
 				elseif (isset($sr) && is_numeric($sr))
 					echo "Service Record: $sr";
-				elseif (isset($sr) && $sr == 'new')
+				elseif (isset($sr) && $sr == 'new'){
 					echo "Add New Service Record";
+                    include_once 'modules/service_record/templates/sr_new.php';
+                }
 				else
 					echo "Welcome to Service Record Central";
 				?></h1>
