@@ -2,7 +2,7 @@
 
 // Include DAL
 require_once('modules/DAL.php');
-
+require_once('modules/DALi.php');
 // Database
 define ( 'DB_HOST',     $conf['sql']['host']);
 define ( 'DB_USER',     $conf['sql']['user']);
