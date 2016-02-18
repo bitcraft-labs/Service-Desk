@@ -13,14 +13,14 @@
 						<input type="text" class="form-control input-md" id="incident-title" name="incident-title" placeholder="">
 					</div>
 					<div class="form-group">
-						<label for="incident-building">Building <?php $build = $dal->getBuildingsRow('all'); echo var_dump($build); ?></label>
+						<label for="incident-building">Building</label>
 						<select name="incident-building" class="form-control input-md" id="incident-building" >
 							<?php  
 								$option_html = '<option selected disabled>Choose your building</option>';
-								$buildings = $dal->getBuildingsRow('all');
+								$buildings = $dali->getBuildingsRow('all');
 								if($buildings) {
 								 	foreach($buildings as $result) {
-								 		$option_html .= '<option value="'.$result['id'].'">'.$result['name'].'</option>';
+								 		$option_html .= '<option value="'.$result[0].'">'.$result[1].'</option>';
 								 	}
 							    }
 								echo $option_html;

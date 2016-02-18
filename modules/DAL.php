@@ -94,9 +94,10 @@ class DAL {
   /* End user function */
   public function getBuildingsRow($name) {
     if($name == 'all') {
-      $sql = "SELECT * FROM building";
+      $sql = "SELECT * FROM 'building'";
     }
     return $this->query($sql);
+    
   }
 
   public function getUserAccessLevel($user) {
@@ -136,7 +137,7 @@ class DAL {
   // <-------- /Staff Module --------------
 
   private function dbconnect() {
-    $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD)
+    $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_DB)
         or die ("<br/>Could not connect to MySQL server " . mysqli_error());
     // mysql_select_db(DB_DB,$conn)
     //     or die ("<br/>Could not select the indicated database");
@@ -146,7 +147,6 @@ class DAL {
 
   private function query($sql){
     $res = mysqli_query($this->dbconnect(), $sql);
-    echo $res;
     if ($res){
       if (strpos($sql,'SELECT') === false){
         return true;
