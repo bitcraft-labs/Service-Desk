@@ -14,6 +14,7 @@
    Questions & comments please send to support@javascript-coder.com
   -------------------------------------------------------------------------  
 */
+
 function Validator(frmname)
 {
   this.formobj=document.forms[frmname];

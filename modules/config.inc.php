@@ -50,6 +50,15 @@ $formatted_coname = "";
 $loginHeader = "<p style='padding-top:15px;'><img src='$logo' width='320' /></p>";
 $loginHeader .= "<h1><small>Login</small></h1>";
 
+/* CUSTOM ERROR PAGE HANDLING  */
+ $path = $_SERVER['DOCUMENT_ROOT'];
+ $path .= "/error_handling/error.php";
+ if(file_exists($path) && file_exists('../custom/config.php')) {
+ 	include_once('../custom/config.php');
+ 	$cusimg = '../custom/img';
+ 	$main_logo_top	 	= $cusimg.'/'.$conf['customize']['main_logo_top'];
+ }
+
 /* --- CUSTOM FILE HANDLING --- */
 if (file_exists('custom/config.php')) {
 	include_once 'custom/config.php';

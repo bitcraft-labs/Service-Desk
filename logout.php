@@ -1,6 +1,5 @@
 <?PHP
 require_once("./modules/authentication/config.php");
-
 $authenticator->LogOut();
 ?>
 <!DOCTYPE html>
