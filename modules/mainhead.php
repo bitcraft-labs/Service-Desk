@@ -6,6 +6,7 @@ include("modules/authentication/database.php");
 include("modules/authentication/class.acl.php");
 
 $dal = new DAL();
+$dali = new DALi();
 $myACL = new ACL();
 
 //check if logged in

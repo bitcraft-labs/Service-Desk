@@ -1,12 +1,12 @@
 <?php
 require_once("./modules/authentication/config.php");
-
+require_once("./modules/authentication/formvalidator.php");
 if(isset($_POST['submitted']))
 {
    if($authenticator->Login())
    {
         $authenticator->RedirectToURL("index.php");
-   }
+   } 
 }
 
 $emailsent = false;
@@ -18,7 +18,6 @@ if(isset($_POST['submitted_pass']))
         exit;
    }
 }
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -39,6 +38,7 @@ if ($conf['customize']['darkmode'] == 'dark') {
     <div class="page-header" style="text-align:center">
         <?php echo $loginHeader; ?>
     </div>
+    <?php echo $error; ?>
     <form id='login' class="col-md-12" action='<?php echo $authenticator->GetSelfScript(); ?>' name="login_form" method='post' accept-charset='UTF-8'>
       <input type='hidden' name='submitted' id='submitted' value='1'/>
       <div class="form-group has-feedback">
@@ -66,7 +66,7 @@ if ($conf['customize']['darkmode'] == 'dark') {
           </div>
         </div><!-- /.col -->
         <div class="col-xs-4">
-          <button name="Submit" type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+          <button name="Submit" name="submit" type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
         </div><!-- /.col -->
       </div>
       <div class="form-group">
@@ -115,6 +115,7 @@ if ($conf['customize']['darkmode'] == 'dark') {
     <script src="/bower/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- iCheck -->
     <script src="/bower/AdminLTE/plugins/iCheck/icheck.min.js"></script>
+
     <script>
       $(function () {
         $('input').iCheck({
