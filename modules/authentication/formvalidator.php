@@ -105,7 +105,7 @@ class FormValidator
 		if(strcmp($_SERVER['REQUEST_METHOD'],'POST')==0)
 		{
 			$form_variables = $_POST;
-		}
+		} 	
 		else
 		{
 			$form_variables = $_GET;

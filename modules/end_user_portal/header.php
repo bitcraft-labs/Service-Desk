@@ -7,14 +7,13 @@
 	        <i class="fa fa-bars"></i>
 	      </button>
 	    </div>
-
-	    <!-- Collect the nav links, forms, and other content for toggling -->
+	    <!-- Collect the nav links, forms, and other content for toggling --> <!-- EndUserPortal.php?page=sr -->
 	    <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
 	      <ul class="nav navbar-nav">
-	        <li class="active"><a href="./">Home <span class="sr-only">(current)</span></a></li>
-	        <li><a href="?page=checkups">Requests</a></li>
-	        <li><a href="?page=profile">Profile</a></li>
-	        <li><a href="?page=mailbox">Mailbox</a></li>
+	        <li <?php if (($_GET['page']) == '' && (!$_GET['sr'])) echo 'class="active"'; ?> ><a href="./">Home <span class="sr-only">Home</span></a></li>
+	        <li <?php if (($_GET['page'] == "ViewRequests") || (($_GET['page'] == "ViewRequests") && ($_GET['sr']))) echo 'class="active"';?> ><a href="?page=ViewRequests">Requests <span class="sr-only">Requests</span></a></li>
+	        <li <?php if ($_GET['page'] == 'Profile') echo 'class="active"'; ?> ><a href="?page=Profile">Profile <span class="sr-only">Profiles</span></a></li>
+	        <li <?php if ($_GET['page'] == 'Mailbox') echo 'class="active"'; ?> ><a href="?page=Mailbox">Mailbox <span class="sr-only">Mailbox</span></a></li>
 	      </ul>
 	    </div><!-- /.navbar-collapse -->
 	    <!-- Navbar Right Menu -->
@@ -77,41 +76,41 @@
 	              <li class="footer"><a href="#">View all</a></li>
 	            </ul>
 	          </li>
-	          <!-- Tasks Menu -->
-	          <li class="dropdown tasks-menu">
-	            <!-- Menu Toggle Button -->
-	            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-	              <i class="fa fa-flag-o"></i>
-	              <span class="label label-danger">9</span>
-	            </a>
-	            <ul class="dropdown-menu">
-	              <li class="header">You have 9 tasks</li>
-	              <li>
-	                <!-- Inner menu: contains the tasks -->
-	                <ul class="menu">
-	                  <li><!-- Task item -->
-	                    <a href="#">
-	                      <!-- Task title and progress text -->
-	                      <h3>
-	                        Design some buttons
-	                        <small class="pull-right">20%</small>
-	                      </h3>
-	                      <!-- The progress bar -->
-	                      <div class="progress xs">
-	                        <!-- Change the css width attribute to simulate progress -->
-	                        <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-	                          <span class="sr-only">20% Complete</span>
-	                        </div>
-	                      </div>
-	                    </a>
-	                  </li><!-- end task item -->
-	                </ul>
-	              </li>
-	              <li class="footer">
-	                <a href="#">View all tasks</a>
-	              </li>
-	            </ul>
-	          </li>
+	         <!--  Tasks Menu
+	         <li class="dropdown tasks-menu">
+	           Menu Toggle Button
+	           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+	             <i class="fa fa-flag-o"></i>
+	             <span class="label label-danger">9</span>
+	           </a>
+	           <ul class="dropdown-menu">
+	             <li class="header">You have 9 tasks</li>
+	             <li>
+	               Inner menu: contains the tasks
+	               <ul class="menu">
+	                 <li>Task item
+	                   <a href="#">
+	                     Task title and progress text
+	                     <h3>
+	                       Design some buttons
+	                       <small class="pull-right">20%</small>
+	                     </h3>
+	                     The progress bar
+	                     <div class="progress xs">
+	                       Change the css width attribute to simulate progress
+	                       <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+	                         <span class="sr-only">20% Complete</span>
+	                       </div>
+	                     </div>
+	                   </a>
+	                 </li>end task item
+	               </ul>
+	             </li>
+	             <li class="footer">
+	               <a href="#">View all tasks</a>
+	             </li>
+	           </ul>
+	         </li> -->
 	          <!-- User Account Menu -->
 	          <li class="dropdown user user-menu">
 	            <!-- Menu Toggle Button -->
@@ -145,7 +144,7 @@
 	              <!-- Menu Footer-->
 	              <li class="user-footer">
 	                <div class="pull-left">
-	                  <a href="?page=profile" class="btn btn-default btn-flat">Profile</a>
+	                  <a href="?page=Profile" class="btn btn-default btn-flat">Profile</a>
 	                </div>
 	                <div class="pull-right">
 	                  <a href="/logout.php" class="btn btn-default btn-flat">Sign out</a>
@@ -153,6 +152,10 @@
 	              </li>
 	            </ul>
 	          </li>
+		      <li>
+	        	<a href="logout.php" class="fa fa-sign-out"><span class="logout-end-user" style="font-family:calibri"> Sign out</span></a>
+	          	<!-- <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a> -->
+		      </li>
 	        </ul>
 	      </div><!-- /.navbar-custom-menu -->
 	  </div><!-- /.container-fluid -->

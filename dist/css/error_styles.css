@@ -1,19 +1,32 @@
-.row p, h1 {
+@import url('//fonts.googleapis.com/css?family=Open+Sans');
+html, body {
+	font-family: 'Open Sans';
+	height: 100%;
+}
+h1 {
+	font-size: 3.0em;
+	margin-bottom: 25px;
 	color: #fff;
-	padding-top: 15px;
-	text-shadow: 2px 1px #999;
 }
-p {
-	padding-top: 15px;
+.error-background {
+	background-color: #162955;
+	height: 93%;
 }
-.header-background {
-	background: #00A65A;
-	border-bottom: solid 1px #00A65A;
-	padding-left: 50px;
+.center {
+	width: 100%;
+	margin: 0 auto;
+	text-align: center;
 }
-.error-btn {
-	margin: 15px 20px;
+.error-title {
+	font-size: 7.0em;
+	text-shadow: 1px 1px #999;
+	color: #fff;
 }
-.error-img {
-	border-radius: 50px;
+p {	
+	margin-bottom: 50px;
+	text-shadow: 1px 1px #999;
+	color: #fff;
+}
+.btn-info {
+	margin-right: 40px;	
 }
