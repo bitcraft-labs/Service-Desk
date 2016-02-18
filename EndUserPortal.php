@@ -99,13 +99,17 @@ Status:     Staging; Idea Testing; Development
         $("#accordion").accordion({
           collapsible : true,
           animate : {
-            easing : "linear",
+            easing : "linear",  
             duration : 500
           }
         });
       });
       $('.table > tbody > tr').on('click', function (event) {
         document.location = $(this).attr('data-href');
+      });
+      $('div > h4 > a').on('click', function (event) {
+        var $modal_title = $(this).attr('data-title');
+        $('#incident-title').html($modal_title);
       });
     </script>
   </body>
