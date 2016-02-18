@@ -46,30 +46,71 @@ Status:     Staging; Idea Testing; Development
   <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
   <?php echo "<body class='hold-transition skin-$skin layout-top-nav'>"; ?>
     <div class="wrapper">
-
       <?php
       include_once 'modules/end_user_portal/header.php';
       if (isset($_GET['page'])) {
-        if ($_GET['page'] == 'mailbox') {
-          include_once 'modules/mailbox/mailbox-ui.php';
+        if (($_GET['page'] == 'Mailbox') && (!$_GET['mb'])) {
+          include_once 'modules/end_user_portal/mailbox.php';
+        } else if(($_GET['page'] == 'ViewRequests') && (!$_GET['sr'])) {
+          include_once 'modules/end_user_portal/requests.php';
+        } else if($_GET['page'] == 'Profile') {
+          include_once 'modules/end_user_portal/profile.php';
+        } else if (($_GET['page'] == "ViewRequests") && ($_GET['sr'])) {
+          include_once 'modules/end_user_portal/request_view.php';
+        } else if(($_GET['page'] == "Mailbox") && ($_GET['mb'])) {
+          include_once 'modules/end_user_portal/read-comments.php';
         }
       } else {
-        include_once 'modules/end_user_portal/submit.php';
-      }
+          include_once 'modules/end_user_portal/submit.php';
+      } 
       include_once 'modules/end_user_portal/footer.php'; ?>
 
     </div><!-- ./wrapper -->
 
     <!-- jQuery -->
     <script src="/bower/jquery/dist/jquery.min.js"></script>
+    <!-- jQuery UI -->
+    <script src="/bower/AdminLTE/plugins/jQueryUI/jquery-ui.min.js"></script>
     <!-- Bootstrap -->
     <script src="/bower/bootstrap/dist/js/bootstrap.min.js"></script>
+
     <!-- SlimScroll -->
     <script src="/bower/AdminLTE/plugins/slimScroll/jquery.slimscroll.min.js"></script>
     <!-- FastClick -->
     <script src="/bower/AdminLTE/plugins/fastclick/fastclick.min.js"></script>
     <!-- AdminLTE App -->
-    <script src="/bower/AdminLTE/dist/js/app.min.js"></script>
 
+    <script src="/bower/AdminLTE/dist/js/app.min.js"></script>
+    <!-- DataTables -->
+    <script src="/bower/AdminLTE/plugins/datatables/jquery.dataTables.js"></script>
+    <script src="/bower/AdminLTE/plugins/datatables/dataTables.bootstrap.js"></script>
+    <script>
+      $(function () {
+        $('#records').DataTable({
+          "paging": true,
+          "lengthChange": true,
+          "searching": true,
+          "ordering": true,
+          "info": true,
+          "autoWidth": false
+        });
+      });
+      $(function() {
+        $("#accordion").accordion({
+          collapsible : true,
+          animate : {
+            easing : "linear",  
+            duration : 500
+          }
+        });
+      });
+      $('.table > tbody > tr').on('click', function (event) {
+        document.location = $(this).attr('data-href');
+      });
+      $('div > h4 > a').on('click', function (event) {
+        var $modal_title = $(this).attr('data-title');
+        $('#incident-title').html($modal_title);
+      });
+    </script>
   </body>
 </html>
