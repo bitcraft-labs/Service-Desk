@@ -1,13 +1,4 @@
 <?php
-include_once 'modules/config.inc.php';
-require_once("./modules/authentication/config.php");
-
-if(!$authenticator->CheckLogin())
-{
-    $authenticator->RedirectToURL("login.php");
-    exit;
-}
-
 if (!($myACL->hasPermission('access_admin')) && (!$myACL->hasPermission('manage_templates')) && (!$myACL->hasPermission('manage_users'))) {
     header("location: /");
     exit;
