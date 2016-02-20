@@ -10,28 +10,26 @@
 					<td>#</td>
 					<td>First Name</td>
 					<td>Last Name</td>
-					<td>User Group</td>
-					<td>Active SR #</td>
+					<td>Total Active SRs</td>
+					<td>Last Updated SR</td>
 					<td>Last Online</td>
 				</tr>"; echo $tabhead; ?>
 			</thead>
 			<tbody>
-				<?php /*
-				$dal = new DAL();
-				$staffinfo = $dal->getStaffInfo('all');
+				<?php
+				$staffinfo = $dali->getHDUsers();
 				if ($staffinfo) {
 					foreach($staffinfo as $row) {
 				    echo "<tr>
-					    	<td><a href='?id=$row->user_id'>$row->user_id</a></td>
-					    	<td>$row->f_name</td>
-					    	<td>$row->l_name</td>
-					    	<td>$row->user_group</td>
-					    	<td>$row->act_servrec</td>
-					    	<td>$row->last_on</td>
-					    	<td>12/1/2015</td>
+					    	<td><a href='?id=".$row['id']."'>".$row['id']."</a></td>
+					    	<td>".$row['fname']."</td>
+					    	<td>".$row['lname']."</td>
+					    	<td>N/A</td>
+					    	<td>N/A</td>
+					    	<td>A few minutes ago</td>
 					    	</tr>";
 				  	}
-				} */
+				}
 				?>
 				<!--
 				<tr>
