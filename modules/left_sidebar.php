@@ -38,11 +38,13 @@
       <li class="header">Service Central</li>
       <li <?php if (($url == 'ServiceRecord.php') && ($_GET['sr'] == "new")) echo "class='active'"; ?> ><a href="ServiceRecord.php?sr=new"><i class="fa fa-plus"></i> <span>Add New Service Record</span></a></li>
       <li <?php if (($url == 'ServiceRecord.php') && ($_GET['sr'] != "new")) echo "class='active'"; ?> ><a href="ServiceRecord.php?sr=all"><i class="fa fa-list-alt"></i> <span>View Service Records</span></a></li>
-      <li <?php if (($url == 'EndUser.php') && ($_GET['id'] != "new")) echo "class='active'"; ?> ><a href="EndUser.php?id=all"><i class="fa fa-list-alt"></i> <span>View End Users</span></a></li>
       <!--<li><a href="#"><i class="fa fa-file-text"></i> <span>Run Report</span></a></li>-->
 
-      <li class="header">Staff</li>
+      <li class="header">Members</li>
       <li <?php if (($url == 'Staff.php') && ($_GET['id'] == "all")) echo "class='active'"; ?> ><a href="Staff.php?id=all"><i class="fa fa-users"></i> <span>View Staff</span></a></li>
+      <li <?php if (($url == 'EndUser.php') && ($_GET['id'] != "new")) echo "class='active'"; ?> ><a href="EndUser.php?id=all"><i class="fa fa-th-list"></i> <span>View End Users</span></a></li>
+      <li class="header">Self-Service</li>
+      <li <?php if ($url == 'EndUserPortal.php') echo "class='active'"; ?> ><a href="EndUserPortal.php"><i class="fa fa-exchange"></i> <span>End User Portal</span></a></li>
       <?php if (($myACL->hasPermission('access_admin')) || ($myACL->hasPermission('manage_templates')) || ($myACL->hasPermission('manage_users'))) { ?>
       <li class="header">Admin</li>
       <li <?php if (($url == 'Admin.php') && (($_GET['action'] == '') || ($_GET['action'] == 'ViewAdmin'))) echo "class='active'"; ?> ><a href="/Admin.php?action=ViewAdmin"><i class="fa fa-cogs"></i> <span>Admin Panel</span></a></li>
