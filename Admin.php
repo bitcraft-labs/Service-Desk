@@ -12,6 +12,7 @@ Status:     Staging; Idea Testing; Development
     header("location: /");
     exit;
   }
+  include_once 'modules/admin/head.php';
 ?>
 <?php
 if (isset($_POST['action'])) {
@@ -29,7 +30,7 @@ if (isset($_POST['action'])) {
           mysql_query($strSQL);
         }
       }
-      
+
     break;
     case 'savePerms':
       $redir = "?action=ViewAdmin&for=" . $_POST['userID'] . "&do=ChangeAccess#access_users";
@@ -84,16 +85,14 @@ if (isset($_POST['action'])) {
   header("location: Admin.php" . $redir);
 }
 ?>
-  	<?php
-    include_once 'modules/admin/head.php'; ?>
     <?php echo "<body class='hold-transition skin-red sidebar-mini'>"; ?>
     <div class="wrapper">
 		<?php
 		// build the user interface
 		include_once 'modules/header.php';
 		include_once 'modules/left_sidebar.php';
-    include_once 'modules/admin/functions.php';
-    include_once 'modules/admin/admin.php';
+        include_once 'modules/admin/functions.php';
+        include_once 'modules/admin/admin.php';
 		include_once 'modules/footer.php';
 		include_once 'modules/control_sidebar.php';
     ?>
@@ -140,7 +139,7 @@ if (isset($_POST['action'])) {
   $(document).ready(function(){
     //Manage hash in URL to open the right pill
     var hash = window.location.hash;
-    // If a hash is provided 
+    // If a hash is provided
     if(hash && hash.length>0)
     {
         // Manage Pill titles
