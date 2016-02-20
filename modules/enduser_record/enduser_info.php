@@ -1,6 +1,5 @@
 <!-- End User Info -->
 <?php
-	$dal = new DAL();
 	$person = $_GET['id'];
 	/*
 	$exists = $dal->checkPersonExists('1');
@@ -9,7 +8,7 @@
 		exit;
 	}
 	*/
-	$personinfo = $dal->getPersonInfo($person);
+	$personinfo = $dali->getPersonInfo($person);
 	$sysinfo = $dal->getPersonMachines($person);
 	$checkups = $dal->getPersonCheckups($person);
 	foreach ($personinfo as $prow) {}
@@ -19,13 +18,13 @@
 	  <div class="box-header with-border">
 	    <h3 class="box-title"><i class="fa fa-user"> </i> End User Information</h3>
 	    <div class="box-tools pull-right">
-	      
+
 	      <!-- <span class="label label-default">Student</span> -->
 	    </div><!-- /.box-tools -->
 	  </div><!-- /.box-header -->
 	  <div class="box-body">
 	  <div class="col-md-12">
-	  	<?php echo "<h2>$prow->name<br /><small>$prow->user_type</small></h2>"; ?>
+	  	<?php echo "<h2>".$prow['fname']." ".$prow['lname']."<br /><small>No active service records</small></h2>"; ?>
 	  	<!-- <h2>Jo Shmo<br /><small>Student</small></h2> -->
 	    <form id='register' action='' method='post' accept-charset='UTF-8'>
 		<fieldset>
@@ -39,7 +38,7 @@
                 <div class="input-group-addon">
                   <i class="fa fa-envelope"></i>
                 </div>
-                <input type="text" class="form-control" value="<?php echo $prow->email; ?>" data-inputmask='"mask": "__@__.__"' data-mask>
+                <input type="text" class="form-control" value="<?= $prow['email']; ?>" data-inputmask='"mask": "__@__.__"' data-mask>
               </div><!-- /.input group -->
             </div><!-- /.form group -->
 		    <!-- phone -->
@@ -49,7 +48,7 @@
                 <div class="input-group-addon">
                   <i class="fa fa-phone"></i>
                 </div>
-                <input type="text" class="form-control" value="<?php echo $prow->phone; ?>" data-inputmask='"mask": "(999) 999-9999"' data-mask>
+                <input type="text" class="form-control" value="<?= $prow['phone']; ?>" data-inputmask='"mask": "(999) 999-9999"' data-mask>
               </div><!-- /.input group -->
             </div><!-- /.form group -->
 		    <!-- banner id -->
@@ -59,7 +58,7 @@
                 <div class="input-group-addon">
                   <i>@</i>
                 </div>
-                <input type="text" class="form-control" value="<?php echo $prow->banner_id; ?>" data-inputmask='"mask": "@12345678"' data-mask>
+                <input type="text" class="form-control" value="<?= $prow['banner_id']; ?>" data-inputmask='"mask": "@12345678"' data-mask>
               </div><!-- /.input group -->
             </div><!-- /.form group -->
 		    <div class="form-group">
@@ -68,7 +67,7 @@
 		</fieldset>
 		</form>
 	  </div><!-- /col -->
-	  </div><!-- /.box-body 
+	  </div><!-- /.box-body
 	  <div class="box-footer">
 	    <button type="button" class="btn btn-primary">Update</button>
 	  </div> box-footer -->
@@ -82,7 +81,7 @@
 	  <div class="box-header with-border">
 	    <h3 class="box-title"><i class="fa fa-desktop"> </i> System Information</h3>
 	    <div class="box-tools pull-right">
-	      
+
 	      <!--<span class="label label-primary">Student</span>-->
 	    </div><!-- /.box-tools -->
 	  </div><!-- /.box-header -->
@@ -102,7 +101,7 @@
     			</tr>"; echo $tabhead; ?>
     		</thead>
     		<tbody>
-			<?php 
+			<?php
 				$count = 0;
 				foreach ($sysinfo as $sys) {
 				$count = $count + 1;
@@ -132,9 +131,9 @@
 <div class="col-md-6">
 	<div class="box box-primary">
 	  <div class="box-header with-border">
-	    <h3 class="box-title"><i class="fa fa-stethoscope"> </i> Checkups</h3>
+	    <h3 class="box-title"><i class="fa fa-exclamation-triangle"> </i> Service Records</h3>
 	    <div class="box-tools pull-right">
-	      
+
 	      <!--<span class="label label-primary">Student</span>-->
 	    </div><!-- /.box-tools -->
 	  </div><!-- /.box-header -->
@@ -144,12 +143,11 @@
     			<?php $tabhead = "
     			<tr>
     				<td>#</td>
-    				<td>System</td>
-    				<td>Issue Description</td>
+						<td>Category</td>
+    				<td>Title</td>
     				<td>Assigned To</td>
     				<td>Notes</td>
-    				<td>Checkin Date</td>
-    				<td>Pickup Date</td>
+    				<td>Completion Date</td>
     			</tr>"; echo $tabhead; ?>
     		</thead>
     		<tbody>
@@ -169,16 +167,16 @@
     				<td>#NA</td>
     			</tr>"
     		}}*/?>
-    			<!--
+
     			<tr>
     				<td>1</td>
-    				<td>Apple rMBP</td>
-    				<td>Connect to Internet</td>
-    				<td>helpdesktech</td>
-    				<td>View Notes</td>
-    				<td>9/4/2015</td>
-    				<td>9/5/2015</td>
+						<td>Network/Telecom</td>
+    				<td>Issue with Wifi in Dorm</td>
+    				<td>Joshua Nasiatka</td>
+    				<td>Potential POC Issue</td>
+    				<td>Open</td>
     			</tr>
+					<!--
     			<tr>
     				<td>2</td>
     				<td>Apple rMBP</td>
