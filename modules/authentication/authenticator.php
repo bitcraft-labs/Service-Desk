@@ -80,14 +80,18 @@ class Authenticator
     }
     function Login()
     {
+        $emptyField = false;
         if(empty($_POST['username']))
         {
-            $this->HandleError("UserName is empty!");
-            return false;
+            $this->HandleError("Username is empty!");
+            $emptyField = true;
         }
         if(empty($_POST['password']))
         {
             $this->HandleError("Password is empty!");
+            $emptyField = true;
+        }
+        if($emptyField) {
             return false;
         }
         $username = trim($_POST['username']);

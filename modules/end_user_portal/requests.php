@@ -1,6 +1,5 @@
 <?php 
 	$row_number = 1;
-
  ?>
 <div class="content-wrapper">
 	<div class="ssp-title">
