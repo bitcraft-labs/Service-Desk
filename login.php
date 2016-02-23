@@ -45,6 +45,7 @@ if ($conf['customize']['darkmode'] == 'dark') {
         <?php echo $loginHeader; ?>
     </div>
     <?= $error; ?>
+    <div id="error-container"></div>
     <form id='login' role="form" class="col-md-12" action='<?php echo $authenticator->GetSelfScript(); ?>' name="login_form" method='post' accept-charset='UTF-8'>
       <input type='hidden' name='submitted' id='submitted' value='1'/>
       <div class="form-group has-feedback">
@@ -53,7 +54,7 @@ if ($conf['customize']['darkmode'] == 'dark') {
           <span id='login_username_errorloc' class='error'></span>
       </div>
       <div class="form-group has-feedback">
-          <input type="password" name="password" class="form-control" placeholder="Password" />
+          <input type="password" id="password" name="password" class="form-control" placeholder="Password" />
           <span class="glyphicon glyphicon-lock form-control-feedback"></span>
           <span id='login_password_errorloc' class='error'></span>
       </div>
@@ -72,7 +73,7 @@ if ($conf['customize']['darkmode'] == 'dark') {
           </div>
         </div><!-- /.col -->
         <div class="col-xs-4">
-          <button name="submit" type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+          <button name="submit" type="submit" onclick="loginFormValidation();" class="btn btn-primary btn-block btn-flat">Sign In</button>
         </div><!-- /.col -->
       </div>
       <div class="form-group">
@@ -123,7 +124,7 @@ if ($conf['customize']['darkmode'] == 'dark') {
     <script src="/bower/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- iCheck -->
     <script src="/bower/AdminLTE/plugins/iCheck/icheck.min.js"></script>
-  
+    <script src="/dist/js/loginValidation.js"></script>
     <script>
       $(function () {
         $('input').iCheck({
