@@ -48,13 +48,74 @@ if ( !class_exists( 'DALi' ) ) {
 
     //-------Admin Functions--------------->
     public function getHDUsers() {
-        $sql = "SELECT id, fname, lname, email
-                FROM users
-                JOIN user_roles
-                WHERE users.id = user_roles.userID AND user_roles.roleID <> '2'
-                GROUP BY id";
-        return $this->query($sql);
+      $sql = "SELECT id, fname, lname, email
+              FROM users
+              JOIN user_roles
+              WHERE users.id = user_roles.userID AND user_roles.roleID <> '2'
+              GROUP BY id";
+      return $this->query($sql);
     }
+
+    public function addUser() {
+      $sql = "INSERT INTO users (fname, lname, email, username, banner_id, phone, creation_date, confirmcode)
+              VALUES('".$_POST['fname']."','".$_POST['lname']."','".$_POST['email']."','".$_POST['username']."','".$_POST['banner_id']."','".$_POST['phone']."','".date()."','y')";
+      return $this->query($sql);
+    }
+
+    public function getUserID($who) {
+      $sql = "SELECT id FROM users WHERE username='$who' LIMIT 1";
+      $result = $this->query($sql);
+      foreach ($result as $res) {
+        $id = $res[0];
+      }
+      return $id;
+    }
+    /*
+    function sendPassCreateEmail() {
+        $this->SendResetPasswordLink()
+        return true;
+    }
+
+    function GetResetPasswordCode($email) {
+       return substr(md5($email.$this->sitename.$this->rand_key),0,10);
+    }
+
+    function GetAbsoluteURLFolder() {
+        $scriptFolder = (isset($_SERVER['HTTPS']) && ($_SERVER['HTTPS'] == 'on')) ? 'https://' : 'http://';
+        $urldir ='';
+        $pos = strrpos($_SERVER['REQUEST_URI'],'/');
+        if(false !==$pos)
+        {
+            $urldir = substr($_SERVER['REQUEST_URI'],0,$pos);
+        }
+        $scriptFolder .= $_SERVER['HTTP_HOST'].$urldir;
+        return $scriptFolder;
+    }
+    
+    function SendResetPasswordLink($user_rec)
+    {
+        $email = $_POST['email'];
+        $mailer = new PHPMailer();
+        $mailer->CharSet = 'utf-8';
+        $mailer->AddAddress($email,$_POST['fname']);
+        $mailer->Subject = "Your reset password request at ".$this->sitename;
+        $mailer->From = "support@bitcraftlabs.net";
+        $mailer->FromName = "Bitcraft Labs";
+        $link = $this->GetAbsoluteURLFolder().
+                '/resetpwd.php?email='.
+                urlencode($email).'&code='.
+                urlencode($this->GetResetPasswordCode($email));
+        $mailer->Body ="Hello ".$user_rec['fname']." ".$user_rec['lname'].",\r\n\r\n".
+        "There was a request to reset your password at Bitcraft Labs.\r\n".
+        "Please click the link below to complete the request: \r\n".$link."\r\n".
+        "Regards,\r\n".
+        "Support\r\n";
+        if(!$mailer->Send())
+        {
+            return false;
+        }
+        return true;
+    }*/
 
   }
 }
