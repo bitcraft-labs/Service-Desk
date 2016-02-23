@@ -30,10 +30,10 @@ if ( !class_exists( 'DALi' ) ) {
 
     //--------End-User Functions----------->
     public function getBuildingsRow($request) {
-   	  if($request == 'all') {
-	      $sql = "SELECT * FROM building";
-	      return $this->query($sql);
-	  }
+     	if($request == 'all') {
+  	      $sql = "SELECT * FROM building";
+  	      return $this->query($sql);
+  	  }
     }
 
   }

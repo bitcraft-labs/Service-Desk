@@ -9,7 +9,8 @@ if(isset($_POST['submit']))
    if($authenticator->Login())
    {
       $authenticator->RedirectToURL("index.php");
-   } else {
+   } 
+   else {
     $error .= "<button type='button' class='close' data-dismiss='alert'>x</button>";
     $error .= $authenticator->getErrorMessage() . '</div>';
    }
