@@ -1,6 +1,7 @@
 <?php
 if ( !class_exists( 'DALi' ) ) {
   class DALi {
+    // ------------- General -----------------
     protected function dbconnect() {
       return new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DB);
     }
@@ -15,7 +16,6 @@ if ( !class_exists( 'DALi' ) ) {
       
       return $results;
     }
-
     //---------QR Code Generation---------->
     public function myUrlEncode($string) {
         $entities = array('%21', '%2A', '%27', '%28', '%29', '%3B', '%3A', '%40', '%26', '%3D', '%2B', '%24', '%2C', '%2F', '%3F', '%25', '%23', '%5B', '%5D');
@@ -35,7 +35,9 @@ if ( !class_exists( 'DALi' ) ) {
   	      return $this->query($sql);
   	  }
     }
-
+    public function submitModalForm() {
+      
+    }
   }
 }
 

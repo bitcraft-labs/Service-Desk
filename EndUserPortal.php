@@ -84,6 +84,8 @@ Status:     Staging; Idea Testing; Development
     <!-- DataTables -->
     <script src="/bower/AdminLTE/plugins/datatables/jquery.dataTables.js"></script>
     <script src="/bower/AdminLTE/plugins/datatables/dataTables.bootstrap.js"></script>
+    <!-- Modal Validation -->
+    <script type="text/javascript" src="../../dist/js/modalValidation.js"></script>
     <script>
       $(function () {
         $('#records').DataTable({
@@ -107,9 +109,9 @@ Status:     Staging; Idea Testing; Development
       $('.table > tbody > tr').on('click', function (event) {
         document.location = $(this).attr('data-href');
       });
-      $('div > h4 > a').on('click', function (event) {
+      $('.tab_value').on('click', function (event) {
         var $modal_title = $(this).attr('data-title');
-        $('#incident-title').html($modal_title);
+        $('#incident-title').val($modal_title);
       });
     </script>
   </body>

@@ -23,42 +23,42 @@
               <div class="tab-content ssp-options">
                   <!-- General Help -->
                   <div class="tab-pane active" id="4">
-                    <h4><i class="fa fa-exclamation-triangle fa-2x pull-left align m-orange"></i> <a data-toggle="modal" data-target="#incidentModal" data-title="General Incident" name="submit-value" href="#">Generic incident</a><br />
+                    <h4><i class="fa fa-exclamation-triangle fa-2x pull-left align m-orange"></i> <a data-toggle="modal" data-target="#incidentModal" data-title="General Incident" name="submit-value" href="#" class="tab_value">Generic incident</a><br />
                       <small>Some odd thing just happened. It's being very wonky.</small></h4>
 
-                    <h4><i class="fa fa-wifi fa-2x pull-left align m-green"></i> <a data-toggle="modal" data-target="#incidentModal" data-title="Wireless" name="submit-value" href="#">Wireless</a><br />
+                    <h4><i class="fa fa-wifi fa-2x pull-left align m-green"></i> <a data-toggle="modal" data-target="#incidentModal" data-title="Wireless" name="submit-value" href="#" class="tab_value">Wireless</a><br />
                       <small>Slow internet in dorm. Chromecast not streaming.</small></h4>
 
-                    <h4><i class="fa fa-unlock fa-2x pull-left align m-orange"></i> <a data-toggle="modal" data-target="#incidentModal" data-title="Password Expired" name="submit-value" href="#">Password Expired</a><br />
+                    <h4><i class="fa fa-unlock fa-2x pull-left align m-orange"></i> <a data-toggle="modal" data-target="#incidentModal" data-title="Password Expired" name="submit-value" href="#" class="tab_value">Password Expired</a><br />
                       <small>Password must have expired, unable to login to anything.</small></h4>
 
-                    <h4><i class="fa fa-print fa-2x pull-left align m-blue"></i> <a data-toggle="modal" data-target="#incidentModal" data-title="Printer Not Working" name="submit-value" href="#">Printer not working</a><br />
+                    <h4><i class="fa fa-print fa-2x pull-left align m-blue"></i> <a data-toggle="modal" data-target="#incidentModal" data-title="Printer Not Working" name="submit-value" href="#" class="tab_value">Printer not working</a><br />
                       <small>Paper jam. Out of paper. Blinking with an error. Scanning not working.</small></h4>
 
-                    <h4><i class="fa fa-exclamation-triangle fa-2x pull-left align m-red"></i> <a data-toggle="modal" data-target="#incidentModal" data-title="Service Problem" name="submit-value" href="#">Service Problem</a><br />
+                    <h4><i class="fa fa-exclamation-triangle fa-2x pull-left align m-red"></i> <a data-toggle="modal" data-target="#incidentModal" data-title="Service Problem" name="submit-value" href="#" class="tab_value">Service Problem</a><br />
                       <small>Having an issue with Blackboard or another web application?</small></h4>
                   </div>
                   <!-- Logins & Accounts -->
                   <div class="tab-pane" id="1">
-                    <h4><i class="fa fa-google fa-2x pull-left align m-red"></i> <a data-toggle="modal" data-target="#incidentModal" data-title="Google Apps Account" name="submit-value" href="#">Google Apps Account</a><br />
+                    <h4><i class="fa fa-google fa-2x pull-left align m-red"></i> <a data-toggle="modal" data-target="#incidentModal" data-title="Google Apps Account" name="submit-value" href="#" class="tab_value">Google Apps Account</a><br />
                       <small>Unable to login. Something odd happened. Suspicious email.</small></h4>
 
-                    <h4><i class="fa fa-windows fa-2x pull-left align m-blue"></i> <a data-toggle="modal" data-target="#incidentModal" data-title="Microsoft Exchange" name="submit-value" href="#">Microsoft Exchange</a><br />
+                    <h4><i class="fa fa-windows fa-2x pull-left align m-blue"></i> <a data-toggle="modal" data-target="#incidentModal" data-title="Microsoft Exchange" name="submit-value" href="#" class="tab_value">Microsoft Exchange</a><br />
                       <small>Some odd thing just happened. It's being very wonky. I can't login.</small></h4>
 
-                    <h4><i class="fa fa-key fa-2x pull-left align m-yellow"></i> <a data-toggle="modal" data-target="#incidentModal" data-title="KeyChain" name="submit-value" href="#">Keychain</a><br />
+                    <h4><i class="fa fa-key fa-2x pull-left align m-yellow"></i> <a data-toggle="modal" data-target="#incidentModal" data-title="KeyChain" name="submit-value" href="#" class="tab_value">Keychain</a><br />
                       <small>Changed my password and now my keychain is broken.</small></h4>
 
-                    <h4><i class="fa fa-unlock fa-2x pull-left align m-orange"></i> <a data-toggle="modal" data-target="#incidentModal" data-title="Password Expired" name="submit-value" href="#">Password Expired</a><br />
+                    <h4><i class="fa fa-unlock fa-2x pull-left align m-orange"></i> <a data-toggle="modal" data-target="#incidentModal" data-title="Password Expired" name="submit-value" href="#" class="tab_value">Password Expired</a><br />
                       <small>Password must have expired, unable to login to anything.</small></h4>
                   </div>
 
                   <!-- Computer Labs -->
                   <div class="tab-pane" id="2">
-                    <h4><i class="fa fa-exclamation-triangle fa-2x pull-left align m-red"></i> <a data-toggle="modal" data-target="#incidentModal" data-title="General Computer Help" name="submit-value" href="#">General Computer Help</a><br />
+                    <h4><i class="fa fa-exclamation-triangle fa-2x pull-left align m-red"></i> <a data-toggle="modal" data-target="#incidentModal" data-title="General Computer Help" name="submit-value" href="#" class="tab_value">General Computer Help</a><br />
                       <small>Unable to print. Blue screen. Hard disk is full. No logon servers.</small></h4>
 
-                    <h4><i class="fa fa-upload fa-2x pull-left align m-blue"></i> <a data-toggle="modal" data-target="#incidentModal" data-title="Software Install Request" name="submit-value" href="#">Software Install Request</a><br />
+                    <h4><i class="fa fa-upload fa-2x pull-left align m-blue"></i> <a data-toggle="modal" data-target="#incidentModal" data-title="Software Install Request" name="submit-value" href="#" class="tab_value">Software Install Request</a><br />
                       <small>I'd like all lab machines to have &lt;software&gt; installed.</small></h4>
                       
                     
@@ -66,37 +66,37 @@
 
                   <!-- Desktops & Laptops -->
                   <div class="tab-pane" id="3">
-                    <h4><i class="fa fa-exclamation-triangle fa-2x pull-left align m-red"></i> <a data-toggle="modal" data-target="#incidentModal" data-title="Get IT Help (General)" name="submit-value" href="#">Get IT Help (general problem/question)</a><br />
+                    <h4><i class="fa fa-exclamation-triangle fa-2x pull-left align m-red"></i> <a data-toggle="modal" data-target="#incidentModal" data-title="Get IT Help (General)" name="submit-value" href="#" class="tab_value">Get IT Help (general problem/question)</a><br />
                       <small>Unable to print. Blue screen. Direly slow. No logon servers.</small></h4>
 
-                    <h4><i class="fa fa-upload fa-2x pull-left align m-blue"></i> <a data-toggle="modal" data-target="#incidentModal" data-title="Software Install Request" name="submit-value" href="#">Software Install Request</a><br />
+                    <h4><i class="fa fa-upload fa-2x pull-left align m-blue"></i> <a data-toggle="modal" data-target="#incidentModal" data-title="Software Install Request" name="submit-value" href="#" class="tab_value">Software Install Request</a><br />
                       <small>I'd like to have &lt;software&gt; installed on my machine.</small></h4>
 
-                    <h4><i class="fa fa-laptop fa-2x pull-left align m-green"></i> <a data-toggle="modal" data-target="#incidentModal" data-title="Schedule Upgrade/Refresh" name="submit-value" href="#">Schedule Upgrade/Refresh</a><br />
+                    <h4><i class="fa fa-laptop fa-2x pull-left align m-green"></i> <a data-toggle="modal" data-target="#incidentModal" data-title="Schedule Upgrade/Refresh" name="submit-value" href="#" class="tab_value">Schedule Upgrade/Refresh</a><br />
                       <small>Wow, it's been three years already. I'd like my new computer now.</small></h4>
                   </div>
 
                   <!-- Telecom -->
                   <div class="tab-pane" id="5">
-                    <h4><i class="fa fa-television fa-2x pull-left align m-orange"></i> <a data-toggle="modal" data-target="#incidentModal" data-title="Cable TV" name="submit-value" href="#">Cable TV</a><br />
+                    <h4><i class="fa fa-television fa-2x pull-left align m-orange"></i> <a data-toggle="modal" data-target="#incidentModal" data-title="Cable TV" name="submit-value" href="#" class="tab_value">Cable TV</a><br />
                       <small>Not getting channels. Wall port broken.</small></h4>
 
-                    <h4><i class="fa fa-phone fa-2x pull-left align m-blue"></i> <a data-toggle="modal" data-target="#incidentModal" data-title="Phone" name="submit-value" href="#">Phone</a><br />
+                    <h4><i class="fa fa-phone fa-2x pull-left align m-blue"></i> <a data-toggle="modal" data-target="#incidentModal" data-title="Phone" name="submit-value" href="#" class="tab_value">Phone</a><br />
                       <small>Avaya phone not turning on. No dial tone. Moved office, not working.</small></h4>
 
-                    <h4><i class="fa fa-wifi fa-2x pull-left align m-green"></i> <a data-toggle="modal" data-target="#incidentModal" data-title="Wireless" name="submit-value" href="#">Wireless</a><br />
+                    <h4><i class="fa fa-wifi fa-2x pull-left align m-green"></i> <a data-toggle="modal" data-target="#incidentModal" data-title="Wireless" name="submit-value" href="#" class="tab_value">Wireless</a><br />
                       <small>Slow internet in dorm. Chromecast not streaming.</small></h4>
                   </div>
 
                   <!-- VDI -->
                   <div class="tab-pane" id="6">
-                    <h4><i class="fa fa-exclamation-triangle fa-2x pull-left align m-red"></i> <a data-toggle="modal" data-target="#incidentModal" data-title="Mission Critical Outage" name="submit-value" href="#">Mission Critical Outage</a><br />
+                    <h4><i class="fa fa-exclamation-triangle fa-2x pull-left align m-red"></i> <a data-toggle="modal" data-target="#incidentModal" data-title="Mission Critical Outage" name="submit-value" href="#" class="tab_value">Mission Critical Outage</a><br />
                       <small>Unable to connect to desktop. Keeps disconnecting.</small></h4>
                   </div>
 
                   <!-- Web Service -->
                   <div class="tab-pane" id="7">
-                    <h4><i class="fa fa-exclamation-triangle fa-2x pull-left align m-red"></i> <a data-toggle="modal" data-target="#incidentModal" data-title="Service Problem" name="submit-value" href="#">Service Problem</a><br />
+                    <h4><i class="fa fa-exclamation-triangle fa-2x pull-left align m-red"></i> <a data-toggle="modal" data-target="#incidentModal" data-title="Service Problem" name="submit-value" href="#" class="tab_value">Service Problem</a><br />
                       <small>Having an issue with Blackboard or another web application?</small></h4>
                   </div>
               </div>

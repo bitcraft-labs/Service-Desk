@@ -650,8 +650,7 @@ class Authenticator
         }
         return true;
     }
-    function DBLogin()
-    {
+    function DBLogin() {
         $this->connection = mysql_connect($this->db_host,$this->username,$this->pwd);
         if(!$this->connection)
         {

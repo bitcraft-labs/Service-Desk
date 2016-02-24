@@ -7,7 +7,8 @@
 				<h4 class="modal-title" id=""><i class="fa fa-envelope"></i> Describe your issue for us: </h4>
 			</div><!-- modal-header -->
 			<div class="modal-body">
-				<form method="" action="" class="form" role="form">
+				<div id="error-container"></div>
+				<form id="modal-form" method="" action="" class="form" role="form">
 					<div class="form-group">
 						<label for="incident-title">Title</label>
 						<input type="text" class="form-control input-md" id="incident-title" name="incident-title" placeholder="">
@@ -35,7 +36,7 @@
 						<label for="incident-description">Description</label>
 						<textarea rows="8" name="incident-description" class="form-control input-md" id="incident-description" style="resize: none;"></textarea>
 					</div>
-					<button type="submit" class="btn btn-lg btn-success">Send!</button>
+					<button onclick="modalFormValidation();" type="submit" class="btn btn-lg btn-success">Send!</button>
 				</form>
 				<hr>
 			</div><!-- modal-body -->
