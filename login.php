@@ -1,13 +1,10 @@
 <?php
 require_once("./modules/authentication/config.php");
-require_once("./modules/authentication/formvalidator.php");
 
-if(isset($_POST['submit']))
-{
+if(isset($_POST['submit'])) {
   $error = '<div class="alert alert-danger alert-dismissable" id="error">';
 
-   if($authenticator->Login())
-   {
+   if($authenticator->Login()) {
       $authenticator->RedirectToURL("index.php");
    } 
    else {

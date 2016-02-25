@@ -37,7 +37,7 @@ var modalFormValidation = (function () {
 		} else if(calculatePossibleInjection($modal_title)) {
 			$formError += "<span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span>" +
                           "<span class='sr-only'>Error:</span>" +
-                        	" Cannot use those characters in Title<br/>";
+                        	" Invalid characters in Title<br/>";
 		}
 		if($building === null) {
 			 $formError += "<span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span>" +
@@ -51,7 +51,7 @@ var modalFormValidation = (function () {
 		} else if (calculatePossibleInjection($room_number)) {
 			$formError += "<span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span>" +
                           "<span class='sr-only'>Error:</span>" +
-                        	" Cannot use those characters in Room number<br/>";
+                        	" Invalid characters in Room number<br/>";
 		}
 		if($description === "") {
 			 $formError += "<span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span>" +
@@ -60,7 +60,7 @@ var modalFormValidation = (function () {
 		} else if (calculatePossibleInjection($description)) {
 			$formError += "<span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span>" +
                           "<span class='sr-only'>Error:</span>" +
-                        	" Cannot use those characters in Description<br/>";
+                        	" Invalid characters in Description<br/>";
 		}
 		if($formError !== "") {
 			event.preventDefault();

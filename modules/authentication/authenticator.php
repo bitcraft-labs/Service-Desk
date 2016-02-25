@@ -1,6 +1,5 @@
 <?PHP
 require_once("class.phpmailer.php");
-require_once("formvalidator.php");
 class Authenticator
 {
     var $admin_email;
@@ -322,7 +321,7 @@ class Authenticator
         $result = mysql_query($qry,$this->connection);
         if(!$result || mysql_num_rows($result) <= 0)
         {
-            $this->HandleError("Error logging in. The username or password does not match");
+            $this->HandleError("Error logging in. The username and/or password is incorrect");
             return false;
         }
         $row = mysql_fetch_assoc($result);

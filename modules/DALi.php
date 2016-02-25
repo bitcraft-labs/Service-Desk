@@ -35,8 +35,12 @@ if ( !class_exists( 'DALi' ) ) {
   	      return $this->query($sql);
   	  }
     }
-    public function submitModalForm() {
-      
+    public function submitModalForm($title, $building, $room_number, $description) {
+      if(($title != null) || ($building != null) || ($room_number != null) || ($description != null)) {
+          $timeStamp = date("Y-m-d H:i\:\0\0") . 0 . 0;
+          // $sql = "INSERT INTO service_record ()
+          // VALUE ($title, $building, $room_number, $description)";
+      }
     }
   }
 }
