@@ -4,7 +4,6 @@ var loginFormValidation = (function() {
 		var $password = $('#password').val();
 		var $error = '<div class="alert alert-danger alert-dismissable" id="error">';
 		var $formError = "";
-		var longStr = "Derek 123 Main St Pittsburgh 15457 (412)-555-5555 dbanas@aol";
 		function calculatePossibleInjection(value) {
 			var isPossibleOfInjection = false;
 			var checkInject = /^\W/g;
