@@ -39,8 +39,5 @@ var loginFormValidation = (function() {
             $error += '</div>';
             $("#error-container").html($error);
         }
-        else {
-           event.submit(); 
-		}
 	});
 });

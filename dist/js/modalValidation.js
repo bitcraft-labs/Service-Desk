@@ -19,7 +19,7 @@ var modalFormValidation = (function () {
 		}
 		function calculatePossibleInjection(value) {
 			var isPossibleOfInjection = false;
-			var checkInject = /\w*((\%27)|(\'))((\%6F)|o|(\%4F))((\%72)|r|(\%52))/i;
+			var checkInject =  /^\W/g;
 			var injection = checkInject.exec(value);
 			if(!injection) {
 				isPossibleOfInjection = true;
@@ -30,11 +30,11 @@ var modalFormValidation = (function () {
 			 $formError += "<span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span>" +
                            "<span class='sr-only'>Error:</span>" +
                            " Title cannot be empty<br/>";
-		} else if (calculateTitleDefault($title_default)) {
+		} else if (!calculateTitleDefault($title_default)) {
 			$formError += "<span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span>" +
                           "<span class='sr-only'>Error:</span>" +
                         	" Title cannot be the default<br/>";
-		} else if(calculatePossibleInjection($modal_title)) {
+		} else if(!calculatePossibleInjection($modal_title)) {
 			$formError += "<span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span>" +
                           "<span class='sr-only'>Error:</span>" +
                         	" Invalid characters in Title<br/>";
@@ -48,7 +48,7 @@ var modalFormValidation = (function () {
 			 $formError += "<span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span>" +
                            "<span class='sr-only'>Error:</span>" +
                            " Room number cannot be empty<br/>";
-		} else if (calculatePossibleInjection($room_number)) {
+		} else if (!calculatePossibleInjection($room_number)) {
 			$formError += "<span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span>" +
                           "<span class='sr-only'>Error:</span>" +
                         	" Invalid characters in Room number<br/>";
@@ -57,7 +57,7 @@ var modalFormValidation = (function () {
 			 $formError += "<span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span>" +
                            "<span class='sr-only'>Error:</span>" +
                            " Description cannot be empty<br/>";
-		} else if (calculatePossibleInjection($description)) {
+		} else if (!calculatePossibleInjection($description)) {
 			$formError += "<span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span>" +
                           "<span class='sr-only'>Error:</span>" +
                         	" Invalid characters in Description<br/>";
@@ -68,8 +68,5 @@ var modalFormValidation = (function () {
             $error += '</div>';
             $("#error-container").html($error);
         }
-        else {
-           event.submit(); 
-		}
 	});
 }); 
