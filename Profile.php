@@ -12,6 +12,10 @@ Status:     Staging; Idea Testing; Development
     header("location: /");
     exit;
   }
+  $personinfo = $dali->getPersonInfo($whoami);
+  foreach ($personinfo as $prow) {}
+  $joindate = strtotime( $prow['creation_date'] );
+  $cdate = date( 'F d, Y', $joindate );
 ?>
 <html>
   	<?php
