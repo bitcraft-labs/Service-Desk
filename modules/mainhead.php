@@ -2,7 +2,7 @@
 include_once 'modules/config.inc.php';
 require_once("./modules/authentication/config.php");
 include_once 'modules/config-func.php';
-include("modules/authentication/database.php"); 
+include("modules/authentication/database.php");
 include("modules/authentication/class.acl.php");
 
 $dal = new DAL();
@@ -15,4 +15,7 @@ if(!$authenticator->CheckLogin())
     $authenticator->RedirectToURL("login.php");
     exit;
 }
+
+//who am i
+$whoami = $_SESSION['userID'];
 ?>
