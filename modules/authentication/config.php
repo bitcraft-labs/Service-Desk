@@ -5,7 +5,7 @@ require_once("./modules/config.inc.php");
 $authenticator = new Authenticator();
 
 //Provide your site name here
-$authenticator->SetWebsiteName('bitcraftlabs.net');
+$authenticator->SetWebsiteName('allenperry.me');
 
 //Provide the email address where you want to get notifications
 $authenticator->SetAdminEmail($conf['customize']['sysemail']);

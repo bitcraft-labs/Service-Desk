@@ -341,7 +341,7 @@ class Authenticator
         $_SESSION['last_name']      = $row['lname'];
         $_SESSION['name_of_user']   = $row['fname'] ." ". $row['lname'];
         $_SESSION['email_of_user']  = $row['email'];
-        
+
         return true;
     }
  public function checkhashSSHA($salt, $password) {
@@ -389,7 +389,7 @@ class Authenticator
         $hash = $this->hashSSHA($newpwd);
         $new_password = $hash["encrypted"];
         $salt = $hash["salt"];
-        $qry = "Update $this->tablename Set password='".$new_password."', salt='".$salt."' Where  id_user=".$user_rec['id_user']."";
+        $qry = "Update $this->tablename Set password='".$new_password."', salt='".$salt."' Where  id=".$_SESSION['userID']."";
         if(!mysql_query( $qry ,$this->connection))
         {
             $this->HandleDBError("Error updating the password \nquery:$qry");
@@ -685,13 +685,13 @@ class Authenticator
         $result = mysql_query("SHOW COLUMNS FROM $this->tablename");
         if(!$result || mysql_num_rows($result) <= 0)
         {
-            return $this->CreateTable();
+            return $this->CreateTable(); //NOTE: Run Installer
         }
         return true;
     }
-    function CreateTable()
-    {
-        $auth = "Create Table $this->tablename (".
+    /*
+    function CreateTable() {
+        $auth = "Create Table users (".
                 "id_user INT NOT NULL AUTO_INCREMENT ,".
                 "fname VARCHAR( 128 ) NOT NULL ,".
                 "lname VARCHAR( 128 ) NOT NULL ,".
@@ -704,22 +704,15 @@ class Authenticator
                 "type varchar( 3 ) ,".
                 "PRIMARY KEY ( id_user )".
                 ")";
-        /* Determine if this is necessary
-        $user_type = "Create Table $this->user_type_table (".
-                "id_type INT NOT NULL AUTO_INCREMENT ,".
-                "type VARCHAR( 30 ) NOT NULL ,".
-                "PRIMARY KEY ( id_type )".
-                ")";
-        */
-        if(!mysql_query($auth,$this->connection))
-        {
+
+        if(!mysql_query($auth,$this->connection)) {
             $this->HandleDBError("Error creating the table \nquery was\n $auth");
             return false;
         }
         return true;
     }
-    function InsertIntoDB(&$formvars)
-    {
+    */
+    function InsertIntoDB(&$formvars) {
         $confirmcode = $this->MakeConfirmationMd5($formvars['email']);
         $formvars['confirmcode'] = $confirmcode;
         $hash = $this->hashSSHA($formvars['password']);
