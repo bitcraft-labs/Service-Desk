@@ -29,6 +29,10 @@ Status:     Staging; Idea Testing; Development
     <link rel="stylesheet" href="/bower/AdminLTE/plugins/datatables/dataTables.bootstrap.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="/bower/AdminLTE/dist/css/AdminLTE.min.css">
+    <!-- Special version of Bootstrap that only affects content wrapped in .bootstrap-iso -->
+    <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
+    <link rel="stylesheet" href="/dist/css/form.css" />
+
     <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
           page. However, you can choose any other skin. Make sure you
           apply the skin class to the body tag so the changes take effect.
@@ -63,8 +67,10 @@ Status:     Staging; Idea Testing; Development
 				}
 				elseif (isset($sr) && is_numeric($sr))
 					echo "Service Record: $sr";
-				elseif (isset($sr) && $sr == 'new')
+				elseif (isset($sr) && $sr == 'new'){
 					echo "Add New Service Record";
+                    include_once 'modules/service_record/templates/sr_new.php';
+                }
 				else
 					echo "Welcome to Service Record Central";
 				?></h1>
