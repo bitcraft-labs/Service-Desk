@@ -1,0 +1,45 @@
+/* Breadcrumbs */
+.content-wrapper > .breadcrumb {
+    text-align: right;
+}
+
+.content-wrapper > .breadcrumb > .page-title {
+    float: left;
+    font-size: 12pt;
+    color: rgba(0,0,0,0.8);
+}
+
+/* Content Area */
+.gimme-padding {
+    padding-top: 25px;
+}
+
+.more-padding {
+    padding-top: 85px;
+}
+
+.member-info > img {
+    width: 100%;
+    max-width: 150px;
+    height: auto;
+}
+
+.member-info {
+    padding-left: 40px;
+}
+
+.profile-form {
+    padding-right: 40px;
+}
+
+/* App Styles */
+.skin-green .sidebar-menu > li.header {
+    color:rgba(255,255,255,0.7);
+    background:#1a2226;
+}
+
+.skin-green .wrapper,
+.skin-green .main-sidebar,
+.skin-green .left-side {
+  background-color: #222d32;
+}
