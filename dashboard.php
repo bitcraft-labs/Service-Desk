@@ -1,12 +1,9 @@
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-	<section class="content-header">
-		<h1>Dashboard</h1>
-			<ol class="breadcrumb">
-		    <li><a href="?page=dashboard"><i class="fa fa-dashboard"></i> Top</a></li>
-		    <li class="active">Dashboard</li>
-		</ol>
-	</section>
+  <div class="ssp-title hd">
+      <h3><i class="fa fa-dashboard fa-2x pull-left"> </i>Dashboard<br><small>Welcome back, <?= $authenticator->UserFullName() ?>!</small></h3>
+  </div>
+
 	<!-- Main content -->
 	<section class="content">
 	<!--<div class="container-fluid">-->
