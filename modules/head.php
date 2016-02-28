@@ -14,10 +14,12 @@
     <link rel="stylesheet" href="/bower/Ionicons/css/ionicons.min.css">
     <!-- DataTables -->
     <link rel="stylesheet" href="/bower/AdminLTE/plugins/datatables/dataTables.bootstrap.css">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="/bower/AdminLTE/plugins/select2/select2.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="/bower/AdminLTE/dist/css/AdminLTE.min.css">
     <!-- Table Styles -->
-    <link rel="stylesheet" href="/bower/AdminLTE/dist/css/tables.css">
+    <link rel="stylesheet" href="/dist/css/tables.css">
     <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
           page. However, you can choose any other skin. Make sure you
           apply the skin class to the body tag so the changes take effect.
