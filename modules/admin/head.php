@@ -21,6 +21,7 @@
           apply the skin class to the body tag so the changes take effect.
     -->
     <?php echo "<link rel='stylesheet' href='/bower/AdminLTE/dist/css/skins/skin-$skin.min.css'>";?>
+    <link rel="stylesheet" href="/dist/css/app.css">
     <link rel="stylesheet" href="/dist/css/admin.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
