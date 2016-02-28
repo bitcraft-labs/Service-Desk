@@ -1,18 +1,13 @@
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-  <section class="content-header">
-    <h1>Mailbox</h1>
-    <ol class="breadcrumb">
-        <li><a href="?page=dashboard"><i class="fa fa-dashboard"></i> Top</a></li>
-        <li class="active">Mailbox</li>
-    </ol>
-  </section>
+  <div class="ssp-title hd">
+      <h3><i class="fa fa-envelope fa-2x pull-left"> </i>Mailbox<br><small>Make sure to check these multiple times a day</small></h3>
+  </div>
 
   <!-- Main content -->
   <section class="content">
   <div class="row">
     <div class="col-md-3">
-      <a href="compose.html" class="btn btn-primary btn-block margin-bottom">Compose</a>
       <div class="box box-solid">
         <div class="box-header with-border">
           <h3 class="box-title">Folders</h3>
@@ -29,6 +24,7 @@
           </ul>
         </div><!-- /.box-body -->
       </div><!-- /. box -->
+      <a href="compose.html"><button class="btn btn-primary btn-block margin-bottom">Compose New Message</button></a>
     </div><!-- /.col -->
     <div class="col-md-9">
       <div class="box box-primary">
@@ -64,7 +60,6 @@
               <tbody>
                 <tr>
                   <td><input type="checkbox"></td>
-                  <td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>
                   <td class="mailbox-name"><a href="#">Allen Perry</a></td>
                   <td class="mailbox-subject"><b>Update to SR# 1337</b> - Hello, we have included a link for...</td>
                   <td class="mailbox-attachment"></td>
@@ -72,7 +67,6 @@
                 </tr>
                 <tr>
                   <td><input type="checkbox"></td>
-                  <td class="mailbox-star"><a href="#"><i class="fa fa-star-o text-yellow"></i></a></td>
                   <td class="mailbox-name"><a href="#">Support</a></td>
                   <td class="mailbox-subject"><b>New Service Record #9001 created</b> - New Service Record has been created for...</td>
                   <td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
@@ -80,7 +74,6 @@
                 </tr>
                 <tr>
                   <td><input type="checkbox"></td>
-                  <td class="mailbox-star"><a href="#"><i class="fa fa-star-o text-yellow"></i></a></td>
                   <td class="mailbox-name"><a href="#">Wade Wilson</a></td>
                   <td class="mailbox-subject"><b>User added comment to SR# 1337</b> - Thank you for sending me the link to ...</td>
                   <td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
@@ -88,7 +81,6 @@
                 </tr>
                 <tr>
                   <td><input type="checkbox"></td>
-                  <td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>
                   <td class="mailbox-name"><a href="#">Eugene Duffy</a></td>
                   <td class="mailbox-subject"><b>Updated Status SR# 1337 b</b> - We have found the issue to...</td>
                   <td class="mailbox-attachment"></td>
@@ -96,11 +88,45 @@
                 </tr>
                 <tr>
                   <td><input type="checkbox"></td>
-                  <td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>
                   <td class="mailbox-name"><a href="#">Joshua Nasiatka</a></td>
                   <td class="mailbox-subject"><b>SR# 9000 has been closed</b> - Service Record #9000 has been resolved...</td>
                   <td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
-                  <td class="mailbox-date">Yesterday</td>
+                  <td class="mailbox-date">2 days ago</td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox"></td>
+                  <td class="mailbox-name"><a href="#">Allen Perry</a></td>
+                  <td class="mailbox-subject"><b>Update to SR# 1337</b> - Hello, we have included a link for...</td>
+                  <td class="mailbox-attachment"></td>
+                  <td class="mailbox-date">6 days ago</td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox"></td>
+                  <td class="mailbox-name"><a href="#">Support</a></td>
+                  <td class="mailbox-subject"><b>New Service Record #9001 created</b> - New Service Record has been created for...</td>
+                  <td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
+                  <td class="mailbox-date">a week ao</td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox"></td>
+                  <td class="mailbox-name"><a href="#">Wade Wilson</a></td>
+                  <td class="mailbox-subject"><b>User added comment to SR# 1337</b> - Thank you for sending me the link to ...</td>
+                  <td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
+                  <td class="mailbox-date">2 weeks ago</td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox"></td>
+                  <td class="mailbox-name"><a href="#">Eugene Duffy</a></td>
+                  <td class="mailbox-subject"><b>Updated Status SR# 1337 b</b> - We have found the issue to...</td>
+                  <td class="mailbox-attachment"></td>
+                  <td class="mailbox-date">2 weeks ago</td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox"></td>
+                  <td class="mailbox-name"><a href="#">Joshua Nasiatka</a></td>
+                  <td class="mailbox-subject"><b>SR# 9000 has been closed</b> - Service Record #9000 has been resolved...</td>
+                  <td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
+                  <td class="mailbox-date">3 weeks ago</td>
                 </tr>
               </tbody>
             </table><!-- /.table -->

@@ -14,7 +14,6 @@ Status:     Staging; Idea Testing; Development
   }
 ?>
 <html>
-	<!-- head.php contains the stylesheets -->
   	<?php
     include_once 'modules/head.php'; ?>
     <?php echo "<body class='hold-transition skin-$skin sidebar-mini'>"; ?>
