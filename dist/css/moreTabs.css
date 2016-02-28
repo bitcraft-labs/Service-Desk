@@ -106,7 +106,7 @@
 }
 /* END-USER FIXES AND ADDITIONS */
 .end-user-padding {
-  padding-top: 24px;  
+  padding-top: 24px;
 }
 .container-mobile {
   display: none;
@@ -174,9 +174,7 @@ tbody tr {
     font-size: 1.3em;
     padding-bottom: 10px;
   }
-  i {
-    padding-bottom: 10px;
-  }
+
 }
 @media screen and (max-width : 438px) {
   .fa.fa-sign-out {
