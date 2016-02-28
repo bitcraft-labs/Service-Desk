@@ -19,11 +19,11 @@
       <ul class="nav navbar-nav">
       <?php include_once 'modules/information_bar.php'; ?>
         <!-- Control Sidebar Toggle Button -->
-        <!-- Uncomment to enable / comment to disable -->
+        <!-- Uncomment to enable / comment to disable
         <li>
-          <a href="logout.php" class="fa fa-sign-out"><span style="font-family:calibri"> Sign out</span></a>
-          <!-- <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a> -->
+          <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
         </li>
+        -->
       </ul>
     </div>
   </nav>

@@ -3,13 +3,37 @@
     text-align: right;
 }
 
-.content-wrapper > .breadcrumb > .page-title {
-    float: left;
-    font-size: 12pt;
-    color: rgba(0,0,0,0.8);
+.hd > .breadcrumb {
+  float: right;
 }
 
+/* Top Bar */
+@media (max-width: 768px) {
+  .signed-in-as {
+    display: none;
+  }
+}
 /* Content Area */
+.ssp-title.hd {
+	background: #FAFAFA;
+	border-bottom: 1px solid #ddd;
+	margin-bottom: 20px;
+  padding: 5px 5px 5px 20px;
+  z-index: 2000;
+}
+
+.ssp-title.hd > h3 {
+  margin-top: 5px;
+}
+
+.ssp-title.hd > h3 > i {
+  color: rgba(0,0,0,0.6);
+  line-height: 150%;
+  font-size: 140%;
+  padding-right: 5px;
+  margin-top: 0px
+}
+
 .gimme-padding {
     padding-top: 25px;
 }
@@ -32,6 +56,18 @@
     padding-right: 40px;
 }
 
+.info > p > a,
+.info > p > a:link,
+.info > p > a:active,
+.info > p > a:visited,
+.info > p > a:hover {
+  color: #fff;
+}
+
+.user-panel > .image > a > img {
+  width: 50px;
+}
+
 /* App Styles */
 .skin-green .sidebar-menu > li.header {
     color:rgba(255,255,255,0.7);
@@ -42,4 +78,16 @@
 .skin-green .main-sidebar,
 .skin-green .left-side {
   background-color: #222d32;
+}
+
+.main-header .logo .logo-lg img {
+  height: 30px;
+  width: inherit;
+}
+
+.content-wrapper,
+.right-side {
+  min-height: 100%;
+  background-color: #F5F5F5;
+  z-index: 800;
 }
