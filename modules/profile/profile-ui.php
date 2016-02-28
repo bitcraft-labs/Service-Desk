@@ -1,26 +1,24 @@
 <?php
-if(isset($_POST['submitted']))
-{
-   if($authenticator->ChangePassword())
-   {
-	    $returnStatus = "<br>Password Changed Successfully!";
+if(isset($_POST['submitted-acnt'])) {
+  $returnStatus = "<br>This feature isn't available yet";
+}
+if(isset($_POST['submitted'])) {
+   if($authenticator->ChangePassword()) {
+	    $passStatus = "<br>Password Changed Successfully!";
 		//$authenticator->RedirectToURL("changed-pass.html");
    } else {
-	   $returnStatus = "<br>Error changing password!";
+	   $passStatus = "<br>Error changing password!";
    }
 }
 ?>
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-        <ol class="breadcrumb">
-            <span class="page-title">Profile</span>
-            <li><a href="?page=dashboard"><i class="fa fa-dashboard"></i> Top</a></li>
-            <li class="active">Profile</li>
-        </ol>
-
+      <div class="ssp-title hd">
+        <h3><i class='fa fa-user fa-2x pull-left'> </i>Profile Options<br><small>If you change your password, don't forget it</small></h3>
+      </div>
         <!-- Main content -->
         <div class="container">
-            <div class="box box-success">
+            <div class="box box-primary">
                 <div class="box-header with-border">
                     <i class="fa fa-user"></i>
 
@@ -35,7 +33,7 @@ if(isset($_POST['submitted']))
                             <h2><?= $authenticator->UserFullName() ?></h2>
                             <h4><?= "Member Since: ".$cdate ?></h4>
                             <p><a href="javascript:;" data-toggle="modal" data-target="#changepass">Change Password</a>
-                                <?=$returnStatus?>
+                                <?=$passStatus?>
                             </p>
                             <br>
                         </div>
@@ -44,7 +42,7 @@ if(isset($_POST['submitted']))
                         <div class="col-md-8 col-sm-12 profile-form">
                             <form id='register' action='' method='post' accept-charset='UTF-8'>
                                 <fieldset class="end-user-padding">
-                                    <input type='hidden' name='submitted' id='submitted' value='1' />
+                                    <input type='hidden' name='submitted-acnt' id='submitted' value='1' />
                                     <?php echo "<div><span class='error'></span></div>";?>
                                         <!-- email -->
                                         <div class="form-group">
@@ -77,13 +75,14 @@ if(isset($_POST['submitted']))
                                                 <div class="input-group-addon">
                                                     <i>@</i>
                                                 </div>
-                                                <input type="text" class="form-control" value="<?php echo $prow['banner_id']; ?>" data-inputmask='"mask": "@12345678"' data-mask>
+                                                <input type="text" class="form-control" value="<?php echo $prow['banner_id']; ?>" data-inputmask='"mask": "@12345678"' data-mask disabled>
                                             </div>
                                             <!-- /.input group -->
                                         </div>
                                         <!-- /.form group -->
                                         <div class="form-group">
                                             <button type="submit" class="btn btn-primary btn-block">Update</button>
+                                            <?= $returnStatus ?>
                                         </div>
                                 </fieldset>
                             </form>

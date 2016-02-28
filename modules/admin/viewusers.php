@@ -2,6 +2,7 @@
 if ($myACL->hasPermission('manage_users') != true) {
 	echo "UNAUTHORIZED!";
 } else {
+	include_once 'modules/admin/modals.php';
 ?>
 <div class="row">
 	<div <?php if (!isset($_GET['do'])) echo 'class="col-md-12"'; else echo 'class="col-md-8"'; ?> >
@@ -47,6 +48,10 @@ if ($myACL->hasPermission('manage_users') != true) {
 						<?php echo $tabhead; ?>
 					</tfoot>
 				</table>
+				<!-- Button trigger modal -->
+				<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addUser">
+				  Add User
+				</button>
 			</div>
 		</div>
 	</div>

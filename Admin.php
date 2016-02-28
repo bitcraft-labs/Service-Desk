@@ -85,14 +85,14 @@ if (isset($_POST['action'])) {
   header("location: Admin.php" . $redir);
 }
 ?>
-    <?php echo "<body class='hold-transition skin-red sidebar-mini'>"; ?>
+    <?php echo "<body class='hold-transition skin-$skin sidebar-mini'>"; ?>
     <div class="wrapper">
 		<?php
 		// build the user interface
 		include_once 'modules/header.php';
 		include_once 'modules/left_sidebar.php';
-        include_once 'modules/admin/functions.php';
-        include_once 'modules/admin/admin.php';
+    include_once 'modules/admin/functions.php';
+    include_once 'modules/admin/admin.php';
 		include_once 'modules/footer.php';
 		include_once 'modules/control_sidebar.php';
     ?>
