@@ -8,10 +8,10 @@
     <div class="user-panel">
       <div class="pull-left image">
       <!-- User avatar storage -->
-        <img src="dist/img/avatar5.png" class="img-circle" alt="User Image">
+        <a href="Profile.php"><img src="dist/img/avatar5.png" class="img-circle" alt="User Image"></a>
       </div>
       <div class="pull-left info">
-        <p><?= $authenticator->UserFullName() ?></p>
+        <p><a href="Profile.php"><?= $authenticator->UserFullName() ?></a></p>
         <!-- Status -->
         <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
       </div>
@@ -37,7 +37,7 @@
       <li <?php if ($url == 'Mailbox.php') echo "class='active'"; ?> ><a href="Mailbox.php"><i class="fa fa-envelope"></i> <span>Mailbox</span></a></li>
       <li class="header">Service Central</li>
       <li <?php if (($url == 'ServiceRecord.php') && ($_GET['sr'] == "new")) echo "class='active'"; ?> ><a href="ServiceRecord.php?sr=new"><i class="fa fa-plus"></i> <span>Add New Service Record</span></a></li>
-      <li <?php if (($url == 'ServiceRecord.php') && ($_GET['sr'] != "new")) echo "class='active'"; ?> ><a href="ServiceRecord.php?sr=all"><i class="fa fa-list-alt"></i> <span>View Service Records</span></a></li>
+      <li <?php if (($url == 'ServiceRecord.php') && ($_GET['sr'] != "new")) echo "class='active'"; ?> ><a href="ServiceRecord.php?sr=all"><i class="fa fa-files-o"></i> <span>View Service Records</span></a></li>
       <!--<li><a href="#"><i class="fa fa-file-text"></i> <span>Run Report</span></a></li>-->
 
       <li class="header">Members</li>
