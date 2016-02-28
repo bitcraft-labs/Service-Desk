@@ -85,7 +85,7 @@ if (isset($_POST['action'])) {
   header("location: Admin.php" . $redir);
 }
 ?>
-    <?php echo "<body class='hold-transition skin-red sidebar-mini'>"; ?>
+    <?php echo "<body class='hold-transition skin-$skin sidebar-mini'>"; ?>
     <div class="wrapper">
 		<?php
 		// build the user interface

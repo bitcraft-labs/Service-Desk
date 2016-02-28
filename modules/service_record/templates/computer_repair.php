@@ -1,19 +1,4 @@
 <!-- Computer Repair -->
-<?php
-	$dal = new DAL();
-	//$person = $_GET['id'];
-	/*
-	$exists = $dal->checkPersonExists('1');
-	if (!$exists) {
-		echo "DOESN'T EXIST!!!";
-		exit;
-	}
-	*/
-	//$personinfo = $dal->getPersonInfo($person);
-	//$sysinfo = $dal->getPersonMachines($person);
-	//$checkups = $dal->getPersonCheckups($person);
-	//foreach ($personinfo as $prow) {}
-?>
 <div class="col-md-12">
   <h1>Service Record #1307<br /><small>Request for Computer Repair (Hardware)</small></h1>
 </div>
