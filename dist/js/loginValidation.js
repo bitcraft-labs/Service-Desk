@@ -4,6 +4,9 @@ var loginFormValidation = (function() {
 		var $password = $('#password').val();
 		var $error = '<div class="alert alert-danger alert-dismissable" id="error">';
 		var $formError = "";
+		/*
+			Regex checks for any characters that are not a word
+		*/
 		function calculatePossibleInjection(value) {
 			var isPossibleOfInjection = false;
 			var checkInject = /^\W/g;

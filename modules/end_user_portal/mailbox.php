@@ -19,6 +19,11 @@
 <!-- TEMPORARY MAILBOX FILE -->
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
+	<div class="ssp-title">
+		<div class="container">
+			<h3>Self-Service Portal <small>(Mailbox)</small><br><small>This is where your request communication takes place</small></h3>	
+		</div>
+	</div>
 	<div class="container">
 	  <section class="content-header">  
 	    <h1>WebMail</h1>
@@ -32,7 +37,7 @@
 	  <section class="content">
 		  <div class="row">
 		    <div class="col-md-12">
-		          <div class="box box-success">
+		          <div class="box box-primary">
 		            <div class="box-header with-border">
 		              <h3 class="box-title">Inbox</h3>
 		              <div class="box-tools pull-right">

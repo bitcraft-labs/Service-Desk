@@ -10,7 +10,7 @@
 			<!-- Comment section, title, description, building, room-number, last-updates, who assigned to it, history; --> 
 			<!-- Checkup Record -->
 			<div class="col-md-12">
-				<div class="box box-solid box-success">
+				<div class="box box-solid box-primary">
 				  <div class="box-header with-border">
 				    <h3 class="box-title"><i class="fa fa-file-text"> </i> Checkup Record</h3>
 				    <div class="box-tools pull-right">
@@ -64,7 +64,7 @@
 
 			<div class="col-md-12"> <!-- footer -->
 			  <div class="col-md-8">
-			    <button type="button" class="btn btn-success"><i href="fa fa-floppy-o pull-left">Save</i></button> <button type="button" class="btn btn-success"><i href="fa fa-floppy-o pull-left">Print</i></button><br />Record Saved.
+			    <button type="button" class="btn btn-primary"><i href="fa fa-floppy-o pull-left">Save</i></button> <button type="button" class="btn btn-primary"><i href="fa fa-floppy-o pull-left">Print</i></button><br />Record Saved.
 			  </div>
 			  <div class="col-md-4">
 			    <p>Last Updated: 01/9/2016 06:23pm</p>

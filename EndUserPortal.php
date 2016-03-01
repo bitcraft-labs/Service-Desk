@@ -12,7 +12,7 @@ Status:     Staging; Idea Testing; Development
     header("location: /");
     exit;
   }
-?>
+?>      
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -66,7 +66,7 @@ Status:     Staging; Idea Testing; Development
       include_once 'modules/end_user_portal/footer.php'; ?>
 
     </div><!-- ./wrapper -->
-
+    
     <!-- jQuery -->
     <script src="/bower/jquery/dist/jquery.min.js"></script>
     <!-- jQuery UI -->

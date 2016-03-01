@@ -8,6 +8,7 @@ var modalFormValidation = (function () {
 		var $title_default = $('.tab_value');
 		var $error = '<div class="alert alert-danger alert-dismissable" id="error">';
 		var $formError = "";
+
 		function calculateTitleDefault(value) {
 			var isNotEqual = false;
 			for(let i = 0; i < value.length; i++) {
@@ -17,6 +18,9 @@ var modalFormValidation = (function () {
 			}
 			return isNotEqual;
 		}
+		/*
+			Regex checks for any characters that are not a word
+		*/
 		function calculatePossibleInjection(value) {
 			var isPossibleOfInjection = false;
 			var checkInject =  /^\W/g;
@@ -30,10 +34,6 @@ var modalFormValidation = (function () {
 			 $formError += "<span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span>" +
                            "<span class='sr-only'>Error:</span>" +
                            " Title cannot be empty<br/>";
-		} else if (!calculateTitleDefault($title_default)) {
-			$formError += "<span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span>" +
-                          "<span class='sr-only'>Error:</span>" +
-                        	" Title cannot be the default<br/>";
 		} else if(!calculatePossibleInjection($modal_title)) {
 			$formError += "<span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span>" +
                           "<span class='sr-only'>Error:</span>" +

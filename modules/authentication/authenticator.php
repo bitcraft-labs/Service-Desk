@@ -329,11 +329,12 @@ class Authenticator
         $_SESSION['first_name']     = $row['fname'];
         $_SESSION['last_name']      = $row['lname'];
         $_SESSION['name_of_user']   = $row['fname'] ." ". $row['lname'];
+        $_SESSION['username']       = $row['username'];
         $_SESSION['email_of_user']  = $row['email'];
         
         return true;
     }
- public function checkhashSSHA($salt, $password) {
+    public function checkhashSSHA($salt, $password) {
         $hash = base64_encode(sha1($password . $salt, true) . $salt);
         return $hash;
     }
