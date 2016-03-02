@@ -15,7 +15,7 @@ class Authenticator
     //-----Initialization -------
     function Authenticator()
     {
-        $this->sitename = 'bitcraftlabs.net';
+        $this->sitename = $_SERVER['SITENAME'];
         $this->rand_key = '0iQx5oBk66oVZep';
     }
     function InitDB($host,$uname,$pwd,$database,$auth_table)

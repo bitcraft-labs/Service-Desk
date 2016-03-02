@@ -1,16 +1,21 @@
-<?PHP
+<?php
+/**
+  * @NOTE later decomission changed-pass.html and instead put the reply
+  *       on this page and upon submission change pass, logout, and direct
+  *       user to login.php so they can reauthenticate with the site
+  * @NOTE also need to add the change password modal to EUP and then decom
+  *       this page as well
+  */
+
 require_once("./modules/authentication/config.php");
 
-if(!$authenticator->CheckLogin())
-{
+if(!$authenticator->CheckLogin()) {
     $authenticator->RedirectToURL("login.php");
     exit;
 }
 
-if(isset($_POST['submitted']))
-{
-   if($authenticator->ChangePassword())
-   {
+if(isset($_POST['submitted'])) {
+   if($authenticator->ChangePassword()) {
         $authenticator->RedirectToURL("changed-pass.html");
    }
 }
@@ -19,7 +24,7 @@ if(isset($_POST['submitted']))
 <!DOCTYPE html>
 <html>
 <?php
-$pagetitle = "Register"; 
+$pagetitle = "Register";
 include_once 'modules/config.inc.php';
 include_once 'modules/authentication/auth-head.php';
 ?>
@@ -32,8 +37,7 @@ include_once 'modules/authentication/auth-head.php';
     <h1><?php echo $formatted_coname; ?><br /><small>Change Password</small></h1>
 </div>
 
-<!-- Simple Login - START -->
-<div id='fg_membersite'>
+<div>
 <form id='changepwd' class="col-md-12" action='<?php echo $authenticator->GetSelfScript(); ?>' method='post' accept-charset='UTF-8'>
 <fieldset>
     <input type='hidden' name='submitted' id='submitted' value='1'/>
@@ -66,23 +70,21 @@ include_once 'modules/authentication/auth-head.php';
     pwdwidget.enableShowStrength=false;
     pwdwidget.enableShowStrengthStr =false;
     pwdwidget.MakePWDWidget();
-    
+
     var pwdwidget = new PasswordWidget('newpwddiv','newpwd');
     pwdwidget.MakePWDWidget();
-    
-    
+
     var frmvalidator  = new Validator("changepwd");
     frmvalidator.EnableOnPageErrorDisplay();
     frmvalidator.EnableMsgsTogether();
 
     frmvalidator.addValidation("oldpwd","req","Please provide your old password");
-    
+
     frmvalidator.addValidation("newpwd","req","Please provide your new password");
 
 // ]]>
 </script>
 </div>
-<!-- Simple Login - END -->
 
 <!-- Help Modal -->
 <div id="help" class="modal fade" role="dialog">

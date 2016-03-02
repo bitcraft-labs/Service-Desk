@@ -5,7 +5,6 @@ if(isset($_POST['submitted-acnt'])) {
 if(isset($_POST['submitted'])) {
    if($authenticator->ChangePassword()) {
 	    $passStatus = "<br>Password Changed Successfully!";
-		//$authenticator->RedirectToURL("changed-pass.html");
    } else {
 	   $passStatus = "<br>Error changing password!";
    }
