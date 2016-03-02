@@ -5,7 +5,7 @@ require_once("./modules/config.inc.php");
 $authenticator = new Authenticator();
 
 //Provide your site name here
-$authenticator->SetWebsiteName('allenperry.me');
+$authenticator->SetWebsiteName($_SERVER['SERVER_NAME']);
 
 //Provide the email address where you want to get notifications
 $authenticator->SetAdminEmail($conf['customize']['sysemail']);

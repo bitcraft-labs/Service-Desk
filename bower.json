@@ -2,7 +2,9 @@
   "name": "Bitcraft Service Desk",
   "homepage": "https://bitcraftlabs.net",
   "authors": [
-    "Joshua Nasiatka <joshuanasiatka@gmail.com>"
+    "Joshua Nasiatka <joshua@bitcraftlabs.net>",
+    "Gene Duffy <eugene@bitcraftlabs.net>",
+    "Allen Perry <allen@bitcraftlabs.net"
   ],
   "description": "An Open Source ITSM Web App",
   "main": "",

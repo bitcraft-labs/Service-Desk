@@ -182,20 +182,20 @@ Status:     Staging; Idea Testing; Development
 
     <!-- REQUIRED JS SCRIPTS -->
 	<!-- jQuery -->
-    <script src="/bower/jquery/dist/jquery.min.js"></script>
+    <script src="bower/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
-    <script src="/bower/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- DataTables -->
-    <script src="/bower/AdminLTE/plugins/datatables/jquery.dataTables.js"></script>
-    <script src="/bower/AdminLTE/plugins/datatables/dataTables.bootstrap.js"></script>
+    <script src="bower/AdminLTE/plugins/datatables/jquery.dataTables.js"></script>
+    <script src="bower/AdminLTE/plugins/datatables/dataTables.bootstrap.js"></script>
     <!-- SlimScroll -->
-    <script src="/bower/AdminLTE/plugins/slimScroll/jquery.slimscroll.js"></script>
+    <script src="bower/AdminLTE/plugins/slimScroll/jquery.slimscroll.js"></script>
     <!-- FastClick -->
-    <script src="/bower/AdminLTE/plugins/fastclick/fastclick.min.js"></script>
+    <script src="bower/AdminLTE/plugins/fastclick/fastclick.min.js"></script>
     <!-- Select2 -->
-    <script src="/bower/AdminLTE/plugins/select2/select2.min.js"></script>
+    <script src="bower/AdminLTE/plugins/select2/select2.min.js"></script>
     <!-- AdminLTE App -->
-    <script src="/bower/AdminLTE/dist/js/app.min.js"></script>
+    <script src="bower/AdminLTE/dist/js/app.min.js"></script>
     <!-- page script -->
     <script>
       $(function () {
