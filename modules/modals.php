@@ -5,6 +5,11 @@ CRM Main Modals
 *****************************
 */
 
+/**
+  * @NOTE Probably decommisioning this entire file and dereferencing it
+  *       from all other pages since it isn't being used at all
+  */
+
 /* ----------- Service Records ----------- */
 /* --- Add New Service Record --- */
 ?>
@@ -18,7 +23,7 @@ CRM Main Modals
         <h4 class="modal-title">Add New Service Record</h4>
       </div>
       <div class="modal-body">
-        
+
         <p>Module Unavailable.</p>
       </div>
       <div class="modal-footer">
@@ -28,6 +33,5 @@ CRM Main Modals
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
-
   </div>
 </div>

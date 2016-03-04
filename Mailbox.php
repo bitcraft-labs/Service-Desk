@@ -31,11 +31,11 @@ Status:     Staging; Idea Testing; Development
 
     <!-- REQUIRED JS SCRIPTS -->
     <!-- jQuery -->
-    <script src="/bower/jquery/dist/jquery.min.js"></script>
+    <script src="bower/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
-    <script src="/bower/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- AdminLTE App -->
-    <script src="/bower/AdminLTE/dist/js/app.min.js"></script>
+    <script src="bower/AdminLTE/dist/js/app.min.js"></script>
 
   </body>
 </html>

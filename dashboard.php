@@ -6,7 +6,6 @@
 
 	<!-- Main content -->
 	<section class="content">
-	<!--<div class="container-fluid">-->
 	<div class="row">
 		<div class="col-md-6 col-xs-12">
           <!-- Widget: user widget style 1 -->
@@ -50,7 +49,6 @@
 		include_once "modules/hd_portal/recent_act.php";
 		include_once "modules/hd_portal/act_user.php";
 		?>
-
 	</div>
 	</section><!-- /.content -->
 </div><!-- /.content-wrapper -->

@@ -13,7 +13,7 @@ if(isset($_POST['submitted']))
 <!DOCTYPE html>
 <html>
 <?php
-$pagetitle = "Register"; 
+$pagetitle = "Register";
 include_once 'modules/config.inc.php';
 include_once 'modules/authentication/auth-head.php';
 ?>
@@ -26,14 +26,13 @@ include_once 'modules/authentication/auth-head.php';
     <h1><?php echo $formatted_coname; ?><br /><small>Register for an Account</small></h1>
 </div>
 
-<!-- Simple Login - START -->
-<div id='fg_membersite'>
+<!-- New User Registration Form Begin
+     This is going to be taken out in the next release and replaced with a form in admin as this will be
+     a closed registration type of deal -->
+<div>
 <form id='register' class="col-md-12" action='<?php echo $authenticator->GetSelfScript(); ?>' method='post' accept-charset='UTF-8'>
 <fieldset>
     <input type='hidden' name='submitted' id='submitted' value='1'/>
-    <!--
-    <input type='text'  class='spmhidip' name='<?php echo $authenticator->GetSpamTrapInputName(); ?>' />
-    -->
     <div><span class='error'><?php echo $authenticator->GetErrorMessage(); ?></span></div>
     <div class="form-group">
         <input name="fname" type="text" id='fname' class="form-control input-lg" value='<?php echo $authenticator->SafeDisplay('fname') ?>' placeholder="First Name">
@@ -43,15 +42,9 @@ include_once 'modules/authentication/auth-head.php';
         <input name="lname" type="text" id='lname' class="form-control input-lg" value='<?php echo $authenticator->SafeDisplay('lname') ?>' placeholder="Last Name">
         <span id='register_name_errorloc' class='error'></span>
     </div>
-    <!--
-    <div class="form-group">
-        <input name="name" type="text" id='name' class="form-control input-lg" value='<?php echo $authenticator->SafeDisplay('name') ?>' placeholder="Full Name">
-        <span id='register_name_errorloc' class='error'></span>
-    </div>
-    -->
     <div class="form-group">
         <!-- Potentially add email validation down the road -->
-        <input name="email" type="text" id='email' class="form-control input-lg" value='<?php echo $authenticator->SafeDisplay('email') ?>' placeholder="FSU Email Address">
+        <input name="email" type="text" id='email' class="form-control input-lg" value='<?php echo $authenticator->SafeDisplay('email') ?>' placeholder="Company Email Address">
         <span id='register_email_errorloc' class='error'></span>
     </div>
     <div class="form-group">
@@ -60,9 +53,6 @@ include_once 'modules/authentication/auth-head.php';
         <span id='register_username_errorloc' class='error'></span>
     </div>
     <div class="form-group">
-        <!-- Password Generation Module -->
-        <!-- <div class='pwdwidgetdiv' id='thepwddiv' ></div> -->
-        
         <input name="password" type="password" id='password' class="form-control input-lg" placeholder="Password">
         <div id='register_password_errorloc' class='error' style='clear:both'></div>
     </div>
@@ -73,12 +63,13 @@ include_once 'modules/authentication/auth-head.php';
     </div>
 </fieldset>
 </form>
+<!-- New User Registration Form End -->
 
 <script type='text/javascript'>
 // <![CDATA[
     var pwdwidget = new PasswordWidget('thepwddiv','password');
     pwdwidget.MakePWDWidget();
-    
+
     var frmvalidator  = new Validator("register");
     frmvalidator.EnableOnPageErrorDisplay();
     frmvalidator.EnableMsgsTogether();
@@ -91,13 +82,12 @@ include_once 'modules/authentication/auth-head.php';
     frmvalidator.addValidation("email","email","Please provide a valid email address");
 
     frmvalidator.addValidation("username","req","Please provide a username");
-    
+
     frmvalidator.addValidation("password","req","Please provide a password");
 
 // ]]>
 </script>
 </div>
-<!-- Simple Login - END -->
 
 <!-- Help Modal -->
 <div id="help" class="modal fade" role="dialog">
