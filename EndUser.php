@@ -80,23 +80,23 @@ Status:     Staging; Idea Testing; Development
     </div><!-- ./wrapper -->
 
     <!-- REQUIRED JS SCRIPTS -->
-	<!-- jQuery -->
-    <script src="/bower/jquery/dist/jquery.min.js"></script>
+  	<!-- jQuery -->
+    <script src="bower/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
-    <script src="/bower/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- DataTables -->
-    <script src="/bower/AdminLTE/plugins/datatables/jquery.dataTables.js"></script>
-    <script src="/bower/AdminLTE/plugins/datatables/dataTables.bootstrap.js"></script>
+    <script src="bower/AdminLTE/plugins/datatables/jquery.dataTables.js"></script>
+    <script src="bower/AdminLTE/plugins/datatables/dataTables.bootstrap.js"></script>
     <!-- SlimScroll -->
-    <script src="/bower/AdminLTE/plugins/slimScroll/jquery.slimscroll.js"></script>
+    <script src="bower/AdminLTE/plugins/slimScroll/jquery.slimscroll.js"></script>
     <!-- FastClick -->
-    <script src="/bower/AdminLTE/plugins/fastclick/fastclick.min.js"></script>
+    <script src="bower/AdminLTE/plugins/fastclick/fastclick.min.js"></script>
     <!-- AdminLTE App -->
-    <script src="/bower/AdminLTE/dist/js/app.min.js"></script>
+    <script src="bower/AdminLTE/dist/js/app.min.js"></script>
     <!-- InputMask -->
-    <script src="/bower/AdminLTE/plugins/input-mask/jquery.inputmask.js"></script>
-    <script src="/bower/AdminLTE/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
-    <script src="/bower/AdminLTE/plugins/input-mask/jquery.inputmask.extensions.js"></script>
+    <script src="bower/AdminLTE/plugins/input-mask/jquery.inputmask.js"></script>
+    <script src="bower/AdminLTE/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+    <script src="bower/AdminLTE/plugins/input-mask/jquery.inputmask.extensions.js"></script>
     <!-- page script -->
     <script>
       $(function () {
@@ -128,10 +128,6 @@ Status:     Staging; Idea Testing; Development
         });
       });
     </script>
-    <!-- Optionally, you can add Slimscroll and FastClick plugins.
-         Both of these plugins are recommended to enhance the
-         user experience. Slimscroll is required when using the
-         fixed layout. -->
     <?php
     include_once 'modules/modals.php'; ?>
   </body>
