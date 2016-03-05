@@ -1,7 +1,8 @@
 <?php
 if ( !class_exists( 'DALi' ) ) {
   class DALi {
-    protected function dbconnect() {
+    // ------------- General -----------------
+    private function dbconnect() {
       return new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DB);
     }
 
@@ -15,7 +16,6 @@ if ( !class_exists( 'DALi' ) ) {
 
       return $results;
     }
-
     //---------QR Code Generation---------->
     public function myUrlEncode($string) {
         $entities = array('%21', '%2A', '%27', '%28', '%29', '%3B', '%3A', '%40', '%26', '%3D', '%2B', '%24', '%2C', '%2F', '%3F', '%25', '%23', '%5B', '%5D');
@@ -89,6 +89,13 @@ if ( !class_exists( 'DALi' ) ) {
       }
 
       return $subsec;
+    }
+    public function submitModalForm($title, $building, $room_number, $description) {
+      if(($title != null) || ($building != null) || ($room_number != null) || ($description != null)) {
+          $timeStamp = date("Y-m-d H:i\:\0\0") . 0 . 0;
+          // $sql = "INSERT INTO service_record ()
+          // VALUE ($title, $building, $room_number, $description)";
+      }
     }
 
     //-------Help Desk Staff Functions ---->
@@ -172,9 +179,9 @@ if ( !class_exists( 'DALi' ) ) {
         return true;
     }*/
 
+
   }
 }
-
 //Need this to init class ----> $dali = new DALi();
 
 /* Sample Future-Proof Protected Functions
