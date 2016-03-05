@@ -30,5 +30,11 @@ h1{
 }
 
 .foptions > label {
-    
+
+}
+.incident{
+  /*display: none;*/
+}
+.repair{
+  /*display: none;*/
 }

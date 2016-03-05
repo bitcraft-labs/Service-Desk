@@ -13,6 +13,7 @@ Status:     Staging; Idea Testing; Development
     exit;
   }
 ?>
+<link rel="stylesheet" href="dist/css/form.css">
 <?php
     include_once 'modules/head.php';
     echo "<body class='hold-transition skin-$skin sidebar-mini'>
@@ -198,7 +199,16 @@ Status:     Staging; Idea Testing; Development
     <script src="bower/AdminLTE/dist/js/app.min.js"></script>
     <!-- page script -->
     <script>
+      $(function() {
+        $(".building").select2();
+        $(".user-list").select2();
+        $(".machine").select2();
+        $(".request-type").select2();
+      });
+    
       $(function () {
+        $(".repair").hide();
+        $(".incident").hide();
         $('#records').DataTable({
           "paging": true,
           "lengthChange": true,
@@ -209,13 +219,8 @@ Status:     Staging; Idea Testing; Development
         });
       });
 
-      $(function() {
-        $(".building").select2();
-        $(".user-list").select2();
-        $(".machine").select2();
-        $(".request-type").select2();
-      });
     </script>
+    <script src="dist/js/form.js"></script>
     <!-- Optionally, you can add Slimscroll and FastClick plugins.
          Both of these plugins are recommended to enhance the
          user experience. Slimscroll is required when using the

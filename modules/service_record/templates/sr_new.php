@@ -46,7 +46,7 @@
                   Select User
               </span>
           </div>
-          <div class="form-group ">
+          <div class="form-group incident">
               <label class="control-label requiredField" for="building">
                   Building
                   <span class="asteriskField">
@@ -69,7 +69,7 @@
                   Select bulding from dropdown
               </span>
           </div>
-          <div class="form-group ">
+          <div class="form-group repair ">
               <label class="control-label requiredField" for="machine">
                   Machine
                   <span class="asteriskField">
