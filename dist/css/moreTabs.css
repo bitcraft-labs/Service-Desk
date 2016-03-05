@@ -123,6 +123,7 @@
 tbody tr {
   cursor: pointer;
 }
+.box-custom {}
 /* MEDIA QUERIES */
 @media screen and (max-width : 991px) {
    .navbar li {
