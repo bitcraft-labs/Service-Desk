@@ -76,10 +76,8 @@
 	              <li class="footer"><a href="#">View all</a></li>
 	            </ul>
 	          </li>
-	          	<!-- User Account Menu -->
-	         	<?php include_once 'modules/end_user_portal/user_options.php'; ?>
-	            </ul>
-	          </li>
+	          <!-- User Account Menu -->
+	          <?php include_once 'modules/end_user_portal/user_options.php'; ?>
 	        </ul>
 	      </div><!-- /.navbar-custom-menu -->
 	  </div><!-- /.container-fluid -->

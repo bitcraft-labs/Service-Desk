@@ -12,6 +12,10 @@ Status:     Staging; Idea Testing; Development
     header("location: /");
     exit;
   }
+  $personinfo = $dali->getPersonInfo($whoami);
+  foreach ($personinfo as $prow) {}
+  $joindate = strtotime( $prow['creation_date'] );
+  $cdate = date( 'F d, Y', $joindate );
 ?>
 <html>
   	<?php
@@ -27,15 +31,15 @@ Status:     Staging; Idea Testing; Development
     include_once 'modules/footer.php';
     include_once 'modules/control_sidebar.php';
     ?>
-    </div><!-- ./wrapper -->
+    </div>
 
     <!-- REQUIRED JS SCRIPTS -->
     <!-- jQuery -->
-    <script src="/bower/jquery/dist/jquery.min.js"></script>
+    <script src="bower/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
-    <script src="/bower/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- AdminLTE App -->
-    <script src="/bower/AdminLTE/dist/js/app.min.js"></script>
+    <script src="bower/AdminLTE/dist/js/app.min.js"></script>
 
   </body>
 </html>

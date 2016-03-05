@@ -7,22 +7,26 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="/bower/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower/bootstrap/dist/css/bootstrap.min.css">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="/bower/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="bower/font-awesome/css/font-awesome.min.css">
     <!-- Ionicons -->
-    <link rel="stylesheet" href="/bower/Ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="bower/Ionicons/css/ionicons.min.css">
     <!-- DataTables -->
-    <link rel="stylesheet" href="/bower/AdminLTE/plugins/datatables/dataTables.bootstrap.css">
+    <link rel="stylesheet" href="bower/AdminLTE/plugins/datatables/dataTables.bootstrap.css">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="bower/AdminLTE/plugins/select2/select2.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="/bower/AdminLTE/dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="bower/AdminLTE/dist/css/AdminLTE.min.css">
     <!-- Table Styles -->
-    <link rel="stylesheet" href="/bower/AdminLTE/dist/css/tables.css">
+    <link rel="stylesheet" href="dist/css/tables.css">
     <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
           page. However, you can choose any other skin. Make sure you
           apply the skin class to the body tag so the changes take effect.
     -->
-    <?php echo "<link rel='stylesheet' href='/bower/AdminLTE/dist/css/skins/skin-$skin.min.css'>"; ?>
+    <?php echo "<link rel='stylesheet' href='bower/AdminLTE/dist/css/skins/skin-$skin.min.css'>"; ?>
+    <!-- AdminLTE Enhacement Styles -->
+    <link rel="stylesheet" href="dist/css/app.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

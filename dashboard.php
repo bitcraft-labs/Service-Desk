@@ -1,15 +1,11 @@
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-	<section class="content-header">
-		<h1>Dashboard</h1>
-			<ol class="breadcrumb">
-		    <li><a href="?page=dashboard"><i class="fa fa-dashboard"></i> Top</a></li>
-		    <li class="active">Dashboard</li>
-		</ol>
-	</section>
+  <div class="ssp-title hd">
+      <h3><i class="fa fa-dashboard fa-2x pull-left"> </i>Dashboard<br><small>Welcome back, <?= $authenticator->UserFullName() ?>!</small></h3>
+  </div>
+
 	<!-- Main content -->
 	<section class="content">
-	<!--<div class="container-fluid">-->
 	<div class="row">
 		<div class="col-md-6 col-xs-12">
           <!-- Widget: user widget style 1 -->
@@ -24,8 +20,8 @@
             </div>
             <div class="box-footer no-padding">
               <ul class="nav nav-stacked">
-                <li><a href="#">Assigned Service Records <span class="pull-right badge bg-blue">31</span></a></li>
-                <li><a href="#">Emails <span class="pull-right badge bg-aqua">5</span></a></li>
+                <li><a href="ServiceRecord.php?sr=all">Assigned Service Records <span class="pull-right badge bg-blue">31</span></a></li>
+                <li><a href="Mailbox.php">Emails <span class="pull-right badge bg-aqua">5</span></a></li>
                 <li><a href="#">Completed Service Records <span class="pull-right badge bg-green">12</span></a></li>
               </ul>
             </div>
@@ -49,117 +45,10 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-6 col-xs-12">
-			<div class="box">
-				<div class="box-header">
-				  <h3 class="box-title">Recent Activity</h3>
-				</div><!-- /.box-header -->
-				<div class="box-body">
-
-					<table id="recent_activity" class="table table-bordered table-striped">
-						<thead>
-						<?php $tabhead="
-							<tr>
-								<td>#</td>
-								<td>First Name</td>
-								<td>Last Name</td>
-								<td>User Group</td>
-								<td>Active SR #</td>
-								<td>Last Online</td>
-							</tr>"; echo $tabhead; ?>
-						</thead>
-						<tbody>
-							<?php /*
-							$dal = new DAL();
-							$personinfo = $dal->getPersonInfo('all');
-							if ($personinfo) {
-								foreach($personinfo as $row) {
-							    echo "<tr>
-								    	<td><a href='?id=$row->user_id'>$row->user_id</a></td>
-								    	<td>$row->name</td>
-								    	<td>@$row->banner_id</td>
-								    	<td>$row->user_type</td>
-								    	<td>$row->phone</td>
-								    	<td>$row->email</td>
-								    	<td>12/1/2015</td>
-								    	</tr>";
-							  	}
-							} */
-							?>
-							<!--
-							<tr>
-								<td><a href="?id=1">1</a></td>
-								<td>Jo Shmo</td>
-								<td>@01234567</td>
-								<td>Student</td>
-								<td>555.555.5555</td>
-								<td>jshmo1@student.fitchburgstate.edu</td>
-								<td>12/3/2015</td>
-							</tr>
-							-->
-						</tbody>
-						<tfoot>
-							<?php echo $tabhead; ?>
-						</tfoot>
-					</table>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-6 col-xs-12">
-			<div class="box">
-				<div class="box-header">
-				  <h3 class="box-title">Active Staff Users</h3>
-				</div><!-- /.box-header -->
-				<div class="box-body">
-					<table id="active_staff" class="table table-bordered table-striped">
-						<thead>
-						<?php $tabhead="
-							<tr>
-								<td>#</td>
-								<td>First Name</td>
-								<td>Last Name</td>
-								<td>User Group</td>
-								<td>Active SR #</td>
-								<td>Last Online</td>
-							</tr>"; echo $tabhead; ?>
-						</thead>
-						<tbody>
-							<?php /*
-							$dal = new DAL();
-							$personinfo = $dal->getPersonInfo('all');
-							if ($personinfo) {
-								foreach($personinfo as $row) {
-							    echo "<tr>
-								    	<td><a href='?id=$row->user_id'>$row->user_id</a></td>
-								    	<td>$row->name</td>
-								    	<td>@$row->banner_id</td>
-								    	<td>$row->user_type</td>
-								    	<td>$row->phone</td>
-								    	<td>$row->email</td>
-								    	<td>12/1/2015</td>
-								    	</tr>";
-							  	}
-							} */
-							?>
-							<!--
-							<tr>
-								<td><a href="?id=1">1</a></td>
-								<td>Jo Shmo</td>
-								<td>@01234567</td>
-								<td>Student</td>
-								<td>555.555.5555</td>
-								<td>jshmo1@student.fitchburgstate.edu</td>
-								<td>12/3/2015</td>
-							</tr>
-							-->
-						</tbody>
-						<tfoot>
-							<?php echo $tabhead; ?>
-						</tfoot>
-					</table>
-				</div>
-			</div>
-		</div>
+		<?php
+		include_once "modules/hd_portal/recent_act.php";
+		include_once "modules/hd_portal/act_user.php";
+		?>
 	</div>
 	</section><!-- /.content -->
 </div><!-- /.content-wrapper -->

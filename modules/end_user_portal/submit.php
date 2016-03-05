@@ -60,8 +60,8 @@
 
                     <h4><i class="fa fa-upload fa-2x pull-left align m-blue"></i> <a data-toggle="modal" data-target="#incidentModal" data-title="Software Install Request" name="submit-value" href="#" class="tab_value">Software Install Request</a><br />
                       <small>I'd like all lab machines to have &lt;software&gt; installed.</small></h4>
-                      
-                    
+
+
                   </div>
 
                   <!-- Desktops & Laptops -->

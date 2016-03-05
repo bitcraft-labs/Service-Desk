@@ -1,5 +1,5 @@
-<?php 
-	$person = $_SESSION['user_id'];
+<?php
+	$person = $_SESSION['userID'];
 	/*
 	$exists = $dal->checkPersonExists('1');
 	if (!$exists) {
@@ -7,8 +7,10 @@
 		exit;
 	}
 	*/
-	$personinfo = $dal->getPersonInfo($person);
+	$personinfo = $dali->getPersonInfo($person);
 	foreach ($personinfo as $prow) {}
+	$joindate = strtotime( $prow['creation_date'] );
+	$cdate = date( 'F d, Y', $joindate );
  ?>
 <div class="content-wrapper">
 	<div class="ssp-title">
@@ -22,7 +24,7 @@
 			<div class="col-md-4">
 				<!-- Content Header (Page header) -->
 				<h2><?= $authenticator->UserFullName() ?></h2>
-				<h4><?= $dal->getVerbatimUserAccessLevel() ?></h4>
+				<h4><?= "Member Since: ".$cdate ?></h4>
 
 				<!-- Main content -->
 					<p><a href="change-pass.php">Change Password</a></p><br>
@@ -41,7 +43,7 @@
 			                <div class="input-group-addon">
 			                  <i class="fa fa-envelope"></i>
 			                </div>
-			                <input type="text" class="form-control" value="<?php echo $prow->email; ?>" data-inputmask='"mask": "__@__.__"' data-mask>
+			                <input type="text" class="form-control" value="<?php echo $prow['email']; ?>" data-inputmask='"mask": "__@__.__"' data-mask>
 			              </div><!-- /.input group -->
 			            </div><!-- /.form group -->
 					    <!-- phone -->
@@ -51,7 +53,7 @@
 			                <div class="input-group-addon">
 			                  <i class="fa fa-phone"></i>
 			                </div>
-			                <input type="text" class="form-control" value="<?php echo $prow->phone; ?>" data-inputmask='"mask": "(999) 999-9999"' data-mask>
+			                <input type="text" class="form-control" value="<?php echo $prow['phone']; ?>" data-inputmask='"mask": "(999) 999-9999"' data-mask>
 			              </div><!-- /.input group -->
 			            </div><!-- /.form group -->
 					    <!-- banner id -->
@@ -61,7 +63,7 @@
 			                <div class="input-group-addon">
 			                  <i>@</i>
 			                </div>
-			                <input type="text" class="form-control" value="<?php echo $prow->banner_id; ?>" data-inputmask='"mask": "@12345678"' data-mask>
+			                <input type="text" class="form-control" value="<?php echo $prow['banner_id']; ?>" data-inputmask='"mask": "@12345678"' data-mask>
 			              </div><!-- /.input group -->
 			            </div><!-- /.form group -->
 			            <div class="form-group">

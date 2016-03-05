@@ -2,6 +2,7 @@
 if ($myACL->hasPermission('manage_users') != true) {
 	echo "UNAUTHORIZED!";
 } else {
+	include_once 'modules/admin/modals.php';
 ?>
 <div class="row">
 	<div <?php if (!isset($_GET['do'])) echo 'class="col-md-12"'; else echo 'class="col-md-8"'; ?> >
@@ -13,11 +14,7 @@ if ($myACL->hasPermission('manage_users') != true) {
 			  <h3 class="box-title"><?= $adminsub ?></h3>
 			</div><!-- /.box-header -->
 			<div class="box-body">
-				<?php
-				mysql_connect($conf['sql']['host'],$conf['sql']['user'],$conf['sql']['pass']);
-				mysql_select_db($conf['sql']['name']);
-				$list = mysql_query("SELECT * FROM users");
-				?>
+				<?php $list = $dali->getHDUsers();?>
 				<table id="adm_acl" class="table table-striped table-hover">
 					<thead>
 					<?php $tabhead="
@@ -32,17 +29,17 @@ if ($myACL->hasPermission('manage_users') != true) {
 					<tbody>
 						<?php
 						$highlight = '';
-						while($row=mysql_fetch_array($list)){
+						foreach ($list as $row) {
 							if ($_GET['for'] == $row[0]) {
 								$highlight = 'row-selected';
 							} else {
 								$highlight = false;
 							}
-						    echo "<tr class='clickableRow $highlight' data-href='?action=ViewAdmin&for=$row[0]&do=EditUser#access_users' $highlight>
-									<td>$row[0]</td>
-									<td>$row[1]</td>
-									<td>$row[2]</td>
-									<td>$row[3]</td>
+						    echo "<tr class='clickableRow $highlight' data-href='?action=ViewAdmin&for=".$row['id']."&do=EditUser#access_users' $highlight>
+									<td>".$row['id']."</td>
+									<td>".$row['fname']."</td>
+									<td>".$row['lname']."</td>
+									<td>".$row['email']."</td>
 									<td><a href='?action=ViewAdmin&for=$row[0]&do=EditUser#access_users'><img src='$icon_dir/user-edit-icon.png' height='24' /></a> <a href='?action=ViewAdmin&for=$row[0]&do=ChangeAccess#access_users'><img src='$icon_dir/group-key-icon.png' height='24' /></a>  <a href='?action=ViewAdmin&for=$row[0]&do=DeleteUser#access_users'><img src='$icon_dir/user-delete-icon.png' height='24' /></a></td>
 									</tr>";
 						}?>
@@ -51,6 +48,10 @@ if ($myACL->hasPermission('manage_users') != true) {
 						<?php echo $tabhead; ?>
 					</tfoot>
 				</table>
+				<!-- Button trigger modal -->
+				<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addUser">
+				  Add User
+				</button>
 			</div>
 		</div>
 	</div>
@@ -60,7 +61,7 @@ if ($myACL->hasPermission('manage_users') != true) {
   			<h3 class="box-title">User Settings</h3>
   		</div><!-- /.box-header -->
   		<div class="box-body">
-  			<?php 
+  			<?php
   			if (!$_GET['for']) echo "<p>No user selected</p>";
   			if (!($_GET['do'] == 'ChangeAccess')) echo "<p>Action currently unavailable</p>";
   			if ($_GET['do'] == 'ChangeAccess') include_once 'modules/admin/actions/change-access.php'; ?>

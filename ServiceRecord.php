@@ -13,66 +13,36 @@ Status:     Staging; Idea Testing; Development
     exit;
   }
 ?>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title><?= $title ?></title>
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="/bower/bootstrap/dist/css/bootstrap.min.css">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="/bower/font-awesome/css/font-awesome.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="/bower/Ionicons/css/ionicons.min.css">
-    <!-- DataTables -->
-    <link rel="stylesheet" href="/bower/AdminLTE/plugins/datatables/dataTables.bootstrap.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="/bower/AdminLTE/dist/css/AdminLTE.min.css">
-    <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
-          page. However, you can choose any other skin. Make sure you
-          apply the skin class to the body tag so the changes take effect.
-    -->
-    <?php echo "<link rel='stylesheet' href='/bower/AdminLTE/dist/css/skins/skin-$skin.min.css'>"; ?>
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-</head>
-    <?php echo "<body class='hold-transition skin-$skin sidebar-mini'>"; ?>
-    <div class="wrapper">
-		<?php
+<?php
+    include_once 'modules/head.php';
+    echo "<body class='hold-transition skin-$skin sidebar-mini'>
+    <div class='wrapper'>";
 		// build the user interface
 		include_once 'modules/header.php';
 		include_once 'modules/left_sidebar.php';
 		?>
 
 		<div class="content-wrapper">
-
-
-			<section class="content-header">
-				<h1><?php
-				$sr = $_GET['sr'];
-				if ($sr == "all") {
-					$now = getdate();
-					$now = array($now[mday],$now[mon],$now[year]);
-					echo "All Service Records <small>As of $now[1]-$now[0]-$now[2]</small>";
-				}
-				elseif (isset($sr) && is_numeric($sr))
-					echo "Service Record: $sr";
-				elseif (isset($sr) && $sr == 'new')
-					echo "Add New Service Record";
-				else
-					echo "Welcome to Service Record Central";
-				?></h1>
-				<ol class="breadcrumb">
-				    <li><a href="?page=dashboard"><i class="fa fa-dashboard"></i> Top</a></li>
-				    <li class="active">Service Records</li>
-				</ol>
-			</section>
+      <div class="ssp-title hd">
+          <h3>
+            <?php
+            $sr = $_GET['sr'];
+    				if ($sr == "all") {
+    					$now = getdate();
+    					$now = array($now[mday],$now[mon],$now[year]);
+    					echo "<i class='fa fa-table fa-2x pull-left'> </i>All Service Records<br><small>As of $now[1]-$now[0]-$now[2]</small>";
+    				}
+            elseif (isset($sr) && is_numeric($sr)) {
+              echo "<i class='fa fa-pencil-square-o fa-2x pull-left'> </i>Service Record: $sr<br><small>Yes, every thing you do is neccessary to be written down</small>";
+            }
+    				elseif (isset($sr) && $sr == 'new'){
+              echo "<i class='fa fa-pencil-square-o fa-2x pull-left'> </i>Add New Service Record<br><small>Don't forget any valuable information</small>";
+            }
+    				else
+    					echo "Welcome to Service Record Central";
+            ?>
+    			</h3>
+      </div>
 
 			<section class="content">
 				<div class="row">
@@ -191,8 +161,7 @@ Status:     Staging; Idea Testing; Development
                 if (isset($type) && ($type == '1')){
                   include_once 'modules/service_record/templates/computer_repair.php';
                 } else {
-  		    		  	echo "<p>Add new service record page</p>";
-  		    		  	//echo $customerinfo->GetProfileReport('1');
+                  include_once 'modules/service_record/templates/sr_new.php';
                 }
 		    		  } else {
 		    		  	//show welcome page
@@ -213,18 +182,20 @@ Status:     Staging; Idea Testing; Development
 
     <!-- REQUIRED JS SCRIPTS -->
 	<!-- jQuery -->
-    <script src="/bower/jquery/dist/jquery.min.js"></script>
+    <script src="bower/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
-    <script src="/bower/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- DataTables -->
-    <script src="/bower/AdminLTE/plugins/datatables/jquery.dataTables.js"></script>
-    <script src="/bower/AdminLTE/plugins/datatables/dataTables.bootstrap.js"></script>
+    <script src="bower/AdminLTE/plugins/datatables/jquery.dataTables.js"></script>
+    <script src="bower/AdminLTE/plugins/datatables/dataTables.bootstrap.js"></script>
     <!-- SlimScroll -->
-    <script src="/bower/AdminLTE/plugins/slimScroll/jquery.slimscroll.js"></script>
+    <script src="bower/AdminLTE/plugins/slimScroll/jquery.slimscroll.js"></script>
     <!-- FastClick -->
-    <script src="/bower/AdminLTE/plugins/fastclick/fastclick.min.js"></script>
+    <script src="bower/AdminLTE/plugins/fastclick/fastclick.min.js"></script>
+    <!-- Select2 -->
+    <script src="bower/AdminLTE/plugins/select2/select2.min.js"></script>
     <!-- AdminLTE App -->
-    <script src="/bower/AdminLTE/dist/js/app.min.js"></script>
+    <script src="bower/AdminLTE/dist/js/app.min.js"></script>
     <!-- page script -->
     <script>
       $(function () {
@@ -236,6 +207,13 @@ Status:     Staging; Idea Testing; Development
           "info": true,
           "autoWidth": false
         });
+      });
+
+      $(function() {
+        $(".building").select2();
+        $(".user-list").select2();
+        $(".machine").select2();
+        $(".request-type").select2();
       });
     </script>
     <!-- Optionally, you can add Slimscroll and FastClick plugins.

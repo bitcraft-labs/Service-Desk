@@ -1,4 +1,4 @@
-<?php 
+<?php
 	$read_comments_number = 1;
 	$mailbox_controls = '<!-- Check all button -->
 		                <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i>
@@ -25,15 +25,7 @@
 		</div>
 	</div>
 	<div class="container">
-	  <section class="content-header">  
-	    <h1>WebMail</h1>
-	    <ol class="breadcrumb">
-	        <li><a href="/"><i class="fa fa-dashboard"></i> Top</a></li>
-	        <li class="active">Mailbox</li>
-	    </ol>
-	  </section>
 	  <!-- Main content -->
-
 	  <section class="content">
 		  <div class="row">
 		    <div class="col-md-12">
@@ -69,7 +61,7 @@
 		                    <td class="mailbox-date">5 mins ago</td>
 		                  </tr>
 		                  <tr data-href="?page=Mailbox&mb=<?= $read_comments_number++; ?>">
-		                    <td><?= $read_comments_number - 1; ?></td>		                    
+		                    <td><?= $read_comments_number - 1; ?></td>
 		                    <td class="mailbox-name">Alexander Pierce</td>
 		                    <td class="mailbox-subject"><strong>Computer Issue</strong> - Trying to find a solution to this problem...
 		                    </td>
@@ -101,7 +93,7 @@
 		                    <td class="mailbox-date">Yesterday</td>
 		                  </tr>
 		                  <tr data-href="?page=Mailbox&mb=<?= $read_comments_number++; ?>">
-		                    <td><?= $read_comments_number - 1; ?></td>		                    
+		                    <td><?= $read_comments_number - 1; ?></td>
 		                    <td class="mailbox-name">Alexander Pierce</td>
 		                    <td class="mailbox-subject"><strong>Computer Issue</strong> - Trying to find a solution to this problem...
 		                    </td>
@@ -109,7 +101,7 @@
 		                    <td class="mailbox-date">2 days ago</td>
 		                  </tr>
 		                  <tr data-href="?page=Mailbox&mb=<?= $read_comments_number++; ?>">
-		                    <td><?= $read_comments_number - 1; ?></td>		                  
+		                    <td><?= $read_comments_number - 1; ?></td>
 		                    <td class="mailbox-name">Alexander Pierce</td>
 		                    <td class="mailbox-subject"><strong>Computer Issue</strong> - Trying to find a solution to this problem...
 		                    </td>
@@ -133,7 +125,7 @@
 		                    <td class="mailbox-date">2 days ago</td>
 		                  </tr>
 		                  <tr data-href="?page=Mailbox&mb=<?= $read_comments_number++; ?>">
-		                    <td><?= $read_comments_number - 1; ?></td>		                    
+		                    <td><?= $read_comments_number - 1; ?></td>
 		                    <td class="mailbox-name">Alexander Pierce</td>
 		                    <td class="mailbox-subject"><strong>Computer Issue</strong> - Trying to find a solution to this problem...
 		                    </td>
@@ -141,7 +133,7 @@
 		                    <td class="mailbox-date">2 days ago</td>
 		                  </tr>
 		                  <tr data-href="?page=Mailbox&mb=<?= $read_comments_number++; ?>">
-		                    <td><?= $read_comments_number - 1; ?></td>		                  
+		                    <td><?= $read_comments_number - 1; ?></td>
 		                    <td class="mailbox-name">Alexander Pierce</td>
 		                    <td class="mailbox-subject"><strong>Computer Issue</strong> - Trying to find a solution to this problem...
 		                    </td>
@@ -158,7 +150,7 @@
 		                  </tr>
 		                  <tr data-href="?page=Mailbox&mb=<?= $read_comments_number++; ?>">
 		                    <td><?= $read_comments_number - 1; ?></td>
-		                    
+
 		                    <td class="mailbox-name">Alexander Pierce</td>
 		                    <td class="mailbox-subject"><strong>Computer Issue</strong> - Trying to find a solution to this problem...
 		                    </td>

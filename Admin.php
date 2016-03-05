@@ -12,6 +12,7 @@ Status:     Staging; Idea Testing; Development
     header("location: /");
     exit;
   }
+  include_once 'modules/admin/head.php';
 ?>
 <?php
 if (isset($_POST['action'])) {
@@ -29,7 +30,7 @@ if (isset($_POST['action'])) {
           mysql_query($strSQL);
         }
       }
-      
+
     break;
     case 'savePerms':
       $redir = "?action=ViewAdmin&for=" . $_POST['userID'] . "&do=ChangeAccess#access_users";
@@ -84,9 +85,7 @@ if (isset($_POST['action'])) {
   header("location: Admin.php" . $redir);
 }
 ?>
-  	<?php
-    include_once 'modules/admin/head.php'; ?>
-    <?php echo "<body class='hold-transition skin-red sidebar-mini'>"; ?>
+    <?php echo "<body class='hold-transition skin-$skin sidebar-mini'>"; ?>
     <div class="wrapper">
 		<?php
 		// build the user interface
@@ -101,22 +100,22 @@ if (isset($_POST['action'])) {
 
 <!-- REQUIRED JS SCRIPTS -->
 <!-- jQuery -->
-<script src="/bower/jquery/dist/jquery.min.js"></script>
+<script src="bower/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap -->
-<script src="/bower/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="bower/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
-<script src="/bower/AdminLTE/dist/js/app.min.js"></script>
+<script src="bower/AdminLTE/dist/js/app.min.js"></script>
 <!-- DataTables -->
-<script src="/bower/AdminLTE/plugins/datatables/jquery.dataTables.js"></script>
-<script src="/bower/AdminLTE/plugins/datatables/dataTables.bootstrap.js"></script>
+<script src="bower/AdminLTE/plugins/datatables/jquery.dataTables.js"></script>
+<script src="bower/AdminLTE/plugins/datatables/dataTables.bootstrap.js"></script>
 <!-- SlimScroll -->
-<script src="/bower/AdminLTE/plugins/slimScroll/jquery.slimscroll.js"></script>
+<script src="bower/AdminLTE/plugins/slimScroll/jquery.slimscroll.js"></script>
 <!-- FastClick -->
-<script src="/bower/AdminLTE/plugins/fastclick/fastclick.min.js"></script>
+<script src="bower/AdminLTE/plugins/fastclick/fastclick.min.js"></script>
 <!-- InputMask -->
-<script src="/bower/AdminLTE/plugins/input-mask/jquery.inputmask.js"></script>
-<script src="/bower/AdminLTE/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
-<script src="/bower/AdminLTE/plugins/input-mask/jquery.inputmask.extensions.js"></script>
+<script src="bower/AdminLTE/plugins/input-mask/jquery.inputmask.js"></script>
+<script src="bower/AdminLTE/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+<script src="bower/AdminLTE/plugins/input-mask/jquery.inputmask.extensions.js"></script>
 
 <!-- page script -->
 <script>
@@ -140,7 +139,7 @@ if (isset($_POST['action'])) {
   $(document).ready(function(){
     //Manage hash in URL to open the right pill
     var hash = window.location.hash;
-    // If a hash is provided 
+    // If a hash is provided
     if(hash && hash.length>0)
     {
         // Manage Pill titles

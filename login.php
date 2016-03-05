@@ -117,12 +117,12 @@ if ($conf['customize']['darkmode'] == 'dark') {
 
     
     <!-- jQuery -->
-    <script src="/bower/jquery/dist/jquery.min.js"></script>
+    <script src="bower/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
-    <script src="/bower/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- iCheck -->
-    <script src="/bower/AdminLTE/plugins/iCheck/icheck.min.js"></script>
-    <script src="/dist/js/loginValidation.js"></script>
+    <script src="bower/AdminLTE/plugins/iCheck/icheck.min.js"></script>
+    <script src="dist/js/loginValidation.js"></script>
     <script>
       $(function () {
         $('input').iCheck({
