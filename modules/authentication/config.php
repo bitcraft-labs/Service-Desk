@@ -1,4 +1,5 @@
 <?PHP
+
 require_once("./modules/authentication/authenticator.php");
 require_once("./modules/config.inc.php");
 
