@@ -33,7 +33,62 @@ if ( !class_exists( 'DALi' ) ) {
    	  if($request == 'all') {
 	      $sql = "SELECT * FROM building";
 	      return $this->query($sql);
-	  }
+  	  }
+    }
+
+    public function getCategories() {
+      $sql = "SELECT * FROM category ORDER BY `cat` ASC";
+      return $this->query($sql);
+    }
+
+    public function buildCategorySections() {
+      $cats = $this->getCategories();
+      $num = 1;
+
+      foreach ($cats as $category) {
+        if ($num == 1) {
+          $build = "<li class='active'><a href='#$num' data-toggle='tab'>$num. $category[1]</a></li>\r\n";
+        } else {
+          $build .= "<li><a href='#$num' data-toggle='tab'>$num. $category[1]</a></li>\r\n";
+        }
+        $num++;
+      }
+
+      return $build;
+    }
+
+    public function buildSubCategorySections() {
+      $sql = "SELECT category.cat, sub_category.sub_cat, sub_category.description, sub_category.fa_icon, cat_color.color FROM sub_category INNER JOIN category ON category.id = sub_category.cat INNER JOIN cat_color ON sub_category.color = cat_color.id ORDER BY cat ASC, sub_cat ASC";
+      $subcats = $this->query($sql);
+      $cats = array();
+      $subsec = " ";
+      $count = 1;
+      foreach ($subcats as $row) {
+          if (!in_array($row['cat'], $cats)) {
+            $cat      = $row['cat'];
+            array_push($cats, $cat);
+            if ($count == 1) {
+              $subsec .= "<!-- $cat -->\r\n<div class='tab-pane active' id='$count'>\r\n";
+              $count += 1;
+            } else {
+              $subsec .= "<!-- $cat -->\r\n<div class='tab-pane' id='$count'>\r\n";
+              $count += 1;
+            }
+            foreach ($subcats as $sub) {
+              if ($cat == $sub['cat']) {
+                $sub_cat  = $sub[1];
+                $desc     = $sub[2];
+                $fonticon = $sub[3];
+                $color    = $sub[4];
+                $subsec .= "<h4><i class='fa fa-$fonticon fa-2x pull-left align m-$color'></i> <a data-toggle='modal' data-target='#incidentModal' data-title='$sub_cat' name='submit-value' href='#'>$sub_cat</a><br />".
+                  "<small>$desc</small></h4>\r\n";
+              }
+            }
+            $subsec .= "</div>\r\n\r\n";
+          }
+      }
+
+      return $subsec;
     }
 
     //-------Help Desk Staff Functions ---->
@@ -91,7 +146,7 @@ if ( !class_exists( 'DALi' ) ) {
         $scriptFolder .= $_SERVER['HTTP_HOST'].$urldir;
         return $scriptFolder;
     }
-    
+
     function SendResetPasswordLink($user_rec)
     {
         $email = $_POST['email'];
