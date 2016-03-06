@@ -25,7 +25,7 @@
 				    				<th>Status</td>
 				    				<th>Ticket Title</td>
 				    				<th class="mobile-table">Assigned Admin</td>
-				    				<th class="mobile-table">Date Checked In</td>
+				    				<th class="mobile-table">Date Submitted</td>
 				    				<th>Date Last Updated</td>';
 			    				 echo $tabhead; ?>
 			    			</tr>
