@@ -67,7 +67,7 @@
 			              </div><!-- /.input group -->
 			            </div><!-- /.form group -->
 			            <div class="form-group">
-			       		 <button type="submit" class="btn btn-primary btn-block">Update</button>
+			       		 <button type="submit" class="btn btn-custom btn-block">Update</button>
 			    		</div>
 					</fieldset>
 					</form>
