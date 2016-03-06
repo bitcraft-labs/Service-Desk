@@ -4,7 +4,7 @@
       <div id="accordion">
         <h3><a href="">1. Common Requests</a></h3>
         <div>
-          <h4><i class="fa fa-exclamation-triangle fa-2x pull-left align m-orange"></i> <div class="mobile-align"><a id="tab_value"data-toggle="modal" data-target="#incidentModal" data-title="Generic Incident" href="#" class="tab_value">Generic incident</a><br />
+          <h4><i class="fa fa-exclamation-triangle fa-2x pull-left align m-orange"></i> <div class="mobile-align"><a data-toggle="modal" data-target="#incidentModal" data-title="Generic Incident" href="#" class="tab_value">Generic incident</a><br />
           <small>Some odd thing just happened. It's being very wonky.</small></div></h4>
 
           <h4><i class="fa fa-wifi fa-2x pull-left align m-green"></i> <a data-toggle="modal" data-target="#incidentModal" data-title="Wireless" href="#" class="tab_value">Wireless</a><br /><div style="padding-left: 54px;"><small>Slow internet in dorm. Chromecast not streaming.</small></div></h4>
