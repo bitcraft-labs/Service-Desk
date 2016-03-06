@@ -99,6 +99,7 @@ Status:     Staging; Idea Testing; Development
       $(function() {
         $("#accordion").accordion({
           collapsible : true,
+          heightStyle : "content",
           animate : {
             easing : "linear",
             duration : 500
