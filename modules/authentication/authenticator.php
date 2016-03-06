@@ -1,6 +1,5 @@
 <?PHP
 require_once("class.phpmailer.php");
-require_once("formvalidator.php");
 class Authenticator
 {
     var $admin_email;
@@ -80,16 +79,6 @@ class Authenticator
     }
     function Login()
     {
-        if(empty($_POST['username']))
-        {
-            $this->HandleError("UserName is empty!");
-            return false;
-        }
-        if(empty($_POST['password']))
-        {
-            $this->HandleError("Password is empty!");
-            return false;
-        }
         $username = trim($_POST['username']);
         $password = trim($_POST['password']);
         if(!isset($_SESSION)){ session_start(); }
@@ -332,7 +321,7 @@ class Authenticator
         $result = mysql_query($qry,$this->connection);
         if(!$result || mysql_num_rows($result) <= 0)
         {
-            $this->HandleError("Error logging in. The username or password does not match");
+            $this->HandleError("Error logging in. The username and/or password is incorrect");
             return false;
         }
         $row = mysql_fetch_assoc($result);
@@ -345,7 +334,7 @@ class Authenticator
 
         return true;
     }
- public function checkhashSSHA($salt, $password) {
+    public function checkhashSSHA($salt, $password) {
         $hash = base64_encode(sha1($password . $salt, true) . $salt);
         return $hash;
     }
@@ -661,8 +650,7 @@ class Authenticator
         }
         return true;
     }
-    function DBLogin()
-    {
+    function DBLogin() {
         $this->connection = mysql_connect($this->db_host,$this->username,$this->pwd);
         if(!$this->connection)
         {
