@@ -164,7 +164,7 @@ if ( !class_exists( 'DALi' ) ) {
           if (!in_array($row['cat'], $cats)) {
             $cat      = $row['cat'];
             array_push($cats, $cat);
-            $subsec .= "\t<!-- $cat -->\r\n\t<h3><a href=''>$count. $cat</a></h3>\r\n\t\r\n";
+            $subsec .= "\t<!-- $cat -->\r\n\t<h3><a href=''>$count. $cat</a></h3>\r\n\t\r<div>";
             $count += 1;
             foreach ($subcats as $sub) {
               if ($cat == $sub['cat']) {
@@ -176,7 +176,7 @@ if ( !class_exists( 'DALi' ) ) {
                   "\t<small>$desc</small></div></h4>\r\n\r\n";
               }
             }
-            $subsec .= "\t\r\n\r\n";
+            $subsec .= "\t\r\n\r\n</div>";
           }
       }
 
