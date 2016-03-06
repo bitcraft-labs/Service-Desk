@@ -63,7 +63,8 @@ if ($myACL->hasPermission('manage_users') != true) {
   		<div class="box-body">
   			<?php
   			if (!$_GET['for']) echo "<p>No user selected</p>";
-  			if (!($_GET['do'] == 'ChangeAccess')) echo "<p>Action currently unavailable</p>";
+  			if (!($_GET['do'] == 'ChangeAccess') && (!($_GET['do'] == 'DeleteUser') && $_GET['for'])) echo "<p>Action currently unavailable</p>";
+				if (($_GET['do'] == 'DeleteUser') && $_GET['for']) include_once 'modules/admin/actions/deleteUser.php';
   			if ($_GET['do'] == 'ChangeAccess') include_once 'modules/admin/actions/change-access.php'; ?>
   		</div>
   	</div>

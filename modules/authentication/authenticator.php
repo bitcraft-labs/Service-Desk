@@ -14,7 +14,7 @@ class Authenticator
     //-----Initialization -------
     function Authenticator()
     {
-        $this->sitename = $_SERVER['SITENAME'];
+        $this->sitename = '';
         $this->rand_key = '0iQx5oBk66oVZep';
     }
     function InitDB($host,$uname,$pwd,$database,$auth_table)

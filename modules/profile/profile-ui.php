@@ -36,8 +36,6 @@ if(isset($_POST['submitted'])) {
                             </p>
                             <br>
                         </div>
-                        <!--<?php //echo "<h2>$prow->name<br /><small>$prow->user_type</small></h2>"; ?> -->
-                        <!-- <h2>Jo Shmo<br /><small>Student</small></h2> -->
                         <div class="col-md-8 col-sm-12 profile-form">
                             <form id='register' action='' method='post' accept-charset='UTF-8'>
                                 <fieldset class="end-user-padding">
