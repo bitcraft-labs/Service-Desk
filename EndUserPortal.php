@@ -117,7 +117,7 @@ Status:     Staging; Idea Testing; Development
         var $modal_title = $(this).attr('data-title');
         $('#incident-title').val($modal_title);
       });
-      $(function() {
+    $(function() {
         //$("#incidentModal").modal('show');
         //$("#incident-building").select2();
         //$("#incidentModal").modal('hide');

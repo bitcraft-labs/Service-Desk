@@ -1,3 +1,11 @@
+/*
+    1. BREADCRUMBS
+    2. CONTENT AREA
+    3. APP STYLES
+    4. END USER FIXES
+    5. MEDIA QUERIES
+*/
+
 /* Breadcrumbs */
 .content-wrapper > .breadcrumb {
     text-align: right;
@@ -7,12 +15,6 @@
   float: right;
 }
 
-/* Top Bar */
-@media (max-width: 768px) {
-  .signed-in-as {
-    display: none;
-  }
-}
 /* Content Area */
 .ssp-title.hd {
 	background: #FAFAFA;
@@ -92,4 +94,121 @@
   min-height: 100%;
   background-color: #F5F5F5;
   z-index: 800;
+}
+
+/* END-USER FIXES AND ADDITIONS */
+.end-user-padding {
+  padding-top: 24px;
+}
+.container-mobile {
+  display: none;
+}
+.input-md {
+  border-radius: 5px;
+}
+.center {
+  position: absolute;
+  margin: auto;
+  top: 50%;
+  left: 50%;
+}
+tbody tr {
+  cursor: pointer;
+}
+.box-custom {
+ border-top: 3px solid #605CA8 !important;
+}
+.btn-custom {
+  background: #605CA8 !important;
+  color: #fff;
+}
+.btn-custom:hover {
+  background: #575398 !important;
+  color: #fff;
+}
+
+.alert-custom {
+  background: #8985C5;
+  color: #fff;
+}
+
+.box-custom-rq {
+  border: 1px solid #8985C5 !important;
+}
+
+.box {
+  border-top: none;
+}
+
+.box-header {
+  background: #8985C5 !important;
+  color: #fff;
+}
+/* MEDIA QUERIES */
+/* Top Bar */
+@media (max-width: 768px) {
+  .signed-in-as {
+    display: none;
+  }
+}
+
+@media screen and (max-width : 991px) {
+   .navbar li {
+      font-size: 12px;
+   }
+   .navbar-brand img {
+      width: 125px;
+   }
+   .logout-end-user {
+      width: 15px;
+   }
+   #records tr td {
+      padding-right: 23px;
+   }
+   .end-user-padding {
+      padding-top: 8px;
+   }
+}
+@media screen and (max-width : 668px) {
+  .navbar li {
+    font-size: 15px;
+  }
+  .mobile-table {
+    display: none;
+  }
+  .container-reg {
+    display: none;
+  }
+  .container-mobile {
+    display: inline-block;
+    padding-bottom: 20px;
+  }
+  .mobile-align {
+    padding-left: 54px;
+  }
+}
+@media screen and (max-width : 568px) {
+  .app-version-mobile {
+    display: none;
+  }
+  .logout-end-user {
+    display: none;
+  }
+  h3 {
+    padding-bottom: 10px;
+    font-size: 1.3em;
+  }
+  h4 {
+    font-size: 1.3em;
+    padding-bottom: 10px;
+  }
+
+}
+@media screen and (max-width : 438px) {
+  .fa.fa-sign-out {
+    display: none;
+  }
+  .mobile-fix {
+    display: none;
+  }
 }

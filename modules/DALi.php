@@ -6,16 +6,40 @@ if ( !class_exists( 'DALi' ) ) {
       return new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DB);
     }
 
-    public function query($query) {
+    private function query($query) {
       $db = $this->dbconnect();
+      if($this->checkDbConnect($db)) {
+        echo false;
+      }
       $result = $db->query($query);
-
+      if(!$result) {
+        echo "False";
+      }
       while ($row = $result->fetch_array() ) {
         $results[] = $row;
       }
-
+      $result->free();
+      $db->close();
       return $results;
     }
+
+    private function queryUpdate($query) {
+      $db = $this->dbconnect();
+      if($this->checkDbConnect($db)) {
+        return false;
+      }
+      $db->query($query);
+      $db->close();
+    }
+
+    private function checkDbConnect($conn) {
+      if($conn->connect_errno > 0) {
+        die ('Unable to connect to database [' . $conn->connect_error . ']');
+      } else {
+        return false;
+      }
+    }
+
     //---------QR Code Generation---------->
     public function myUrlEncode($string) {
         $entities = array('%21', '%2A', '%27', '%28', '%29', '%3B', '%3A', '%40', '%26', '%3D', '%2B', '%24', '%2C', '%2F', '%3F', '%25', '%23', '%5B', '%5D');
@@ -29,6 +53,17 @@ if ( !class_exists( 'DALi' ) ) {
     }
 
     //--------End-User Functions----------->
+    // Getter functions
+    private function getTitleInfo($title) {
+        $sql = "SELECT * FROM sub_category WHERE id = '$title'";
+        return $this->query($sql);
+    }
+
+    private function getStatus($id) {
+        $sql = "SELECT status FROM sr_status WHERE id = '$id'";
+        return $this->query($sql);
+    }
+
     public function getBuildingsRow($request) {
    	  if($request == 'all') {
 	      $sql = "SELECT * FROM building";
@@ -36,11 +71,35 @@ if ( !class_exists( 'DALi' ) ) {
   	  }
     }
 
-    public function getCategories() {
+    private function getCategories() {
       $sql = "SELECT * FROM category ORDER BY `cat` ASC";
       return $this->query($sql);
     }
 
+    private function getCategoryById($id) {
+       $sql = "SELECT * FROM category WHERE id='$id'";
+       return $this->query($sql);
+    }
+
+    private function getTitleNumber($title) {
+      $sql = "SELECT id FROM sub_category WHERE sub_cat = '$title' LIMIT 1";
+      $result = $this->query($sql);
+      foreach ($result as $res) {
+        $tn = $res[0];
+      }
+      return $tn;
+    }
+
+    private function getRecordType($title) {
+      $sql = "SELECT type FROM sub_category WHERE sub_cat = '$title' LIMIT 1";
+      $result = $this->query($sql);
+      foreach ($result as $res) {
+        $rt = $res[0];
+      }
+      return $rt;
+    }
+
+    // Builder Functions
     public function buildCategorySections() {
       $cats = $this->getCategories();
       $num = 1;
@@ -101,7 +160,7 @@ if ( !class_exists( 'DALi' ) ) {
           if (!in_array($row['cat'], $cats)) {
             $cat      = $row['cat'];
             array_push($cats, $cat);
-            $subsec .= "\t<!-- $cat -->\r\n\t<h3><a href=''>$count. $cat</a></h3>\r\n\t<div>\r\n";
+            $subsec .= "\t<!-- $cat -->\r\n\t<h3><a href=''>$count. $cat</a></h3>\r\n\t\r\n";
             $count += 1;
             foreach ($subcats as $sub) {
               if ($cat == $sub['cat']) {
@@ -113,20 +172,60 @@ if ( !class_exists( 'DALi' ) ) {
                   "\t<small>$desc</small></div></h4>\r\n\r\n";
               }
             }
-            $subsec .= "\t</div>\r\n\r\n";
+            $subsec .= "\t\r\n\r\n";
           }
       }
 
       return $subsec;
     }
 
-    public function submitModalForm($title, $building, $room_number, $description) {
-      if(($title != null) || ($building != null) || ($room_number != null) || ($description != null)) {
-          $timeStamp = date("Y-m-d H:i\:\0\0") . 0 . 0;
-          // $sql = "INSERT INTO service_record ()
-          // VALUE ($title, $building, $room_number, $description)";
+    // SR Functions
+    public function buildRequestsTable($username) {
+      $user = $this->getUserID($username);
+      $sql = "SELECT sr_id, title, status_id, submitted_when, assigned_admin, last_updated
+              FROM service_record 
+              WHERE submitted_by = '$user'";
+      $html = "";
+      $result = $this->query($sql);
+      foreach ($result as $res) {
+          $title_info = $this->getTitleInfo($res[1]);
+          $category = $this->getCategoryById($title_info[0][2])[0][1];
+          $status = $this->getStatus($res[2])[0][0];
+          $html .= '<tr data-href="?page=ViewRequests&sr='. $res[0] .'">';
+          $html .= '<td>'. $res[0] . '</td>'
+                . '<td class="mobile-table">' . $category . '</td>'
+                . '<td>'. $status .'</td>'
+                . '<td>'. $title_info[0][3] .'</td>'
+                . '<td class="mobile-table">'. $res[4] .'</td>'
+                . '<td class="mobile-table">'. $res[3] .'</td>'
+                . '<td class="mobile-table">'. $res[5] .'</td>'
+                . '</tr>';
       }
+      return $html;
     }
+
+    public function buildSRView($username, $sr_num) {
+        /*
+          TODO: Add Select query to extract specific SR info 
+        */
+    }
+    // Mailbox
+    public function buildMailbox($username) {
+        /*
+          TODO: Add select query to extract specific comments and mail
+        */
+    }
+    // Modal Functions
+    public function submitModalForm($title, $building, $room_number, $description) {
+      $title_number = intval($this->getTitleNumber($title));
+      $record_type = intval($this->getRecordType($title));
+      $username = intval($this->getUserID($_SESSION['username']));
+      $sql = "INSERT INTO service_record (title, type, description, bldg, room, submitted_by)
+              VALUES('$title_number', '$record_type', '$description', '$building', '$room_number', '$username')";
+      $this->queryUpdate($sql);
+      return true;
+    }
+
 
     //-------Help Desk Staff Functions ---->
     public function getPersonInfo($name){

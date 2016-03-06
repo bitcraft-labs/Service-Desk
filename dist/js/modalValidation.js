@@ -67,6 +67,8 @@ var modalFormValidation = (function () {
             $error += ("<button type='button' class='close' data-dismiss='alert'>x</button>" + $formError);
             $error += '</div>';
             $("#error-container").html($error);
+        } else {
+        	$("#incident-title")[0].removeAttribute('disabled');
         }
 	});
 }); 
