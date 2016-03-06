@@ -100,28 +100,35 @@
 .end-user-padding {
   padding-top: 24px;
 }
+
 .container-mobile {
   display: none;
 }
+
 .input-md {
   border-radius: 5px;
 }
+
 .center {
   position: absolute;
   margin: auto;
   top: 50%;
   left: 50%;
 }
+
 tbody tr {
   cursor: pointer;
 }
+
 .box-custom {
  border-top: 3px solid #605CA8 !important;
 }
+
 .btn-custom {
   background: #605CA8 !important;
   color: #fff;
 }
+
 .btn-custom:hover {
   background: #575398 !important;
   color: #fff;

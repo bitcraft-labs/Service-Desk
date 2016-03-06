@@ -1,6 +1,8 @@
 <?php
-if ($_POST['submitted_new_user']) {
+
+if ($_POST['submitted_new_user']) {echo "called";
 	$dali->addUser();
+
 	$dali->sendPassCreateEmail();
 	//$userID = $dali->getUserID($_POST['username']);
 	/*

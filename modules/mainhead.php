@@ -6,7 +6,7 @@ require_once 'modules/authentication/database.php';
 require_once 'modules/authentication/class.acl.php';
 
 $dal = new DAL();
-$dali = new DALi();
+$dali = new DALi($conf);
 $myACL = new ACL();
 
 //check if logged in
