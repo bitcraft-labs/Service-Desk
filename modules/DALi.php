@@ -1,11 +1,10 @@
 <?php
 if ( !class_exists( 'DALi' ) ) {
   class DALi {
-    var $admin_email;
-
-    function DALi() {
-      $this->sitename = '';
+    function __construct($config) {
+      $this->conf = $config;
     }
+
     //------------- General --------------->
     private function dbconnect() {
       return new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DB);
@@ -240,14 +239,6 @@ if ( !class_exists( 'DALi' ) ) {
         return $scriptFolder;
     }
 
-    function SetAdminEmail($email) {
-        $this->admin_email = $email;
-    }
-
-    function SetWebsiteName($sitename) {
-        $this->sitename = $sitename;
-    }
-
     function SanitizeForSQL($str) {
         if( function_exists( "mysql_real_escape_string" )) {
               $ret_str = mysql_real_escape_string( $str );
@@ -295,11 +286,11 @@ if ( !class_exists( 'DALi' ) ) {
         $mailer = new PHPMailer();
         $mailer->CharSet = 'utf-8';
         $mailer->AddAddress($email,$_POST['fname']);
-        $mailer->Subject = "Your new password for Bitcraft Labs: Service Desk Pro"; //.$this->sitename;
-        $mailer->From = "support@bitcraftlabs.net"; //$this->admin_email;
-        $mailer->FromName = "Bitcraft Labs Support"; //$this->sitename;
+        $mailer->Subject = "Your new password for ".$this->conf['customize']['sysemail'].": Service Desk Pro";
+        $mailer->From = $this->conf['site']['company_name'];
+        $mailer->FromName = $this->conf['site']['company_name']." Support";
         $mailer->Body ="Hello ".$_POST['fname']." ".$_POST['lname'].",\r\n\r\n".
-        "Welcome to Bitcraft Labs!\r\n".
+        "Welcome to ".$this->conf['site']['company_name']."!\r\n".
         "Your account has been created successfully.\r\n".
         "Here is your updated login:\r\n".
         "Username: ".$_POST['username']."\r\n".
