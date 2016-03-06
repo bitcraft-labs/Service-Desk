@@ -286,8 +286,8 @@ if ( !class_exists( 'DALi' ) ) {
         $mailer = new PHPMailer();
         $mailer->CharSet = 'utf-8';
         $mailer->AddAddress($email,$_POST['fname']);
-        $mailer->Subject = "Your new password for ".$this->conf['customize']['sysemail'].": Service Desk Pro";
-        $mailer->From = $this->conf['site']['company_name'];
+        $mailer->Subject = "Your new password for ".$this->conf['site']['company_name'].": Service Desk Pro";
+        $mailer->From = $this->conf['customize']['sysemail'];
         $mailer->FromName = $this->conf['site']['company_name']." Support";
         $mailer->Body ="Hello ".$_POST['fname']." ".$_POST['lname'].",\r\n\r\n".
         "Welcome to ".$this->conf['site']['company_name']."!\r\n".
