@@ -7,6 +7,8 @@ require_once 'modules/authentication/class.acl.php';
 
 $dal = new DAL();
 $dali = new DALi();
+$dali->SetAdminEmail($conf['site']['company_name']);
+$dali->SetWebsiteName($conf['customize']['sysemail']);
 $myACL = new ACL();
 
 //check if logged in

@@ -1,9 +1,20 @@
 <?php
 if ( !class_exists( 'DALi' ) ) {
   class DALi {
-    // ------------- General -----------------
+    var $admin_email;
+
+    function DALi() {
+      $this->sitename = '';
+    }
+    //------------- General --------------->
     private function dbconnect() {
       return new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DB);
+    }
+
+    public function queryChange($query) {
+      $db = $this->dbconnect();
+      $db->query($query);
+      return true;
     }
 
     public function query($query) {
@@ -16,6 +27,21 @@ if ( !class_exists( 'DALi' ) ) {
 
       return $results;
     }
+
+    public function DoesThisExist($sql) {
+      $db = $this->dbconnect();
+      $result = $db->query($sql);
+      $count = 0;
+      foreach ($result as $key => $value) { //because I can't for the life of me get num_rows working
+        $count += 1;
+      }
+      if ($count == 0) {
+        return true; //which means no
+      } else {
+        return false;
+      }
+    }
+
     //---------QR Code Generation---------->
     public function myUrlEncode($string) {
         $entities = array('%21', '%2A', '%27', '%28', '%29', '%3B', '%3A', '%40', '%26', '%3D', '%2B', '%24', '%2C', '%2F', '%3F', '%25', '%23', '%5B', '%5D');
@@ -26,6 +52,12 @@ if ( !class_exists( 'DALi' ) ) {
     public function getQRCode() {
       $link = $this->myUrlEncode("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
       return "<img src='https://chart.googleapis.com/chart?cht=qr&chl=$link&chs=150x150' width='120' alt='qr-mobile' />";
+    }
+
+    //--------General Functions------------>
+    public function checkUsernameExists($who) {
+      $sql = "SELECT id FROM users WHERE username = '$who' LIMIT 1";
+      return $this->DoesThisExist($sql);
     }
 
     //--------End-User Functions----------->
@@ -149,9 +181,42 @@ if ( !class_exists( 'DALi' ) ) {
     }
 
     public function addUser() {
-      $sql = "INSERT INTO users (fname, lname, email, username, banner_id, phone, creation_date, confirmcode)
-              VALUES('".$_POST['fname']."','".$_POST['lname']."','".$_POST['email']."','".$_POST['username']."','".$_POST['banner_id']."','".$_POST['phone']."','".date()."','y')";
-      return $this->query($sql);
+      $now = date("Y-m-d");
+      $now2 = date('Y-m-d H:i:s');
+      $user = $_POST['username'];
+      $DoAdd = $this->checkUsernameExists($user);
+      if ($DoAdd) {
+        $sql = "INSERT INTO users (fname, lname, email, username, banner_id, phone, creation_date, confirmcode)
+                VALUES('".$_POST['fname']."','".$_POST['lname']."','".$_POST['email']."','".$_POST['username']."','".$_POST['banner_id']."','".$_POST['phone']."','$now','y')";
+        $succ = $this->queryChange($sql);
+        $sql = "SELECT id FROM users WHERE username = '$user' LIMIT 1";
+        $userID = $this->getUserID($user);
+        foreach ($_POST as $k => $v) {
+          if (substr($k,0,5) == "role_") {
+            $roleID = intval(substr($k,5));
+            if ($v == '0' || $v == 'x') {} else {
+              $strSQL = "INSERT INTO user_roles (userID, roleID, addDate) VALUES('$userID', '$roleID', '$now2')";
+              $this->queryChange($strSQL);
+            }
+          }
+        }
+        $this->ResetPassword($userID);
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+    public function deleteUser($who) {
+      if ($who != $_SESSION['userID']) {
+        $sql = "DELETE FROM users WHERE id = '$who'";
+        $this->queryChange($sql);
+        $sql = "DELETE FROM user_roles WHERE userID = '$who'";
+        $this->queryChange($sql);
+        $sql = "DELETE FROM user_perms WHERE userID = '$who'";
+        $this->queryChange($sql);
+        return true;
+      }
     }
 
     public function getUserID($who) {
@@ -161,15 +226,6 @@ if ( !class_exists( 'DALi' ) ) {
         $id = $res[0];
       }
       return $id;
-    }
-    /*
-    function sendPassCreateEmail() {
-        $this->SendResetPasswordLink()
-        return true;
-    }
-
-    function GetResetPasswordCode($email) {
-       return substr(md5($email.$this->sitename.$this->rand_key),0,10);
     }
 
     function GetAbsoluteURLFolder() {
@@ -184,22 +240,73 @@ if ( !class_exists( 'DALi' ) ) {
         return $scriptFolder;
     }
 
-    function SendResetPasswordLink($user_rec)
-    {
+    function SetAdminEmail($email) {
+        $this->admin_email = $email;
+    }
+
+    function SetWebsiteName($sitename) {
+        $this->sitename = $sitename;
+    }
+
+    function SanitizeForSQL($str) {
+        if( function_exists( "mysql_real_escape_string" )) {
+              $ret_str = mysql_real_escape_string( $str );
+        } else {
+              $ret_str = addslashes( $str );
+        }
+        return $ret_str;
+    }
+
+    function hashSSHA($password) {
+        $salt = sha1(rand());
+        $salt = substr($salt, 0, 10);
+        $encrypted = base64_encode(sha1($password . $salt, true) . $salt);
+        $hash = array("salt" => $salt, "encrypted" => $encrypted);
+        return $hash;
+    }
+
+    function ResetPassword($userID) {
+        $new_password = $this->ResetUserPasswordInDB($userID);
+        $this->SendNewPassword($new_password);
+
+        return true;
+    }
+
+    function ResetUserPasswordInDB($userID) {
+        $new_password = substr(md5(uniqid()),0,10);
+        if(false == $this->ChangePasswordInDB($userID,$new_password)) {
+            return false;
+        }
+        return $new_password;
+    }
+
+    function ChangePasswordInDB($userID, $newpwd) {
+        $newpwd = $this->SanitizeForSQL($newpwd);
+        $hash = $this->hashSSHA($newpwd);
+        $new_password = $hash["encrypted"];
+        $salt = $hash["salt"];
+        $qry = "UPDATE users SET password='".$new_password."', salt='".$salt."' Where  id='".$userID."'";
+        $this->queryChange($qry);
+        return true;
+    }
+
+    function SendNewPassword($new_password) {
         $email = $_POST['email'];
         $mailer = new PHPMailer();
         $mailer->CharSet = 'utf-8';
         $mailer->AddAddress($email,$_POST['fname']);
-        $mailer->Subject = "Your reset password request at ".$this->sitename;
-        $mailer->From = "support@bitcraftlabs.net";
-        $mailer->FromName = "Bitcraft Labs";
-        $link = $this->GetAbsoluteURLFolder().
-                '/resetpwd.php?email='.
-                urlencode($email).'&code='.
-                urlencode($this->GetResetPasswordCode($email));
-        $mailer->Body ="Hello ".$user_rec['fname']." ".$user_rec['lname'].",\r\n\r\n".
-        "There was a request to reset your password at Bitcraft Labs.\r\n".
-        "Please click the link below to complete the request: \r\n".$link."\r\n".
+        $mailer->Subject = "Your new password for Bitcraft Labs: Service Desk Pro"; //.$this->sitename;
+        $mailer->From = "support@bitcraftlabs.net"; //$this->admin_email;
+        $mailer->FromName = "Bitcraft Labs Support"; //$this->sitename;
+        $mailer->Body ="Hello ".$_POST['fname']." ".$_POST['lname'].",\r\n\r\n".
+        "Welcome to Bitcraft Labs!\r\n".
+        "Your account has been created successfully.\r\n".
+        "Here is your updated login:\r\n".
+        "Username: ".$_POST['username']."\r\n".
+        "Password: $new_password\r\n".
+        "\r\n".
+        "Login here: ".$this->GetAbsoluteURLFolder()."/login.php\r\n".
+        "\r\n".
         "Regards,\r\n".
         "Support\r\n";
         if(!$mailer->Send())
@@ -207,9 +314,7 @@ if ( !class_exists( 'DALi' ) ) {
             return false;
         }
         return true;
-    }*/
-
-
+    }
   }
 }
 //Need this to init class ----> $dali = new DALi();
