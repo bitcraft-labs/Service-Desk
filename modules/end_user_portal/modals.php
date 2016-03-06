@@ -16,14 +16,14 @@
 					<div class="form-group">
 						<label for="incident-building">Building</label>
 						<select name="incident-building" class="form-control input-md" id="incident-building" >
-							<?php  
-								$option_html = '<option selected disabled>Choose your building</option>';
+							<?php
+								$option_html = "<option selected disabled>Choose your building</option>\r\n";
 								$buildings = $dali->getBuildingsRow('all');
 								if($buildings) {
 								 	foreach($buildings as $result) {
-								 		$option_html .= '<option value="'.$result[0].'">'.$result[1].'</option>';
+								 		$option_html .= "\t\t\t\t\t\t\t<option value='".$result[0]."'>".$result[1]."</option>\r\n";
 								 	}
-							    }
+							  }
 								echo $option_html;
 							?>
 						</select>

@@ -12,7 +12,7 @@ Status:     Staging; Idea Testing; Development
     header("location: /");
     exit;
   }
-?>      
+?>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,6 +27,8 @@ Status:     Staging; Idea Testing; Development
     <link rel="stylesheet" href="bower/Ionicons/css/ionicons.min.css">
     <!-- DataTables -->
     <link rel="stylesheet" href="bower/AdminLTE/plugins/datatables/dataTables.bootstrap.css">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="bower/AdminLTE/plugins/select2/select2.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="bower/AdminLTE/dist/css/AdminLTE.min.css">
     <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
@@ -67,7 +69,7 @@ Status:     Staging; Idea Testing; Development
       include_once 'modules/end_user_portal/footer.php'; ?>
 
     </div><!-- ./wrapper -->
-    
+
     <!-- jQuery -->
     <script src="bower/jquery/dist/jquery.min.js"></script>
     <!-- jQuery UI -->
@@ -83,6 +85,8 @@ Status:     Staging; Idea Testing; Development
     <!-- DataTables -->
     <script src="bower/AdminLTE/plugins/datatables/jquery.dataTables.js"></script>
     <script src="bower/AdminLTE/plugins/datatables/dataTables.bootstrap.js"></script>
+    <!-- Select2 -->
+    <script src="bower/AdminLTE/plugins/select2/select2.min.js"></script>
     <!-- Modal Validation -->
     <script type="text/javascript" src="dist/js/modalValidation.js"></script>
     <script>
@@ -111,6 +115,11 @@ Status:     Staging; Idea Testing; Development
       $('.tab_value').on('click', function (event) {
         var $modal_title = $(this).attr('data-title');
         $('#incident-title').val($modal_title);
+      });
+      $(function() {
+        //$("#incidentModal").modal('show');
+        //$("#incident-building").select2();
+        //$("#incidentModal").modal('hide');
       });
     </script>
   </body>
