@@ -195,6 +195,7 @@ if ( !class_exists( 'DALi' ) ) {
           $title_info = $this->getTitleInfo($res[1]);
           $category = $this->getCategoryById($title_info[0][2])[0][1];
           $status = $this->getStatus($res[2])[0][0];
+
           $html .= '<tr data-href="?page=ViewRequests&sr='. $res[0] .'">';
           $html .= '<td>'. $res[0] . '</td>'
                 . '<td class="mobile-table">' . $category . '</td>'
@@ -224,8 +225,9 @@ if ( !class_exists( 'DALi' ) ) {
       $title_number = intval($this->getTitleNumber($title));
       $record_type = intval($this->getRecordType($title));
       $username = intval($this->getUserID($_SESSION['username']));
-      $sql = "INSERT INTO service_record (title, type, description, bldg, room, submitted_by)
-              VALUES('$title_number', '$record_type', '$description', '$building', '$room_number', '$username')";
+      $now = date('Y-m-d H:i:s');
+      $sql = "INSERT INTO service_record (title, type, description, bldg, room, submitted_by, last_updated)
+              VALUES('$title_number', '$record_type', '$description', '$building', '$room_number', '$username', '$now')";
       $this->queryUpdate($sql);
       return true;
     }
