@@ -36,9 +36,8 @@
 						<label for="incident-description">Description</label>
 						<textarea rows="8" name="incident-description" class="form-control input-md" id="incident-description" style="resize: none;"></textarea>
 					</div>
-					<button onclick="modalFormValidation();" type="submit" class="btn btn-lg btn-primary">Send!</button>
-				</form>
-				<hr>
+					<button onclick="modalFormValidation();" type="submit" class="btn btn-lg btn-custom">Send!</button>
+				</form>	
 			</div><!-- modal-body -->
 		</div><!-- modal-content -->
 	</div><!-- modal-dialog -->
