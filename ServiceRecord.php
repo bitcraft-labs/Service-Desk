@@ -210,6 +210,9 @@ Status:     Staging; Idea Testing; Development
       });
 
       $(function() {
+        $("#sr_type").select2();
+        $("#sr_cat").select2();
+        $("#sr_subcat").select2();
         $(".building").select2();
         $(".user-list").select2();
         $(".machine").select2();

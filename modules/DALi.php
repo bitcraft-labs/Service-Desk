@@ -42,14 +42,8 @@ if ( !class_exists( 'DALi' ) ) {
     }
 
     //---------QR Code Generation---------->
-    public function myUrlEncode($string) {
-        $entities = array('%21', '%2A', '%27', '%28', '%29', '%3B', '%3A', '%40', '%26', '%3D', '%2B', '%24', '%2C', '%2F', '%3F', '%25', '%23', '%5B', '%5D');
-        $replacements = array('!', '*', "'", "(", ")", ";", ":", "@", "&", "=", "+", "$", ",", "/", "?", "%", "#", "[", "]");
-        return str_replace($entities, $replacements, urlencode($string));
-    }
-
     public function getQRCode() {
-      $link = $this->myUrlEncode("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
+      $link = urlencode("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
       return "<img src='https://chart.googleapis.com/chart?cht=qr&chl=$link&chs=150x150' width='120' alt='qr-mobile' />";
     }
 
@@ -160,9 +154,53 @@ if ( !class_exists( 'DALi' ) ) {
     }
 
     //-------Help Desk Staff Functions ---->
+    public function getRecordTypes() {
+      $sql = "SELECT * FROM record_type";
+      $types = $this->query($sql);
+      $option_html = '<option selected disabled>Choose a Type</option>';
+      if($types) {
+        foreach($types as $result) {
+          $option_html .= '<option value="'.$result[0].'">'.$result[1].'</option>';
+        }
+      }
+      return $option_html;
+    }
+
+    public function getRecordCateogries($type) {
+      if ($type) {
+        $sql = "SELECT category.id, category.cat FROM category INNER JOIN sub_category ON category.id = sub_category.cat INNER JOIN record_type ON sub_category.type = record_type.id WHERE sub_category.type = '$type' GROUP BY category.id ORDER BY cat ASC";
+        $option_html = '<option selected disabled>Choose a Category</option>';
+        $cats = $this->query($sql);
+        if($cats) {
+          foreach($cats as $result) {
+            $option_html .= '<option value="'.$result[0].'">'.$result[1].'</option>';
+          }
+        }
+        return $option_html;
+      } else {
+        return false;
+      }
+    }
+
+    public function getRecordSubCateogries($type, $cat) {
+      if ($type && $cat) {
+        $sql = "SELECT sub_category.id, sub_category.sub_cat FROM sub_category INNER JOIN category ON sub_category.cat = category.id INNER JOIN record_type ON sub_category.type = record_type.id WHERE sub_category.type = '$type' AND sub_category.cat = '$cat' GROUP BY sub_category.sub_cat ORDER BY sub_cat ASC";
+        $option_html = '<option selected disabled>Choose a Sub-Category</option>';
+        $cats = $this->query($sql);
+        if($cats) {
+          foreach($cats as $result) {
+            $option_html .= '<option value="'.$result[0].'">'.$result[1].'</option>';
+          }
+        }
+        return $option_html;
+      } else {
+        return false;
+      }
+    }
+
     public function getPersonInfo($name){
       if ($name == 'all') {
-          $sql = "SELECT * FROM users";
+          $sql = "SELECT * FROM users ORDER BY lname ASC";
       } else {
         $sql = "SELECT * FROM users WHERE id = '$name'";
       }
@@ -291,7 +329,7 @@ if ( !class_exists( 'DALi' ) ) {
         $mailer->FromName = $this->conf['site']['company_name']." Support";
         $mailer->Body ="Hello ".$_POST['fname']." ".$_POST['lname'].",\r\n\r\n".
         "Welcome to ".$this->conf['site']['company_name']."!\r\n".
-        "Your account has been created successfully.\r\n".
+        "Your account has been created successfully.\r\n\r\n".
         "Here is your updated login:\r\n".
         "Username: ".$_POST['username']."\r\n".
         "Password: $new_password\r\n".
