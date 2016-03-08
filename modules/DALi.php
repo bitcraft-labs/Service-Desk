@@ -203,16 +203,29 @@ if ( !class_exists( 'DALi' ) ) {
                 . '<td>'. $title_info[0][3] .'</td>'
                 . '<td class="mobile-table">'. $res[4] .'</td>'
                 . '<td class="mobile-table">'. $res[3] .'</td>'
-                . '<td class="mobile-table">'. $res[5] .'</td>'
+                . '<td>'. $res[5] .'</td>'
                 . '</tr>';
       }
       return $html;
     }
 
-    public function buildSRView($username, $sr_num) {
-        /*
-          TODO: Add Select query to extract specific SR info 
-        */
+    /* Need more info from db */
+
+    public function buildSRView($sr_num) {
+        $sql = "SELECT title, submitted_when, last_updated, description, submitted_by
+        FROM service_record
+        WHERE sr_id = '$sr_num'";
+        $result = $this->query($sql);
+        $title_info = $this->getTitleInfo($result[0][0]);
+        $person = $this->getPersonInfo($result[0][4]);
+        $result_array = array( 
+                   "title" => $title_info[0][3],
+                   "submitted_when" => $result[0][1],
+                   "last_updated" => $result[0][2],
+                   "description" => $result[0][3],
+                   "submitted_by" => $person[0][4]
+        );
+        return $result_array;
     }
     // Mailbox
     public function buildMailbox($username) {
