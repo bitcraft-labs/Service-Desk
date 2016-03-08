@@ -52,7 +52,7 @@ if ( !class_exists( 'DALi' ) ) {
     }
 
     public function getQRCode() {
-      $link = $this->myUrlEncode("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
+      $link = urldecode("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
       return "<img src='https://chart.googleapis.com/chart?cht=qr&chl=$link&chs=150x150' width='120' alt='qr-mobile' />";
     }
 
@@ -209,7 +209,7 @@ if ( !class_exists( 'DALi' ) ) {
       return $html;
     }
 
-    /* Need more info from db */
+    /* Need more info from db   */
 
     public function buildSRView($sr_num) {
         $sql = "SELECT title, submitted_when, last_updated, description, submitted_by
