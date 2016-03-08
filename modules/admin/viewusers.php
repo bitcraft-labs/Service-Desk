@@ -40,7 +40,9 @@ if ($myACL->hasPermission('manage_users') != true) {
 									<td>".$row['fname']."</td>
 									<td>".$row['lname']."</td>
 									<td>".$row['email']."</td>
-									<td><a href='?action=ViewAdmin&for=$row[0]&do=EditUser#access_users'><img src='$icon_dir/user-edit-icon.png' height='24' /></a> <a href='?action=ViewAdmin&for=$row[0]&do=ChangeAccess#access_users'><img src='$icon_dir/group-key-icon.png' height='24' /></a>  <a href='?action=ViewAdmin&for=$row[0]&do=DeleteUser#access_users'><img src='$icon_dir/user-delete-icon.png' height='24' /></a></td>
+									<td><a href='?action=ViewAdmin&for=$row[0]&do=EditUser#access_users'><img src='$icon_dir/user-edit-icon.png' height='24' /></a> ".
+											"<a href='?action=ViewAdmin&for=$row[0]&do=ChangeAccess#access_users'><img src='$icon_dir/group-key-icon.png' height='24' /></a> ".
+											"<a href='?action=ViewAdmin&for=$row[0]&do=DeleteUser#access_users'><img src='$icon_dir/user-delete-icon.png' height='24' /></a></td>
 									</tr>";
 						}?>
 					</tbody>

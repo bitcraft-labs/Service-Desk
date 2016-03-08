@@ -8,7 +8,7 @@
 	</div>
 	<div class="container">
 		<div class="row">
-			<!-- Comment section, title, description, building, room-number, last-updates, who assigned to it, history; --> 
+			<!-- Comment section, title, description, building, room-number, last-updates, who assigned to it, history; -->
 			<!-- Checkup Record -->
 			<div class="col-md-12">
 				<div class="box box-solid box-primary box-custom-rq">
@@ -53,16 +53,13 @@
 			        <p>Assigned to: Student HD Tech Group<br /> <!-- Added to array later -->
 			          Submitted by: <?= $info['submitted_by']; ?><br />
 			          Submitted: <?= $info['submitted_when']; ?></p>
-			        <p><?= $dal->getQRCode(); ?> Scan to mobile</p>
+			        <p><?= $dali->getQRCode(); ?> Scan to mobile</p>
 			        <!--<p><img src='https://chart.googleapis.com/chart?cht=qr&chl=http%3A%2F%2Fhelpdesk.bitcraftlabs.net%2FServiceRecord.php%3Fsr%3Dnew%26type%3D1&chs=180x180&choe=UTF-8&chld=L|2' width="120" alt="qr" /> Scan to mobile</p>-->
 			      </div> <!-- /Submission notes -->
-
 				  </div><!-- /.box-body -->
-				  <!-- <div class="box-footer">
-				    <button type="button" class="btn btn-success">Add Note</button>
-				  </div> --><!-- box-footer -->
-				  <hr>
- 					<button style="margin: 10px;" type="button" class="btn btn-custom" onclick="">Add note</button>
+				  <div class="box-footer">
+				    <button style="margin: 10px;" type="button" class="btn btn-custom" onclick="">Add note</button>
+				  </div><!-- box-footer -->
 				</div><!-- /.box -->
 			</div><!-- /checkup -->
 

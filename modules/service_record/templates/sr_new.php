@@ -7,21 +7,32 @@
                   Type of Service Record
                   <span class="asteriskField">*</span>
               </label>
-              <select class="request-type form-control" id="sr_type" name="sr_type">
-                  <option selected disabled>Select the request type</option>
-                  <option value="Incident">
-                      Incident
-                  </option>
-                  <option value="Repair">
-                      Repair
-                  </option>
-                  <option value="Other">
-                      Other
-                  </option>
+              <select class="recordTypeList form-control" id="sr_type" name="sr_type">
+                <?= $dali->getRecordTypes(); ?>
               </select>
               <span class="help-block" id="hint_sr_type">
                   Select type of service record
               </span>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-6">
+              <label class="control-label requiredField" for="category">
+                Category
+                <span class="asteriskField">*</span>
+              </label>
+              <select class="recordCategoryList form-control" id="sr_cat" name="sr_cat">
+                <?= $dali->getRecordCateogries('2'); ?>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label class="control-label requiredField" for="category">
+                Sub-Category
+                <span class="asteriskField">*</span>
+              </label>
+              <select class="recordCategoryList form-control" id="sr_subcat" name="sr_subcat">
+                <?= $dali->getRecordSubCateogries('2','6'); ?>
+              </select>
+            </div>
           </div>
           <div class="form-group ">
               <label class="control-label requiredField" for="user">
