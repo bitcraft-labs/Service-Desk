@@ -1,3 +1,4 @@
+<?php $info = $dali->buildSRView($_GET['sr']); ?>
 <div class="content-wrapper">
 	<div class="ssp-title">
 		<div class="container">
@@ -10,9 +11,9 @@
 			<!-- Comment section, title, description, building, room-number, last-updates, who assigned to it, history; --> 
 			<!-- Checkup Record -->
 			<div class="col-md-12">
-				<div class="box box-solid box-primary">
+				<div class="box box-solid box-primary box-custom-rq">
 				  <div class="box-header with-border">
-				    <h3 class="box-title"><i class="fa fa-file-text"> </i> Checkup Record</h3>
+				    <h3 class="box-title"><i class="fa fa-stethoscope"> </i> System Checkup Report</h3>
 				    <div class="box-tools pull-right">
 
 				      <!--<span class="label label-success">Student</span>-->
@@ -20,9 +21,9 @@
 				  </div><!-- /.box-header -->
 				  <div class="box-body">
 			      <div class="col-md-8"> <!-- Problem -->
-			        <p><strong>Problem:</strong> Broken Screen</p>
+			        <p><strong>Problem:</strong> <?= $info['title'];?></p>
 			        <p><strong>Additional Details:</strong></p>
-			        <textarea style="padding: 10px; border-radius: 5px; resize: none;" class="form-control" name="addl_details" id="" cols="111" rows="4">Accidently dropped it the other day. Fell off bed while watching Netflix.</textarea>
+			        <textarea style="padding: 10px; border-radius: 5px; resize: none;" class="form-control" name="addl_details" id="" cols="111" rows="4" disabled><?= $info['description']; ?></textarea>
 			      </div> <!-- /Problem -->
 
 			    	<div class="col-md-4">
@@ -49,22 +50,25 @@
 			          Emailed Student the Status -- <em>System (01/09/2016 6:23pm)</em></p>
 			      </div>
 			      <div class="col-md-4"> <!-- Submission Notes -->
-			        <p>Assigned to: Student HD Tech Group<br />
-			          Submitted by: Rose Tyler (Clerk)<br />
-			          Submitted: 01/07/2016 at 12:29pm</p>
+			        <p>Assigned to: Student HD Tech Group<br /> <!-- Added to array later -->
+			          Submitted by: <?= $info['submitted_by']; ?><br />
+			          Submitted: <?= $info['submitted_when']; ?></p>
 			        <p><?= $dal->getQRCode(); ?> Scan to mobile</p>
 			        <!--<p><img src='https://chart.googleapis.com/chart?cht=qr&chl=http%3A%2F%2Fhelpdesk.bitcraftlabs.net%2FServiceRecord.php%3Fsr%3Dnew%26type%3D1&chs=180x180&choe=UTF-8&chld=L|2' width="120" alt="qr" /> Scan to mobile</p>-->
 			      </div> <!-- /Submission notes -->
+
 				  </div><!-- /.box-body -->
 				  <!-- <div class="box-footer">
 				    <button type="button" class="btn btn-success">Add Note</button>
 				  </div> --><!-- box-footer -->
+				  <hr>
+ 					<button style="margin: 10px;" type="button" class="btn btn-custom" onclick="">Add note</button>
 				</div><!-- /.box -->
 			</div><!-- /checkup -->
 
 			<div class="col-md-12"> <!-- footer -->
 			  <div class="col-md-8">
-			    <button type="button" class="btn btn-primary"><i href="fa fa-floppy-o pull-left">Save</i></button> <button type="button" class="btn btn-primary"><i href="fa fa-floppy-o pull-left">Print</i></button><br />Record Saved.
+			    <button type="button" class="btn btn-custom"><i href="fa fa-floppy-o pull-left">Save</i></button> <button type="button" class="btn btn-custom"><i href="fa fa-floppy-o pull-left">Print</i></button><br />Record Saved.
 			  </div>
 			  <div class="col-md-4">
 			    <p>Last Updated: 01/9/2016 06:23pm</p>
