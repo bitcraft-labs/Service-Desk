@@ -6,7 +6,7 @@ class ADMIN {
 		  $query = "UPDATE users SET type='$access' WHERE id=$user";
 		  return $this->query($query);
 	 }
-
+	 	
 	 public function getStaffList() {
 		  $query = "SELECT users.id as id,
                   user_group.type as type,
