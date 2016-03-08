@@ -1,3 +1,22 @@
+<?php 
+  /*
+    Process POST submit
+  */
+    $modal_success = '<div id="modal_success">';
+    $modal_success_prompt = "<div class='alert alert-custom alert-dismissable' id='modal_success_prompt'>";
+    $modal_success_prompt .= "<button type='button' class='close' data-dismiss='alert'>x</button>";
+    $modal_success_prompt .= "<i class='fa fa-star-o'></i> Thank you for your submission!" . '</div></div>';
+    $modal_success .= $modal_success_prompt;
+    if(isset($_POST['submit'])) {
+      $modal_title = $_POST['incident-title'];
+      $modal_building = $_POST['incident-building'];
+      $modal_room_number = $_POST['incident-room-number'];
+      $modal_description = $_POST['incident-description'];
+      $dali->submitModalForm($modal_title, $modal_building, $modal_room_number, $modal_description); 
+    }
+
+ ?>
+
 <!-- Full Width Column -->
 <div class="content-wrapper">
   <div class="ssp-title">
@@ -9,6 +28,8 @@
   <div class="container container-reg">
     <div class="row">
        <div class="col-md-12">
+          <?php 
+          if(isset($_POST['submit'])) { echo $modal_success; } ?>
           <!-- tabs right -->
           <div class="tabbable tabs-left">
               <ul class="nav nav-tabs m-width">
