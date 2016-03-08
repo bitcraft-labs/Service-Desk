@@ -10,15 +10,6 @@
 		<div class="row">
 			<!-- Comment section, title, description, building, room-number, last-updates, who assigned to it, history; --> 
 			<!-- Checkup Record -->
-			<!-- 
-				$result_array = array( 
-                   "title" => $title_info[0][3],
-                   "submitted_when" => $result[0][1],
-                   "last_updated" => $result[0][2],
-                   "description" => $result[0][3],
-                   "submitted_by" => $person[0][4]
-        );
-			 -->
 			<div class="col-md-12">
 				<div class="box box-solid box-primary box-custom-rq">
 				  <div class="box-header with-border">
