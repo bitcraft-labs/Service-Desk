@@ -199,7 +199,7 @@ if ( !class_exists( 'DALi' ) ) {
     public function buildRequestsTable($username) {
       $user = $this->getUserID($username);
       $sql = "SELECT sr_id, title, status_id, submitted_when, assigned_admin, last_updated
-              FROM service_record 
+              FROM service_record
               WHERE submitted_by = '$user'";
       $html = "";
       $result = $this->query($sql);
@@ -230,7 +230,7 @@ if ( !class_exists( 'DALi' ) ) {
         $result = $this->query($sql);
         $title_info = $this->getTitleInfo($result[0][0]);
         $person = $this->getPersonInfo($result[0][4]);
-        $result_array = array( 
+        $result_array = array(
                    "title" => $title_info[0][3],
                    "submitted_when" => $result[0][1],
                    "last_updated" => $result[0][2],
@@ -270,7 +270,7 @@ if ( !class_exists( 'DALi' ) ) {
       return $option_html;
     }
 
-    public function getRecordCateogries($type) {
+    public function getRecordCategories($type) {
       if ($type) {
         $sql = "SELECT category.id, category.cat FROM category INNER JOIN sub_category ON category.id = sub_category.cat INNER JOIN record_type ON sub_category.type = record_type.id WHERE sub_category.type = '$type' GROUP BY category.id ORDER BY cat ASC";
         $option_html = '<option selected disabled>Choose a Category</option>';
@@ -286,7 +286,7 @@ if ( !class_exists( 'DALi' ) ) {
       }
     }
 
-    public function getRecordSubCateogries($type, $cat) {
+    public function getRecordSubCategories($type, $cat) {
       if ($type && $cat) {
         $sql = "SELECT sub_category.id, sub_category.sub_cat FROM sub_category INNER JOIN category ON sub_category.cat = category.id INNER JOIN record_type ON sub_category.type = record_type.id WHERE sub_category.type = '$type' AND sub_category.cat = '$cat' GROUP BY sub_category.sub_cat ORDER BY sub_cat ASC";
         $option_html = '<option selected disabled>Choose a Sub-Category</option>';
@@ -328,7 +328,7 @@ if ( !class_exists( 'DALi' ) ) {
       if ($DoAdd) {
         $sql = "INSERT INTO users (fname, lname, email, username, banner_id, phone, creation_date, confirmcode)
                 VALUES('".$_POST['fname']."','".$_POST['lname']."','".$_POST['email']."','".$_POST['username']."','".$_POST['banner_id']."','".$_POST['phone']."','$now','y')";
-       
+
         $succ = $this->queryChange($sql);
         $sql = "SELECT id FROM users WHERE username = '$user' LIMIT 1";
 

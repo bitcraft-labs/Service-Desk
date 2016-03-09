@@ -7,7 +7,7 @@
                   Type of Service Record
                   <span class="asteriskField">*</span>
               </label>
-              <select class="recordTypeList form-control" id="sr_type" name="sr_type">
+              <select class="recordTypeList form-control" id="sr_type" name="sr_type" onchange="sr_new_response();">
                 <?= $dali->getRecordTypes(); ?>
               </select>
               <span class="help-block" id="hint_sr_type">
@@ -20,8 +20,11 @@
                 Category
                 <span class="asteriskField">*</span>
               </label>
-              <select class="recordCategoryList form-control" id="sr_cat" name="sr_cat">
-                <?= $dali->getRecordCateogries('2'); ?>
+              <select class="recordCategoryList form-control sr_cat1" name="sr_cat1" onchange="sr_new_response();">
+                <?= $dali->getRecordCategories("1"); ?>
+              </select>
+              <select class="recordCategoryList form-control sr_cat2" name="sr_cat2" onchange="sr_new_response();">
+                <?= $dali->getRecordCategories("2"); ?>
               </select>
             </div>
             <div class="col-md-6">
@@ -30,16 +33,14 @@
                 <span class="asteriskField">*</span>
               </label>
               <select class="recordCategoryList form-control" id="sr_subcat" name="sr_subcat">
-                <?= $dali->getRecordSubCateogries('2','6'); ?>
+                <?= $dali->getRecordSubCategories('2','6'); ?>
               </select>
             </div>
           </div>
-          <div class="form-group ">
+          <div class="form-group">
               <label class="control-label requiredField" for="user">
                   User
-                  <span class="asteriskField">
-                      *
-                  </span>
+                  <span class="asteriskField">*</span>
               </label>
               <select class="user-list form-control" id="user" name="user">
                 <?php

@@ -32,6 +32,9 @@ h1{
 .foptions > label {
 
 }
+.sr_cat2, .select2:nth-child(2){
+  display: none !important;
+}
 .incident{
   /*display: none;*/
 }

@@ -197,17 +197,14 @@ Status:     Staging; Idea Testing; Development
     <script src="bower/AdminLTE/plugins/select2/select2.min.js"></script>
     <!-- AdminLTE App -->
     <script src="bower/AdminLTE/dist/js/app.min.js"></script>
+
+    <script src="dist/js/form.js"></script>
+
     <!-- page script -->
     <script>
-      $(function() {
-        $(".building").select2();
-        $(".user-list").select2();
-        $(".machine").select2();
-        $(".request-type").select2();
-      });
-    
       $(function () {
         $(".repair").hide();
+        document.getElementsByClassName('select2').style;
         $(".incident").hide();
         $('#records').DataTable({
           "paging": true,
@@ -219,20 +216,17 @@ Status:     Staging; Idea Testing; Development
         });
       });
 
-<<<<<<< HEAD
-=======
       $(function() {
         $("#sr_type").select2();
-        $("#sr_cat").select2();
+        $(".sr_cat1").select2();
+        $(".sr_cat2").select2();
         $("#sr_subcat").select2();
         $(".building").select2();
         $(".user-list").select2();
         $(".machine").select2();
         $(".request-type").select2();
       });
->>>>>>> bitcraft-labs/pre-alpha
     </script>
-    <script src="dist/js/form.js"></script>
     <!-- Optionally, you can add Slimscroll and FastClick plugins.
          Both of these plugins are recommended to enhance the
          user experience. Slimscroll is required when using the
