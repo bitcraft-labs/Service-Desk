@@ -58,7 +58,7 @@ if ( !class_exists( 'DALi' ) ) {
 
     //---------QR Code Generation---------->
     public function getQRCode() {
-      $link = urldecode("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
+      $link = urlencode("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
       return "<img src='https://chart.googleapis.com/chart?cht=qr&chl=$link&chs=150x150' width='120' alt='qr-mobile' />";
     }
 
@@ -199,7 +199,7 @@ if ( !class_exists( 'DALi' ) ) {
     public function buildRequestsTable($username) {
       $user = $this->getUserID($username);
       $sql = "SELECT sr_id, title, status_id, submitted_when, assigned_admin, last_updated
-              FROM service_record 
+              FROM service_record
               WHERE submitted_by = '$user'";
       $html = "";
       $result = $this->query($sql);
@@ -230,7 +230,7 @@ if ( !class_exists( 'DALi' ) ) {
         $result = $this->query($sql);
         $title_info = $this->getTitleInfo($result[0][0]);
         $person = $this->getPersonInfo($result[0][4]);
-        $result_array = array( 
+        $result_array = array(
                    "title" => $title_info[0][3],
                    "submitted_when" => $result[0][1],
                    "last_updated" => $result[0][2],
@@ -328,7 +328,7 @@ if ( !class_exists( 'DALi' ) ) {
       if ($DoAdd) {
         $sql = "INSERT INTO users (fname, lname, email, username, banner_id, phone, creation_date, confirmcode)
                 VALUES('".$_POST['fname']."','".$_POST['lname']."','".$_POST['email']."','".$_POST['username']."','".$_POST['banner_id']."','".$_POST['phone']."','$now','y')";
-       
+
         $succ = $this->queryChange($sql);
         $sql = "SELECT id FROM users WHERE username = '$user' LIMIT 1";
 

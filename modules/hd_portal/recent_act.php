@@ -3,7 +3,7 @@ TODO: Include database data into the tables
 
 --->
 <div class="col-md-6 col-xs-12">
-  <div class="box">
+  <div class="box box-solid box-purple">
     <div class="box-header">
       <h3 class="box-title">Recent Activity</h3>
     </div><!-- /.box-header -->

@@ -11,11 +11,11 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<div class="box">
+				<div class="box box-solid box-purple">
 				    <div class="box-header">
 				      <h3 class="box-title">Service Records</h3>
 				    </div><!-- /.box-header -->
-			    <div class="box-body box-custom">
+			    <div class="box-body">
 			    	<table id="records" class="table table-bordered table-striped table-hover">
 			    		<thead>
 			    			<tr>
