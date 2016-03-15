@@ -3,7 +3,7 @@ TODO: Implement database data
 -->
 
 <div class="col-md-6 col-xs-12">
-  <div class="box">
+  <div class="box box-solid box-purple">
     <div class="box-header">
       <h3 class="box-title">Active Staff Users</h3>
     </div><!-- /.box-header -->
