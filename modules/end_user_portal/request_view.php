@@ -4,6 +4,7 @@
 		<div class="container">
 	      <h3><!--<i class="fa fa-laptop fa-2x pull-left"></i> -->Self-Service Portal <small>( <?= $_GET['sr']; ?>)<br>
 	  <!-- ADD NEW DESC -->DA DA DA DA DAAAAAAAAAAA </small></h3>
+	  <!-- Add icons and change buttons and layout -->
 	    </div>
 	</div>
 	<div class="container">
@@ -15,7 +16,6 @@
 				  <div class="box-header with-border">
 				    <h3 class="box-title"><i class="fa fa-stethoscope"> </i> System Checkup Report</h3>
 				    <div class="box-tools pull-right">
-
 				      <!--<span class="label label-success">Student</span>-->
 				    </div><!-- /.box-tools -->
 				  </div><!-- /.box-header -->

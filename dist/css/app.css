@@ -152,10 +152,20 @@ tbody tr {
   color: #fff;
 }
 /* MEDIA QUERIES */
+
 /* Top Bar */
 @media (max-width: 768px) {
   .signed-in-as {
     display: none;
+  }
+  .dropdown-menu a {
+    color : #593E33 !important;
+  }
+  .dropdown-menu a:hover {
+    color : #fff !important;
+  }
+  .divider {
+    border-top: 1px solid #EEEEEE !important; 
   }
 }
 
@@ -176,6 +186,7 @@ tbody tr {
       padding-top: 8px;
    }
 }
+
 @media screen and (max-width : 668px) {
   .navbar li {
     font-size: 15px;
@@ -194,6 +205,7 @@ tbody tr {
     padding-left: 54px;
   }
 }
+
 @media screen and (max-width : 568px) {
   .app-version-mobile {
     display: none;
@@ -209,11 +221,11 @@ tbody tr {
     font-size: 1.3em;
     padding-bottom: 10px;
   }
-
 }
+
 @media screen and (max-width : 438px) {
   .fa.fa-sign-out {
-    display: none;
+    display: none; 
   }
   .mobile-fix {
     display: none;

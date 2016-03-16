@@ -12,7 +12,8 @@
       $modal_building = $_POST['incident-building'];
       $modal_room_number = $_POST['incident-room-number'];
       $modal_description = $_POST['incident-description'];
-      $dali->submitModalForm($modal_title, $modal_building, $modal_room_number, $modal_description); 
+      $modal_phone = $_POST['incident-phone'];
+      $dali->submitModalForm($modal_title, $modal_building, $modal_room_number, $modal_description, $modal_phone); 
     }
 
  ?>
@@ -28,8 +29,7 @@
   <div class="container container-reg">
     <div class="row">
        <div class="col-md-12">
-          <?php 
-          if(isset($_POST['submit'])) { echo $modal_success; } ?>
+          <?php if(isset($_POST['submit'])) { echo $modal_success; } ?>
           <!-- tabs right -->
           <div class="tabbable tabs-left">
               <ul class="nav nav-tabs m-width">

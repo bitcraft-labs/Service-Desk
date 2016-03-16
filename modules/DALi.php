@@ -58,7 +58,7 @@ if ( !class_exists( 'DALi' ) ) {
 
     //---------QR Code Generation---------->
     public function getQRCode() {
-      $link = urldecode("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
+      $link = urlencode("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
       return "<img src='https://chart.googleapis.com/chart?cht=qr&chl=$link&chs=150x150' width='120' alt='qr-mobile' />";
     }
 
@@ -108,6 +108,15 @@ if ( !class_exists( 'DALi' ) ) {
 
     private function getRecordType($title) {
       $sql = "SELECT type FROM sub_category WHERE sub_cat = '$title' LIMIT 1";
+      $result = $this->query($sql);
+      foreach ($result as $res) {
+        $rt = $res[0];
+      }
+      return $rt;
+    }
+
+    public function getPhoneNumber($username) {
+      $sql = "SELECT phone FROM users WHERE id='$username'";
       $result = $this->query($sql);
       foreach ($result as $res) {
         $rt = $res[0];
@@ -207,7 +216,6 @@ if ( !class_exists( 'DALi' ) ) {
           $title_info = $this->getTitleInfo($res[1]);
           $category = $this->getCategoryById($title_info[0][2])[0][1];
           $status = $this->getStatus($res[2])[0][0];
-
           $html .= '<tr data-href="?page=ViewRequests&sr='. $res[0] .'">';
           $html .= '<td>'. $res[0] . '</td>'
                 . '<td class="mobile-table">' . $category . '</td>'
@@ -221,11 +229,15 @@ if ( !class_exists( 'DALi' ) ) {
       return $html;
     }
 
-    /* Need more info from db   */
+    /* 
+      Need more info from db   
+      Need to change the display based on the type of incident
+      Need to change array based on type of incident
+    */
 
     public function buildSRView($sr_num) {
         $sql = "SELECT title, submitted_when, last_updated, description, submitted_by
-        FROM service_record
+        FROM service_record   
         WHERE sr_id = '$sr_num'";
         $result = $this->query($sql);
         $title_info = $this->getTitleInfo($result[0][0]);
@@ -246,13 +258,18 @@ if ( !class_exists( 'DALi' ) ) {
         */
     }
     // Modal Functions
-    public function submitModalForm($title, $building, $room_number, $description) {
+    public function submitModalForm($title, $building, $room_number, $description, $phone) {
       $title_number = intval($this->getTitleNumber($title));
       $record_type = intval($this->getRecordType($title));
       $username = intval($this->getUserID($_SESSION['username']));
       $now = date('Y-m-d H:i:s');
-      $sql = "INSERT INTO service_record (title, type, description, bldg, room, submitted_by, last_updated)
-              VALUES('$title_number', '$record_type', '$description', '$building', '$room_number', '$username', '$now')";
+      if($building != null) {
+        $sql = "INSERT INTO service_record (title, type, description, bldg, room, submitted_by, last_updated, phone)
+                VALUES('$title_number', '$record_type', '$description', '$building', '$room_number', '$username', '$now', '$phone')";
+      } else {
+        $sql = "INSERT INTO service_record (title, type, description, submitted_by, last_updated, phone)
+                VALUES('$title_number', '$record_type', '$description', '$username', '$now', '$phone')";
+      }
       $this->queryChange($sql);
       return true;
     }

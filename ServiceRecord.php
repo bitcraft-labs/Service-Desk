@@ -197,6 +197,7 @@ Status:     Staging; Idea Testing; Development
     <!-- AdminLTE App -->
     <script src="bower/AdminLTE/dist/js/app.min.js"></script>
     <!-- page script -->
+    <script src="dist/js/sr_new_response.js"></script>
     <script>
       $(function () {
         $('#records').DataTable({

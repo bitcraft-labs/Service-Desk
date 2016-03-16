@@ -1,14 +1,14 @@
 
 <div class="row">
    <div class="col-md-6 col-md-offset-3">
-      <form method="post">
+      <form action="" method="post">
           <div class="form-group foptions">
               <label class="control-label requiredField" for="sr_type">
                   Type of Service Record
                   <span class="asteriskField">*</span>
               </label>
-              <select class="recordTypeList form-control" id="sr_type" name="sr_type">
-                <?= $dali->getRecordTypes(); ?>
+              <select class="recordTypeList form-control" onchange="sr_new_response();" id="sr_type" name="sr_type">
+                <?= $dali->getRecordTypes(); ?> 
               </select>
               <span class="help-block" id="hint_sr_type">
                   Select type of service record

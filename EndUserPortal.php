@@ -89,6 +89,7 @@ Status:     Staging; Idea Testing; Development
     <script src="bower/AdminLTE/plugins/select2/select2.min.js"></script>
     <!-- Modal Validation -->
     <script type="text/javascript" src="dist/js/modalValidation.js"></script>
+    <script type="text/javascript" src="dist/js/populateModalInformation.js"></script>
     <script>
       $(function () {
         $('#records').DataTable({
@@ -110,14 +111,20 @@ Status:     Staging; Idea Testing; Development
           }
         });
       });
+      /* Annoying menu fix */
+      $(function () {
+        var $anchor_menu_fix = $(".dropdown-toggle")[4];
+        $anchor_menu_fix.style.display = "none";
+      });
       $('.table > tbody > tr').on('click', function (event) {
         document.location = $(this).attr('data-href');
       });
       $('.tab_value').on('click', function (event) {
-        var $modal_title = $(this).attr('data-title');
+      var $modal_title = $(this).attr('data-title');
         $('#incident-title').val($modal_title);
+        modalInformation.fillModal($modal_title);
       });
-    $(function() {
+      $(function() {
         //$("#incidentModal").modal('show');
         //$("#incident-building").select2();
         //$("#incidentModal").modal('hide');
