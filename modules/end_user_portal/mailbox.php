@@ -50,6 +50,7 @@
 		                <!-- /.pull-right -->
 		              </div>
 		              <div class="table-responsive mailbox-messages">
+		              <?= $dali->buildMailbox($_SESSION['']) ?>
 		                <table class="table table-hover table-striped">
 		                  <tbody>
 		                  <tr data-href="?page=Mailbox&mb=<?= $read_comments_number++; ?>">

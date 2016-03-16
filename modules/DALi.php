@@ -84,7 +84,10 @@ if ( !class_exists( 'DALi' ) ) {
    	  if($request == 'all') {
 	      $sql = "SELECT * FROM building";
 	      return $this->query($sql);
-  	  }
+  	  } else if ($request != null) {
+        $sql = "SELECT name FROM building WHERE id='$request'";
+        return $this->query($sql);
+      }
     }
 
     private function getCategories() {
@@ -122,6 +125,12 @@ if ( !class_exists( 'DALi' ) ) {
         $rt = $res[0];
       }
       return $rt;
+    }
+
+    private function getMachineInfo($id) {
+      $sql = "SELECT mach_id, model, serial_num, warr_status, password, encryption_key FROM machine WHERE user_id='$id'";
+      $result = $this->query($sql);
+      return $result[0];
     }
 
     // Builder Functions
@@ -235,29 +244,59 @@ if ( !class_exists( 'DALi' ) ) {
       Need to change array based on type of incident
     */
 
-    public function buildSRView($sr_num) {
-        $sql = "SELECT title, submitted_when, last_updated, description, submitted_by
+    public function buildSRView($sr_num, $id) {
+        $sql = "SELECT title, submitted_when, last_updated, description, submitted_by, assigned_admin, bldg, room
         FROM service_record   
         WHERE sr_id = '$sr_num'";
         $result = $this->query($sql);
         $title_info = $this->getTitleInfo($result[0][0]);
+        $incident_type = $title_info[0][8];
+        $building = $this->getBuildingsRow($result[0][6]);
+        $machine_info = $this->getMachineInfo($id);
         $person = $this->getPersonInfo($result[0][4]);
+        if($incident_type == 1) {
+          $title_page = "<h3 class='box-title'><i class='fa fa-file-text-o'> </i> Service Report</h3>";
+          $specific_info = '<div class="col-md-4">
+              <h4><i class="fa fa-info"> </i> <strong>Location Information:</strong></h4>
+              <div class="box-body">
+              <p>
+                <strong>Building:</strong> '. $building[0][0] .'<br />
+                <strong>Room:</strong> '. $result[0][7] .'<br />
+            </div><!-- /.box-body -->
+            </div>';
+        } else {
+          $title_page = "<h3 class='box-title'><i class='fa fa-stethoscope'> </i> System Checkup Report</h3>";
+          $specific_info = '<div class="col-md-4">
+              <h4><i class="fa fa-desktop"> </i> <strong>System Information:</strong></h4>
+              <div class="box-body">
+              <p>
+                <strong>Model:</strong> '. $machine_info[1] .'<br />
+                <strong>Serial:</strong> '. $machine_info[2] .'<br />
+                <strong>Warranty:</strong> '. $machine_info[3] .'</br />
+                <strong>Password:</strong> '. $machine_info[4] .'<br />
+                <strong>Encryption Key:</strong> '. $machine_info[5] .'</p>
+            </div><!-- /.box-body -->
+            </div>';
+        }
         $result_array = array( 
-                   "title" => $title_info[0][3],
+                   "title"          => $title_page,
+                   "problem"        => $title_info[0][3],
                    "submitted_when" => $result[0][1],
-                   "last_updated" => $result[0][2],
-                   "description" => $result[0][3],
-                   "submitted_by" => $person[0][4]
+                   "last_updated"   => $result[0][2],
+                   "description"    => $result[0][3],
+                   "submitted_by"   => $person[0][4],
+                   "assigned_admin" => $result[0][5],
+                   "side"           => $specific_info
         );
         return $result_array;
     }
     // Mailbox
-    public function buildMailbox($username) {
-        /*
-          TODO: Add select query to extract specific comments and mail
-        */
+    public function buildMailbox($userId) {
+        $sql = "SELECT * FROM mailbox WHERE who='$username'";
+        $results = $this->query($sql);
+        return $results[0];
     }
-    // Modal Functions
+    // ------- Modal Functions ---------
     public function submitModalForm($title, $building, $room_number, $description, $phone) {
       $title_number = intval($this->getTitleNumber($title));
       $record_type = intval($this->getRecordType($title));
