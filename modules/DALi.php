@@ -58,7 +58,7 @@ if ( !class_exists( 'DALi' ) ) {
 
     //---------QR Code Generation---------->
     public function getQRCode() {
-      $link = urldecode("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
+      $link = urlencode("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
       return "<img src='https://chart.googleapis.com/chart?cht=qr&chl=$link&chs=150x150' width='120' alt='qr-mobile' />";
     }
 
