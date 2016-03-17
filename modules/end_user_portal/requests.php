@@ -20,13 +20,13 @@
 			    		<thead>
 			    			<tr>
 			    				<?php $tabhead = '
-				    				<th>SR#</td>
-				    				<th class="mobile-table">Category</td>
-				    				<th>Status</td>
-				    				<th>Ticket Title</td>
-				    				<th class="mobile-table">Assigned Admin</td>
-				    				<th class="mobile-table">Date Submitted</td>
-				    				<th>Date Last Updated</td>';
+				    				<th>SR#</th>
+				    				<th class="mobile-table">Category</th>
+				    				<th>Status</th>
+				    				<th>Ticket Title</th>
+				    				<th class="mobile-table">Assigned Admin</th>
+				    				<th class="mobile-table">Date Submitted</th>
+				    				<th>Date Last Updated</th>';
 			    				 echo $tabhead; ?>
 			    			</tr>
 			    		</thead>

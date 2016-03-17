@@ -239,9 +239,7 @@ if ( !class_exists( 'DALi' ) ) {
     }
 
     /* 
-      Need more info from db   
-      Need to change the display based on the type of incident
-      Need to change array based on type of incident
+      Needs Mailbox implementation
     */
 
     public function buildSRView($sr_num, $id) {
@@ -290,12 +288,42 @@ if ( !class_exists( 'DALi' ) ) {
         );
         return $result_array;
     }
+    
     // Mailbox
     public function buildMailbox($userId) {
-        $sql = "SELECT * FROM mailbox WHERE who='$username'";
+        $sql = "SELECT * FROM mailbox WHERE who='$userId'";
         $results = $this->query($sql);
-        return $results[0];
+        $html = "";
+        $read_comments_number = 1;
+        $now = date("Y-m-d H-i-s");
+        foreach($results as $res) {
+          $person = $this->getPersonInfo($userId);
+          $snippet = trim(substr($res[4], 0, 50), "\t\n\r\0");
+          $html .= '<tr data-href="?page=Mailbox&mb='. $res[0] .'">
+                        <td>'. $read_comments_number++ .'</td>
+                        <td class="mailbox-name">'. $person[0][1] .' ' . $person[0][2] .'</td>
+                        <td class="mailbox-subject"><strong>'. $res[3] .'</strong> - '.$snippet.'...'.'
+                        </td>
+                        <td class="mailbox-date">'. date_diff($now, $res[5]) .'</td>
+                      </tr>';
+        }
+        return $html;
     }
+
+    public function buildCommentDisplay($mailboxId) {
+      $sql = "SELECT * FROM mailbox WHERE id='$mailboxId'";
+      $results = $this->query($sql);
+      $person = $this->getPersonInfo($results[0][2]);
+      $values = array(
+              "subject" => $results[0][3],
+              "message" => nl2br($results[0][4]),
+              "from"    => $person[0][4],
+              "when"    => $results[0][5],
+              "email"   => $person[0][3]
+      );
+      return $values;
+    }
+
     // ------- Modal Functions ---------
     public function submitModalForm($title, $building, $room_number, $description, $phone) {
       $title_number = intval($this->getTitleNumber($title));

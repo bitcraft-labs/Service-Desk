@@ -96,7 +96,7 @@
   z-index: 800;
 }
 
-/* END-USER FIXES AND ADDITIONS */
+/* END USER FIXES AND ADDITIONS */
 .end-user-padding {
   padding-top: 24px;
 }
@@ -150,6 +150,10 @@ tbody tr {
 .box-header {
   background: #8985C5 !important;
   color: #fff;
+}
+
+#mailbox-fix {
+  overflow: hidden !important;
 }
 /* MEDIA QUERIES */
 
