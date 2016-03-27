@@ -130,6 +130,11 @@ if (isset($_POST['action'])) {
     });
   });
 
+  $('body').on('click', '.btn-group', function (e) {
+      $(this).addClass('active');
+      $(this).siblings().removeClass('active');
+  });
+
   jQuery(document).ready(function($) {
     $(".clickableRow").click(function() {
         window.document.location = $(this).data("href");
