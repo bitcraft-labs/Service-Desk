@@ -18,6 +18,18 @@
 }
 
 /* Content Area */
+.maintenance_msg {
+  width: 100%;
+  padding: 5px;
+  color: #fff;
+  text-align: center;
+  background: #dd4b39;
+}
+
+.skew-up {
+  margin-top: -35px;
+}
+
 .ssp-title.hd {
 	background: #FAFAFA;
 	border-bottom: 1px solid #ddd;

@@ -36,7 +36,6 @@
         $currpage = ucfirst(pathinfo($_SERVER['PHP_SELF'], PATHINFO_FILENAME));
         if ($currpage == "Admin") { ?>
           <li class="header">Admin Area</li>
-          <li><a href="Admin.php#site" data-toggle='tab'><i class="fa fa-cog"></i> Site Settings</a></li>
           <li class="treeview">
             <li>
               <a href="#"><i class="fa fa-th"></i> User Management <i class="fa fa-angle-left pull-right"></i></a>
@@ -62,8 +61,8 @@
             <li>
               <a href="#"><i class="fa fa-cogs"></i> System Maintenance <i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">
-                <li><a href="#" data-toggle='tab'><i class="fa fa-circle-o"></i> Site Configuration</a></li>
-                <li><a href="#" data-toggle='tab'><i class="fa fa-circle-o"></i> Server Settings</a></li>
+                <li><a href="#site" data-toggle='tab'><i class="fa fa-circle-o"></i> Site Configuration</a></li>
+                <li><a href="#developer" data-toggle='tab'><i class="fa fa-circle-o"></i> Developer Options</a></li>
                 <li><a href="#" data-toggle='tab'><i class="fa fa-envelope-o"></i> Email</a></li>
                 <li><a href="#" data-toggle='tab'><i class="fa fa-circle-o"></i> Add-ons</a></li>
                 <li><a href="#" data-toggle='tab'><i class="fa fa-circle-o"></i> Backup/Recovery</a></li>
