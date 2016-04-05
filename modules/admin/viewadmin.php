@@ -16,6 +16,12 @@
         include_once 'modules/admin/viewsite.php';
         echo "</div>";
         }?>
+
+    <!-- developer options -->
+    <div id="developer" class="tab-pane <?php if($myACL->hasPermission('access_admin'));?>">
+        <?php include_once 'modules/admin/devoptions.php'; ?>
+    </div>
+
     <!-- user list/manage -->
     <div id="access_users" class="tab-pane <?php if(!($myACL->hasPermission('access_admin')) && ($myACL->hasPermission('manage_users'))) echo 'active';?>">
         <br>

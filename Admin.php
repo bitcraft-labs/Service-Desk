@@ -116,7 +116,11 @@ if (isset($_POST['action'])) {
 <script src="bower/AdminLTE/plugins/input-mask/jquery.inputmask.js"></script>
 <script src="bower/AdminLTE/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
 <script src="bower/AdminLTE/plugins/input-mask/jquery.inputmask.extensions.js"></script>
-
+<script src="dist/js/bootstrap-switch.min.js"></script>
+<script>
+  $("[name='dev_on']").bootstrapSwitch();
+  $("[name='dev_alert']").bootstrapSwitch();
+</script>
 <!-- page script -->
 <script>
   $(function () {
