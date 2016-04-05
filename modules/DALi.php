@@ -448,6 +448,14 @@ if ( !class_exists( 'DALi' ) ) {
         }
         return true;
     }
+
+    function loadSetting($setting) {
+      if ($setting == "maintenance") {
+        $sql = "SELECT * FROM admin_settings WHERE setting='maintenance'";
+        $result = $this->query($sql);
+        return $result;
+      }
+    }
   }
 }
 //Need this to init class ----> $dali = new DALi();
