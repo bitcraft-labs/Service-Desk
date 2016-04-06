@@ -86,6 +86,10 @@
   height: auto;
 }
 
+ul.treeview-menu > li.active {
+  border-left: solid 2px #605ca8;
+}
+
 /* App Styles */
 .skin-purple .main-header .navbar {
   background-color: #555299;

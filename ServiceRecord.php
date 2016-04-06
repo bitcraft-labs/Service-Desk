@@ -218,6 +218,7 @@ Status:     Staging; Idea Testing; Development
         $(".machine").select2();
         $(".request-type").select2();
       });
+      $('ul#sdesk').toggle(200);
     </script>
     <!-- Optionally, you can add Slimscroll and FastClick plugins.
          Both of these plugins are recommended to enhance the

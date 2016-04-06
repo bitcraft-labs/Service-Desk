@@ -456,6 +456,23 @@ if ( !class_exists( 'DALi' ) ) {
         return $result;
       }
     }
+
+    function updateSetting($setting) {
+      if ($setting == "maintenance") {
+        $msg = $_POST['dev_msg'];
+        $tmsg = $_POST['dev_alert'];
+        if (!$tmsg) $tmsg = 0;
+        else $tmsg = 1;
+        $toggle = $_POST['dev_on'];
+        if (!$toggle) $toggle = 0;
+        else $toggle = 1;
+        echo $msg.$tmsg.$toggle;
+        $sql = "UPDATE admin_settings SET msg='$msg', toggle_display='$toggle', toggle_msg='$tmsg' WHERE setting='maintenance'";
+        $this->queryChange($sql);
+        header("Location: Admin.php?page=cpanel&subpage=devops");
+        exit;
+      }
+    }
   }
 }
 //Need this to init class ----> $dali = new DALi();

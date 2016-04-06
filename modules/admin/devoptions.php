@@ -1,6 +1,11 @@
-<h1>Developer Options</h1>
-<form action="<?= $authenticator->GetSelfScript(); ?>" method="post">
-  <input type="text" name="submit_dev_mode" hidden></input>
+<h3>Developer Options</h3>
+<?php if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+  $dali->updateSetting('maintenance');
+  $success = "Maintenance Mode Changed";
+  echo $success;
+}?>
+<form action="<?= $_SERVER['REQUEST_URI'] ?>" method="post">
+  <!-- <input type="text" name="submit_dev_mode" value="1" hidden></input> -->
   <div class="form-group">
     <label>Maintenance Mode</label>
     <input type="checkbox" name="dev_on" data-off-text="Off" data-on-text="On" data-size="mini" class="BSswitch" <?php if ($maintenance) echo "checked"; ?> ></input>

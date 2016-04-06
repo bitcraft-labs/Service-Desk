@@ -31,10 +31,10 @@
 							} else {
 								$highlight = false;
 							}
-						    echo "<tr class='clickableRow $highlight' data-href='?action=ViewAdmin&for=$row[0]&do=EditUser#access_users' $highlight>
+						    echo "<tr class='clickableRow $highlight' data-href='?page=roles&action=ViewAdmin&for=$row[0]&do=EditGroup' $highlight>
 									<td>$row[0]</td>
 									<td>$row[1]</td>
-									<td><a href='?action=ViewAdmin&for=$row[0]&do=EditGroup#access_groups'><img src='$icon_dir/group-edit-icon.png' height='24' /></a> ";?>
+									<td><a href='?page=roles&action=ViewAdmin&for=$row[0]&do=EditGroup'><img src='$icon_dir/group-edit-icon.png' height='24' /></a> ";?>
 									<!--
 									<form action=<?= htmlspecialchars($_SERVER["PHP_SELF"]) ?> method="post">
 								        <input type="hidden" name="action" value="deleteRole" />
