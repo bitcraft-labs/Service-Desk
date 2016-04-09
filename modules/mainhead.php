@@ -9,6 +9,27 @@ $dal = new DAL();
 $dali = new DALi($conf);
 $myACL = new ACL();
 
+//check if maintenance mode is on
+$maint_setting = $dali->loadSetting('maintenance');
+$maintenance = $maint_setting[0][2];
+$maintenance_msg = $maint_setting[0][1];
+$maintenance_show = $maint_setting[0][3];
+if ($maintenance_show && !$maintenance)
+  echo "<div class='maintenance_msg'>$maintenance_msg</div>";
+elseif(($myACL->hasPermission('access_admin')) && $maintenance)
+  echo "<div class='maintenance_msg'>Maintenance Mode is On and Active</div>";
+$whereami = $_SERVER['REQUEST_URI'];
+
+if($maintenance) {
+  if(!$whereami == '/') {
+    header("Location: /");
+    exit;
+  } elseif((!$myACL->hasPermission('access_admin')) && ($whereami != '/')) {
+    include_once 'modules/admin/maintenance/mode.php';
+    exit;
+  }
+}
+
 //check if logged in
 if(!$authenticator->CheckLogin()) {
     $authenticator->RedirectToURL("login.php");

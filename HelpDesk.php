@@ -86,6 +86,8 @@ Status:     Staging; Idea Testing; Development
         window.document.location = $(this).data("href");
     });
   });
+
+  $('ul#sdesk').toggle(200);
 </script>
 
     <!-- Optionally, you can add Slimscroll and FastClick plugins.

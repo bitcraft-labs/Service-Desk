@@ -14,11 +14,12 @@ Status:     Staging; Idea Testing; Development
   }
   include_once 'modules/admin/head.php';
 ?>
+
 <?php
 if (isset($_POST['action'])) {
   switch($_POST['action']) {
     case 'saveRoles':
-      $redir = "?action=ViewAdmin&for=" . $_POST['userID'] . "&do=ChangeAccess#access_users";
+      $redir = "?page=users&action=ViewAdmin&for=" . $_POST['userID'] . "&do=ChangeAccess";
       foreach ($_POST as $k => $v) {
         if (substr($k,0,5) == "role_") {
           $roleID = str_replace("role_","",$k);
@@ -33,7 +34,7 @@ if (isset($_POST['action'])) {
 
     break;
     case 'savePerms':
-      $redir = "?action=ViewAdmin&for=" . $_POST['userID'] . "&do=ChangeAccess#access_users";
+      $redir = "?page=users&action=ViewAdmin&for=" . $_POST['userID'] . "&do=ChangeAccess";
       foreach ($_POST as $k => $v) {
         if (substr($k,0,5) == "perm_") {
           $permID = str_replace("perm_","",$k);
@@ -47,7 +48,7 @@ if (isset($_POST['action'])) {
       }
     break;
     case 'saveRoleInfo':
-      $redir = "?action=ViewAdmin&for=" . $_POST['roleID'] . "&do=EditGroup#access_groups";
+      $redir = "?page=roles&action=ViewAdmin&for=" . $_POST['roleID'] . "&do=EditGroup";
       $strSQL = sprintf("REPLACE INTO `roles` SET `ID` = %u, `roleName` = '%s'",$_POST['roleID'],$_POST['roleName']);
       mysql_query($strSQL);
       if (mysql_affected_rows() > 1)
@@ -73,7 +74,7 @@ if (isset($_POST['action'])) {
       }
     break;
     case 'deleteRole':
-      $redir = "?action=ViewAdmin#access_groups";
+      $redir = "?page=roles&action=ViewAdmin";
       $strSQL = sprintf("DELETE FROM `roles` WHERE `ID` = %u LIMIT 1",$_POST['roleID']);
       mysql_query($strSQL);
       $strSQL = sprintf("DELETE FROM `user_roles` WHERE `roleID` = %u",$_POST['roleID']);
@@ -116,7 +117,11 @@ if (isset($_POST['action'])) {
 <script src="bower/AdminLTE/plugins/input-mask/jquery.inputmask.js"></script>
 <script src="bower/AdminLTE/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
 <script src="bower/AdminLTE/plugins/input-mask/jquery.inputmask.extensions.js"></script>
-
+<script src="dist/js/bootstrap-switch.min.js"></script>
+<script>
+  $("[name='dev_on']").bootstrapSwitch();
+  $("[name='dev_alert']").bootstrapSwitch();
+</script>
 <!-- page script -->
 <script>
   $(function () {
@@ -128,6 +133,11 @@ if (isset($_POST['action'])) {
       "info": true,
       "autoWidth": false
     });
+  });
+
+  $('body').on('click', '.btn-group', function (e) {
+      $(this).addClass('active');
+      $(this).siblings().removeClass('active');
   });
 
   jQuery(document).ready(function($) {
@@ -159,6 +169,7 @@ if (isset($_POST['action'])) {
         });
     }
   });
+  $('ul#adesk').toggle(200);
   </script>
   </body>
 </html>

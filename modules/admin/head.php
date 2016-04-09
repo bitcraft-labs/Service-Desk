@@ -13,14 +13,14 @@
     <!-- DataTables -->
     <link rel="stylesheet" href="bower/AdminLTE/plugins/datatables/dataTables.bootstrap.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="bower/AdminLTE/dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="bower/AdminLTE/dist/css/AdminLTE.css">
     <!-- Table Styles -->
     <!-- <link rel="stylesheet" href="bower/AdminLTE/dist/css/tables.css"> -->
     <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
           page. However, you can choose any other skin. Make sure you
           apply the skin class to the body tag so the changes take effect.
     -->
-    <?php echo "<link rel='stylesheet' href='bower/AdminLTE/dist/css/skins/skin-$skin.min.css'>";?>
+    <link href="dist/css/bootstrap-switch.min.css" rel="stylesheet">
     <link rel="stylesheet" href="dist/css/app.css">
     <link rel="stylesheet" href="dist/css/admin.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

@@ -1,6 +1,6 @@
 <div class="row">
 	<div <?php if (!isset($_GET['do'])) echo 'class="col-md-12"'; else echo 'class="col-md-8"'; ?> >
-		<?php $adminsub = 'Manage User Permission Groups';
+		<?php $adminsub = 'Manage User Security Groups';
  			  $adminhsub = '<small>'.$adminsub.'</small>';
 		?>
 		<div class="box">
@@ -31,10 +31,10 @@
 							} else {
 								$highlight = false;
 							}
-						    echo "<tr class='clickableRow $highlight' data-href='?action=ViewAdmin&for=$row[0]&do=EditUser#access_users' $highlight>
+						    echo "<tr class='clickableRow $highlight' data-href='?page=roles&action=ViewAdmin&for=$row[0]&do=EditGroup' $highlight>
 									<td>$row[0]</td>
 									<td>$row[1]</td>
-									<td><a href='?action=ViewAdmin&for=$row[0]&do=EditGroup#access_groups'><img src='$icon_dir/group-edit-icon.png' height='24' /></a> ";?>
+									<td><a href='?page=roles&action=ViewAdmin&for=$row[0]&do=EditGroup'><img src='$icon_dir/group-edit-icon.png' height='24' /></a> ";?>
 									<!--
 									<form action=<?= htmlspecialchars($_SERVER["PHP_SELF"]) ?> method="post">
 								        <input type="hidden" name="action" value="deleteRole" />
@@ -48,6 +48,10 @@
 						<?php echo $tabhead; ?>
 					</tfoot>
 				</table>
+				<!-- Button trigger modal -->
+				<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addSecGroup">
+				  Add Security Group
+				</button>
 			</div>
 		</div>
 	</div>
@@ -57,7 +61,7 @@
   			<h3 class="box-title">Group Permissions</h3>
   		</div><!-- /.box-header -->
   		<div class="box-body">
-  			<?php 
+  			<?php
   			if (!$_GET['for']) echo "<p>No group selected</p>";
   			if (!($_GET['do'] == 'EditGroup')) echo "<p>Action currently unavailable</p>";
   			if ($_GET['do'] == 'EditGroup') include_once 'modules/admin/actions/mod-group.php'; ?>
