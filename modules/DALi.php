@@ -311,6 +311,20 @@ if ( !class_exists( 'DALi' ) ) {
       return $this->query($sql);
     }
 
+    public function getCompleteRecords($name){
+      $sql = "SELECT COUNT(*) FROM service_record WHERE assigned_admin = '$name' AND status_id = '8' ";
+      $result = $this->query($sql);
+      $count = $result[0][0];
+      return $count;
+    }
+
+    public function getAssignedRecords($name){
+      $sql = "SELECT COUNT(*) FROM service_record WHERE assigned_admin = '$name' AND status_id != '8' ";
+      $result = $this->query($sql);
+      $count = $result[0][0];
+      return $count;
+    }
+
     //-------Admin Functions--------------->
     public function getHDUsers() {
       $sql = "SELECT id, fname, lname, email

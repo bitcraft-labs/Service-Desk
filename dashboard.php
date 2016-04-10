@@ -2,6 +2,7 @@
 <div class="content-wrapper">
   <div class="ssp-title hd">
       <h3><i class="fa fa-dashboard fa-2x pull-left"> </i>Dashboard<br><small>Welcome back, <?= $authenticator->UserFullName() ?>!</small></h3>
+      <?= var_dump($_SESSION);?>
   </div>
 
 	<!-- Main content -->
@@ -20,9 +21,9 @@
             </div>
             <div class="box-footer no-padding">
               <ul class="nav nav-stacked">
-                <li><a href="ServiceRecord.php?sr=all">Assigned Service Records <span class="pull-right badge bg-blue">31</span></a></li>
+                <li><a href="ServiceRecord.php?sr=all">Assigned Service Records <span class="pull-right badge bg-blue"><?= $dali->getAssignedRecords($_SESSION['userID']) ?></span></a></li>
                 <li><a href="Mailbox.php">Emails <span class="pull-right badge bg-aqua">5</span></a></li>
-                <li><a href="#">Completed Service Records <span class="pull-right badge bg-green">12</span></a></li>
+                <li><a href="#">Completed Service Records <span class="pull-right badge bg-green"><?= $dali->getCompleteRecords($_SESSION['userID']) ?></span></a></li>
               </ul>
             </div>
           </div><!-- /.widget-user -->
@@ -39,7 +40,7 @@
             <span class="info-box-icon bg-green"><i class="fa fa-files-o"></i></span>
             <div class="info-box-content">
               <span class="info-box-text">Assigned Tickets</span>
-              <span class="info-box-number">31</span>
+              <span class="info-box-number"><?= $dali->getAssignedRecords($_SESSION['userID']) ?></span>
             </div><!-- /.info-box-content -->
           </div><!-- /.info-box -->
 		</div>
