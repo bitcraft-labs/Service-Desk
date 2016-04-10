@@ -324,7 +324,28 @@ if ( !class_exists( 'DALi' ) ) {
       $count = $result[0][0];
       return $count;
     }
+    public function buildSRTable() {
+      $sql = "SELECT sr_id, title, status_id, submitted_when, assigned_admin, last_updated
+              FROM service_record";
+      $html = "";
+      $result = $this->query($sql);
+      foreach ($result as $res) {
+          $title_info = $this->getTitleInfo($res[1]);
+          $category = $this->getCategoryById($title_info[0][2])[0][1];
+          $status = $this->getStatus($res[2])[0][0];
 
+          $html .= '<tr data-href="?page=ViewRequests&sr='. $res[0] .'">';
+          $html .= '<td>'. $res[0] . '</td>'
+                . '<td class="mobile-table">' . $category . '</td>'
+                . '<td>'. $status .'</td>'
+                . '<td>'. $title_info[0][3] .'</td>'
+                . '<td class="mobile-table">'. $res[4] .'</td>'
+                . '<td class="mobile-table">'. $res[3] .'</td>'
+                . '<td>'. $res[5] .'</td>'
+                . '</tr>';
+      }
+      return $html;
+    }
     //-------Admin Functions--------------->
     public function getHDUsers() {
       $sql = "SELECT id, fname, lname, email

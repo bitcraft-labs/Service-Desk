@@ -56,72 +56,27 @@ Status:     Staging; Idea Testing; Development
 					    </div><!-- /.box-header -->
 					    <div class="box-body">
 					    	<table id="records" class="table table-bordered table-striped">
-					    		<thead>
-					    			<tr>
-					    				<td>SR#</td>
-					    				<td>Category</td>
-					    				<td>Status</td>
-					    				<td>Requester</td>
-					    				<td>Assigned Admin</td>
-					    				<td>User Type</td>
-					    				<td>Manufacturer</td>
-					    				<td>Model</td>
-					    				<td>Date Checked In</td>
-					    				<td>Date Last Updated</td>
-					    			</tr>
-					    		</thead>
-					    		<tbody>
-					    			<tr>
-					    				<td><a href="?sr=1">1</a></td>
-					    				<td>Hardware</td>
-					    				<td>In Progress</td>
-					    				<td>Joshua Nasiatka</td>
-					    				<td>helpdesktech</td>
-					    				<td>Staff</td>
-					    				<td>Apple, Inc.</td>
-					    				<td>Macbook Pro (Retina)</td>
-					    				<td>12/1/2015</td>
-					    				<td>12/2/2015</td>
-					    			</tr>
-					    			<tr>
-					    				<td>2</td>
-					    				<td>Software</td>
-					    				<td>Waiting for Pickup</td>
-					    				<td>Help Desk</td>
-					    				<td>helpdesktech</td>
-					    				<td>Staff</td>
-					    				<td>Dell, Inc.</td>
-					    				<td>Studio XPS 15</td>
-					    				<td>11/30/2015</td>
-					    				<td>12/2/2015</td>
-					    			</tr>
-					    			<tr>
-					    				<td>3</td>
-					    				<td>Software</td>
-					    				<td>Completed</td>
-					    				<td>Allen Perry</td>
-					    				<td>The Mac Admin</td>
-					    				<td>Student</td>
-					    				<td>Apple, Inc.</td>
-					    				<td>Macbook Pro</td>
-					    				<td>12/1/2015</td>
-					    				<td>12/2/2015</td>
-					    			</tr>
-					    		</tbody>
-					    		<tfoot>
-					    			<tr>
-					    				<td>SR#</td>
-					    				<td>Category</td>
-					    				<td>Status</td>
-					    				<td>Requester</td>
-					    				<td>Assigned Admin</td>
-					    				<td>User Type</td>
-					    				<td>Manufacturer</td>
-					    				<td>Model</td>
-					    				<td>Date Checked In</td>
-					    				<td>Date Last Updated</td>
-					    			</tr>
-					    		</tfoot>
+                  <thead>
+    			    			<tr>
+    			    				<?php $tabhead = '
+    				    				<th>SR#</td>
+    				    				<th class="mobile-table">Category</td>
+    				    				<th>Status</td>
+    				    				<th>Ticket Title</td>
+    				    				<th class="mobile-table">Assigned Admin</td>
+    				    				<th class="mobile-table">Date Submitted</td>
+    				    				<th>Date Last Updated</td>';
+    			    				 echo $tabhead; ?>
+    			    			</tr>
+    			    		</thead>
+    			    		<tbody>
+    			    			<?= $dali->buildSRTable(); ?>
+    			    		</tbody>
+    			    		<tfoot>
+    			    			<tr>
+    			    				<?= $tabhead; ?>
+    			    			</tr>
+    			    		</tfoot>
 				    		</table>
 			    		</div>
 		    		  </div>
