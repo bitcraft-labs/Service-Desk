@@ -1,5 +1,13 @@
 body.dark {
-  background: #151616;
+  background:
+    linear-gradient(
+      rgba(14, 14, 14, 0.99),
+      rgba(35, 34, 38, 0.95)
+    ),
+    url('../../custom/img/data-center.jpg');
+  background-size: cover;
+
+  /*background: #151616;*/
 }
 
 .darktext {

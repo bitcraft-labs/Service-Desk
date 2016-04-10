@@ -1,14 +1,7 @@
-#Allow nice urls
-#RewriteEngine on                     # Activates the rewrite engine
-#RewriteCond %{REQUEST_FILENAME} !-d  # do not rewrite if folder exists
-#RewriteCond %{REQUEST_FILENAME} !-f  # do not rewrite if file exists
-#RewriteRule . index.php [L]          # otherwise, rewrite to index.php
-
-RewriteEngine On
-RewriteRule ^(admin)/(system|acl)/ index.php?page=$1&setting=$2 [L,QSA]
 ErrorDocument 401 /error_handling/error.php
 ErrorDocument 403 /error_handling/error.php
 ErrorDocument 404 /error_handling/error.php
 ErrorDocument 500 /error_handling/error.php
+
 #Prevents direct folder access
 Options -Indexes
