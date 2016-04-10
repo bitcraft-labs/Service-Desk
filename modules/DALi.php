@@ -42,6 +42,7 @@ if ( !class_exists( 'DALi' ) ) {
         die ('Unable to connect to database [' . $conn->connect_error . ']');
       }
     }
+
     public function DoesThisExist($sql) {
       $db = $this->dbconnect();
       $result = $db->query($sql);
@@ -67,8 +68,50 @@ if ( !class_exists( 'DALi' ) ) {
       $sql = "SELECT id FROM users WHERE username = '$who' LIMIT 1";
       return $this->DoesThisExist($sql);
     }
+    /*
+      functions depends on SQL date format
+    */
+    private function formatDateSQL($date) {
+      $date_formated = substr($date, 0, 10);
+      $months = array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+      $month = (substr($date_formated, 5, 2) > 9) ? substr($date_formated, 5, 2) : substr($date_formated, 6, 1);
+      $formated_date .= $months[$month-1] . ' ' . substr($date_formated, 8, 2) . ', ' . substr($date_formated, 0, 4) .' ' . substr($date, 11);
+      return $formated_date;
+    }
 
+    private function calculateDatetime($now, $date) {
+      $MYD = (substr($date, 0, 10) == substr($now, 0, 10)) ? true : false;
+      if($MYD) {
+        $hour_now = substr($now, 11, 2);
+        $min_now = substr($now, 14, 2); 
+        $sec_now = substr($now, 17, 2);
+        $hour_date = substr($date, 11, 2);
+        $min_date = substr($date, 14, 2);
+        $sec_date = substr($date, 17, 2);
+        $hour = ($hour_now == $hour_date) ? 0 : (intval($hour_now) - intval($hour_date)) . ' hours ago';
+        $min = ($min_date == $min_now) ? 0 : (intval($min_now) - intval($min_date)) . ' minutes ago';
+        $sec = ($sec_now == $sec_date) ? 0 : (intval($sec_now) - intval($sec_date)) . ' seconds ago';
+        if($hour) { return $hour; }
+        else if($min) { return $min; } 
+        else { return $sec; }
+      } else {
+        $year_now = substr($now, 0, 4);
+        $year_date = substr($date, 0, 4);
+        $month_now = substr($now, 5, 2);
+        $month_date = substr($date, 5, 2);
+        $day_now = substr($now, 8, 2);
+        $day_date = substr($date, 8, 2);
+        $year = ($year_now == $year_date) ? 0 : (intval($year_now) - intval($year_date)) . ' years ago';
+        $month = ($month_now == $month_date) ? 0 : (intval($month_now) - intval($month_date)) . ' months ago';
+        $day = ($day_now == $day_date) ? 0 : (intval($day_now) - intval($day_date)) . ' days ago';
+        if($year) { return $year; } 
+        else if($month) { return $month; } 
+        else if($day) { return $day; } 
+        else { return 0; }
+      }
+    }
     //--------End-User Functions----------->
+
     // Getter functions
     private function getTitleInfo($title) {
         $sql = "SELECT * FROM sub_category WHERE id = '$title'";
@@ -288,7 +331,7 @@ if ( !class_exists( 'DALi' ) ) {
         );
         return $result_array;
     }
-    
+
     // Mailbox
     public function buildMailbox($userId) {
         $sql = "SELECT * FROM mailbox WHERE who='$userId'";
@@ -297,14 +340,14 @@ if ( !class_exists( 'DALi' ) ) {
         $read_comments_number = 1;
         $now = date("Y-m-d H-i-s");
         foreach($results as $res) {
-          $person = $this->getPersonInfo($userId);
-          $snippet = trim(substr($res[4], 0, 50), "\t\n\r\0");
+          $person = $this->getPersonInfo($res[3]);
+          $snippet = trim(substr($res[5], 0, 50), "\t\n\r\0");
           $html .= '<tr data-href="?page=Mailbox&mb='. $res[0] .'">
                         <td>'. $read_comments_number++ .'</td>
-                        <td class="mailbox-name">'. $person[0][1] .' ' . $person[0][2] .'</td>
-                        <td class="mailbox-subject"><strong>'. $res[3] .'</strong> - '.$snippet.'...'.'
+                        <td>'. $person[0][1] .' ' . $person[0][2] .'</td>
+                        <td><strong>'. $res[4] .'</strong> - '.$snippet.'...'.'
                         </td>
-                        <td class="mailbox-date">'. date_diff($now, $res[5]) .'</td>
+                        <td class="mailbox-date">'. $this->calculateDatetime($now, $res[6]) .'</td>
                       </tr>';
         }
         return $html;
@@ -313,13 +356,13 @@ if ( !class_exists( 'DALi' ) ) {
     public function buildCommentDisplay($mailboxId) {
       $sql = "SELECT * FROM mailbox WHERE id='$mailboxId'";
       $results = $this->query($sql);
-      $person = $this->getPersonInfo($results[0][2]);
+      $person = $this->getPersonInfo($results[0][3]);
       $values = array(
-              "subject" => $results[0][3],
-              "message" => nl2br($results[0][4]),
-              "from"    => $person[0][4],
-              "when"    => $results[0][5],
-              "email"   => $person[0][3]
+              "subject"   => $results[0][4],
+              "message"   => nl2br($results[0][5]),
+              "from"      => $person[0][4],
+              "when"      => $this->formatDateSQL($results[0][6]),
+              "email"     => $person[0][3]
       );
       return $values;
     }

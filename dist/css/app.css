@@ -152,8 +152,24 @@ tbody tr {
   color: #fff;
 }
 
+.btn-box-tool {
+  color: #fff;
+}
+
+.btn-box-tool:hover {
+  color: #333;
+}
+
 #mailbox-fix {
   overflow: hidden !important;
+}
+
+#input_textarea {
+  width: 100%;
+  border: 1px solid #999;
+  margin-top: 28px;
+  height: 100px;
+  padding: 10px;
 }
 /* MEDIA QUERIES */
 

@@ -1,22 +1,18 @@
 <?php
 	$tabhead =     '<tr>
-					<th>Mail Number</th>
-					<th>Sent By</th>
-					<th>Subject</th>
-					<th>Time Sent</th>
+						<th>Mail Number</th>
+						<th>Sent By</th>
+						<th>Subject</th>
+						<th>Time Sent</th>
 					</tr>';
 	$mailbox_controls = '<!-- Check all button -->
-		                <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i>
-		                </button>
 		                <div class="btn-group">
-		                  <button type="button" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
 		                  <button type="button" class="btn btn-default btn-sm"><i class="fa fa-reply"></i></button>
 		                  <button type="button" class="btn btn-default btn-sm"><i class="fa fa-share"></i></button>
 		                </div>
 		                <!-- /.btn-group -->
 		                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
 		                <div class="pull-right">
-		                  1-50/200
 		                  <div class="btn-group">
 		                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
 		                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>';
@@ -44,7 +40,7 @@
 		            <!-- /.box-header -->
 		            <div class="box-body no-padding">
 		              <div class="mailbox-controls">
-		              <?= $mailbox_controls; ?>
+		             
 		                  </div>
 		                  <!-- /.btn-group -->
 		                </div>
@@ -55,7 +51,6 @@
 		                <thead><?= $tabhead; ?></thead>
 		                  <tbody>
 		                  <?= $dali->buildMailbox($_SESSION['userID']); ?>
-		                 
 		                  </tbody>
 		                  <tfoot> <?= $tabhead; ?></tfoot>
 		                </table>
@@ -66,7 +61,7 @@
 		            <!-- /.box-body -->
 		        <div class="box-footer no-padding">
 	              <div class="mailbox-controls">
-	                <?= $mailbox_controls; ?>
+	                
 	              </div>
 	                  <!-- /.btn-group -->
 	           </div>

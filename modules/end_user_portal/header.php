@@ -50,7 +50,7 @@
 	                  </li><!-- end message -->
 	                </ul><!-- /.menu -->
 	              </li>
-	              <li class="footer"><a href="#">See All Messages</a></li>
+	              <li class="footer"><a href="?page=Mailbox">See All Messages</a></li>
 	            </ul>
 	          </li><!-- /.messages-menu -->
 
@@ -73,7 +73,7 @@
 	                  </li><!-- end notification -->
 	                </ul>
 	              </li>
-	              <li class="footer"><a href="#">View all</a></li>
+	              <li class="footer"><a href="?page=ViewRequests">View all</a></li>
 	            </ul>
 	          </li>
 	          <!-- User Account Menu -->

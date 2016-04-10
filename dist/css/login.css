@@ -16,6 +16,18 @@ body.dark {
   margin-right: auto;
   margin-left: auto;
 }
+
+@media (max-width: 768px) {
+  #show_pass_button {
+    color: #111;
+    background: #999;
+  }
+
+  span#show_pass_button a:hover {
+    color: #fff;
+    background: #111;
+  }
+}
 @media (min-width: 768px) {
   .container {
     width: 350px;

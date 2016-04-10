@@ -1,11 +1,10 @@
 var modalInformation = (function () {
-
 	function buildForm($title) {
 		$.post('modules/end_user_portal/modalInformation.php', {title : $title }, function (data) {	
 			if(data == 0) {
 				$("#incident-building").hide();
 				$("#incident-building-label").hide();
-				$("#incident-room-number-label").hide();
+				$("#incident-room-number-label").hide();	
 				$("#incident-room-number").hide();
 				$("#modal-form").attr("data-ad", 0);
 			} else {

@@ -1,6 +1,6 @@
 <?php 
 	class ModalBuild {
-		function connect() {
+		private function connect() {
 			return new mysqli("localhost", "bcl_admin", "X2z7cMG4Tnphnavr", "bcl_sd_data");
 		}
 		public function query($query) {
@@ -20,7 +20,7 @@
 		function getAdditionalInfo($title) {
 	      $sql = "SELECT addition_info FROM sub_category WHERE sub_cat = '$title' LIMIT 1";
 	      $result = $this->query($sql);
-	      return $result;
+		      return $result;
 	    }
 	}
 	$mb = new ModalBuild();
