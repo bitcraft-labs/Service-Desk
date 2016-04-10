@@ -2,7 +2,6 @@
 <div class="content-wrapper">
   <div class="ssp-title hd">
       <h3><i class="fa fa-dashboard fa-2x pull-left"> </i>Dashboard<br><small>Welcome back, <?= $authenticator->UserFullName() ?>!</small></h3>
-      <?= var_dump($_SESSION);?>
   </div>
 
 	<!-- Main content -->
