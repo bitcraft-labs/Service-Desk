@@ -53,7 +53,7 @@
           <a href="#"><i class="fa fa-cogs"></i> Settings <i class="fa fa-angle-left pull-right"></i></a>
           <ul class="treeview-menu" id="adesk">
             <?php if ($myACL->hasPermission('access_admin') || ($myACL->hasPermission('manage_templates'))) { ?>
-            <li <?php if (($url == 'Admin.php') && ($_GET['page'] == "cpanel")) echo "class='active'"; ?> ><a href="Admin.php?page=cpanel&subpage=devops"><i class="fa fa-cog"></i> <span>Control Panel</span></a></li>
+            <li <?php if (($url == 'Admin.php') && ($_GET['page'] == "cpanel")) echo "class='active'"; ?> ><a href="Admin.php?page=cpanel"><i class="fa fa-cog"></i> <span>Control Panel</span></a></li>
             <?php } if ($myACL->hasPermission('manage_users')) { ?>
             <li <?php if (($url == 'Admin.php') && ($_GET['page'] == "users")) echo "class='active'"; ?> ><a href="Admin.php?page=users"><i class="fa fa-user"></i> <span>Users</span></a></li>
             <li <?php if (($url == 'Admin.php') && ($_GET['page'] == "groups")) echo "class='active'"; ?> ><a href="Admin.php?page=groups"><i class="fa fa-users"></i> <span>Security Groups</span></a></li>

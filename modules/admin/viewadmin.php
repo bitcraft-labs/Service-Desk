@@ -3,7 +3,7 @@
       $admCurPage = $_GET['page'];
       $admSubPage = $_GET['subpage'];
       if ((!isset($admCurPage) || ($admCurPage == "cpanel")) && (!isset($admSubPage))) {
-        echo "<h1 class='skew-up-smidge'>Control Panel</h1>"; // include_once 'modules/admin/cpanel.php';
+        include_once 'modules/admin/cpanel.php';
       }
       else if (($admCurPage == "cpanel") && ($admSubPage == "devops"))
         include_once 'modules/admin/devoptions.php';
