@@ -48,7 +48,7 @@ if (isset($_POST['action'])) {
       }
     break;
     case 'saveRoleInfo':
-      $redir = "?page=roles&action=ViewAdmin&for=" . $_POST['roleID'] . "&do=EditGroup";
+      $redir = "?page=groups&action=ViewAdmin&for=" . $_POST['roleID'] . "&do=EditGroup";
       $strSQL = sprintf("REPLACE INTO `roles` SET `ID` = %u, `roleName` = '%s'",$_POST['roleID'],$_POST['roleName']);
       mysql_query($strSQL);
       if (mysql_affected_rows() > 1)
@@ -74,7 +74,7 @@ if (isset($_POST['action'])) {
       }
     break;
     case 'deleteRole':
-      $redir = "?page=roles&action=ViewAdmin";
+      $redir = "?page=groups&action=ViewAdmin";
       $strSQL = sprintf("DELETE FROM `roles` WHERE `ID` = %u LIMIT 1",$_POST['roleID']);
       mysql_query($strSQL);
       $strSQL = sprintf("DELETE FROM `user_roles` WHERE `roleID` = %u",$_POST['roleID']);

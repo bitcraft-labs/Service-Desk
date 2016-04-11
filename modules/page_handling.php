@@ -10,8 +10,8 @@ if (isset($_GET['page'])) {
 	if (!in_array($requested_page, $allowed_sector)) {
 		include_once '404.php';
 	} else {
-		if (file_exists($requested_page.'.php')) {
-			include_once $requested_page.'.php';
+		if (file_exists('modules/hd_portal/'.$requested_page.'.php')) {
+			include_once 'modules/hd_portal/'.$requested_page.'.php';
 		} else {
 			include_once '404.php';
 		}

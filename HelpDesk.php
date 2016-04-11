@@ -51,7 +51,7 @@ Status:     Staging; Idea Testing; Development
   $(function () {
     $('#active_staff').DataTable({
       "paging": false,
-      "lengthChange": false,
+      "lengthChange": true,
       "searching": false,
       "ordering": false,
       "info": true,
@@ -81,9 +81,46 @@ Status:     Staging; Idea Testing; Development
     });
   });
 
+  $(function () {
+    $('#downloads').DataTable({
+      "paging": true,
+      "lengthChange": true,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false
+    });
+  });
+
+  $(function () {
+    $('#kb_list').DataTable({
+      "paging": true,
+      "lengthChange": true,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false
+    });
+  });
+
+  $(function () {
+    $('#downloads2').DataTable({
+      "paging": true,
+      "lengthChange": true,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false
+    });
+  });
+
   jQuery(document).ready(function($) {
-    $(".clickableRow").click(function() {
-        window.document.location = $(this).data("href");
+    $(".clickableRow").on("click",function() {
+      if (this.parentNode.parentNode.getAttribute("id") === "downloads") {
+        window.open($(this).attr("data-href"),"_blank");
+      } else {
+        document.location = $(this).attr("data-href");
+      }
     });
   });
 

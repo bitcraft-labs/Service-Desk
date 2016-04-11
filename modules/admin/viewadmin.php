@@ -1,16 +1,15 @@
     <!-- welcome -->
     <?php if(($myACL->hasPermission('access_admin')) || ($myACL->hasPermission('manage_users')) || ($myACL->hasPermission('manage_templates'))) {
       $admCurPage = $_GET['page'];
-      if (!isset($admCurPage) || ($admCurPage == "cpanel")) {
-        echo "<h1>Control Panel</h1>"; // include_once 'modules/admin/cpanel.php';
-        $admaction = $_GET['subpage'];
-        if ($admaction == "devops") {
-          include_once 'modules/admin/devoptions.php';
-        }
+      $admSubPage = $_GET['subpage'];
+      if ((!isset($admCurPage) || ($admCurPage == "cpanel")) && (!isset($admSubPage))) {
+        echo "<h1 class='skew-up-smidge'>Control Panel</h1>"; // include_once 'modules/admin/cpanel.php';
       }
+      else if (($admCurPage == "cpanel") && ($admSubPage == "devops"))
+        include_once 'modules/admin/devoptions.php';
       else if ($admCurPage == "users")
         include_once 'modules/admin/viewusers.php';
-      else if ($admCurPage == "roles")
+      else if ($admCurPage == "groups")
         include_once 'modules/admin/viewgroups.php';
       else if ($admCurPage == "updates")
         echo "<p>Appliance Update Page</p>";

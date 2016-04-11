@@ -38,6 +38,9 @@ Status:     Staging; Idea Testing; Development
     				elseif (isset($sr) && $sr == 'new'){
               echo "<i class='fa fa-pencil-square-o fa-2x pull-left'> </i>Add New Service Record<br><small>Don't forget any valuable information</small>";
             }
+            elseif ($_GET['page'] == "configure") {
+              echo "<i class='fa fa-cog fa-2x pull-left'> </i>Service Desk Configuration<br><small>Configure all da things!</small>";
+            }
     				else
     					echo "Welcome to Service Record Central";
             ?>
@@ -49,13 +52,9 @@ Status:     Staging; Idea Testing; Development
 					<div class="col-xs-12">
 					  <?php //Show all service records ?>
 					  <?php if ($sr == "all") { ?>
-					  <div class="box">
-					    <div class="box-header">
-					      <h3 class="box-title">Service Records</h3>
-					    </div><!-- /.box-header -->
-					    <div class="box-body">
 					    	<table id="records" class="table table-bordered table-striped">
 					    		<thead>
+                    <?php $thead = "
 					    			<tr>
 					    				<td>SR#</td>
 					    				<td>Category</td>
@@ -67,11 +66,11 @@ Status:     Staging; Idea Testing; Development
 					    				<td>Model</td>
 					    				<td>Date Checked In</td>
 					    				<td>Date Last Updated</td>
-					    			</tr>
+					    			</tr>"; echo $thead; ?>
 					    		</thead>
 					    		<tbody>
-					    			<tr>
-					    				<td><a href="?sr=1">1</a></td>
+					    			<tr class="clickableRow" data-href="ServiceRecord.php?sr=1">
+					    				<td>1</td>
 					    				<td>Hardware</td>
 					    				<td>In Progress</td>
 					    				<td>Joshua Nasiatka</td>
@@ -82,7 +81,7 @@ Status:     Staging; Idea Testing; Development
 					    				<td>12/1/2015</td>
 					    				<td>12/2/2015</td>
 					    			</tr>
-					    			<tr>
+					    			<tr class="clickableRow" data-href="ServiceRecord.php?sr=2">
 					    				<td>2</td>
 					    				<td>Software</td>
 					    				<td>Waiting for Pickup</td>
@@ -94,7 +93,7 @@ Status:     Staging; Idea Testing; Development
 					    				<td>11/30/2015</td>
 					    				<td>12/2/2015</td>
 					    			</tr>
-					    			<tr>
+					    			<tr class="clickableRow" data-href="ServiceRecord.php?sr=3">
 					    				<td>3</td>
 					    				<td>Software</td>
 					    				<td>Completed</td>
@@ -108,22 +107,9 @@ Status:     Staging; Idea Testing; Development
 					    			</tr>
 					    		</tbody>
 					    		<tfoot>
-					    			<tr>
-					    				<td>SR#</td>
-					    				<td>Category</td>
-					    				<td>Status</td>
-					    				<td>Requester</td>
-					    				<td>Assigned Admin</td>
-					    				<td>User Type</td>
-					    				<td>Manufacturer</td>
-					    				<td>Model</td>
-					    				<td>Date Checked In</td>
-					    				<td>Date Last Updated</td>
-					    			</tr>
+                    <?= $thead ?>
 					    		</tfoot>
 				    		</table>
-			    		</div>
-		    		  </div>
 		    		  <?php }
 		    		  //show individual service record
 		    		  elseif (isset($sr) && is_numeric($sr)) {
@@ -163,6 +149,8 @@ Status:     Staging; Idea Testing; Development
                 } else {
                   include_once 'modules/service_record/templates/sr_new.php';
                 }
+              } elseif ($_GET['page'] == "configure") {
+                echo "the configuration page will be here";
 		    		  } else {
 		    		  	//show welcome page
 		    		  	echo "<p>You have reached this page in error</p>";
@@ -219,11 +207,17 @@ Status:     Staging; Idea Testing; Development
         $(".request-type").select2();
       });
       $('ul#sdesk').toggle(200);
+
+      jQuery(document).ready(function($) {
+        $(".clickableRow").on("click",function() {
+          if (this.parentNode.parentNode.getAttribute("id") === "downloads") {
+            window.open($(this).attr("data-href"),"_blank");
+          } else {
+            document.location = $(this).attr("data-href");
+          }
+        });
+      });
     </script>
-    <!-- Optionally, you can add Slimscroll and FastClick plugins.
-         Both of these plugins are recommended to enhance the
-         user experience. Slimscroll is required when using the
-         fixed layout. -->
     <?php
     include_once 'modules/modals.php'; ?>
   </body>
