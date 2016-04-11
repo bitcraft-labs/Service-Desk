@@ -1,4 +1,4 @@
-<h2>Manage User Group: (<?= $myACL->getUsername($_GET['for']); ?>)</h2>
+<h3 class="less-space">Manage User Group: (<?= $myACL->getUsername($_GET['for']); ?>)</h3>
 <form action=<?= htmlspecialchars($_SERVER["PHP_SELF"]) ?> method="post">
   <table class="acList">
     <tr>
@@ -31,7 +31,7 @@
   </div>
 </form>
 
-<h2>Manage User Permissions: (<?= $myACL->getUsername($_GET['for']); ?>)</h2>
+<h3>Manage User Permissions: (<?= $myACL->getUsername($_GET['for']); ?>)</h3>
 <form action=<?= htmlspecialchars($_SERVER["PHP_SELF"]) ?> method="post">
   <table class="acList">
     <tr>

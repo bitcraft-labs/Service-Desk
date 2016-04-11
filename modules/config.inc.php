@@ -24,7 +24,10 @@ $admin_pages = array( //do not modify this array
 
 $allowed_pages = array( //do not modify this array
    'about',
+   'announcements',
    'dashboard',
+   'downloads',
+   'knowledgebase',
    'profile',
    'service-record'
 );
