@@ -41,9 +41,13 @@
           page. However, you can choose any other skin. Make sure you
           apply the skin class to the body tag so the changes take effect.
     -->
-    <?php echo "<link rel='stylesheet' href='bower/AdminLTE/dist/css/skins/skin-$skin.min.css'>"; ?>
+    <?php //echo "<link rel='stylesheet' href='bower/AdminLTE/dist/css/skins/skin-$skin.min.css'>"; ?>
     <!-- AdminLTE Enhacement Styles -->
     <link rel="stylesheet" href="dist/css/app.css">
+    <!-- <link rel="manifest" href="/manifest.json"> -->
+    <!-- <meta name="msapplication-TileColor" content="#ffffff"> -->
+    <meta name="msapplication-TileImage" content="/dist/img/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

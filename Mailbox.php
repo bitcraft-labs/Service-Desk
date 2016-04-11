@@ -36,6 +36,9 @@ Status:     Staging; Idea Testing; Development
     <script src="bower/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- AdminLTE App -->
     <script src="bower/AdminLTE/dist/js/app.min.js"></script>
+    <script type="text/javascript">
+    $('ul#sdesk').toggle(200);
+    </script>
 
   </body>
 </html>

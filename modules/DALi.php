@@ -110,7 +110,7 @@ if ( !class_exists( 'DALi' ) ) {
         else { return 0; }
       }
     }
-    //--------End-User Functions----------->
+    //--------EndUser Functions----------->
 
     // Getter functions
     private function getTitleInfo($title) {
@@ -174,6 +174,12 @@ if ( !class_exists( 'DALi' ) ) {
       $sql = "SELECT mach_id, model, serial_num, warr_status, password, encryption_key FROM machine WHERE user_id='$id'";
       $result = $this->query($sql);
       return $result[0];
+    }
+
+    public function getAdditionalInfo($title) {
+        $sql = "SELECT addition_info FROM sub_category WHERE sub_cat = '$title' LIMIT 1";
+        $result = $this->query($sql);
+          return $result;
     }
 
     // Builder Functions
@@ -260,7 +266,7 @@ if ( !class_exists( 'DALi' ) ) {
     public function buildRequestsTable($username) {
       $user = $this->getUserID($username);
       $sql = "SELECT sr_id, title, status_id, submitted_when, assigned_admin, last_updated
-              FROM service_record 
+              FROM service_record
               WHERE submitted_by = '$user'";
       $html = "";
       $result = $this->query($sql);
@@ -319,15 +325,15 @@ if ( !class_exists( 'DALi' ) ) {
             </div><!-- /.box-body -->
             </div>';
         }
-        $result_array = array( 
-                   "title"          => $title_page,
-                   "problem"        => $title_info[0][3],
-                   "submitted_when" => $result[0][1],
-                   "last_updated"   => $result[0][2],
-                   "description"    => $result[0][3],
-                   "submitted_by"   => $person[0][4],
-                   "assigned_admin" => $result[0][5],
-                   "side"           => $specific_info
+        $result_array = array(
+                  "title"          => $title_page,
+                  "problem"        => $title_info[0][3],
+                  "submitted_when" => $result[0][1],
+                  "last_updated"   => $result[0][2],
+                  "description"    => $result[0][3],
+                  "submitted_by"   => $person[0][4],
+                  "assigned_admin" => $result[0][5],
+                  "side"           => $specific_info
         );
         return $result_array;
     }
@@ -340,14 +346,14 @@ if ( !class_exists( 'DALi' ) ) {
         $read_comments_number = 1;
         $now = date("Y-m-d H-i-s");
         foreach($results as $res) {
-          $person = $this->getPersonInfo($res[3]);
-          $snippet = trim(substr($res[5], 0, 50), "\t\n\r\0");
+          $person = $this->getPersonInfo($res[6]);
+          $snippet = trim(substr($res[4], 0, 50), "\t\n\r\0");
           $html .= '<tr data-href="?page=Mailbox&mb='. $res[0] .'">
                         <td>'. $read_comments_number++ .'</td>
                         <td>'. $person[0][1] .' ' . $person[0][2] .'</td>
-                        <td><strong>'. $res[4] .'</strong> - '.$snippet.'...'.'
+                        <td><strong>'. $res[3] .'</strong> - '.$snippet.'...'.'
                         </td>
-                        <td class="mailbox-date">'. $this->calculateDatetime($now, $res[6]) .'</td>
+                        <td class="mailbox-date">'. $this->calculateDatetime($now, $res[5]) .'</td>
                       </tr>';
         }
         return $html;
@@ -356,12 +362,12 @@ if ( !class_exists( 'DALi' ) ) {
     public function buildCommentDisplay($mailboxId) {
       $sql = "SELECT * FROM mailbox WHERE id='$mailboxId'";
       $results = $this->query($sql);
-      $person = $this->getPersonInfo($results[0][3]);
+      $person = $this->getPersonInfo($results[0][6]);
       $values = array(
-              "subject"   => $results[0][4],
-              "message"   => nl2br($results[0][5]),
+              "subject"   => $results[0][3],
+              "message"   => nl2br($results[0][4]),
               "from"      => $person[0][4],
-              "when"      => $this->formatDateSQL($results[0][6]),
+              "when"      => $this->formatDateSQL($results[0][5]),
               "email"     => $person[0][3]
       );
       return $values;
@@ -455,7 +461,7 @@ if ( !class_exists( 'DALi' ) ) {
       if ($DoAdd) {
         $sql = "INSERT INTO users (fname, lname, email, username, banner_id, phone, creation_date, confirmcode)
                 VALUES('".$_POST['fname']."','".$_POST['lname']."','".$_POST['email']."','".$_POST['username']."','".$_POST['banner_id']."','".$_POST['phone']."','$now','y')";
-       
+
         $succ = $this->queryChange($sql);
         $sql = "SELECT id FROM users WHERE username = '$user' LIMIT 1";
 
@@ -574,6 +580,31 @@ if ( !class_exists( 'DALi' ) ) {
             return false;
         }
         return true;
+    }
+
+    function loadSetting($setting) {
+      if ($setting == "maintenance") {
+        $sql = "SELECT * FROM admin_settings WHERE setting='maintenance'";
+        $result = $this->query($sql);
+        return $result;
+      }
+    }
+
+    function updateSetting($setting) {
+      if ($setting == "maintenance") {
+        $msg = $_POST['dev_msg'];
+        $tmsg = $_POST['dev_alert'];
+        if (!$tmsg) $tmsg = 0;
+        else $tmsg = 1;
+        $toggle = $_POST['dev_on'];
+        if (!$toggle) $toggle = 0;
+        else $toggle = 1;
+        echo $msg.$tmsg.$toggle;
+        $sql = "UPDATE admin_settings SET msg='$msg', toggle_display='$toggle', toggle_msg='$tmsg' WHERE setting='maintenance'";
+        $this->queryChange($sql);
+        header("Location: Admin.php?page=cpanel&subpage=devops");
+        exit;
+      }
     }
   }
 }

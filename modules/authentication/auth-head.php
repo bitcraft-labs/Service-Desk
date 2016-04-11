@@ -30,4 +30,5 @@
     <link rel="stylesheet" href="bower/AdminLTE/dist/css/AdminLTE.min.css">
     <!-- App -->
     <link rel="stylesheet" href="dist/css/login.css">
+    <link rel="stylesheet" href="dist/css/app.css">
 </head>

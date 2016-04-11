@@ -34,7 +34,7 @@
                 <div class="mailbox-controls with-border text-center">
                   <div class="btn-group">
                     <span data-toggle="modal" data-target="#mailboxModal">
-                      <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="Reply">
+                      <button type="button" onClick="mailBox_functions();" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="Reply">
                       <i class="fa fa-reply"></i></button>
                     </span>
                   </div>
@@ -51,40 +51,21 @@
               <!-- /.box-body -->
               <div class="box-footer">
                 <div class="pull-right">
-                  <button data-toggle="modal" data-target='#mailboxModal' type="button" class="btn btn-default"><i class="fa fa-reply"></i> Reply</button>
+                <button data-toggle="modal" onClick="mailBox_functions();" data-target='#mailboxModal' type="button" class="btn btn-default"><i class="fa fa-reply"></i> Reply</button>
                 </div>
                 <button onClick="window.print();" type="button" class="btn btn-default"><i class="fa fa-print"></i> Print</button>
               </div>
               <!-- /.box-footer -->
             </div>
             <!-- /. box --> 
-            <div id="text_edit" class="container">
+            <div data-show="0" id="text_edit" class="container">
               <div class="col-lg-12">
-                <!-- Text Options -->
-                <div class="col-md-6">
-                  <div class="btn-group">
-                      <button name="mailbox_bold" id="mailbox_bold" onClick="mailboxHandler(this);"><i class="fa fa-bold"></i></button>
-                      <button name="mailbox_italic" id="mailbox_italic" onClick="mailboxHandler(this);"><i class="fa fa-italic"></i></button>
-                      <button name="mailbox_underline" id="mailbox_underline" onClick="mailboxHandler(this);"><i class="fa fa-underline"></i></button>
-                      <select onChange="mailboxHandler(this);" name="font_sizing_mailbox" id="mailbox_fs">
-                        <option value="" disabled>---Font Size---</option>
-                        <option value="8">8 pts</option>
-                        <option selected value="10">10 pts</option>
-                        <option value="11">11 pts</option>
-                        <option value="12">12 pts</option>
-                        <option value="14">14 pts</option>
-                        <option value="16">16 pts</option>
-                      </select>
-                      <button name="mailbox_link" id="mailbox_link"><i class="fa fa-link"></i></button>
-                      <button name="mailbox_code" id="mailbox_code" onClick="mailboxHandler(this);"><i class="fa fa-code"></i></button>
-                  </div> <!-- / btn-group -->
-                </div> <!-- / col-md-6 -->
                   <!-- Submit comment -->
                   <form id="mailbox-form" method="POST" action="<?= $authenticator->GetSelfScript(); ?>" class="form" role="form">
-                  <div class="form-group">
-                      <div name="input_textarea" id="input_textarea" contenteditable></div>
-                      </div>
-                    <button name="submit" onClick="" type="submit" class="btn btn-lg btn-custom">Send!</button>
+                    <div class="form-group"> 
+                      <textarea id="editor1" name="editor1"></textarea>
+                    </div>
+                      <button name="submit" onClick="" type="submit" class="btn btn-lg btn-custom">Send!</button>
                   </form> 
               </div>
             </div>
@@ -93,3 +74,4 @@
         </section>
       </div>
     </div>
+

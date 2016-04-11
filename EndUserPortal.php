@@ -108,8 +108,10 @@ Status:     Staging; Idea Testing; Development
     <!-- Modal Validation -->
     <script type="text/javascript" src="dist/js/modalValidation.js"></script>
     <script type="text/javascript" src="dist/js/populateModalInformation.js"></script>
+    <script type="text/javascript" src="dist/js/ckeditor/ckeditor.js"></script>
     <script type="text/javascript" src="dist/js/mailbox_functions.js"></script>
     <script>
+    <?php if(($_GET['page'] == "Mailbox") && ($_GET['mb'])) echo "CKEDITOR.replace('editor1');"; ?>
       $(function () {
         $('#records').DataTable({
           "paging": true,

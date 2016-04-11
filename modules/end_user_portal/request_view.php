@@ -12,7 +12,7 @@
 			<!-- Comment section, title, description, building, room-number, last-updates, who assigned to it, history; -->
 			<!-- Checkup Record -->
 			<div class="col-md-12">
-				<div class="box box-solid box-primary box-custom-rq">
+				<div class="box box-solid box-purple">
 				  <div class="box-header with-border">
 				   <?= $info['title'] ?>
 				    <div class="box-tools pull-right">

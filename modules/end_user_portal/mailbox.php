@@ -31,7 +31,7 @@
 	  <section class="content">
 		  <div class="row">
 		    <div class="col-md-12">
-		          <div class="box box-primary box-custom">
+		          <div class="box box-solid box-purple">
 		            <div class="box-header with-border">
 		              <h3 class="box-title">Inbox</h3>
 		              
@@ -41,11 +41,7 @@
 		            <div class="box-body no-padding">
 		              <div class="mailbox-controls">
 		             
-		                  </div>
-		                  <!-- /.btn-group -->
-		                </div>
-		                <!-- /.pull-right -->
-		              </div>
+		                
 		              <div id="mailbox-fix" class="table-responsive mailbox-messages">
 		                <table id="records" class="table table-hover table-striped table-border">
 		                <thead><?= $tabhead; ?></thead>

@@ -1,5 +1,13 @@
 body.dark {
-  background: #151616;
+  background:
+    linear-gradient(
+      rgba(14, 14, 14, 0.99),
+      rgba(35, 34, 38, 0.95)
+    ),
+    url('../../custom/img/data-center.jpg');
+  background-size: cover;
+
+  /*background: #151616;*/
 }
 
 .darktext {
@@ -20,10 +28,9 @@ body.dark {
 @media (max-width: 768px) {
   #show_pass_button {
     color: #111;
-    background: #999;
   }
 
-  span#show_pass_button a:hover {
+  #show_pass_button:hover {
     color: #fff;
     background: #111;
   }
