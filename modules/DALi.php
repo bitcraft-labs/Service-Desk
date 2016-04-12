@@ -349,6 +349,43 @@ if ( !class_exists( 'DALi' ) ) {
       }
     }
 
+    public function checkSecGroup($name) {
+      $sql = "SELECT id FROM roles WHERE roleName = '$name' LIMIT 1";
+      return $this->DoesThisExist($sql);
+    }
+
+    public function getRoleID($name) {
+      $sql = "SELECT id FROM roles WHERE roleName='$name' LIMIT 1";
+      $result = $this->query($sql);
+      foreach ($result as $res) {
+        $id = $res[0];
+      }
+      return $id;
+    }
+
+    public function addSecGroup() {
+      $now = date("Y-m-d");
+      $now2 = date('Y-m-d H:i:s');
+      $name = $_POST['gname'];
+      $DoAdd = $this->checkSecGroup($name);
+      if ($DoAdd) {
+        $sql = "INSERT INTO roles (roleName) VALUES ('$name')";
+        $succ = $this->queryChange($sql);
+
+        $roleID = $this->getRoleID($name);
+        foreach ($_POST as $k => $v) {
+          if (substr($k,0,5) == "perm_") {
+            $permID = str_replace("perm_","",$k);
+            $strSQL = sprintf("INSERT INTO role_perms (roleID, permID, value, addDate) VALUES ('$roleID','$permID','$v','$now2')");
+            $this->queryChange($strSQL);
+          }
+        }
+        return true;
+      } else {
+        return false;
+      }
+    }
+
     public function deleteUser($who) {
       if ($who != $_SESSION['userID']) {
         $sql = "DELETE FROM users WHERE id = '$who'";
