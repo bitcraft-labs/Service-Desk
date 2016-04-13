@@ -4,8 +4,10 @@ var modalFormValidation = (function () {
 		var $modal_title = $("#incident-title").val();
 		var $building = $("#incident-building").val();
 		var $room_number = $('#incident-room-number').val();
+		var $phone_number = $("#incident_phone").val();
 		var $description = $("#incident-description").val();
 		var $title_default = $('.tab_value');
+		var $data_add = $("#modal-form").attr("data-ad");
 		var $error = '<div class="alert alert-danger alert-dismissable" id="error">';
 		var $formError = "";
 
@@ -25,9 +27,7 @@ var modalFormValidation = (function () {
 			var isPossibleOfInjection = false;
 			var checkInject =  /^\W/g;
 			var injection = checkInject.exec(value);
-			if(!injection) {
-				isPossibleOfInjection = true;
-			} 
+			isPossibleOfInjection = !injection ? true : false;
 			return isPossibleOfInjection;
 		}
 		if($modal_title === "") {
@@ -39,19 +39,30 @@ var modalFormValidation = (function () {
                           "<span class='sr-only'>Error:</span>" +
                         	" Invalid characters in Title<br/>";
 		}
-		if($building === null) {
-			 $formError += "<span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span>" +
-                           "<span class='sr-only'>Error:</span>" +
-                           " Building must be chosen <br/>";
-		} 
-		if($room_number === "") {
-			 $formError += "<span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span>" +
-                           "<span class='sr-only'>Error:</span>" +
-                           " Room number cannot be empty<br/>";
-		} else if (!calculatePossibleInjection($room_number)) {
+		if($data_add == 1) {
+			if($building === null) {
+				 $formError += "<span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span>" +
+	                           "<span class='sr-only'>Error:</span>" +
+	                           " Building must be chosen <br/>";
+			} 
+			if($room_number === "") {
+				 $formError += "<span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span>" +
+	                           "<span class='sr-only'>Error:</span>" +
+	                           " Room number cannot be empty<br/>";
+			} else if (!calculatePossibleInjection($room_number)) {
+				$formError += "<span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span>" +
+	                          "<span class='sr-only'>Error:</span>" +
+	                        	" Invalid characters in Room number<br/>";
+			}
+		}
+		if($phone_number === "") {
 			$formError += "<span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span>" +
                           "<span class='sr-only'>Error:</span>" +
-                        	" Invalid characters in Room number<br/>";
+                        	" Phone number cannot be empty<br/>";
+		} else if(!calculatePossibleInjection($phone_number)) {
+			$formError += "<span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span>" +
+                          "<span class='sr-only'>Error:</span>" +
+                        	" Invalid characters in Phone number<br/>";
 		}
 		if($description === "") {
 			 $formError += "<span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span>" +

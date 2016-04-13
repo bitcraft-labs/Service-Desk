@@ -4,6 +4,6 @@
 #RewriteRule . index.php [L]          # otherwise, rewrite to index.php
 
 #<Directory */>
-#     Order Deny,Allow
-#     Deny from All
+     #Order Deny,Allow
+     #Deny from All
 #</Directory>

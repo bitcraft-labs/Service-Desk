@@ -8,13 +8,17 @@
 			</div><!-- modal-header -->
 			<div class="modal-body">
 				<div id="error-container"></div>
-				<form id="modal-form" method="POST" action="<?= $authenticator->GetSelfScript(); ?>" class="form" role="form">
+				<form id="modal-form" data-ad="1" method="POST" action="<?= $authenticator->GetSelfScript(); ?>" class="form" role="form">
 					<div class="form-group">
 						<label for="incident-title">Title</label>
 						<input type="text" class="form-control input-md" id="incident-title" name="incident-title" disabled>
 					</div>
 					<div class="form-group">
-						<label for="incident-building">Building</label>
+						<label for="incident-phone">Phone Number</label>
+						<input type="text" class="form-control input-md" id="incident-phone" name="incident-phone" value="<?= $dali->getPhoneNumber($_SESSION['userID']); ?>">
+					</div>
+					<div class="form-group">
+						<label id="incident-building-label" for="incident-building">Building</label>
 						<select name="incident-building" class="form-control input-md" id="incident-building" >
 							<?php
 								$option_html = "<option selected disabled>Choose your building</option>\r\n";
@@ -29,7 +33,7 @@
 						</select>
 					</div>
 					<div class="form-group">
-						<label for="incident-room-number">Room Number</label>
+						<label id="incident-room-number-label" for="incident-room-number">Room Number</label>
 						<input type="text" name="incident-room-number" class="form-control input-md" id="incident-room-number" placeholder="">
 					</div>
 					<div class="form-group">
