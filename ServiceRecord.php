@@ -52,7 +52,7 @@ Status:     Staging; Idea Testing; Development
 					    	<table id="records" class="table table-bordered table-striped">
 					    		<thead>
                     <?php $thead = "
-					    			<tr>
+					    			<tr class='padding_fix'>
 					    				<td>SR#</td>
 					    				<td>Category</td>
 					    				<td>Status</td>
