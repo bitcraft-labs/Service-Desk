@@ -15,7 +15,7 @@ if ($_POST['submitted_new_user']) {
         <h4 class="modal-title">Create New User</h4>
       </div>
       <div class="modal-body">
-        <form id="addnewuser" action="<?= $authenticator->GetSelfScript(); ?>" method="post">
+        <form id="addnewuser" action="" method="post">
 	        <p>Let's add that new staff member to this thing.</p>
             <input type='hidden' name='submitted_new_user' id='submitted_new_user' value='1'/>
             <div class="form-group">
@@ -79,7 +79,7 @@ if ($_POST['submitted_new_user']) {
         <h4 class="modal-title">Create New Security Group</h4>
       </div>
       <div class="modal-body">
-        <form id="addnewsecgroup" action="<?= $authenticator->GetSelfScript(); ?>" method="post">
+        <form id="addnewsecgroup" action="" method="post">
 	        <p>Let's build that new security group.</p>
             <input type='hidden' name='submitted_new_secgrp' id='submitted_new_secgrp' value='1'/>
             <div class="form-group">

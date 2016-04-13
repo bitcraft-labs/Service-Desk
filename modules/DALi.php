@@ -371,7 +371,7 @@ if ( !class_exists( 'DALi' ) ) {
       if ($DoAdd) {
         $sql = "INSERT INTO roles (roleName) VALUES ('$name')";
         $succ = $this->queryChange($sql);
-
+        echo "<h2>BAH! THIS DON&apos;T WORK!</h2>";
         $roleID = $this->getRoleID($name);
         foreach ($_POST as $k => $v) {
           if (substr($k,0,5) == "perm_") {
