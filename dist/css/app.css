@@ -64,6 +64,31 @@
   margin-top: -5px;
 }
 
+.cpanel > .row {
+  text-align: center;
+  padding-top: 25px;
+}
+  .cpanel > .row > h4 {
+    font-size: 14px;
+  }
+
+  /*.cpanel > .row > div > .fa {
+    float: left;
+  }*/
+
+  /*.cpanel > .row > div {
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    min-height: 200px;
+    padding: 15px;
+  }*/
+
+  .cpanel > .row > div:hover {
+    color: #605ca8;
+    cursor: pointer;
+  }
+
 .ssp-title.hd {
 	background: #FAFAFA;
 	border-bottom: 1px solid #ddd;
