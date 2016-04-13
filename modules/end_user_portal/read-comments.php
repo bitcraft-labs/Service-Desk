@@ -1,5 +1,11 @@
 <!-- TEMPORARY READ COMMENTS FILE -->
-<?php $info = $dali->buildCommentDisplay($_GET['mb']); ?>
+<?php 
+  $info = $dali->buildCommentDisplay($_GET['mb']); 
+  if(isset($_POST['submitted'])) {
+     $dali->sendComment($_SESSION['userID'], $_POST['editor1'], $info['fromId'], $info['sr_num'], $info['subject']);
+  }
+?>
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <div class="container">
@@ -51,7 +57,7 @@
               <!-- /.box-body -->
               <div class="box-footer">
                 <div class="pull-right">
-                <button data-toggle="modal" onClick="mailBox_functions();" data-target='#mailboxModal' type="button" class="btn btn-default"><i class="fa fa-reply"></i> Reply</button>
+                <button onClick="mailBox_functions();" data-target='#mailboxModal' type="button" class="btn btn-default"><i class="fa fa-reply"></i> Reply</button>
                 </div>
                 <button onClick="window.print();" type="button" class="btn btn-default"><i class="fa fa-print"></i> Print</button>
               </div>
@@ -61,11 +67,11 @@
             <div data-show="0" id="text_edit" class="container">
               <div class="col-lg-12">
                   <!-- Submit comment -->
-                  <form id="mailbox-form" method="POST" action="<?= $authenticator->GetSelfScript(); ?>" class="form" role="form">
+                  <form id="mailbox-form" method="POST" action="" class="form" role="form">
                     <div class="form-group"> 
                       <textarea id="editor1" name="editor1"></textarea>
                     </div>
-                      <button name="submit" onClick="" type="submit" class="btn btn-lg btn-custom">Send!</button>
+                      <button name="submitted" onClick="" type="submit" class="btn btn-lg btn-custom">Send!</button>
                   </form> 
               </div>
             </div>

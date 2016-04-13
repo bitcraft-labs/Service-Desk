@@ -1,4 +1,5 @@
-<?php
+  <?php
+  //ini_set("display_errors", 1);
 if ( !class_exists( 'DALi' ) ) {
   class DALi {
 
@@ -368,9 +369,18 @@ if ( !class_exists( 'DALi' ) ) {
               "message"   => nl2br($results[0][4]),
               "from"      => $person[0][4],
               "when"      => $this->formatDateSQL($results[0][5]),
-              "email"     => $person[0][3]
+              "email"     => $person[0][3],
+              "fromId"    => $person[0][0],
+              "sr_num"    => $results[0][1]
       );
       return $values;
+    }
+
+    public function sendComment($userId, $comment, $to, $sr_num, $subject) {
+      $sql = "INSERT INTO mailbox (sr, who, subject, comment, fromId)
+                VALUES('$sr_num', '$to', '$subject', '$comment', '$userId')";
+      $this->queryChange($sql);
+      return true;
     }
 
     // ------- Modal Functions ---------

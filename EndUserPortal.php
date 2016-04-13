@@ -12,6 +12,7 @@ Status:     Staging; Idea Testing; Development
     header("location: /");
     exit;
   }
+    
 ?>
 <head>
     <meta charset="utf-8">
