@@ -11,13 +11,12 @@ var loginFormValidation = (function() {
 			var isPossibleOfInjection = false;
 			var checkInject = /^\W/g;
 			var injection = checkInject.exec(value);
-			if(!injection) {
-				isPossibleOfInjection = true;
-			} 
+			isPossibleOfInjection = !injection ? true : false;
 			return isPossibleOfInjection;
 		}
+	
 		// Handle username validation
-		if($username === "") {
+		if($username == "") {
 			 $formError += "<span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span>" +
                            "<span class='sr-only'>Error:</span>" +
                            " Username cannot be empty<br/>";
