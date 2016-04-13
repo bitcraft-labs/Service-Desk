@@ -27,18 +27,15 @@ Status:     Staging; Idea Testing; Development
           <h3>
             <?php
             $sr = $_GET['sr'];
-    				if ($sr == "all") {
-    					$now = getdate();
-    					$now = array($now[mday],$now[mon],$now[year]);
-    					echo "<i class='fa fa-table fa-2x pull-left'> </i>All Service Records<br><small>As of $now[1]-$now[0]-$now[2]</small>";
-    				}
-            elseif (isset($sr) && is_numeric($sr)) {
+			if ($sr == "all") {
+				$now = getdate();
+				$now = array($now[mday],$now[mon],$now[year]);
+				echo "<i class='fa fa-table fa-2x pull-left'> </i>All Service Records<br><small>As of $now[1]-$now[0]-$now[2]</small>";
+			} elseif (isset($sr) && is_numeric($sr)) {
               echo "<i class='fa fa-pencil-square-o fa-2x pull-left'> </i>Service Record: $sr<br><small>Yes, every thing you do is neccessary to be written down</small>";
-            }
-    				elseif (isset($sr) && $sr == 'new'){
+            } elseif (isset($sr) && $sr == 'new'){
               echo "<i class='fa fa-pencil-square-o fa-2x pull-left'> </i>Add New Service Record<br><small>Don't forget any valuable information</small>";
-            }
-            elseif ($_GET['page'] == "configure") {
+            } elseif ($_GET['page'] == "configure") {
               echo "<i class='fa fa-cog fa-2x pull-left'> </i>Service Desk Configuration<br><small>Configure all da things!</small>";
             }
     				else
@@ -110,7 +107,7 @@ Status:     Staging; Idea Testing; Development
                     <?= $thead ?>
 					    		</tfoot>
 				    		</table>
-		    		  <?php }
+		    		  <?php } 
 		    		  //show individual service record
 		    		  elseif (isset($sr) && is_numeric($sr)) {
 		    		  	echo "<p>Database table information is currently unavailable</p>";
@@ -143,20 +140,20 @@ Status:     Staging; Idea Testing; Development
 		    		  	</p>
 		    		  	<?php
 		    		  } elseif (isset($sr) && ($sr == "new")) {
-                $type = $_GET['type'];
-                if (isset($type) && ($type == '1')){
-                  include_once 'modules/service_record/templates/computer_repair.php';
-                } else {
-                  include_once 'modules/service_record/templates/sr_new.php';
-                }
-              } elseif ($_GET['page'] == "configure") {
-                echo "the configuration page will be here";
-		    		  } else {
-		    		  	//show welcome page
-		    		  	echo "<p>You have reached this page in error</p>";
-		    		  	echo "<p>Please return to the <a href='./'>Dashboard</a> or <a href='?sr=all'>Search for a Record</a></p>";
-		    		  	echo "<script type='text/javascript'>window.location.href = './';</script>";
-		    		  }
+			                $type = $_GET['type'];
+			                if (isset($type) && ($type == '1')){
+			                  include_once 'modules/service_record/templates/computer_repair.php';
+			                } else {
+			                  include_once 'modules/service_record/templates/sr_new.php';
+			                }
+			              } elseif ($_GET['page'] == "configure") {
+			                echo "the configuration page will be here";
+					    		  } else {
+					    		  	//show welcome page
+					    		  	echo "<p>You have reached this page in error</p>";
+					    		  	echo "<p>Please return to the <a href='./'>Dashboard</a> or <a href='?sr=all'>Search for a Record</a></p>";
+					    		  	echo "<script type='text/javascript'>window.location.href = './';</script>";
+		    		  		}
 		    		  ?>
 
 				    </div>
