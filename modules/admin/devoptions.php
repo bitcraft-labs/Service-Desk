@@ -1,4 +1,4 @@
-<h3>Developer Options</h3>
+<h2 class="skew-up-smidge">Developer Options</h2>
 <?php if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $dali->updateSetting('maintenance');
   $success = "Maintenance Mode Changed";

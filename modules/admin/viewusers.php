@@ -9,11 +9,7 @@ if ($myACL->hasPermission('manage_users') != true) {
 		<?php $adminsub = 'Access Control List';
  			  $adminhsub = '<small>'.$adminsub.'</small>';
 		?>
-		<div class="box">
-			<div class="box-header">
-			  <h3 class="box-title"><?= $adminsub ?></h3>
-			</div><!-- /.box-header -->
-			<div class="box-body">
+			  <h2 class="skew-up-smidge"><?= $adminsub ?></h2>
 				<?php $list = $dali->getHDUsers();?>
 				<table id="adm_acl" class="table table-striped table-hover">
 					<thead>
@@ -54,13 +50,11 @@ if ($myACL->hasPermission('manage_users') != true) {
 				<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addUser">
 				  Add User
 				</button>
-			</div>
-		</div>
 	</div>
 	<div class="col-md-4" <?php if(!isset($_GET['do'])) echo "style='display: none;'"; ?> >
-		<div class="box">
+		<div class="box box-solid box-purple">
   		<div class="box-header">
-  			<h3 class="box-title">User Settings</h3>
+  			<h3 class="box-title"><i class="fa fa-user"></i> User Settings</h3>
   		</div><!-- /.box-header -->
   		<div class="box-body">
   			<?php
