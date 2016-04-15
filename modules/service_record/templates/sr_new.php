@@ -1,7 +1,7 @@
 
 <div class="row">
    <div class="col-md-6 col-md-offset-3">
-      <form method="post">
+      <form action="" method="post">
           <div class="form-group foptions">
               <label class="control-label requiredField" for="sr_type">
                   Type of Service Record

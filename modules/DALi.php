@@ -1,4 +1,5 @@
-<?php
+  <?php
+  //ini_set("display_errors", 1);
 if ( !class_exists( 'DALi' ) ) {
   class DALi {
 
@@ -42,6 +43,7 @@ if ( !class_exists( 'DALi' ) ) {
         die ('Unable to connect to database [' . $conn->connect_error . ']');
       }
     }
+
     public function DoesThisExist($sql) {
       $db = $this->dbconnect();
       $result = $db->query($sql);
@@ -67,8 +69,50 @@ if ( !class_exists( 'DALi' ) ) {
       $sql = "SELECT id FROM users WHERE username = '$who' LIMIT 1";
       return $this->DoesThisExist($sql);
     }
+    /*
+      functions depends on SQL date format
+    */
+    private function formatDateSQL($date) {
+      $date_formated = substr($date, 0, 10);
+      $months = array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+      $month = (substr($date_formated, 5, 2) > 9) ? substr($date_formated, 5, 2) : substr($date_formated, 6, 1);
+      $formated_date .= $months[$month-1] . ' ' . substr($date_formated, 8, 2) . ', ' . substr($date_formated, 0, 4) .' ' . substr($date, 11);
+      return $formated_date;
+    }
 
-    //--------End-User Functions----------->
+    private function calculateDatetime($now, $date) {
+      $MYD = (substr($date, 0, 10) == substr($now, 0, 10)) ? true : false;
+      if($MYD) {
+        $hour_now = substr($now, 11, 2);
+        $min_now = substr($now, 14, 2); 
+        $sec_now = substr($now, 17, 2);
+        $hour_date = substr($date, 11, 2);
+        $min_date = substr($date, 14, 2);
+        $sec_date = substr($date, 17, 2);
+        $hour = ($hour_now == $hour_date) ? 0 : (intval($hour_now) - intval($hour_date)) . ' hours ago';
+        $min = ($min_date == $min_now) ? 0 : (intval($min_now) - intval($min_date)) . ' minutes ago';
+        $sec = ($sec_now == $sec_date) ? 0 : (intval($sec_now) - intval($sec_date)) . ' seconds ago';
+        if($hour) { return $hour; }
+        else if($min) { return $min; } 
+        else { return $sec; }
+      } else {
+        $year_now = substr($now, 0, 4);
+        $year_date = substr($date, 0, 4);
+        $month_now = substr($now, 5, 2);
+        $month_date = substr($date, 5, 2);
+        $day_now = substr($now, 8, 2);
+        $day_date = substr($date, 8, 2);
+        $year = ($year_now == $year_date) ? 0 : (intval($year_now) - intval($year_date)) . ' years ago';
+        $month = ($month_now == $month_date) ? 0 : (intval($month_now) - intval($month_date)) . ' months ago';
+        $day = ($day_now == $day_date) ? 0 : (intval($day_now) - intval($day_date)) . ' days ago';
+        if($year) { return $year; } 
+        else if($month) { return $month; } 
+        else if($day) { return $day; } 
+        else { return 0; }
+      }
+    }
+    //--------EndUser Functions----------->
+
     // Getter functions
     private function getTitleInfo($title) {
         $sql = "SELECT * FROM sub_category WHERE id = '$title'";
@@ -84,7 +128,10 @@ if ( !class_exists( 'DALi' ) ) {
    	  if($request == 'all') {
 	      $sql = "SELECT * FROM building";
 	      return $this->query($sql);
-  	  }
+  	  } else if ($request != null) {
+        $sql = "SELECT name FROM building WHERE id='$request'";
+        return $this->query($sql);
+      }
     }
 
     private function getCategories() {
@@ -113,6 +160,27 @@ if ( !class_exists( 'DALi' ) ) {
         $rt = $res[0];
       }
       return $rt;
+    }
+
+    public function getPhoneNumber($username) {
+      $sql = "SELECT phone FROM users WHERE id='$username'";
+      $result = $this->query($sql);
+      foreach ($result as $res) {
+        $rt = $res[0];
+      }
+      return $rt;
+    }
+
+    private function getMachineInfo($id) {
+      $sql = "SELECT mach_id, model, serial_num, warr_status, password, encryption_key FROM machine WHERE user_id='$id'";
+      $result = $this->query($sql);
+      return $result[0];
+    }
+
+    public function getAdditionalInfo($title) {
+        $sql = "SELECT addition_info FROM sub_category WHERE sub_cat = '$title' LIMIT 1";
+        $result = $this->query($sql);
+          return $result;
     }
 
     // Builder Functions
@@ -207,7 +275,6 @@ if ( !class_exists( 'DALi' ) ) {
           $title_info = $this->getTitleInfo($res[1]);
           $category = $this->getCategoryById($title_info[0][2])[0][1];
           $status = $this->getStatus($res[2])[0][0];
-
           $html .= '<tr data-href="?page=ViewRequests&sr='. $res[0] .'">';
           $html .= '<td>'. $res[0] . '</td>'
                 . '<td class="mobile-table">' . $category . '</td>'
@@ -221,38 +288,114 @@ if ( !class_exists( 'DALi' ) ) {
       return $html;
     }
 
-    /* Need more info from db   */
+    /* 
+      Needs Mailbox implementation
+    */
 
-    public function buildSRView($sr_num) {
-        $sql = "SELECT title, submitted_when, last_updated, description, submitted_by
-        FROM service_record
+    public function buildSRView($sr_num, $id) {
+        $sql = "SELECT title, submitted_when, last_updated, description, submitted_by, assigned_admin, bldg, room
+        FROM service_record   
         WHERE sr_id = '$sr_num'";
         $result = $this->query($sql);
         $title_info = $this->getTitleInfo($result[0][0]);
+        $incident_type = $title_info[0][8];
+        $building = $this->getBuildingsRow($result[0][6]);
+        $machine_info = $this->getMachineInfo($id);
         $person = $this->getPersonInfo($result[0][4]);
+        if($incident_type == 1) {
+          $title_page = "<h3 class='box-title'><i class='fa fa-file-text-o'> </i> Service Report</h3>";
+          $specific_info = '<div class="col-md-4">
+              <h4><i class="fa fa-info"> </i> <strong>Location Information:</strong></h4>
+              <div class="box-body">
+              <p>
+                <strong>Building:</strong> '. $building[0][0] .'<br />
+                <strong>Room:</strong> '. $result[0][7] .'<br />
+            </div><!-- /.box-body -->
+            </div>';
+        } else {
+          $title_page = "<h3 class='box-title'><i class='fa fa-stethoscope'> </i> System Checkup Report</h3>";
+          $specific_info = '<div class="col-md-4">
+              <h4><i class="fa fa-desktop"> </i> <strong>System Information:</strong></h4>
+              <div class="box-body">
+              <p>
+                <strong>Model:</strong> '. $machine_info[1] .'<br />
+                <strong>Serial:</strong> '. $machine_info[2] .'<br />
+                <strong>Warranty:</strong> '. $machine_info[3] .'</br />
+                <strong>Password:</strong> '. $machine_info[4] .'<br />
+                <strong>Encryption Key:</strong> '. $machine_info[5] .'</p>
+            </div><!-- /.box-body -->
+            </div>';
+        }
         $result_array = array(
-                   "title" => $title_info[0][3],
-                   "submitted_when" => $result[0][1],
-                   "last_updated" => $result[0][2],
-                   "description" => $result[0][3],
-                   "submitted_by" => $person[0][4]
+                  "title"          => $title_page,
+                  "problem"        => $title_info[0][3],
+                  "submitted_when" => $result[0][1],
+                  "last_updated"   => $result[0][2],
+                  "description"    => $result[0][3],
+                  "submitted_by"   => $person[0][4],
+                  "assigned_admin" => $result[0][5],
+                  "side"           => $specific_info
         );
         return $result_array;
     }
+
     // Mailbox
-    public function buildMailbox($username) {
-        /*
-          TODO: Add select query to extract specific comments and mail
-        */
+    public function buildMailbox($userId) {
+        $sql = "SELECT * FROM mailbox WHERE who='$userId'";
+        $results = $this->query($sql);
+        $html = "";
+        $read_comments_number = 1;
+        $now = date("Y-m-d H-i-s");
+        foreach($results as $res) {
+          $person = $this->getPersonInfo($res[6]);
+          $snippet = trim(substr($res[4], 0, 50), "\t\n\r\0");
+          $html .= '<tr data-href="?page=Mailbox&mb='. $res[0] .'">
+                        <td>'. $read_comments_number++ .'</td>
+                        <td>'. $person[0][1] .' ' . $person[0][2] .'</td>
+                        <td><strong>'. $res[3] .'</strong> - '.$snippet.'...'.'
+                        </td>
+                        <td class="mailbox-date">'. $this->calculateDatetime($now, $res[5]) .'</td>
+                      </tr>';
+        }
+        return $html;
     }
-    // Modal Functions
-    public function submitModalForm($title, $building, $room_number, $description) {
+
+    public function buildCommentDisplay($mailboxId) {
+      $sql = "SELECT * FROM mailbox WHERE id='$mailboxId'";
+      $results = $this->query($sql);
+      $person = $this->getPersonInfo($results[0][6]);
+      $values = array(
+              "subject"   => $results[0][3],
+              "message"   => nl2br($results[0][4]),
+              "from"      => $person[0][4],
+              "when"      => $this->formatDateSQL($results[0][5]),
+              "email"     => $person[0][3],
+              "fromId"    => $person[0][0],
+              "sr_num"    => $results[0][1]
+      );
+      return $values;
+    }
+
+    public function sendComment($userId, $comment, $to, $sr_num, $subject) {
+      $sql = "INSERT INTO mailbox (sr, who, subject, comment, fromId)
+                VALUES('$sr_num', '$to', '$subject', '$comment', '$userId')";
+      $this->queryChange($sql);
+      return true;
+    }
+
+    // ------- Modal Functions ---------
+    public function submitModalForm($title, $building, $room_number, $description, $phone) {
       $title_number = intval($this->getTitleNumber($title));
       $record_type = intval($this->getRecordType($title));
       $username = intval($this->getUserID($_SESSION['username']));
       $now = date('Y-m-d H:i:s');
-      $sql = "INSERT INTO service_record (title, type, description, bldg, room, submitted_by, last_updated)
-              VALUES('$title_number', '$record_type', '$description', '$building', '$room_number', '$username', '$now')";
+      if($building != null) {
+        $sql = "INSERT INTO service_record (title, type, description, bldg, room, submitted_by, last_updated, phone)
+                VALUES('$title_number', '$record_type', '$description', '$building', '$room_number', '$username', '$now', '$phone')";
+      } else {
+        $sql = "INSERT INTO service_record (title, type, description, submitted_by, last_updated, phone)
+                VALUES('$title_number', '$record_type', '$description', '$username', '$now', '$phone')";
+      }
       $this->queryChange($sql);
       return true;
     }
@@ -378,6 +521,43 @@ if ( !class_exists( 'DALi' ) ) {
           }
         }
         $this->ResetPassword($userID);
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+    public function checkSecGroup($name) {
+      $sql = "SELECT id FROM roles WHERE roleName = '$name' LIMIT 1";
+      return $this->DoesThisExist($sql);
+    }
+
+    public function getRoleID($name) {
+      $sql = "SELECT id FROM roles WHERE roleName='$name' LIMIT 1";
+      $result = $this->query($sql);
+      foreach ($result as $res) {
+        $id = $res[0];
+      }
+      return $id;
+    }
+
+    public function addSecGroup() {
+      $now = date("Y-m-d");
+      $now2 = date('Y-m-d H:i:s');
+      $name = $_POST['gname'];
+      $DoAdd = $this->checkSecGroup($name);
+      if ($DoAdd) {
+        $sql = "INSERT INTO roles (roleName) VALUES ('$name')";
+        $succ = $this->queryChange($sql);
+        echo "<h2>BAH! THIS DON&apos;T WORK!</h2>";
+        $roleID = $this->getRoleID($name);
+        foreach ($_POST as $k => $v) {
+          if (substr($k,0,5) == "perm_") {
+            $permID = str_replace("perm_","",$k);
+            $strSQL = sprintf("INSERT INTO role_perms (roleID, permID, value, addDate) VALUES ('$roleID','$permID','$v','$now2')");
+            $this->queryChange($strSQL);
+          }
+        }
         return true;
       } else {
         return false;

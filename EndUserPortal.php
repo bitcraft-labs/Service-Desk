@@ -12,11 +12,30 @@ Status:     Staging; Idea Testing; Development
     header("location: /");
     exit;
   }
+    
 ?>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title><?=$title ?></title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="apple-touch-icon" sizes="57x57" href="/dist/img/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/dist/img/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/dist/img/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/dist/img/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/dist/img/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/dist/img/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/dist/img/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/dist/img/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/dist/img/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/dist/img/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/dist/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/dist/img/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/dist/img/favicon-16x16.png">
+    <link rel="manifest" href="/dist/img/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/dist/img/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap -->
@@ -89,7 +108,11 @@ Status:     Staging; Idea Testing; Development
     <script src="bower/AdminLTE/plugins/select2/select2.min.js"></script>
     <!-- Modal Validation -->
     <script type="text/javascript" src="dist/js/modalValidation.js"></script>
+    <script type="text/javascript" src="dist/js/populateModalInformation.js"></script>
+    <script type="text/javascript" src="dist/js/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="dist/js/mailbox_functions.js"></script>
     <script>
+    <?php if(($_GET['page'] == "Mailbox") && ($_GET['mb'])) echo "CKEDITOR.replace('editor1');"; ?>
       $(function () {
         $('#records').DataTable({
           "paging": true,
@@ -110,17 +133,18 @@ Status:     Staging; Idea Testing; Development
           }
         });
       });
+      /* Annoying menu fix */
+      $(function () {
+        var $anchor_menu_fix = $(".dropdown-toggle")[4];
+        $anchor_menu_fix.style.display = "none";
+      });
       $('.table > tbody > tr').on('click', function (event) {
         document.location = $(this).attr('data-href');
       });
       $('.tab_value').on('click', function (event) {
         var $modal_title = $(this).attr('data-title');
         $('#incident-title').val($modal_title);
-      });
-    $(function() {
-        //$("#incidentModal").modal('show');
-        //$("#incident-building").select2();
-        //$("#incidentModal").modal('hide');
+        modalInformation.fillModal($modal_title);
       });
     </script>
   </body>

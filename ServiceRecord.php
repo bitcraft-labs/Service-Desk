@@ -28,16 +28,16 @@ Status:     Staging; Idea Testing; Development
           <h3>
             <?php
             $sr = $_GET['sr'];
-    				if ($sr == "all") {
-    					$now = getdate();
-    					$now = array($now[mday],$now[mon],$now[year]);
-    					echo "<i class='fa fa-table fa-2x pull-left'> </i>All Service Records<br><small>As of $now[1]-$now[0]-$now[2]</small>";
-    				}
-            elseif (isset($sr) && is_numeric($sr)) {
+			if ($sr == "all") {
+				$now = getdate();
+				$now = array($now[mday],$now[mon],$now[year]);
+				echo "<i class='fa fa-table fa-2x pull-left'> </i>All Service Records<br><small>As of $now[1]-$now[0]-$now[2]</small>";
+			} elseif (isset($sr) && is_numeric($sr)) {
               echo "<i class='fa fa-pencil-square-o fa-2x pull-left'> </i>Service Record: $sr<br><small>Yes, every thing you do is neccessary to be written down</small>";
-            }
-    				elseif (isset($sr) && $sr == 'new'){
+            } elseif (isset($sr) && $sr == 'new'){
               echo "<i class='fa fa-pencil-square-o fa-2x pull-left'> </i>Add New Service Record<br><small>Don't forget any valuable information</small>";
+            } elseif ($_GET['page'] == "configure") {
+              echo "<i class='fa fa-cog fa-2x pull-left'> </i>Service Desk Configuration<br><small>Configure all da things!</small>";
             }
     				else
     					echo "Welcome to Service Record Central";
@@ -50,13 +50,8 @@ Status:     Staging; Idea Testing; Development
 					<div class="col-xs-12">
 					  <?php //Show all service records ?>
 					  <?php if ($sr == "all") { ?>
-					  <div class="box">
-					    <div class="box-header">
-					      <h3 class="box-title">Service Records</h3>
-					    </div><!-- /.box-header -->
-					    <div class="box-body">
 					    	<table id="records" class="table table-bordered table-striped">
-                  <thead>
+                  			<thead>
     			    			<tr>
     			    				<?php $tabhead = '
     				    				<th>SR#</td>
@@ -78,9 +73,7 @@ Status:     Staging; Idea Testing; Development
     			    			</tr>
     			    		</tfoot>
 				    		</table>
-			    		</div>
-		    		  </div>
-		    		  <?php }
+		    		  <?php } 
 		    		  //show individual service record
 		    		  elseif (isset($sr) && is_numeric($sr)) {
 		    		  	echo "<p>Database table information is currently unavailable</p>";
@@ -113,18 +106,20 @@ Status:     Staging; Idea Testing; Development
 		    		  	</p>
 		    		  	<?php
 		    		  } elseif (isset($sr) && ($sr == "new")) {
-                $type = $_GET['type'];
-                if (isset($type) && ($type == '1')){
-                  include_once 'modules/service_record/templates/computer_repair.php';
-                } else {
-                  include_once 'modules/service_record/templates/sr_new.php';
-                }
-		    		  } else {
-		    		  	//show welcome page
-		    		  	echo "<p>You have reached this page in error</p>";
-		    		  	echo "<p>Please return to the <a href='./'>Dashboard</a> or <a href='?sr=all'>Search for a Record</a></p>";
-		    		  	echo "<script type='text/javascript'>window.location.href = './';</script>";
-		    		  }
+			                $type = $_GET['type'];
+			                if (isset($type) && ($type == '1')){
+			                  include_once 'modules/service_record/templates/computer_repair.php';
+			                } else {
+			                  include_once 'modules/service_record/templates/sr_new.php';
+			                }
+			              } elseif ($_GET['page'] == "configure") {
+			                echo "the configuration page will be here";
+					    		  } else {
+					    		  	//show welcome page
+					    		  	echo "<p>You have reached this page in error</p>";
+					    		  	echo "<p>Please return to the <a href='./'>Dashboard</a> or <a href='?sr=all'>Search for a Record</a></p>";
+					    		  	echo "<script type='text/javascript'>window.location.href = './';</script>";
+		    		  		}
 		    		  ?>
 
 				    </div>
@@ -156,6 +151,7 @@ Status:     Staging; Idea Testing; Development
     <script src="dist/js/form.js"></script>
 
     <!-- page script -->
+    <script src="dist/js/sr_new_response.js"></script>
     <script>
       $(function () {
         $(".repair").hide();
@@ -182,11 +178,17 @@ Status:     Staging; Idea Testing; Development
         $(".request-type").select2();
       });
       $('ul#sdesk').toggle(200);
+
+      jQuery(document).ready(function($) {
+        $(".clickableRow").on("click",function() {
+          if (this.parentNode.parentNode.getAttribute("id") === "downloads") {
+            window.open($(this).attr("data-href"),"_blank");
+          } else {
+            document.location = $(this).attr("data-href");
+          }
+        });
+      });
     </script>
-    <!-- Optionally, you can add Slimscroll and FastClick plugins.
-         Both of these plugins are recommended to enhance the
-         user experience. Slimscroll is required when using the
-         fixed layout. -->
     <?php
     include_once 'modules/modals.php'; ?>
   </body>

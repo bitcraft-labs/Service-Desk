@@ -331,7 +331,6 @@ class Authenticator
         $_SESSION['name_of_user']   = $row['fname'] ." ". $row['lname'];
         $_SESSION['username']       = $row['username'];
         $_SESSION['email_of_user']  = $row['email'];
-
         return true;
     }
     public function checkhashSSHA($salt, $password) {

@@ -53,7 +53,7 @@ if ($conf['customize']['darkmode'] == 'dark') {
       </div>
       <div class="form-group has-feedback">
           <input type="password" id="password" name="password" class="form-control" placeholder="Password" />
-          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+          <span id="show_pass_button" class="glyphicon glyphicon-eye-open form-control-feedback"></span>
           <span id='login_password_errorloc' class='error'></span>
       </div>
       <div class="row">
