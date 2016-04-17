@@ -23,26 +23,26 @@ Status:     Staging; Idea Testing; Development
 		?>
 
 		<div class="content-wrapper">
-      <div class="ssp-title hd">
-          <h3>
-            <?php
-            $sr = $_GET['sr'];
-			if ($sr == "all") {
-				$now = getdate();
-				$now = array($now[mday],$now[mon],$now[year]);
-				echo "<i class='fa fa-table fa-2x pull-left'> </i>All Service Records<br><small>As of $now[1]-$now[0]-$now[2]</small>";
-			} elseif (isset($sr) && is_numeric($sr)) {
-              echo "<i class='fa fa-pencil-square-o fa-2x pull-left'> </i>Service Record: $sr<br><small>Yes, every thing you do is neccessary to be written down</small>";
-            } elseif (isset($sr) && $sr == 'new'){
-              echo "<i class='fa fa-pencil-square-o fa-2x pull-left'> </i>Add New Service Record<br><small>Don't forget any valuable information</small>";
-            } elseif ($_GET['page'] == "configure") {
-              echo "<i class='fa fa-cog fa-2x pull-left'> </i>Service Desk Configuration<br><small>Configure all da things!</small>";
-            }
-    				else
-    					echo "Welcome to Service Record Central";
-            ?>
-    			</h3>
-      </div>
+      		<div class="ssp-title hd">
+	          <h3>
+	            <?php
+	            $sr = $_GET['sr'];
+				if ($sr == "all") {
+					$now = getdate();
+					$now = array($now[mday],$now[mon],$now[year]);
+					echo "<i class='fa fa-table fa-2x pull-left'> </i>All Service Records<br><small>As of $now[1]-$now[0]-$now[2]</small>";
+				} elseif (isset($sr) && is_numeric($sr)) {
+	              echo "<i class='fa fa-pencil-square-o fa-2x pull-left'> </i>Service Record: $sr<br><small>Yes, every thing you do is neccessary to be written down</small>";
+	            } elseif (isset($sr) && $sr == 'new'){
+	              echo "<i class='fa fa-pencil-square-o fa-2x pull-left'> </i>Add New Service Record<br><small>Don't forget any valuable information</small>";
+	            } elseif ($_GET['page'] == "configure") {
+	              echo "<i class='fa fa-cog fa-2x pull-left'> </i>Service Desk Configuration<br><small>Configure all da things!</small>";
+	            }
+	    				else
+	    					echo "Welcome to Service Record Central";
+	            ?>
+	    	  </h3>
+      		</div>
 
 			<section class="content">
 				<div class="row">
@@ -51,18 +51,18 @@ Status:     Staging; Idea Testing; Development
 					  <?php if ($sr == "all") { ?>
 					    	<table id="records" class="table table-bordered table-striped">
 					    		<thead>
-                    <?php $thead = "
-					    			<tr class='padding_fix'>
-					    				<td>SR#</td>
-					    				<td>Category</td>
-					    				<td>Status</td>
-					    				<td>Requester</td>
-					    				<td>Assigned Admin</td>
-					    				<td>User Type</td>
-					    				<td>Manufacturer</td>
-					    				<td>Model</td>
-					    				<td>Date Checked In</td>
-					    				<td>Date Last Updated</td>
+                    	<?php $thead = "
+					    			<tr>
+					    				<th class='padding_fix'>SR#</th>
+					    				<th class='padding_fix'>Category</th>
+					    				<th class='padding_fix'>Status</th>
+					    				<th class='padding_fix'>Requester</th>
+					    				<th class='padding_fix'>Assigned Admin</th>
+					    				<th class='padding_fix'>User Type</th>
+					    				<th class='padding_fix'>Manufacturer</th>
+					    				<th class='padding_fix'>Model</th>
+					    				<th class='padding_fix'>Date Checked In</th>
+					    				<th class='padding_fix'>Date Last Updated</th>
 					    			</tr>"; echo $thead; ?>
 					    		</thead>
 					    		<tbody>

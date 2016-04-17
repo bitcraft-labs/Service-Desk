@@ -528,8 +528,9 @@ tbody tr {
 }
 
 .padding_fix {
-  padding-right: 15px;
+  padding-right: 25px !important;
 }
+
 /* MEDIA QUERIES */
 
 /* Top Bar */

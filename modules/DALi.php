@@ -454,6 +454,34 @@ if ( !class_exists( 'DALi' ) ) {
       return $this->query($sql);
     }
 
+    public function buildSRTicketHd($requests) {
+      /*<tr class="clickableRow" data-href="ServiceRecord.php?sr=1">
+                      <td>1</td>
+                      <td>Hardware</td>
+                      <td>In Progress</td>
+                      <td>Joshua Nasiatka</td>
+                      <td>helpdesktech</td>
+                      <td>Staff</td>
+                      <td>Apple, Inc.</td>
+                      <td>Macbook Pro (Retina)</td>
+                      <td>12/1/2015</td>
+                      <td>12/2/2015</td>
+                    </tr>*/
+        if($requests == "all") {
+          $sql = "SELECT * FROM service_record";
+          $results = $this->query($sql);
+        }
+        $html = '';
+        foreach($results as $res) {
+          $html .= '<tr class="clickableRow" data-href="ServiceRecord.php?sr='. $res[0]
+                    . '<td>'. $res[0] .'</td>'
+                    . '<td>'. $res[0] .'</td>'
+                    . '<td>'. $res[0] .'</td>'
+                    . '<td>'. $res[0] .'</td>'
+                    . '<td>'. $res[0] .'</td>'
+                    . '<td>'. $res[0] .'</td>';
+        }
+    }
     //-------Admin Functions--------------->
     public function getHDUsers() {
       $sql = "SELECT id, fname, lname, email
@@ -514,7 +542,6 @@ if ( !class_exists( 'DALi' ) ) {
       if ($DoAdd) {
         $sql = "INSERT INTO roles (roleName) VALUES ('$name')";
         $succ = $this->queryChange($sql);
-        echo "<h2>BAH! THIS DON&apos;T WORK!</h2>";
         $roleID = $this->getRoleID($name);
         foreach ($_POST as $k => $v) {
           if (substr($k,0,5) == "perm_") {

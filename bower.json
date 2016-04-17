@@ -27,6 +27,7 @@
     "bootstrap": "^3.3.6",
     "AdminLTE": "adminlte#^2.3.2",
     "font-awesome": "fontawesome#^4.5.0",
-    "Ionicons": "ionicons#^2.0.1"
+    "Ionicons": "ionicons#^2.0.1",
+    "ckeditor" : "4.5.7"
   }
 }

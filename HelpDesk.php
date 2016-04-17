@@ -115,6 +115,7 @@ Status:     Staging; Idea Testing; Development
   });
 
   jQuery(document).ready(function($) {
+    console.log($(""))
     $(".clickableRow").on("click",function() {
       if (this.parentNode.parentNode.getAttribute("id") === "downloads") {
         window.open($(this).attr("data-href"),"_blank");

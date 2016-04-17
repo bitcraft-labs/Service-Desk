@@ -37,13 +37,14 @@ if ($myACL->hasPermission('manage_users') != true) {
 									<td>$row[0]</td>
 									<td>$row[1]</td>
 									<td><a href='?page=groups&action=ViewAdmin&for=$row[0]&do=EditGroup'><img src='$icon_dir/group-edit-icon.png' height='24' /></a> ";?>
-									<!--
-									<form action=<?= htmlspecialchars($_SERVER["PHP_SELF"]) ?> method="post">
-								        <input type="hidden" name="action" value="deleteRole" />
-								        <input type="hidden" name="roleID" value="<?= $_GET['for']; ?>" />
-								    	<input type=image src='<?= "$icon_dir/group-delete-icon.png" ?>' height='24' />
+									
+									<form style="display: inline-block;" action=<?= htmlspecialchars($_SERVER["PHP_SELF"]) ?> method="post">
+								        <input type="hidden" name="action" value="deleteRole" >
+								        <input type="hidden" name="roleID" value="<?= $_GET['for']; ?>" >
+								        <!-- <a href=""><img src='<?= "$icon_dir/group-delete-icon.png" ?>' alt="" height="24"></a> -->
+								    	<input type=image src='<?= "$icon_dir/group-delete-icon.png" ?>' height='24'>
 								    </form>
-								    -->
+								    
 						<?php }?>
 					</tbody>
 					<tfoot>
