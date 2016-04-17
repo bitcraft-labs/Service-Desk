@@ -141,6 +141,16 @@ if (isset($_POST['action'])) {
   });
 
   jQuery(document).ready(function($) {
+      $("#sdesk li").hover(function () {
+        $(this).addClass("active");
+      }, function () {
+        $(this).removeClass("active");
+      });
+      $("#ddesk li").hover(function () {
+        $(this).addClass("active");
+      }, function () {
+        $(this).removeClass("active");
+      });
     $(".clickableRow").click(function() {
         window.document.location = $(this).data("href");
     });

@@ -3,7 +3,9 @@
     2. CONTENT AREA
     3. APP STYLES
     4. END USER FIXES
-    5. MEDIA QUERIES
+    5. SIDE NAV
+    6. HELPDESK
+    7. MEDIA QUERIES
 */
 
 @import "//fonts.googleapis.com/css?family=Open+Sans";
@@ -449,14 +451,6 @@ tbody tr {
 #text_edit {
   display: none;
 }
-#input_textarea {
-  width: 100%;
-  border: 1px solid #999;
-  margin-top: 28px;
-  height: 100px;
-  padding: 10px;
-  overflow: auto;
-}
 
 .skin-purple .sidebar-menu > li.header {
   font-weight: bold;
@@ -530,7 +524,12 @@ tbody tr {
 .padding_fix {
   padding-right: 25px !important;
 }
-
+/* HELPDESK */
+.super_active {
+  color: #ffffff;
+  background: #222222;
+  border-left: 3px solid #605ca8;
+}
 /* MEDIA QUERIES */
 
 /* Top Bar */

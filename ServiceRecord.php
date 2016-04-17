@@ -204,9 +204,18 @@ Status:     Staging; Idea Testing; Development
         $(".machine").select2();
         $(".request-type").select2();
       });
-      $('ul#sdesk').toggle(200);
-
+     $('#sdesk ul').toggle(200);$('#sdesk').addClass("active");
       jQuery(document).ready(function($) {
+      	$("#sdesk li").hover(function () {
+	      $(this).addClass("active");
+	    }, function () {
+	      $(this).removeClass("active");
+	    });
+	    $("#ddesk li").hover(function () {
+	      $(this).addClass("active");
+	    }, function () {
+	      $(this).removeClass("active");
+	    });
         $(".clickableRow").on("click",function() {
           if (this.parentNode.parentNode.getAttribute("id") === "downloads") {
             window.open($(this).attr("data-href"),"_blank");

@@ -455,18 +455,18 @@ if ( !class_exists( 'DALi' ) ) {
     }
 
     public function buildSRTicketHd($requests) {
-      /*<tr class="clickableRow" data-href="ServiceRecord.php?sr=1">
-                      <td>1</td>
-                      <td>Hardware</td>
-                      <td>In Progress</td>
-                      <td>Joshua Nasiatka</td>
-                      <td>helpdesktech</td>
-                      <td>Staff</td>
-                      <td>Apple, Inc.</td>
-                      <td>Macbook Pro (Retina)</td>
-                      <td>12/1/2015</td>
-                      <td>12/2/2015</td>
-                    </tr>*/
+                  /*<tr>
+                      <th class='padding_fix'>SR#</th>
+                      <th class='padding_fix'>Category</th>
+                      <th class='padding_fix'>Status</th>
+                      <th class='padding_fix'>Requester</th>
+                      <th class='padding_fix'>Assigned Admin</th>
+                      <th class='padding_fix'>User Type</th>
+                      <th class='padding_fix'>Manufacturer</th>
+                      <th class='padding_fix'>Model</th>
+                      <th class='padding_fix'>Date Checked In</th>
+                      <th class='padding_fix'>Date Last Updated</th>
+                    </tr>"*/
         if($requests == "all") {
           $sql = "SELECT * FROM service_record";
           $results = $this->query($sql);
