@@ -1,7 +1,7 @@
 <h2 class="skew-up-smidge">Control Panel</h2>
 <div class="cpanel">
   <div class="row">
-    <div class="col-lg-3 col-md-4 clickableRow" data-href="#">
+    <div class="col-lg-3 col-md-4 clickableRow" data-href="?page=cpanel&subpage=general">
       <i class="fa fa-3x fa-cog"></i>
       <h4>General Settings</h4>
       <p><em>Portal customization options<br>

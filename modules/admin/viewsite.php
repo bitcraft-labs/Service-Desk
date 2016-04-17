@@ -3,9 +3,10 @@ if (!($myACL->hasPermission('access_admin'))) {
 	echo "Unauthorized access!";
 } else {
 include_once 'modules/admin/actions/makeConfig.php'; ?>
+<h2 class="skew-up-smidge">General Settings</h2>
 <div class="row">
 	<div class="col-md-12">
-		<form class="form-horizontal" action='<?php echo $authenticator->GetSelfScript(); ?>' method="post">
+		<form class="form-horizontal" action='' method="post">
 			<input type='hidden' name='config_submitted' id='submitted' value='1'/>
 			<!-- Text input-->
 			<div class="form-group">
@@ -75,6 +76,7 @@ include_once 'modules/admin/actions/makeConfig.php'; ?>
 			  <div class="col-md-4">
 			    <select id="skin" name="skin" class="form-control">
 			      <option value="" disabled  <?php if (!$conf['customize']['skin']) echo 'selected';?>>Select Skin</option>
+						<option value="purple" <?php if ('purple' == $conf['customize']['skin']) echo 'selected';?>>BCL Purple</option>
 			      <option value="green" <?php if ('green' == $conf['customize']['skin']) echo 'selected';?>>green</option>
 			      <option value="yellow" <?php if ('yellow' == $conf['customize']['skin']) echo 'selected';?>>yellow</option>
 			      <option value="blue" <?php if ('blue' == $conf['customize']['skin']) echo 'selected';?>>blue</option>
