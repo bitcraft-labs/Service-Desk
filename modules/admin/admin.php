@@ -7,8 +7,10 @@
 					echo '<li>Control Panel</li>';
 				} elseif (isset($_GET['subpage']) && ($_GET['page'] == 'cpanel')) {
 					echo '<li><a href="?page=cpanel">Control Panel</a></li>';
-					if ($_GET['subpage'] == "general") {
-						echo '<li class="active">General Settings</li>';
+					if ($_GET['subpage'] == "customize") {
+						echo '<li class="active">Customize</li>';
+					} else if ($_GET['subpage'] == "backup_restore") {
+						echo '<li class="active">Backup / Restore</li>';
 					} else if ($_GET['subpage'] == "devops") {
 						echo '<li class="active">Developer Options</li>';
 					}

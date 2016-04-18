@@ -75,10 +75,12 @@ if (file_exists('custom/config.php')) {
 	$main_logo_small 	= $cusimg.'/'.$conf['customize']['main_logo_small'];
 	$main_logo_top 		= $cusimg.'/'.$conf['customize']['main_logo_top'];
   $login_size = $conf['customize']['login_size'];
-  if ($login_size == 'medium') {
-    $login_size = '250';
-  } else {
+  if ($login_size == 'small') {
     $login_size = '100';
+  } else if ($login_size == 'medium') {
+    $login_size = '250';
+  } else if ($login_size == 'large'){
+    $login_size = '400';
   }
 	if ($main_logo) {
 		if (file_exists($main_logo)) {

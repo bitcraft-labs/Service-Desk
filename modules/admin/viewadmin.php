@@ -5,8 +5,10 @@
       if ((!isset($admCurPage) || ($admCurPage == "cpanel")) && (!isset($admSubPage))) {
         include_once 'modules/admin/cpanel.php';
       }
-      else if (($admCurPage == "cpanel") && ($admSubPage == "general"))
-        include_once 'modules/admin/viewsite.php';
+      else if (($admCurPage == "cpanel") && ($admSubPage == "customize"))
+        include_once 'modules/admin/customize.php';
+      else if (($admCurPage == "cpanel") && ($admSubPage == "backup_restore"))
+        include_once 'modules/admin/backup_restore.php';
       else if (($admCurPage == "cpanel") && ($admSubPage == "devops"))
         include_once 'modules/admin/devoptions.php';
       else if ($admCurPage == "users")
