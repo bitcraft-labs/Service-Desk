@@ -20,7 +20,7 @@
           page. However, you can choose any other skin. Make sure you
           apply the skin class to the body tag so the changes take effect.
     -->
-    <link href="bower/bootstrap-switch/dist/css/bootstrap-switch.min.css" rel="stylesheet">
+    <link href="bower/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.min.css" rel="stylesheet">
     <link href="bower/image-picker/image-picker/image-picker.css" rel="stylesheet">
     <link rel="stylesheet" href="dist/css/app.css">
     <link rel="stylesheet" href="dist/css/admin.css">
