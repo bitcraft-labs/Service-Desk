@@ -32,7 +32,7 @@ if(isset($_POST['config_submitted'])) {
       } else if (strpos($line, "'formatted_company_name'") !== false) {
           $line="\t\t'formatted_company_name'  => '$formedconame',\r\n";
       } else if (strpos($line, "'url'") !== false) {
-          $line="\t\t'url'                     => '$site_url'\r\n";
+          $line="\t\t'url'                     => '$site_url',\r\n";
       } else if (strpos($line, "'main_logo'") !== false) {
           $line="\t\t'main_logo'       => '$main_logo',\r\n";
       } else if (strpos($line, "'main_logo_small'") !== false) {
