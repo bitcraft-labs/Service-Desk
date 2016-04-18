@@ -9,6 +9,8 @@
 					echo '<li><a href="?page=cpanel">Control Panel</a></li>';
 					if ($_GET['subpage'] == "devops") {
 						echo '<li class="active">Developer Options</li>';
+					} else if ($_GET['subpage'] == "backup_restore") {
+						echo '<li class="active">Developer Options</li>';
 					}
 				} elseif ($_GET['page'] == 'users') {
 					echo '<li class="active">Users</li>';

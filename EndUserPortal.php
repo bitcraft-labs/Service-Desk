@@ -112,6 +112,13 @@ Status:     Staging; Idea Testing; Development
     <script type="text/javascript" src="bower/ckeditor/ckeditor.js"></script>
     <script type="text/javascript" src="dist/js/mailbox_functions.js"></script>
     <script>
+    function printing_functions() {
+      var printing_div = document.getElementById("print_div");
+      var popupWindow = window.open("", "_blank", 'width=800, height=600');
+      popupWindow.open();
+      popupWindow.document.write("<html><body onload='window.print();'>" + printing_div.innerHTML + "</body></html>");
+      //popupWindow.close();
+    }
     <?php if(($_GET['page'] == "Mailbox") && ($_GET['mb'])) echo "CKEDITOR.replace('editor1');"; ?>
       $(function () {
         $('#records').DataTable({

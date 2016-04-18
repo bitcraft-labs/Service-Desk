@@ -118,6 +118,8 @@ if (isset($_POST['action'])) {
 <script src="bower/AdminLTE/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
 <script src="bower/AdminLTE/plugins/input-mask/jquery.inputmask.extensions.js"></script>
 <script src="dist/js/bootstrap-switch.min.js"></script>
+?page=cpanel&subpage=backup_restore
+<?php if($_GET['page'] == "cpanel" && $_GET['subpage'] == "backup_restore") echo "<script src='dist/js/backup_restore.js'></script>"?>
 <script>
   $("[name='dev_on']").bootstrapSwitch();
   $("[name='dev_alert']").bootstrapSwitch();

@@ -455,32 +455,78 @@ if ( !class_exists( 'DALi' ) ) {
     }
 
     public function buildSRTicketHd($requests) {
-                  /*<tr>
-                      <th class='padding_fix'>SR#</th>
-                      <th class='padding_fix'>Category</th>
-                      <th class='padding_fix'>Status</th>
-                      <th class='padding_fix'>Requester</th>
-                      <th class='padding_fix'>Assigned Admin</th>
-                      <th class='padding_fix'>User Type</th>
-                      <th class='padding_fix'>Manufacturer</th>
-                      <th class='padding_fix'>Model</th>
-                      <th class='padding_fix'>Date Checked In</th>
-                      <th class='padding_fix'>Date Last Updated</th>
-                    </tr>"*/
         if($requests == "all") {
           $sql = "SELECT * FROM service_record";
           $results = $this->query($sql);
         }
         $html = '';
         foreach($results as $res) {
-          $html .= '<tr class="clickableRow" data-href="ServiceRecord.php?sr='. $res[0]
+          $person = $this->getPersonInfo($res[11]);
+          $admin = $this->getPersonInfo($res[5]) ? $this->getPersonInfo($res[5]) : $res[5];
+          $html .= '<tr class="clickableRow" data-href="ServiceRecord.php?sr='. $res[0]. "\">"
                     . '<td>'. $res[0] .'</td>'
-                    . '<td>'. $res[0] .'</td>'
-                    . '<td>'. $res[0] .'</td>'
-                    . '<td>'. $res[0] .'</td>'
-                    . '<td>'. $res[0] .'</td>'
-                    . '<td>'. $res[0] .'</td>';
+                    . '<td>'. $this->getTitleInfo($res[16])[0][3] .'</td>'
+                    . '<td>'. $this->getStatus($res[4])[0][0] .'</td>'
+                    . '<td>'. $person[0][1] . ' ' . $person[0][2] .'</td>'
+                    . '<td>'. $admin .'</td>'
+                    . '<td>'. 'test' .'</td>'
+                    . '<td>'. 'Undefined' .'</td>'
+                    . '<td>'. 'Undefined' .'</td>'
+                    . '<td>'. $res[12] .'</td>'
+                    . '<td>'. $res[17] .'</td>'
+                    .'</tr>';
         }
+        return $html;
+    }
+
+    public function buildSRTicketViewHd($sr) {
+       $sql = "SELECT title, submitted_when, last_updated, description, submitted_by, assigned_admin, bldg, room
+        FROM service_record   
+        WHERE sr_id = '$sr'";
+        $results = $this->query($sql);
+        $title_info = $this->getTitleInfo($results[0][0]);
+        $incident_type = $title_info[0][8];
+        $building = $this->getBuildingsRow($results[0][6]);
+        $machine_info = $this->getMachineInfo($results[0][4]);
+        $person = $this->getPersonInfo($results[0][4]);
+        if($incident_type == 1) {
+          $title_page = "<h3 class='box-title'><i class='fa fa-file-text-o'> </i> Service Report</h3>";
+          $specific_info = '<div class="col-md-8">';
+          $side_title = '<h3 class="box-title"><i class="fa fa-info"></i> Location Information</h3>';
+          $specific_info .= '<div class="box-body">
+              <p>
+                <strong>Building:</strong> '. $building[0][0] .'<br />
+                <strong>Room:</strong> '. $results[0][7] .'<br />
+            </div><!-- /.box-body -->
+            </div>';
+        } else {
+          $title_page = "<h3 class='box-title'><i class='fa fa-stethoscope'> </i> System Checkup Report</h3>";
+          $specific_info = '<div class="col-md-8">';
+          $side_title = '<h3 class="box-title"><i class="fa fa-desktop"> </i> System Information</h3>';
+          $specific_info .= '<div class="box-body">
+              <p>
+                <strong>Model:</strong> '. $machine_info[1] .'<br />
+                <strong>Serial:</strong> '. $machine_info[2] .'<br />
+                <strong>Warranty:</strong> '. $machine_info[3] .'</br />
+                <strong>Password:</strong> '. $machine_info[4] .'<br />
+                <strong>Encryption Key:</strong> '. $machine_info[5] .'</p>
+            </div><!-- /.box-body -->
+            </div>';
+        }
+        $result_array = array(
+                  "title"          => $title_page,
+                  "problem"        => $title_info[0][3],
+                  "submitted_when" => $results[0][1],
+                  "last_updated"   => $results[0][2],
+                  "description"    => $results[0][3],
+                  "submitted_by"   => $person[0][4],
+                  "assigned_admin" => $results[0][5],
+                  "side"           => $specific_info,
+                  "side_title"     => $side_title,
+                  "person_info"    => $person[0]
+        );
+        return $result_array;
+
     }
     //-------Admin Functions--------------->
     public function getHDUsers() {

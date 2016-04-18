@@ -21,7 +21,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-lg-3 col-md-4 clickableRow" data-href="#">
+    <div class="col-lg-3 col-md-4 clickableRow" data-href="?page=cpanel&subpage=backup_restore">
       <i class="fa fa-3x fa-database"></i>
       <h4>Backup/Restore</h4>
       <p><em>Import/Export Local Files &amp; DB<br>

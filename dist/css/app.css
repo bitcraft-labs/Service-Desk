@@ -5,7 +5,8 @@
     4. END USER FIXES
     5. SIDE NAV
     6. HELPDESK
-    7. MEDIA QUERIES
+    7. ADMIN
+    8. MEDIA QUERIES
 */
 
 @import "//fonts.googleapis.com/css?family=Open+Sans";
@@ -524,11 +525,17 @@ tbody tr {
 .padding_fix {
   padding-right: 25px !important;
 }
+
 /* HELPDESK */
 .super_active {
   color: #ffffff;
   background: #222222;
   border-left: 3px solid #605ca8;
+}
+
+/* ADMIN */
+.box_uploading, .box_success, .box_error, .box_dragndrop {
+  display: none;
 }
 /* MEDIA QUERIES */
 
