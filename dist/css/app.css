@@ -537,6 +537,20 @@ tbody tr {
 .box_uploading, .box_success, .box_error, .box_dragndrop {
   display: none;
 }
+
+.box.has-advanced-upload {
+  background-color: white;
+  outline: 2px dashed black;
+  outline-offset: -10px;
+}
+
+.box.has-advanced-upload .box_dragndrop {
+  display: inline;
+}
+
+.box.is-dragover {
+  background-color: grey;
+}
 /* MEDIA QUERIES */
 
 /* Top Bar */
