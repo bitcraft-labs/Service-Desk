@@ -54,6 +54,18 @@ include_once 'modules/admin/actions/updateConfig.php'; ?>
 			  </div>
 			</div>
 
+			<!-- Dark Mode -->
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="darkmode">Dark Mode</label>
+				<div class="col-md-4">
+					<select id="darkmode" class="form-control" name="darkmode">
+						<option disabled selected> Darkmode? </option>
+						<option value="dark" <?php if ('dark' == $conf['customize']['darkmode']) echo "selected"?>> Dark </option>
+						<option value="light" <?php if ('light' == $conf['customize']['darkmode']) echo "selected"?>> Light </option>
+					</select>
+				</div>
+			</div>
+
 			<!-- Select Basic -->
 			<div class="form-group">
 			  <label class="col-md-4 control-label" for="auth_size">Login Logo Size</label>

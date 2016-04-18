@@ -1,6 +1,7 @@
 <?php
 if(isset($_POST['config_submitted'])) {
   $skin = $_POST['skin'];
+  $darkmode = $_POST['darkmode'];
   $sysemail = $_POST['sysemail'];
   $coname = $_POST['company_name'];
   $formedconame = $_POST['formatted_company_name'];
@@ -23,6 +24,8 @@ if(isset($_POST['config_submitted'])) {
       //if in the line contains 'skin' replace with full line and variable contents
       if (strpos($line, "'skin'") !== false) {
           $line="\t\t'skin'            => '$skin',\r\n";
+      } else if (strpos($line, 'darkmode') !== false) {
+          $line="\t\t'darkmode'        => '$darkmode',\r\n";
       } else if (strpos($line, "'login_size'") !== false) {
           $line="\t\t'login_size'      => '$login_size',\r\n";
       } else if (strpos($line, "'sysemail'") !== false) {
