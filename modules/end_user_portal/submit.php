@@ -1,4 +1,4 @@
-<?php 
+<?php
   /*
     Process POST submit
   */
@@ -9,11 +9,11 @@
     $modal_success .= $modal_success_prompt;
     if(isset($_POST['submit'])) {
       $modal_title = $_POST['incident-title'];
-      $modal_building = $_POST['incident-building'];
-      $modal_room_number = $_POST['incident-room-number'];
+      $modal_building = $_POST['incident-building'] ? $_POST['incident-building'] : NULL;
+      $modal_room_number = $_POST['incident-room-number'] ? $_POST['incident-room-number'] : NULL;
       $modal_description = $_POST['incident-description'];
       $modal_phone = $_POST['incident-phone'];
-      $dali->submitModalForm($modal_title, $modal_building, $modal_room_number, $modal_description, $modal_phone); 
+      $dali->submitModalForm($modal_title, $modal_building, $modal_room_number, $modal_description, $modal_phone);
     }
 
  ?>
