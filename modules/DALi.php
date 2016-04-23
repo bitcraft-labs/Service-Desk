@@ -84,7 +84,7 @@ if ( !class_exists( 'DALi' ) ) {
       $MYD = (substr($date, 0, 10) == substr($now, 0, 10)) ? true : false;
       if($MYD) {
         $hour_now = substr($now, 11, 2);
-        $min_now = substr($now, 14, 2); 
+        $min_now = substr($now, 14, 2);
         $sec_now = substr($now, 17, 2);
         $hour_date = substr($date, 11, 2);
         $min_date = substr($date, 14, 2);
@@ -93,7 +93,7 @@ if ( !class_exists( 'DALi' ) ) {
         $min = ($min_date == $min_now) ? 0 : (intval($min_now) - intval($min_date)) . ' minutes ago';
         $sec = ($sec_now == $sec_date) ? 0 : (intval($sec_now) - intval($sec_date)) . ' seconds ago';
         if($hour) { return $hour; }
-        else if($min) { return $min; } 
+        else if($min) { return $min; }
         else { return $sec; }
       } else {
         $year_now = substr($now, 0, 4);
@@ -105,9 +105,9 @@ if ( !class_exists( 'DALi' ) ) {
         $year = ($year_now == $year_date) ? 0 : (intval($year_now) - intval($year_date)) . ' years ago';
         $month = ($month_now == $month_date) ? 0 : (intval($month_now) - intval($month_date)) . ' months ago';
         $day = ($day_now == $day_date) ? 0 : (intval($day_now) - intval($day_date)) . ' days ago';
-        if($year) { return $year; } 
-        else if($month) { return $month; } 
-        else if($day) { return $day; } 
+        if($year) { return $year; }
+        else if($month) { return $month; }
+        else if($day) { return $day; }
         else { return 0; }
       }
     }
@@ -288,13 +288,13 @@ if ( !class_exists( 'DALi' ) ) {
       return $html;
     }
 
-    /* 
+    /*
       Needs Mailbox implementation
     */
 
     public function buildSRView($sr_num, $id) {
         $sql = "SELECT title, submitted_when, last_updated, description, submitted_by, assigned_admin, bldg, room
-        FROM service_record   
+        FROM service_record
         WHERE sr_id = '$sr_num'";
         $result = $this->query($sql);
         $title_info = $this->getTitleInfo($result[0][0]);
@@ -401,6 +401,24 @@ if ( !class_exists( 'DALi' ) ) {
     }
 
     //-------Help Desk Staff Functions ---->
+    public function maybeBuildingList($check) {
+      $sql = "SELECT addition_info FROM sub_category WHERE id = '$check' LIMIT 1";
+    	$result = $this->query($sql)[0][0];
+      if ($result) {
+        $option_html = '<select name="incident-building" class="building form-control input-md" id="incident-building" >';
+        $option_html .= '<option selected disabled>Choose the pertaining building</option>';
+        $buildings = $this->getBuildingsRow('all');
+        if($buildings) {
+          foreach($buildings as $result) {
+            $option_html .= '<option value="'.$result[0].'">'.$result[1].'</option>';
+          }
+        }
+        $option_html .= '</select>';
+        $option_html .= '<input type="textbox" name="sr_room" id="sr_room" class="form-control" placeholder="Room #">';
+        return $option_html;
+      }
+    }
+
     public function getRecordTypes() {
       $sql = "SELECT * FROM record_type";
       $types = $this->query($sql);
@@ -413,14 +431,16 @@ if ( !class_exists( 'DALi' ) ) {
       return $option_html;
     }
 
-    public function getRecordCateogries($type) {
+    public function getRecordCateogries($type, $selected) {
       if ($type) {
         $sql = "SELECT category.id, category.cat FROM category INNER JOIN sub_category ON category.id = sub_category.cat INNER JOIN record_type ON sub_category.type = record_type.id WHERE sub_category.type = '$type' GROUP BY category.id ORDER BY cat ASC";
-        $option_html = '<option selected disabled>Choose a Category</option>';
+        if (!isset($selected)) $selectme == 'selected';
+        $option_html = "<option selected disabled>Choose a Category</option>";
         $cats = $this->query($sql);
         if($cats) {
           foreach($cats as $result) {
-            $option_html .= '<option value="'.$result[0].'">'.$result[1].'</option>';
+            if ($selected == $result[0]) $selectme == 'selected';
+            $option_html .= '<option value="'.$result[0].'" '.$selectme.'>'.$result[1].'</option>';
           }
         }
         return $option_html;
