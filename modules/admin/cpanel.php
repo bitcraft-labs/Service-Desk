@@ -1,11 +1,10 @@
 <h2 class="skew-up-smidge">Control Panel</h2>
 <div class="cpanel">
   <div class="row">
-    <div class="col-lg-3 col-md-4 clickableRow" data-href="#">
-      <i class="fa fa-3x fa-cog"></i>
-      <h4>General Settings</h4>
-      <p><em>Portal customization options<br>
-             Database connection</em></p>
+    <div class="col-lg-3 col-md-4 clickableRow" data-href="?page=cpanel&subpage=customize">
+      <i class="fa fa-3x fa-paint-brush"></i>
+      <h4>Customize</h4>
+      <p><em>Portal customization options</em></p>
     </div>
     <div class="col-lg-3 col-md-4 clickableRow" data-href="?page=users">
       <i class="fa fa-3x fa-user"></i>
@@ -21,7 +20,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-lg-3 col-md-4 clickableRow" data-href="#">
+    <div class="col-lg-3 col-md-4 clickableRow" data-href="?page=cpanel&subpage=backup_restore">
       <i class="fa fa-3x fa-database"></i>
       <h4>Backup/Restore</h4>
       <p><em>Import/Export Local Files &amp; DB<br>
