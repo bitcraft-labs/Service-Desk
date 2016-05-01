@@ -9,7 +9,7 @@ var loginFormValidation = (function() {
 		*/
 		function calculatePossibleInjection(value) {
 			var isPossibleOfInjection = false;
-			var checkInject = /^\W/g;
+			var checkInject = /\W/g;
 			var injection = checkInject.exec(value);
 			isPossibleOfInjection = !injection ? true : false;
 			return isPossibleOfInjection;
