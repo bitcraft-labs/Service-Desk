@@ -475,6 +475,14 @@ if ( !class_exists( 'DALi' ) ) {
       return $this->query($sql);
     }
 
+    public function doesSRExist($sr_id) {
+      $doesExist = true;
+      $sql = "SELECT sr_id FROM service_record WHERE sr_id = $sr_id";
+      if(!$this->query($sql)) {
+        $doesExist = false;
+      }
+      return $doesExist;
+    }
     public function buildSRTicketHd($requests) {
         if($requests == "all") {
           $sql = "SELECT * FROM service_record";
