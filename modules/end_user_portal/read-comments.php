@@ -28,10 +28,12 @@
                 <a href="?page='Mailbox&mb=<?= $_GET['mb']; ?>'" class="btn btn-box-tool" data-toggle="tooltip" title="Next"><i class="fa fa-chevron-right"></i></a>
               </div>
             </div>
+            
             <section class="content">
-              <!-- /.box-header -->
+              <!-- /.box-header --><div id="print_div">
               <div class="box-body no-padding">
                 <div class="mailbox-read-info">
+                
                   <h3><?= $info['subject']; ?></h3>
                   <h5>From: <?= $info['email']; ?>
                     <span class="mailbox-read-time pull-right"><?= $info['when']; ?></span></h5>
@@ -45,7 +47,7 @@
                     </span>
                   </div>
                   <!-- /.btn-group -->
-                  <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" title="Print" onClick="window.print();">
+                  <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" title="Print" onClick="printing_functions();">
                     <i class="fa fa-print"></i></button>
                 </div>
                 <!-- /.mailbox-controls -->
@@ -54,12 +56,13 @@
                 </div>
                 <!-- /.mailbox-read-message -->
               </div>
+              </div>
               <!-- /.box-body -->
               <div class="box-footer">
                 <div class="pull-right">
                 <button onClick="mailBox_functions();" data-target='#mailboxModal' type="button" class="btn btn-default"><i class="fa fa-reply"></i> Reply</button>
                 </div>
-                <button onClick="window.print();" type="button" class="btn btn-default"><i class="fa fa-print"></i> Print</button>
+                <button onClick="printing_functions();" type="button" class="btn btn-default"><i class="fa fa-print"></i> Print</button>
               </div>
               <!-- /.box-footer -->
             </div>
