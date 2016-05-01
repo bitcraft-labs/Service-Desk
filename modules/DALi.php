@@ -405,7 +405,7 @@ if ( !class_exists( 'DALi' ) ) {
       $sql = "SELECT addition_info FROM sub_category WHERE id = '$check' LIMIT 1";
     	$result = $this->query($sql)[0][0];
       if ($result) {
-        $option_html = '<select name="incident-building" class="building form-control input-md" id="incident-building" >';
+        // $option_html = '<select name="incident-building" class="building form-control input-md" id="incident-building" >';
         $option_html .= '<option selected disabled>Choose the pertaining building</option>';
         $buildings = $this->getBuildingsRow('all');
         if($buildings) {
@@ -413,8 +413,8 @@ if ( !class_exists( 'DALi' ) ) {
             $option_html .= '<option value="'.$result[0].'">'.$result[1].'</option>';
           }
         }
-        $option_html .= '</select>';
-        $option_html .= '<input type="textbox" name="sr_room" id="sr_room" class="form-control" placeholder="Room #">';
+        //$option_html .= '</select>';
+       // $option_html .= '<input type="textbox" name="sr_room" id="sr_room" class="form-control" placeholder="Room #">';
         return $option_html;
       }
     }
@@ -548,6 +548,15 @@ if ( !class_exists( 'DALi' ) ) {
         return $result_array;
 
     }
+
+    /* Submission Functions */
+    public function submitNewSR($type, $cat, $sub_cat, $submitted_by, $building, $room_number, $machine) {
+      $last_updated = date("Y-m-d H:i:s");
+      $sql = "INSERT into service_record (type, title, submitted_by, bldg, room, last_updated)
+              VALUES ('$type', '$sub_cat', '$submitted_by', '$building', '$room_number', '$last_updated')";
+      $this->queryChange($sql);
+    }
+
     //-------Admin Functions--------------->
     public function getHDUsers() {
       $sql = "SELECT id, fname, lname, email

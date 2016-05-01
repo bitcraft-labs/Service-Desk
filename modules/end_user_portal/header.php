@@ -19,7 +19,6 @@
 	    <!-- Navbar Right Menu -->
 	      <div class="navbar-custom-menu">
 	        <ul class="nav navbar-nav">
-	          
 				<li class="messages-menu"><a href="http://itsm-docs.bitcraftlabs.net" target="_blank"><i class="fa fa-question-circle"></i> <span class="signed-in-as">Help</span></a></li>
 				<li class="messages-menu"><a href="EndUserPortal.php"><i class="fa fa-plus"></i> <span class="signed-in-as">New Ticket</span></a></li>
 	          <!-- User Account Menu -->
