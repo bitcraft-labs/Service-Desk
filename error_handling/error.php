@@ -15,13 +15,16 @@
  ?>
 <!DOCTYPE html>
 <html lang="en">
-<?php include_once '../modules/config.inc.php';	?>
+<?php
+	$rootdir =  $_SERVER['DOCUMENT_ROOT'];
+	$theurl = $_SERVER['HTTP_HOST'];
+	include_once "$rootdir/modules/config.inc.php";	?>
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="bower/bootstrap/dist/css/bootstrap.min.css">
-	<link rel="stylesheet" href="dist/css/error_styles.css">
-	<?php echo "<link rel='stylesheet' href='bower/AdminLTE/dist/css/skins/skin-$skin.min.css'>"; ?>
+	<link rel="stylesheet" href="/bower/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/dist/css/error_styles.css">
+	<?php echo "<link rel='stylesheet' href='$theurl/bower/AdminLTE/dist/css/skins/skin-$skin.min.css'>"; ?>
 	<title><?php echo $title_page; ?></title>
 </head>
 <body>
@@ -41,14 +44,13 @@
 		</div>
 	</div>
 	<div style="border-top: solid 1px #D2D6DE; padding: 20px;">
-		<?php include_once '../modules/footer.php'; ?>
+		<?php include_once "$rootdir/modules/footer.php"; ?>
 	</div>
-	<script src="bower/jquery/dist/jquery.min.js"></script>
-	<script src="bower/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="/bower/jquery/dist/jquery.min.js"></script>
+	<script src="/bower/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
 <!-- Unauthorized
 Forbidden
 Not Found
 Internal Server Error -->
 </html>
-

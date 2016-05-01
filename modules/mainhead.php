@@ -1,9 +1,10 @@
 <?php
-require_once 'modules/config.inc.php';
-require_once 'modules/authentication/config.php';
-require_once 'modules/config-func.php';
-require_once 'modules/authentication/database.php';
-require_once 'modules/authentication/class.acl.php';
+$rootdir =  $_SERVER['DOCUMENT_ROOT'];
+require_once "$rootdir/modules/config.inc.php";
+require_once "$rootdir/modules/authentication/config.php";
+require_once "$rootdir/modules/config-func.php";
+require_once "$rootdir/modules/authentication/database.php";
+require_once "$rootdir/modules/authentication/class.acl.php";
 
 $dal = new DAL();
 $dali = new DALi($conf);
@@ -25,14 +26,14 @@ if($maintenance) {
     header("Location: /");
     exit;
   } elseif((!$myACL->hasPermission('access_admin')) && ($whereami != '/')) {
-    include_once 'modules/admin/maintenance/mode.php';
+    include_once "$rootdir/modules/admin/maintenance/mode.php";
     exit;
   }
 }
 
 //check if logged in
 if(!$authenticator->CheckLogin()) {
-    $authenticator->RedirectToURL("login.php");
+    $authenticator->RedirectToURL("/login.php");
     exit;
 }
 
