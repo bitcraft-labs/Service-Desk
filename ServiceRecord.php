@@ -278,7 +278,6 @@ Status:     Staging; Idea Testing; Development
 	    }, function () {
 	      $(this).removeClass("active");
 	    });
-       
       });
     </script>
     <?php

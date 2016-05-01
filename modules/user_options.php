@@ -5,7 +5,7 @@
   <ul class="dropdown-menu">
     <li><a href="/Profile.php"><i class="fa fa-user"> </i>Profile</a></li>
     <?php 
-    	if($myACL->hasPermission("hd_portal")) {
+    	if($myACL->hasPermission("hd_portal") && basename(__FILE__) == 'EndUserPortal') {
     		echo '<li><a href="HelpDesk.php"><i class="fa fa-dashboard"></i>Back to Dashboard</a></li>';
     	} 
     ?>
