@@ -1,11 +1,11 @@
-<?php 
+<?php
 	class ModalBuild {
 		private function connect() {
-			return new mysqli("localhost", "bcl_admin", "X2z7cMG4Tnphnavr", "bcl_sd_data");
+			return new mysqli($conf['sql']['host'], $conf['sql']['user'], $conf['sql']['pass'], $conf['sql']['name']);
 		}
 		public function query($query) {
 	      $db = $this->connect();
-	     
+
 	      $result = $db->query($query);
 	      if(!$result) {
 	        echo "False";

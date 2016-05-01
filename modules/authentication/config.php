@@ -1,7 +1,7 @@
 <?PHP
-
-require_once("./modules/authentication/authenticator.php");
-require_once("./modules/config.inc.php");
+$rootdir = $_SERVER['DOCUMENT_ROOT'];
+require_once("$rootdir/modules/authentication/authenticator.php");
+require_once("$rootdir/modules/config.inc.php");
 
 $authenticator = new Authenticator();
 
