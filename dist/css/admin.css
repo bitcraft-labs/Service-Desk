@@ -62,3 +62,7 @@ td, th {
   padding-top: 10px;
   color: #ccc;
 }
+
+.thumbnails li img{
+    height: 75px;
+}

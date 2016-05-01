@@ -31,6 +31,11 @@
     <br>
     <div class="btn-group" role="group">
       <button id="submit" name="Submit" class="btn btn-primary">Apply</button>
-      <a id="cancel" name="Cancel" class="btn btn-danger" onclick="window.location='?page=groups'">Cancel</a>
+      <!-- <button id="cancel" name="Cancel" class="btn btn-warning" onclick="window.location='?page=groups'">Cancel</button> -->
     </div>
 </form>
+<!-- <form action=<?= htmlspecialchars($_SERVER["PHP_SELF"]) ?> method="post" style="display:inline-block">
+  <input type="hidden" name="action" value="deleteRole" />
+  <input type="hidden" name="roleID" value="<?= $_GET['for']; ?>" />
+  <button id="delete" name="Delete" class="btn btn-danger">Delete</button>
+</form> -->

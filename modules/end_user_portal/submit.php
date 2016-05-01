@@ -1,4 +1,4 @@
-<?php 
+<?php
   /*
     Process POST submit
   */
@@ -13,7 +13,7 @@
       $modal_room_number = $_POST['incident-room-number'] ? $_POST['incident-room-number'] : NULL;
       $modal_description = $_POST['incident-description'];
       $modal_phone = $_POST['incident-phone'];
-      $dali->submitModalForm($modal_title, $modal_building, $modal_room_number, $modal_description, $modal_phone); 
+      $dali->submitModalForm($modal_title, $modal_building, $modal_room_number, $modal_description, $modal_phone);
     }
 
  ?>

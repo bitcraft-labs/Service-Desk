@@ -1,6 +1,6 @@
 {
   "name": "Bitcraft Service Desk",
-  "homepage": "https://bitcraftlabs.net",
+  "homepage": "https://itsm.bitcraftlabs.net",
   "authors": [
     "Joshua Nasiatka <joshua@bitcraftlabs.net>",
     "Gene Duffy <eugene@bitcraftlabs.net>",
@@ -28,6 +28,8 @@
     "AdminLTE": "adminlte#^2.3.2",
     "font-awesome": "fontawesome#^4.5.0",
     "Ionicons": "ionicons#^2.0.1",
-    "ckeditor" : "4.5.7"
+    "ckeditor": "4.5.8",
+    "image-picker": "0.2.4",
+    "bootstrap-switch": "3.3.2"
   }
 }

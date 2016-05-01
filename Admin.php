@@ -117,7 +117,9 @@ if (isset($_POST['action'])) {
 <script src="bower/AdminLTE/plugins/input-mask/jquery.inputmask.js"></script>
 <script src="bower/AdminLTE/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
 <script src="bower/AdminLTE/plugins/input-mask/jquery.inputmask.extensions.js"></script>
-<script src="dist/js/bootstrap-switch.min.js"></script>
+<script src="bower/bootstrap-switch/dist/js/bootstrap-switch.min.js"></script>
+<script src="bower/image-picker/image-picker/image-picker.min.js"></script>
+
 <?php if($_GET['page'] == "cpanel" && $_GET['subpage'] == "backup_restore") {
   echo "<script src='dist/js/backup_restore.js'></script>";
   echo "<script>
@@ -141,9 +143,18 @@ if (isset($_POST['action'])) {
     } 
   </script>";
   } ?>
+
+
 <script>
   $("[name='dev_on']").bootstrapSwitch();
   $("[name='dev_alert']").bootstrapSwitch();
+  $("#main_logo_picker").imagepicker();
+  $("#main_logo_small_picker").imagepicker();
+  $("#top_bar_picker").imagepicker();
+  $(".alert.alert-success").fadeTo(2000, 500).slideUp(500, function(){
+    $(".alert.alert-success").alert('close');
+    window.location.href = window.location.href;
+  });
 </script>
 <!-- page script -->
 <script>
