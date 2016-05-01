@@ -65,17 +65,18 @@
                 <button onClick="printing_functions();" type="button" class="btn btn-default"><i class="fa fa-print"></i> Print</button>
               </div>
               <!-- /.box-footer -->
-            </div>
+            
             <!-- /. box --> 
-            <div data-show="0" id="text_edit" class="container">
-              <div class="col-lg-12">
-                  <!-- Submit comment -->
-                  <form id="mailbox-form" method="POST" action="" class="form" role="form">
-                    <div class="form-group"> 
-                      <textarea id="editor1" name="editor1"></textarea>
-                    </div>
-                      <button name="submitted" onClick="" type="submit" class="btn btn-lg btn-custom">Send!</button>
-                  </form> 
+              <div data-show="0" id="text_edit" class="container">
+                <div class="col-lg-12">
+                    <!-- Submit comment -->
+                    <form id="mailbox-form" method="POST" action="" class="form" role="form">
+                      <div class="form-group"> 
+                        <textarea id="editor1" name="editor1"></textarea>
+                      </div>
+                        <button name="submitted" onClick="" type="submit" class="btn btn-lg btn-custom">Send!</button>
+                    </form> 
+                </div>
               </div>
             </div>
           </div>
