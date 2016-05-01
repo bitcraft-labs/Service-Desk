@@ -182,10 +182,6 @@ Status:     Staging; Idea Testing; Development
 							<button style="margin: 5px;" type="button" class="btn btn-custom" onclick="">Save</button>
 							<button style="margin: 5px;" type="button" class="btn btn-custom" onclick="javascript:window.print();">Print</button>
 						</div>
-						
-						</div> <!-- /footer -->
-						</div>
-					</div>
 		    		  	<?php
 		    		  } elseif (isset($sr) && ($sr == "new")) {
 			                $type = $_GET['type'];
@@ -230,7 +226,11 @@ Status:     Staging; Idea Testing; Development
     <!-- AdminLTE App -->
     <script src="bower/AdminLTE/dist/js/app.min.js"></script>
     <!-- page script -->
-    <script src="dist/js/sr_new_response.js"></script>
+    <?php 
+    if($_GET['sr'] == 'new') {
+   		echo '<script src="dist/js/generate_sr.js"></script>';
+   	}
+   	?>
     <script>
       $(function () {
         $('#records').DataTable({
@@ -252,8 +252,17 @@ Status:     Staging; Idea Testing; Development
         $(".machine").select2();
         $(".request-type").select2();
       });
-     $('#sdesk ul').toggle(200);$('#sdesk').addClass("active");
-      jQuery(document).ready(function($) {
+     $('#sdesk ul').toggle(200);$('#sdesk').addClass("active"); 
+     $(".clickableRow").on("click",function() {
+	      if (this.parentNode.parentNode.getAttribute("id") === "downloads") {
+	        window.open($(this).attr("data-href"),"_blank");
+	      } else {
+	        document.location = $(this).attr("data-href");
+	      }
+	    });
+     jQuery(document).ready(function($) {
+      	$("#incident_building").css("display", "none");
+      	$("#machine_display").css("display", "none");
       	var height = $("#user_contact").css("height");
       	var regex = /px/;
       	var check = regex.exec(height);
@@ -269,13 +278,7 @@ Status:     Staging; Idea Testing; Development
 	    }, function () {
 	      $(this).removeClass("active");
 	    });
-        $(".clickableRow").on("click",function() {
-          if (this.parentNode.parentNode.getAttribute("id") === "downloads") {
-            window.open($(this).attr("data-href"),"_blank");
-          } else {
-            document.location = $(this).attr("data-href");
-          }
-        });
+       
       });
     </script>
     <?php
