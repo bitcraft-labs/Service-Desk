@@ -1,7 +1,7 @@
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <div class="ssp-title hd">
-      <h3><i class="fa fa-files-o fa-2x pull-left"> </i>Knowledgebase<br><small>Learn all da things!</small></h3>
+      <h3><i class="fa fa-files-o fa-2x pull-left"> </i>Knowledgebase<br><small>Experiencing a problem? These should solve it.</small></h3>
   </div>
 
 	<!-- Main content -->

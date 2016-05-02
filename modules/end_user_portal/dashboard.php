@@ -4,8 +4,8 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        End User Portal
-        <small>Fitchburg State Service Desk <?= $app_version?></small>
+        Self-Service Portal
+        <small>Bitcraft Service Desk <?= $app_version?></small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>

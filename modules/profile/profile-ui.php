@@ -43,7 +43,7 @@ if(isset($_POST['submitted'])) {
                                     <?php echo "<div><span class='error'></span></div>";?>
                                         <!-- email -->
                                         <div class="form-group">
-                                            <label>FSU Email:</label>
+                                            <label>Primary Email:</label>
                                             <div class="input-group">
                                                 <div class="input-group-addon">
                                                     <i class="fa fa-envelope"></i>
@@ -78,7 +78,7 @@ if(isset($_POST['submitted'])) {
                                         </div>
                                         <!-- /.form group -->
                                         <div class="form-group">
-                                            <button type="submit" class="btn btn-primary btn-block">Update</button>
+                                            <button type="submit" class="btn btn-custom btn-block">Update</button>
                                             <?= $returnStatus ?>
                                         </div>
                                 </fieldset>
@@ -122,13 +122,13 @@ if(isset($_POST['submitted'])) {
                                 <span id='changepwd_newpwd_errorloc' class='error'></span>
                             </div>
                             <div class="form-group">
-                                <button name='Submit' type='submit' class="btn btn-primary btn-md btn-block">Change Password</button>
+                                <button name='Submit' type='submit' class="btn btn-custom btn-md btn-block">Change Password</button>
                             </div>
                             <fieldset>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
                 </div>
             </div>
         </div>

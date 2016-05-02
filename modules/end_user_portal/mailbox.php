@@ -1,6 +1,7 @@
 <?php
 	$tabhead =     '<tr>
-						<th>Mail Number</th>
+						<th>Mail #</th>
+						<th>SR #</th>
 						<th>Sent By</th>
 						<th>Subject</th>
 						<th>Time Sent</th>
@@ -23,7 +24,8 @@
 <div class="content-wrapper">
 	<div class="ssp-title">
 		<div class="container">
-			<h3>Self-Service Portal <small>(Mailbox)</small><br><small>This is where your request communication takes place</small></h3>	
+			<h3>Self-Service Portal <small>(Mailbox)</small><br><small>
+			Incoming messages</small></h3>
 		</div>
 	</div>
 	<div class="container">
@@ -34,14 +36,14 @@
 		          <div class="box box-solid box-purple">
 		            <div class="box-header with-border">
 		              <h3 class="box-title">Inbox</h3>
-		              
+
 		              <!-- /.box-tools -->
 		            </div>
 		            <!-- /.box-header -->
 		            <div class="box-body no-padding">
 		              <div class="mailbox-controls">
-		             
-		                
+
+
 		              <div id="mailbox-fix" class="table-responsive mailbox-messages">
 		                <table id="records" class="table table-hover table-striped table-border">
 		                <thead><?= $tabhead; ?></thead>
@@ -57,7 +59,7 @@
 		            <!-- /.box-body -->
 		        <div class="box-footer no-padding">
 	              <div class="mailbox-controls">
-	                
+
 	              </div>
 	                  <!-- /.btn-group -->
 	           </div>

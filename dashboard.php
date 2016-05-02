@@ -3,8 +3,9 @@
   <div class="ssp-title hd">
       <h3><i class="fa fa-dashboard fa-2x pull-left"> </i>Dashboard<br><small>Welcome back, <?= $authenticator->UserFullName() ?>!</small></h3>
   </div>
+
 	<!-- Main content -->
-	<section class="content"> 
+	<section class="content">
 	<div class="row">
 		<div class="col-md-6 col-xs-12">
           <!-- Widget: user widget style 1 -->

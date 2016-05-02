@@ -266,7 +266,7 @@ if ( !class_exists( 'DALi' ) ) {
     // SR Functions
     public function buildRequestsTable($username) {
       $user = $this->getUserID($username);
-      $sql = "SELECT sr_id, title, status_id, submitted_when, assigned_admin, last_updated, owner 
+      $sql = "SELECT sr_id, title, status_id, submitted_when, assigned_admin, last_updated, owner
               FROM service_record
               WHERE owner = '$user'";
       $html = "";
@@ -352,8 +352,9 @@ if ( !class_exists( 'DALi' ) ) {
           $snippet = trim(substr($res[4], 0, 50), "\t\n\r\0");
           $html .= '<tr data-href="?page=Mailbox&mb='. $res[0] .'">
                         <td>'. $read_comments_number++ .'</td>
+                        <td>'. $res[1] .'</td>
                         <td>'. $person[0][1] .' ' . $person[0][2] .'</td>
-                        <td><strong>'. $res[3] .'</strong> - '.$snippet.'...'.'
+                        <td><strong><span style="color:#555299">'. $res[3] .'</style></strong><br>'.strip_tags($snippet, '<br><strong><em><hr><a>').'...'.'
                         </td>
                         <td class="mailbox-date">'. $this->calculateDatetime($now, $res[5]) .'</td>
                       </tr>';
@@ -432,7 +433,7 @@ if ( !class_exists( 'DALi' ) ) {
       return $option_html;
     }
 
-    public function getRecordCateogries($type, $selected) {
+    public function getRecordCategories($type, $selected) {
       if ($type) {
         $sql = "SELECT category.id, category.cat FROM category INNER JOIN sub_category ON category.id = sub_category.cat INNER JOIN record_type ON sub_category.type = record_type.id WHERE sub_category.type = '$type' GROUP BY category.id ORDER BY cat ASC";
         if (!isset($selected)) $selectme == 'selected';
@@ -450,7 +451,7 @@ if ( !class_exists( 'DALi' ) ) {
       }
     }
 
-    public function getRecordSubCateogries($type, $cat) {
+    public function getRecordSubCategories($type, $cat) {
       if ($type && $cat) {
         $sql = "SELECT sub_category.id, sub_category.sub_cat FROM sub_category INNER JOIN category ON sub_category.cat = category.id INNER JOIN record_type ON sub_category.type = record_type.id WHERE sub_category.type = '$type' AND sub_category.cat = '$cat' GROUP BY sub_category.sub_cat ORDER BY sub_cat ASC";
         $option_html = '<option selected disabled>Choose a Sub-Category</option>';
@@ -475,6 +476,36 @@ if ( !class_exists( 'DALi' ) ) {
       return $this->query($sql);
     }
 
+    public function getNotes($sr) {
+      $sql = "SELECT * FROM mailbox WHERE sr = $sr ORDER BY id DESC LIMIT 10";
+      $notes = $this->query($sql);
+      $result = "";
+      if ($notes) {
+        $size = count($notes);
+        $k = 0;
+        foreach ($notes as $note) {
+          $name = $this->getPersonInfo($note[6]);
+          $fromName = $name[0][1]." ".$name[0][2];
+          $snippet = strlen($note[4]) > 150 ? trim(substr($note[4], 0, 150), "\t\n\r\0") . "<a href='' class='expandableNote'>...</a>" : $note[4];
+          $result .= "$note[3] &mdash; $snippet &mdash; <em>$fromName</em> ($note[5])<br>";
+          if ($k < $size - 1) {
+              $result .= "<hr>";
+              $k++;
+          }
+        }
+      } else {
+        $result = "No Notes.";
+      }
+      return strip_tags($result, '<br><strong><em><hr><a>');
+    }
+
+    public function submitNewNote($sr, $from, $to, $subject, $comment) {
+      $sql = "INSERT INTO mailbox (sr, who, subject, comment, fromId)
+              VALUES ('$sr', '$to', '$subject', '$comment', '$from')";
+      $this->queryChange($sql);
+      return true;
+    }
+
     public function doesSRExist($sr_id) {
       $doesExist = true;
       $sql = "SELECT sr_id FROM service_record WHERE sr_id = $sr_id";
@@ -483,6 +514,7 @@ if ( !class_exists( 'DALi' ) ) {
       }
       return $doesExist;
     }
+
     public function buildSRTicketHd($requests) {
         if($requests == "all") {
           $sql = "SELECT * FROM service_record";
@@ -499,8 +531,6 @@ if ( !class_exists( 'DALi' ) ) {
                     . '<td>'. $person[0][1] . ' ' . $person[0][2] .'</td>'
                     . '<td>'. $admin .'</td>'
                     . '<td>'. 'test' .'</td>'
-                    . '<td>'. 'Undefined' .'</td>'
-                    . '<td>'. 'Undefined' .'</td>'
                     . '<td>'. $res[12] .'</td>'
                     . '<td>'. $res[17] .'</td>'
                     .'</tr>';
@@ -510,7 +540,7 @@ if ( !class_exists( 'DALi' ) ) {
 
     public function buildSRTicketViewHd($sr) {
        $sql = "SELECT title, submitted_when, last_updated, description, submitted_by, assigned_admin, bldg, room, owner
-        FROM service_record   
+        FROM service_record
         WHERE sr_id = '$sr'";
         $results = $this->query($sql);
         $title_info = $this->getTitleInfo($results[0][0]);

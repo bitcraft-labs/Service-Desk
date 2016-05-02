@@ -64,7 +64,7 @@
           </ul>
         <li>
         <?php } ?>
-        <li <?php if ($url == 'EndUserPortal.php') echo "class='active'"; ?> ><a href="EndUserPortal.php"><i class="fa fa-exchange"></i> <span>End User Portal</span></a></li>
+        <li <?php if ($url == 'EndUserPortal.php') echo "class='active'"; ?> ><a href="EndUserPortal.php"><i class="fa fa-exchange"></i> <span>Self-Service Portal</span></a></li>
       </li>
     </ul><!-- /.sidebar-menu -->
   </section>
