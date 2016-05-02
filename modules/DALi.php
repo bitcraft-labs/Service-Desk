@@ -84,7 +84,7 @@ if ( !class_exists( 'DALi' ) ) {
       $MYD = (substr($date, 0, 10) == substr($now, 0, 10)) ? true : false;
       if($MYD) {
         $hour_now = substr($now, 11, 2);
-        $min_now = substr($now, 14, 2); 
+        $min_now = substr($now, 14, 2);
         $sec_now = substr($now, 17, 2);
         $hour_date = substr($date, 11, 2);
         $min_date = substr($date, 14, 2);
@@ -93,7 +93,7 @@ if ( !class_exists( 'DALi' ) ) {
         $min = ($min_date == $min_now) ? 0 : (intval($min_now) - intval($min_date)) . ' minutes ago';
         $sec = ($sec_now == $sec_date) ? 0 : (intval($sec_now) - intval($sec_date)) . ' seconds ago';
         if($hour) { return $hour; }
-        else if($min) { return $min; } 
+        else if($min) { return $min; }
         else { return $sec; }
       } else {
         $year_now = substr($now, 0, 4);
@@ -105,9 +105,9 @@ if ( !class_exists( 'DALi' ) ) {
         $year = ($year_now == $year_date) ? 0 : (intval($year_now) - intval($year_date)) . ' years ago';
         $month = ($month_now == $month_date) ? 0 : (intval($month_now) - intval($month_date)) . ' months ago';
         $day = ($day_now == $day_date) ? 0 : (intval($day_now) - intval($day_date)) . ' days ago';
-        if($year) { return $year; } 
-        else if($month) { return $month; } 
-        else if($day) { return $day; } 
+        if($year) { return $year; }
+        else if($month) { return $month; }
+        else if($day) { return $day; }
         else { return 0; }
       }
     }
@@ -266,9 +266,9 @@ if ( !class_exists( 'DALi' ) ) {
     // SR Functions
     public function buildRequestsTable($username) {
       $user = $this->getUserID($username);
-      $sql = "SELECT sr_id, title, status_id, submitted_when, assigned_admin, last_updated
+      $sql = "SELECT sr_id, title, status_id, submitted_when, assigned_admin, last_updated, owner
               FROM service_record
-              WHERE submitted_by = '$user'";
+              WHERE owner = '$user'";
       $html = "";
       $result = $this->query($sql);
       foreach ($result as $res) {
@@ -288,13 +288,13 @@ if ( !class_exists( 'DALi' ) ) {
       return $html;
     }
 
-    /* 
+    /*
       Needs Mailbox implementation
     */
 
     public function buildSRView($sr_num, $id) {
-        $sql = "SELECT title, submitted_when, last_updated, description, submitted_by, assigned_admin, bldg, room
-        FROM service_record   
+        $sql = "SELECT title, submitted_when, last_updated, description, submitted_by, assigned_admin, bldg, room, owner
+        FROM service_record
         WHERE sr_id = '$sr_num'";
         $result = $this->query($sql);
         $title_info = $this->getTitleInfo($result[0][0]);
@@ -334,7 +334,8 @@ if ( !class_exists( 'DALi' ) ) {
                   "description"    => $result[0][3],
                   "submitted_by"   => $person[0][4],
                   "assigned_admin" => $result[0][5],
-                  "side"           => $specific_info
+                  "side"           => $specific_info,
+                  "owner"          => $results[0][8]
         );
         return $result_array;
     }
@@ -387,13 +388,13 @@ if ( !class_exists( 'DALi' ) ) {
     public function submitModalForm($title, $building, $room_number, $description, $phone) {
       $title_number = intval($this->getTitleNumber($title));
       $record_type = intval($this->getRecordType($title));
-      $username = intval($this->getUserID($_SESSION['username']));
+      $username = $_SESSION['userID']; //intval($this->getUserID($_SESSION['username']));
       $now = date('Y-m-d H:i:s');
       if($building != null) {
-        $sql = "INSERT INTO service_record (title, type, description, bldg, room, submitted_by, last_updated, phone)
+        $sql = "INSERT INTO service_record (title, type, description, bldg, room, owner, last_updated, phone)
                 VALUES('$title_number', '$record_type', '$description', '$building', '$room_number', '$username', '$now', '$phone')";
       } else {
-        $sql = "INSERT INTO service_record (title, type, description, submitted_by, last_updated, phone)
+        $sql = "INSERT INTO service_record (title, type, description, owner, last_updated, phone)
                 VALUES('$title_number', '$record_type', '$description', '$username', '$now', '$phone')";
       }
       $this->queryChange($sql);
@@ -401,6 +402,24 @@ if ( !class_exists( 'DALi' ) ) {
     }
 
     //-------Help Desk Staff Functions ---->
+    public function maybeBuildingList($check) {
+      $sql = "SELECT addition_info FROM sub_category WHERE id = '$check' LIMIT 1";
+    	$result = $this->query($sql)[0][0];
+      if ($result) {
+        // $option_html = '<select name="incident-building" class="building form-control input-md" id="incident-building" >';
+        $option_html .= '<option selected disabled>Choose the pertaining building</option>';
+        $buildings = $this->getBuildingsRow('all');
+        if($buildings) {
+          foreach($buildings as $result) {
+            $option_html .= '<option value="'.$result[0].'">'.$result[1].'</option>';
+          }
+        }
+        //$option_html .= '</select>';
+       // $option_html .= '<input type="textbox" name="sr_room" id="sr_room" class="form-control" placeholder="Room #">';
+        return $option_html;
+      }
+    }
+
     public function getRecordTypes() {
       $sql = "SELECT * FROM record_type";
       $types = $this->query($sql);
@@ -412,15 +431,16 @@ if ( !class_exists( 'DALi' ) ) {
       }
       return $option_html;
     }
-
-    public function getRecordCategories($type) {
+    public function getRecordCategories($type, $selected) {
       if ($type) {
         $sql = "SELECT category.id, category.cat FROM category INNER JOIN sub_category ON category.id = sub_category.cat INNER JOIN record_type ON sub_category.type = record_type.id WHERE sub_category.type = '$type' GROUP BY category.id ORDER BY cat ASC";
-        $option_html = '<option selected disabled>Choose a Category</option>';
+        if (!isset($selected)) $selectme == 'selected';
+        $option_html = "<option selected disabled>Choose a Category</option>";
         $cats = $this->query($sql);
         if($cats) {
           foreach($cats as $result) {
-            $option_html .= '<option value="'.$result[0].'">'.$result[1].'</option>';
+            if ($selected == $result[0]) $selectme == 'selected';
+            $option_html .= '<option value="'.$result[0].'" '.$selectme.'>'.$result[1].'</option>';
           }
         }
         return $option_html;
@@ -453,7 +473,6 @@ if ( !class_exists( 'DALi' ) ) {
       }
       return $this->query($sql);
     }
-
     public function getCompleteRecords($name){
       $sql = "SELECT COUNT(*) FROM service_record WHERE assigned_admin = '$name' AND status_id = '8' ";
       $result = $this->query($sql);
@@ -477,7 +496,7 @@ if ( !class_exists( 'DALi' ) ) {
           $category = $this->getCategoryById($title_info[0][2])[0][1];
           $status = $this->getStatus($res[2])[0][0];
 
-          $html .= '<tr data-href="?page=ViewRequests&sr='. $res[0] .'">';
+          $html .= '<tr class="clickableRow" data-href="?sr='. $res[0] .'">';
           $html .= '<td>'. $res[0] . '</td>'
                 . '<td class="mobile-table">' . $category . '</td>'
                 . '<td>'. $status .'</td>'
@@ -488,6 +507,98 @@ if ( !class_exists( 'DALi' ) ) {
                 . '</tr>';
       }
       return $html;
+    }
+    public function doesSRExist($sr_id) {
+      $doesExist = true;
+      $sql = "SELECT sr_id FROM service_record WHERE sr_id = $sr_id";
+      if(!$this->query($sql)) {
+        $doesExist = false;
+      }
+      return $doesExist;
+    }
+    public function buildSRTicketHd($requests) {
+        if($requests == "all") {
+          $sql = "SELECT * FROM service_record";
+          $results = $this->query($sql);
+        }
+        $html = '';
+        foreach($results as $res) {
+          $person = $this->getPersonInfo($res[19]);
+          $admin = $this->getPersonInfo($res[5]) ? $this->getPersonInfo($res[5]) : $res[5];
+          $html .= '<tr class="clickableRow" data-href="ServiceRecord.php?sr='. $res[0]. "\">"
+                    . '<td>'. $res[0] .'</td>'
+                    . '<td>'. $this->getTitleInfo($res[16])[0][3] .'</td>'
+                    . '<td>'. $this->getStatus($res[4])[0][0] .'</td>'
+                    . '<td>'. $person[0][1] . ' ' . $person[0][2] .'</td>'
+                    . '<td>'. $admin .'</td>'
+                    . '<td>'. 'test' .'</td>'
+                    . '<td>'. 'Undefined' .'</td>'
+                    . '<td>'. 'Undefined' .'</td>'
+                    . '<td>'. $res[12] .'</td>'
+                    . '<td>'. $res[17] .'</td>'
+                    .'</tr>';
+        }
+        return $html;
+    }
+
+    public function buildSRTicketViewHd($sr) {
+       $sql = "SELECT title, submitted_when, last_updated, description, submitted_by, assigned_admin, bldg, room, owner
+        FROM service_record
+        WHERE sr_id = '$sr'";
+        $results = $this->query($sql);
+        $title_info = $this->getTitleInfo($results[0][0]);
+        $incident_type = $title_info[0][8];
+        $building = $this->getBuildingsRow($results[0][6]);
+        $machine_info = $this->getMachineInfo($results[0][4]);
+        $person = $this->getPersonInfo($results[0][4]);
+        $user = $this->getPersonInfo($results[0][8]);
+        if($incident_type == 1) {
+          $title_page = "<h3 class='box-title'><i class='fa fa-file-text-o'> </i> Service Report</h3>";
+          $specific_info = '<div class="col-md-8">';
+          $side_title = '<h3 class="box-title"><i class="fa fa-info"></i> Location Information</h3>';
+          $specific_info .= '<div class="box-body">
+              <p>
+                <strong>Building:</strong> '. $building[0][0] .'<br />
+                <strong>Room:</strong> '. $results[0][7] .'<br />
+            </div><!-- /.box-body -->
+            </div>';
+        } else {
+          $title_page = "<h3 class='box-title'><i class='fa fa-stethoscope'> </i> System Checkup Report</h3>";
+          $specific_info = '<div class="col-md-8">';
+          $side_title = '<h3 class="box-title"><i class="fa fa-desktop"> </i> System Information</h3>';
+          $specific_info .= '<div class="box-body">
+              <p>
+                <strong>Model:</strong> '. $machine_info[1] .'<br />
+                <strong>Serial:</strong> '. $machine_info[2] .'<br />
+                <strong>Warranty:</strong> '. $machine_info[3] .'</br />
+                <strong>Password:</strong> '. $machine_info[4] .'<br />
+                <strong>Encryption Key:</strong> '. $machine_info[5] .'</p>
+            </div><!-- /.box-body -->
+            </div>';
+        }
+        $result_array = array(
+                  "title"          => $title_page,
+                  "problem"        => $title_info[0][3],
+                  "submitted_when" => $results[0][1],
+                  "last_updated"   => $results[0][2],
+                  "description"    => $results[0][3],
+                  "submitted_by"   => $person[0][4],
+                  "assigned_admin" => $results[0][5],
+                  "side"           => $specific_info,
+                  "side_title"     => $side_title,
+                  "person_info"    => $user[0]
+
+        );
+        return $result_array;
+
+    }
+
+    /* Submission Functions */
+    public function submitNewSR($type, $cat, $sub_cat, $submitted_by, $building, $room_number, $machine, $phone_number, $desc, $owner) {
+      $last_updated = date("Y-m-d H:i:s");
+      $sql = "INSERT into service_record (type, title, submitted_by, bldg, room, last_updated, phone, description, owner)
+              VALUES ('$type', '$sub_cat', '$submitted_by', '$building', '$room_number', '$last_updated', '$phone_number', '$desc', '$owner')";
+      $this->queryChange($sql);
     }
     //-------Admin Functions--------------->
     public function getHDUsers() {
@@ -549,7 +660,6 @@ if ( !class_exists( 'DALi' ) ) {
       if ($DoAdd) {
         $sql = "INSERT INTO roles (roleName) VALUES ('$name')";
         $succ = $this->queryChange($sql);
-        echo "<h2>BAH! THIS DON&apos;T WORK!</h2>";
         $roleID = $this->getRoleID($name);
         foreach ($_POST as $k => $v) {
           if (substr($k,0,5) == "perm_") {

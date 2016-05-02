@@ -43,7 +43,6 @@ if ($myACL->hasPermission('manage_users') != true) {
 										<input type="hidden" name="roleID" value="<?= $row[0]; ?>" />
 										<input type=image src='<?= "$icon_dir/group-delete-icon.png" ?>' height='24' />
 									</form> -->
-
 						<?php }?>
 					</tbody>
 					<tfoot>

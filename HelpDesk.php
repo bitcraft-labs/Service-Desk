@@ -18,7 +18,7 @@ Status:     Staging; Idea Testing; Development
     include_once 'modules/head.php'; ?>
     <?php echo "<body class='hold-transition skin-$skin sidebar-mini'>"; ?>
     <div class="wrapper">
-		<?php
+		<?php 
 		// build the user interface
 		include_once 'modules/header.php';
 		include_once 'modules/left_sidebar.php';
@@ -115,6 +115,16 @@ Status:     Staging; Idea Testing; Development
   });
 
   jQuery(document).ready(function($) {
+    $("#sdesk li").hover(function () {
+      $(this).addClass("active");
+    }, function () {
+      $(this).removeClass("active");
+    });
+    $("#ddesk li").hover(function () {
+      $(this).addClass("active");
+    }, function () {
+      $(this).removeClass("active");
+    });
     $(".clickableRow").on("click",function() {
       if (this.parentNode.parentNode.getAttribute("id") === "downloads") {
         window.open($(this).attr("data-href"),"_blank");
@@ -124,7 +134,8 @@ Status:     Staging; Idea Testing; Development
     });
   });
 
-  $('ul#sdesk').toggle(200);
+  $('#sdesk ul').toggle(200);$('#sdesk').addClass("active");
+
 </script>
 
     <!-- Optionally, you can add Slimscroll and FastClick plugins.

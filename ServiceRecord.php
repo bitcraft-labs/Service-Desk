@@ -7,10 +7,17 @@ Dev Date:   Spring 2016
 Status:     Staging; Idea Testing; Development
 -->
 <?php
+  ini_set('display_errors',1);
   include("modules/mainhead.php");
   if ($myACL->hasPermission('hd_portal') != true) {
     header("location: /");
     exit;
+  }
+  if(isset($_GET['sr']) && is_numeric($_GET['sr']) ) {
+  	if(!$dali->doesSRExist($_GET['sr'])) {
+  		header("location: /");
+  		exit;
+  	}
   }
 ?>
 <link rel="stylesheet" href="dist/css/form.css">
@@ -24,26 +31,26 @@ Status:     Staging; Idea Testing; Development
 		?>
 
 		<div class="content-wrapper">
-      <div class="ssp-title hd">
-          <h3>
-            <?php
-            $sr = $_GET['sr'];
-			if ($sr == "all") {
-				$now = getdate();
-				$now = array($now[mday],$now[mon],$now[year]);
-				echo "<i class='fa fa-table fa-2x pull-left'> </i>All Service Records<br><small>As of $now[1]-$now[0]-$now[2]</small>";
-			} elseif (isset($sr) && is_numeric($sr)) {
-              echo "<i class='fa fa-pencil-square-o fa-2x pull-left'> </i>Service Record: $sr<br><small>Yes, every thing you do is neccessary to be written down</small>";
-            } elseif (isset($sr) && $sr == 'new'){
-              echo "<i class='fa fa-pencil-square-o fa-2x pull-left'> </i>Add New Service Record<br><small>Don't forget any valuable information</small>";
-            } elseif ($_GET['page'] == "configure") {
-              echo "<i class='fa fa-cog fa-2x pull-left'> </i>Service Desk Configuration<br><small>Configure all da things!</small>";
-            }
-    				else
-    					echo "Welcome to Service Record Central";
-            ?>
-    			</h3>
-      </div>
+      		<div class="ssp-title hd">
+	          <h3>
+	            <?php
+	            $sr = $_GET['sr'];
+				if ($sr == "all") {
+					$now = getdate();
+					$now = array($now[mday],$now[mon],$now[year]);
+					echo "<i class='fa fa-table fa-2x pull-left'> </i>All Service Records<br><small>As of $now[1]-$now[0]-$now[2]</small>";
+				} elseif (isset($sr) && is_numeric($sr)) {
+	              echo "<i class='fa fa-pencil-square-o fa-2x pull-left'> </i>Service Record: $sr<br><small>Yes, every thing you do is neccessary to be written down</small>";
+	            } elseif (isset($sr) && $sr == 'new'){
+	              echo "<i class='fa fa-pencil-square-o fa-2x pull-left'> </i>Add New Service Record<br><small>Don't forget any valuable information</small>";
+	            } elseif ($_GET['page'] == "configure") {
+	              echo "<i class='fa fa-cog fa-2x pull-left'> </i>Service Desk Configuration<br><small>Configure all da things!</small>";
+	            }
+	    				else
+	    					echo "Welcome to Service Record Central";
+	            ?>
+	    	  </h3>
+      		</div>
 
 			<section class="content">
 				<div class="row">
@@ -51,7 +58,7 @@ Status:     Staging; Idea Testing; Development
 					  <?php //Show all service records ?>
 					  <?php if ($sr == "all") { ?>
 					    	<table id="records" class="table table-bordered table-striped">
-                  			<thead>
+                  <thead>
     			    			<tr>
     			    				<?php $tabhead = '
     				    				<th>SR#</td>
@@ -73,37 +80,13 @@ Status:     Staging; Idea Testing; Development
     			    			</tr>
     			    		</tfoot>
 				    		</table>
-		    		  <?php } 
+		    		  <?php }
 		    		  //show individual service record
-		    		  elseif (isset($sr) && is_numeric($sr)) {
-		    		  	echo "<p>Database table information is currently unavailable</p>";
+		    		  else if (isset($sr) && is_numeric($sr)) {
+		    		  	$info = $dali->buildSRTicketViewHd($sr);
 		    		  	?>
-		    		  	<p>The following form layout will need to be build:<br />
-		    		  		SR# - Status
-		    		  		Requesting User (name) - Type (student or faculty/staff)<br />
-		    		  		Contact Phone:<br />
-		    		  		Primary Email (pref. @student... or @fitchburgstate.edu):<br />
-		    		  		Manufacturer (dropdown)<br />
-		    		  		Model:<br />
-		    		  		Serial Number: | Status: (Active/Out of Warranty); more warranty info<br />
-		    		  		Who purchased laptop: <br />
-		    		  		AC Adapter Included (dropdown)<br />
-		    		  		Loaner Issue: Asset / charger yes/no<br />
-		    		  		Password: (start off plaintext, move towards hash with preview)<br />
-		    		  		Description (dropdown with general issues with option for other)<br />
-		    		  		More details:<br />
-		    		  		Do files need to be backed up? (dropdown)<br />
-		    		  		Assigned admin<br />
-		    		  		Checked in by &lt;assign to thou signed in&gt;<br />
-		    		  		Pickup date<br />
-		    		  		e-signature (drawing functionality)<br /></p>
-		    		  	<p>Worksheet / Checklist<br />
-		    		  		Dynamic note entries and checkboxes<br />
-		    		  		Checklist for general tools with spots for detections => assign checkbox to the user who checked the box<br />
-		    		  		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ccleaner, Mbam, etc.<br />
-		    		  		add note button -> trigger modal => assign note to thou who submitted<br />
 
-		    		  	</p>
+
 		    		  	<?php
 		    		  } elseif (isset($sr) && ($sr == "new")) {
 			                $type = $_GET['type'];
@@ -151,7 +134,11 @@ Status:     Staging; Idea Testing; Development
     <script src="dist/js/form.js"></script>
 
     <!-- page script -->
-    <script src="dist/js/sr_new_response.js"></script>
+    <?php
+    if($_GET['sr'] == 'new') {
+   		echo '<script src="dist/js/generate_sr.js"></script>';
+   	}
+   	?>
     <script>
       $(function () {
         $(".repair").hide();
@@ -177,16 +164,32 @@ Status:     Staging; Idea Testing; Development
         $(".machine").select2();
         $(".request-type").select2();
       });
-      $('ul#sdesk').toggle(200);
-
-      jQuery(document).ready(function($) {
-        $(".clickableRow").on("click",function() {
-          if (this.parentNode.parentNode.getAttribute("id") === "downloads") {
-            window.open($(this).attr("data-href"),"_blank");
-          } else {
-            document.location = $(this).attr("data-href");
-          }
-        });
+     $('#sdesk ul').toggle(200);$('#sdesk').addClass("active");
+     $(".clickableRow").on("click",function() {
+	      if (this.parentNode.parentNode.getAttribute("id") === "downloads") {
+	        window.open($(this).attr("data-href"),"_blank");
+	      } else {
+	        document.location = $(this).attr("data-href");
+	      }
+	    });
+     jQuery(document).ready(function($) {
+      	$("#incident_building").css("display", "none");
+      	$("#machine_display").css("display", "none");
+      	var height = $("#user_contact").css("height");
+      	var regex = /px/;
+      	var check = regex.exec(height);
+      	if(check) var h = height.substring(0, check.index);
+      	$("#specific_info").css("height", h - 20 + "px");
+      	$("#sdesk li").hover(function () {
+	      $(this).addClass("active");
+	    }, function () {
+	      $(this).removeClass("active");
+	    });
+	    $("#ddesk li").hover(function () {
+	      $(this).addClass("active");
+	    }, function () {
+	      $(this).removeClass("active");
+	    });
       });
     </script>
     <?php
