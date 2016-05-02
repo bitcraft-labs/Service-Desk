@@ -9,6 +9,7 @@ Status:     Staging; Idea Testing; Development
 <?php
   // ini_set('display_errors', 1);
   include("modules/mainhead.php");
+
   if ($myACL->hasPermission('hd_portal') != true) {
     header("location: /");
     exit;
@@ -17,15 +18,21 @@ Status:     Staging; Idea Testing; Development
   if (isset($_POST['submit_note'])) {
     $dali->submitNewNote($_GET['sr'], $_SESSION['userID'], $_POST['owner'], $_POST['subject'], $_POST['note_editor']);
   }
-?>
-<?php
-    include_once 'modules/head.php';
-    echo "<body class='hold-transition skin-$skin sidebar-mini'>
+
+  if(isset($_GET['sr']) && is_numeric($_GET['sr']) ) {
+  	if(!$dali->doesSRExist($_GET['sr'])) {
+  		header("location: /");
+  		exit;
+  	}
+  }
+
+  include_once 'modules/head.php';
+  echo "<body class='hold-transition skin-$skin sidebar-mini'>
     <div class='wrapper'>";
-		// build the user interface
-		include_once 'modules/header.php';
-		include_once 'modules/left_sidebar.php';
-		?>
+	// build the user interface
+	include_once 'modules/header.php';
+	include_once 'modules/left_sidebar.php';
+	?>
 
 		<div class="content-wrapper">
       		<div class="ssp-title hd">
@@ -64,8 +71,6 @@ Status:     Staging; Idea Testing; Development
 					    				<th class='padding_fix'>Requester</th>
 					    				<th class='padding_fix'>Assigned Admin</th>
 					    				<th class='padding_fix'>User Type</th>
-					    				<th class='padding_fix'>Manufacturer</th>
-					    				<th class='padding_fix'>Model</th>
 					    				<th class='padding_fix'>Date Checked In</th>
 					    				<th class='padding_fix'>Date Last Updated</th>
 					    			</tr>"; echo $thead; ?>
@@ -79,7 +84,7 @@ Status:     Staging; Idea Testing; Development
 				    		</table>
 		    		  <?php }
 		    		  //show individual service record
-		    		  elseif (isset($sr) && is_numeric($sr)) {
+		    		  else if (isset($sr) && is_numeric($sr)) {
 		    		  	$info = $dali->buildSRTicketViewHd($sr);
 		    		  	?>
 
@@ -102,7 +107,7 @@ Status:     Staging; Idea Testing; Development
 						                <div class="input-group-addon">
 						                  <i class="fa fa-envelope"></i>
 						                </div>
-						                <input type="text" class="form-control" value="<?= $info['person_info'][3]; ?>" data-inputmask='"mask": "__@__.__"' data-mask>
+						                <input type="text" class="form-control" value="<?= $info['person_info'][3]; ?>" data-inputmask='"mask": "__@__.__"' data-mask disabled>
 						              </div><!-- /.input group -->
 						            </div><!-- /.form group -->
 								    <!-- phone -->
@@ -112,7 +117,7 @@ Status:     Staging; Idea Testing; Development
 						                <div class="input-group-addon">
 						                  <i class="fa fa-phone"></i>
 						                </div>
-						                <input type="text" class="form-control" value="<?= $info['person_info'][8]; ?>" data-inputmask='"mask": "(999) 999-9999"' data-mask>
+						                <input type="text" class="form-control" value="<?= $info['person_info'][8]; ?>" data-inputmask='"mask": "(999) 999-9999"' data-mask disabled>
 						              </div><!-- /.input group -->
 						            </div><!-- /.form group -->
 								    <!-- banner id -->
@@ -122,7 +127,7 @@ Status:     Staging; Idea Testing; Development
                             <div class="input-group-addon">
                             <i>@</i>
                             </div>
-                            <input type="text" class="form-control" value="<?= $info['person_info'][10]; ?>" data-inputmask='"mask": "@12345678"' data-mask>
+                            <input type="text" class="form-control" value="<?= $info['person_info'][10]; ?>" data-inputmask='"mask": "@12345678"' data-mask disabled>
                           </div>
                         </div>
   							 	    </div>
@@ -205,7 +210,7 @@ Status:     Staging; Idea Testing; Development
 					    		  } else {
 					    		  	//show welcome page
 					    		  	echo "<p>You have reached this page in error</p>";
-					    		  	echo "<p>Please return to the <a href='./'>Dashboard</a> or <a href='?sr=all'>Search for a Record</a></p>";
+					    		  	echo "<p>Please return to the <a href='./'>Dashboard</a> or <a href='ServiceRecord.php?sr=all'>Search for a Record</a></p>";
 					    		  	echo "<script type='text/javascript'>window.location.href = './';</script>";
 		    		  		}
 		    		  ?>
@@ -254,6 +259,7 @@ Status:     Staging; Idea Testing; Development
           "lengthChange": true,
           "searching": true,
           "ordering": true,
+          "order" : [[0, "desc"]],
           "info": true,
           "autoWidth": false
         });

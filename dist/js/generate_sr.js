@@ -19,6 +19,11 @@ var queryGenerator = (function() {
                   else {
                     if (str3) {
                       document.getElementById("incident-building").innerHTML = xmlhttp.responseText;
+                      if($("#incident-building").html().length > 2) {
+                        $("#incident_building").show();
+                      } else {
+                        $("#incident_building").hide();
+                      }
                     }
                     else {
                       document.getElementById("sr_cat").innerHTML = xmlhttp.responseText;
@@ -31,16 +36,13 @@ var queryGenerator = (function() {
               xmlhttp.open("GET","/modules/service_record/ajax/sr_test.php?q="+str+"&k="+str2,true);
           } else if (str3) {
             xmlhttp.open("GET","/modules/service_record/ajax/sr_test.php?q="+str+"&k2="+str3,true);
-            displayExtraInfo(str3);
           } else {
             xmlhttp.open("GET","/modules/service_record/ajax/sr_test.php?q="+str,true);
           }
           xmlhttp.send();
       }
     }
-    function displayExtraInfo($type) {
-        if(str3 === "")
-    }
+    
     var publicAPI = {
       init : queryGenerator
     };

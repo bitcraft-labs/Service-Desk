@@ -266,9 +266,9 @@ if ( !class_exists( 'DALi' ) ) {
     // SR Functions
     public function buildRequestsTable($username) {
       $user = $this->getUserID($username);
-      $sql = "SELECT sr_id, title, status_id, submitted_when, assigned_admin, last_updated
+      $sql = "SELECT sr_id, title, status_id, submitted_when, assigned_admin, last_updated, owner
               FROM service_record
-              WHERE submitted_by = '$user'";
+              WHERE owner = '$user'";
       $html = "";
       $result = $this->query($sql);
       foreach ($result as $res) {
@@ -293,7 +293,7 @@ if ( !class_exists( 'DALi' ) ) {
     */
 
     public function buildSRView($sr_num, $id) {
-        $sql = "SELECT title, submitted_when, last_updated, description, submitted_by, assigned_admin, bldg, room
+        $sql = "SELECT title, submitted_when, last_updated, description, submitted_by, assigned_admin, bldg, room, owner
         FROM service_record
         WHERE sr_id = '$sr_num'";
         $result = $this->query($sql);
@@ -334,7 +334,8 @@ if ( !class_exists( 'DALi' ) ) {
                   "description"    => $result[0][3],
                   "submitted_by"   => $person[0][4],
                   "assigned_admin" => $result[0][5],
-                  "side"           => $specific_info
+                  "side"           => $specific_info,
+                  "owner"          => $results[0][8]
         );
         return $result_array;
     }
@@ -388,13 +389,13 @@ if ( !class_exists( 'DALi' ) ) {
     public function submitModalForm($title, $building, $room_number, $description, $phone) {
       $title_number = intval($this->getTitleNumber($title));
       $record_type = intval($this->getRecordType($title));
-      $username = intval($this->getUserID($_SESSION['username']));
+      $username = $_SESSION['userID']; //intval($this->getUserID($_SESSION['username']));
       $now = date('Y-m-d H:i:s');
       if($building != null) {
-        $sql = "INSERT INTO service_record (title, type, description, bldg, room, submitted_by, last_updated, phone)
+        $sql = "INSERT INTO service_record (title, type, description, bldg, room, owner, last_updated, phone)
                 VALUES('$title_number', '$record_type', '$description', '$building', '$room_number', '$username', '$now', '$phone')";
       } else {
-        $sql = "INSERT INTO service_record (title, type, description, submitted_by, last_updated, phone)
+        $sql = "INSERT INTO service_record (title, type, description, owner, last_updated, phone)
                 VALUES('$title_number', '$record_type', '$description', '$username', '$now', '$phone')";
       }
       $this->queryChange($sql);
@@ -505,6 +506,15 @@ if ( !class_exists( 'DALi' ) ) {
       return true;
     }
 
+    public function doesSRExist($sr_id) {
+      $doesExist = true;
+      $sql = "SELECT sr_id FROM service_record WHERE sr_id = $sr_id";
+      if(!$this->query($sql)) {
+        $doesExist = false;
+      }
+      return $doesExist;
+    }
+
     public function buildSRTicketHd($requests) {
         if($requests == "all") {
           $sql = "SELECT * FROM service_record";
@@ -512,7 +522,7 @@ if ( !class_exists( 'DALi' ) ) {
         }
         $html = '';
         foreach($results as $res) {
-          $person = $this->getPersonInfo($res[11]);
+          $person = $this->getPersonInfo($res[19]);
           $admin = $this->getPersonInfo($res[5]) ? $this->getPersonInfo($res[5]) : $res[5];
           $html .= '<tr class="clickableRow" data-href="ServiceRecord.php?sr='. $res[0]. "\">"
                     . '<td>'. $res[0] .'</td>'
@@ -521,8 +531,6 @@ if ( !class_exists( 'DALi' ) ) {
                     . '<td>'. $person[0][1] . ' ' . $person[0][2] .'</td>'
                     . '<td>'. $admin .'</td>'
                     . '<td>'. 'test' .'</td>'
-                    . '<td>'. 'Undefined' .'</td>'
-                    . '<td>'. 'Undefined' .'</td>'
                     . '<td>'. $res[12] .'</td>'
                     . '<td>'. $res[17] .'</td>'
                     .'</tr>';
@@ -531,7 +539,7 @@ if ( !class_exists( 'DALi' ) ) {
     }
 
     public function buildSRTicketViewHd($sr) {
-       $sql = "SELECT title, submitted_when, last_updated, description, submitted_by, assigned_admin, bldg, room
+       $sql = "SELECT title, submitted_when, last_updated, description, submitted_by, assigned_admin, bldg, room, owner
         FROM service_record
         WHERE sr_id = '$sr'";
         $results = $this->query($sql);
@@ -540,6 +548,7 @@ if ( !class_exists( 'DALi' ) ) {
         $building = $this->getBuildingsRow($results[0][6]);
         $machine_info = $this->getMachineInfo($results[0][4]);
         $person = $this->getPersonInfo($results[0][4]);
+        $user = $this->getPersonInfo($results[0][8]);
         if($incident_type == 1) {
           $title_page = "<h3 class='box-title'><i class='fa fa-file-text-o'> </i> Service Report</h3>";
           $specific_info = '<div class="col-md-8">';
@@ -574,17 +583,18 @@ if ( !class_exists( 'DALi' ) ) {
                   "assigned_admin" => $results[0][5],
                   "side"           => $specific_info,
                   "side_title"     => $side_title,
-                  "person_info"    => $person[0]
+                  "person_info"    => $user[0]
+
         );
         return $result_array;
 
     }
 
     /* Submission Functions */
-    public function submitNewSR($type, $cat, $sub_cat, $submitted_by, $building, $room_number, $machine) {
+    public function submitNewSR($type, $cat, $sub_cat, $submitted_by, $building, $room_number, $machine, $phone_number, $desc, $owner) {
       $last_updated = date("Y-m-d H:i:s");
-      $sql = "INSERT into service_record (type, title, submitted_by, bldg, room, last_updated)
-              VALUES ('$type', '$sub_cat', '$submitted_by', '$building', '$room_number', '$last_updated')";
+      $sql = "INSERT into service_record (type, title, submitted_by, bldg, room, last_updated, phone, description, owner)
+              VALUES ('$type', '$sub_cat', '$submitted_by', '$building', '$room_number', '$last_updated', '$phone_number', '$desc', '$owner')";
       $this->queryChange($sql);
     }
 
