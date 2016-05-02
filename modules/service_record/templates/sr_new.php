@@ -2,7 +2,7 @@
     if(isset($_POST['submit_sr'])) {
       $building = $_POST['incident-building'] ? $_POST['incident-building'] : NULL;
       $room_number = $_POST['incident-room'] ? $_POST['incident-room'] : NULL;
-      $dali->submitNewSR($_POST['sr_type'], $_POST['sr_cat'], $_POST['sr_subcat'], $_POST['incident_user'], $building, $room_number, NULL);
+      $dali->submitNewSR($_POST['sr_type'], $_POST['sr_cat'], $_POST['sr_subcat'], $_SESSION['userID'], $building, $room_number, NULL, $_POST['incident_phone'], $_POST['incident_description'], $_POST['incident_user']);
     }
 
  ?>
@@ -100,6 +100,24 @@
               <span class="help-block" id="hint_machine">
                   Select user machine or add new
               </span>
+          </div>
+          <div class="form-group">
+              <label class="control-label requiredField" for="incident_phone">
+                  Phone Number
+                  <span class="asteriskField">
+                      *
+                  </span>
+              </label>
+              <input type="text" class="form-control input-md" name="incident_phone" id="incident_phone">
+          </div>
+          <div class="form-group">
+              <label class="control-label requiredField" for="incident_description">
+                 Description
+                  <span class="asteriskField">
+                      *
+                  </span>
+              </label>
+              <textarea style="resize: none;" rows="8" class="form-control input-md" name="incident_description" id="incident_description"></textarea>
           </div>
           <div class="form-group">
               <div>

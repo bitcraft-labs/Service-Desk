@@ -12,6 +12,12 @@ Status:     Staging; Idea Testing; Development
     header("location: /");
     exit;
   }
+  if(isset($_GET['sr']) && is_numeric($_GET['sr']) ) {
+  	if(!$dali->doesSRExist($_GET['sr'])) {
+  		header("location: /");
+  		exit;
+  	}
+  }
 ?>
 <?php
     include_once 'modules/head.php';
@@ -74,7 +80,7 @@ Status:     Staging; Idea Testing; Development
 				    		</table>
 		    		  <?php } 
 		    		  //show individual service record
-		    		  elseif (isset($sr) && is_numeric($sr)) {
+		    		  else if (isset($sr) && is_numeric($sr)) {
 		    		  	$info = $dali->buildSRTicketViewHd($sr);
 		    		  	?>
 		    		  
@@ -92,12 +98,12 @@ Status:     Staging; Idea Testing; Development
 						      		<h4 style="font-weight: bold;"><?= $info['person_info'][1] . ' ' . $info['person_info'][2]; ?></h4>
 						      		<!-- email -->
 						            <div class="form-group">
-						              <label>FSU Email:</label>
+						              <label>Email:</label>
 						              <div class="input-group">
 						                <div class="input-group-addon">
 						                  <i class="fa fa-envelope"></i>
 						                </div>
-						                <input type="text" class="form-control" value="<?= $info['person_info'][3]; ?>" data-inputmask='"mask": "__@__.__"' data-mask>
+						                <input type="text" class="form-control" value="<?= $info['person_info'][3]; ?>" data-inputmask='"mask": "__@__.__"' data-mask disabled>
 						              </div><!-- /.input group -->
 						            </div><!-- /.form group -->
 								    <!-- phone -->
@@ -107,7 +113,7 @@ Status:     Staging; Idea Testing; Development
 						                <div class="input-group-addon">
 						                  <i class="fa fa-phone"></i>
 						                </div>
-						                <input type="text" class="form-control" value="<?= $info['person_info'][8]; ?>" data-inputmask='"mask": "(999) 999-9999"' data-mask>
+						                <input type="text" class="form-control" value="<?= $info['person_info'][8]; ?>" data-inputmask='"mask": "(999) 999-9999"' data-mask disabled>
 						              </div><!-- /.input group -->
 						            </div><!-- /.form group -->
 								    <!-- banner id -->
@@ -117,7 +123,7 @@ Status:     Staging; Idea Testing; Development
 						                <div class="input-group-addon">
 						                  <i>@</i>
 						                </div>
-						                <input type="text" class="form-control" value="<?= $info['person_info'][10]; ?>" data-inputmask='"mask": "@12345678"' data-mask>
+						                <input type="text" class="form-control" value="<?= $info['person_info'][10]; ?>" data-inputmask='"mask": "@12345678"' data-mask disabled>
 							      	   </div>
 						      		</div>
 							 	</div>
@@ -270,7 +276,7 @@ Status:     Staging; Idea Testing; Development
       	$("#specific_info").css("height", h - 20 + "px");
       	$("#sdesk li").hover(function () {
 	      $(this).addClass("active");
-	    }, function () {
+	    }, function () {	
 	      $(this).removeClass("active");
 	    });
 	    $("#ddesk li").hover(function () {
@@ -278,7 +284,6 @@ Status:     Staging; Idea Testing; Development
 	    }, function () {
 	      $(this).removeClass("active");
 	    });
-       
       });
     </script>
     <?php
