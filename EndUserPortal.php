@@ -12,7 +12,15 @@ Status:     Staging; Idea Testing; Development
     header("location: /");
     exit;
   }
-    
+
+  if (isset($_POST['submit_note'])) {
+    if ($info['assigned_admin'] == "Unassigned")
+      $to = $dali->getUserID($info['submitted_by']);
+    else
+      $to = $dali->getUserID($info['assigned_admin']);
+    $dali->submitNewNote($_GET['sr'], $_SESSION['userID'], $to, $_POST['subject'], $_POST['note_editor']);
+  }
+
 ?>
 <head>
     <meta charset="utf-8">
@@ -111,6 +119,12 @@ Status:     Staging; Idea Testing; Development
     <script type="text/javascript" src="dist/js/populateModalInformation.js"></script>
     <script type="text/javascript" src="bower/ckeditor/ckeditor.js"></script>
     <script type="text/javascript" src="dist/js/mailbox_functions.js"></script>
+    <!-- Note Handler -->
+    <?php if (isset($_GET['sr']) && is_numeric($_GET['sr'])) {
+      echo '<script src="dist/js/new_note.js"></script>';
+      echo '<script src="bower/ckeditor/ckeditor.js"></script>';
+      echo '<script>CKEDITOR.replace("note_editor")</script>';
+    }?>
     <script>
     function printing_functions() {
       var printing_div = document.getElementById("print_div");
@@ -129,8 +143,6 @@ Status:     Staging; Idea Testing; Development
           "info": true,
           "autoWidth": false
         });
-      });
-      $(function() {
         $("#accordion").accordion({
           collapsible : true,
           heightStyle : "content",
@@ -139,6 +151,7 @@ Status:     Staging; Idea Testing; Development
             duration : 500
           }
         });
+        $("#new_note_container").hide();
       });
       /* Annoying menu fix */
       $(function () {

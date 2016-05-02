@@ -9,10 +9,10 @@ $k2 = intval($_GET['k2']);
 
 if ($q && !$k && !$k2) {
   //echo '<option value="Choose a Category" disabled selected>Choose a Category</option>';
-  echo $dali->getRecordCateogries($q, $k);
+  echo $dali->getRecordCategories($q, $k);
 } else if ($k) {
   //echo '<option value="Choose a Sub-Category" disabled selected>Choose a Sub-Category</option>';
-  echo $dali->getRecordSubCateogries($q, $k);
+  echo $dali->getRecordSubCategories($q, $k);
 } if ($k2) {
   echo $dali->maybeBuildingList($k2);
 }

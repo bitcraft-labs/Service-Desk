@@ -67,6 +67,10 @@
   margin-top: -5px;
 }
 
+.skew-down {
+  margin-top: 35px;
+}
+
 .cpanel > .row {
   text-align: center;
   padding-top: 25px;
@@ -566,7 +570,7 @@ tbody tr {
     color : #fff !important;
   }
   .divider {
-    border-top: 1px solid #EEEEEE !important; 
+    border-top: 1px solid #EEEEEE !important;
   }
   .dropdown > li > ul > li {
     color: #151616;
@@ -629,7 +633,7 @@ tbody tr {
 
 @media screen and (max-width : 438px) {
   .fa.fa-sign-out {
-    display: none; 
+    display: none;
   }
   .mobile-fix {
     display: none;

@@ -1,8 +1,8 @@
 <!-- TEMPORARY READ COMMENTS FILE -->
-<?php 
-  $info = $dali->buildCommentDisplay($_GET['mb']); 
+<?php
+  $info = $dali->buildCommentDisplay($_GET['mb']);
   if(isset($_POST['submitted'])) {
-     $dali->sendComment($_SESSION['userID'], $_POST['editor1'], $info['fromId'], $info['sr_num'], $info['subject']);
+     $dali->sendComment($_SESSION['userID'], $_POST['editor1'], $info['fromId'], $info['sr_num'], $_POST['subject']);
   }
 ?>
 
@@ -28,12 +28,12 @@
                 <a href="?page='Mailbox&mb=<?= $_GET['mb']; ?>'" class="btn btn-box-tool" data-toggle="tooltip" title="Next"><i class="fa fa-chevron-right"></i></a>
               </div>
             </div>
-            
+
             <section class="content">
               <!-- /.box-header --><div id="print_div">
               <div class="box-body no-padding">
                 <div class="mailbox-read-info">
-                
+
                   <h3><?= $info['subject']; ?></h3>
                   <h5>From: <?= $info['email']; ?>
                     <span class="mailbox-read-time pull-right"><?= $info['when']; ?></span></h5>
@@ -65,23 +65,23 @@
                 <button onClick="printing_functions();" type="button" class="btn btn-default"><i class="fa fa-print"></i> Print</button>
               </div>
               <!-- /.box-footer -->
-            
-            <!-- /. box --> 
-              <div data-show="0" id="text_edit" class="container">
-                <div class="col-lg-12">
-                    <!-- Submit comment -->
-                    <form id="mailbox-form" method="POST" action="" class="form" role="form">
-                      <div class="form-group"> 
-                        <textarea id="editor1" name="editor1"></textarea>
-                      </div>
-                        <button name="submitted" onClick="" type="submit" class="btn btn-lg btn-custom">Send!</button>
-                    </form> 
-                </div>
+            </div>
+
+            <div data-show="0" id="text_edit" class="skew-down">
+              <div class="col-lg-12">
+                  <!-- Submit comment -->
+                  <form id="mailbox-form" method="POST" action="" class="form" role="form">
+                    <div class="form-group">
+                      <input type="hidden" name="subject" value="RE: <?= $info['subject'] ?>">
+                      <textarea id="editor1" name="editor1"></textarea>
+                    </div>
+                      <button name="submitted" onClick="" type="submit" class="btn btn-lg btn-custom">Send!</button>
+                  </form>
               </div>
             </div>
+
           </div>
           <!-- /.col -->
         </section>
       </div>
     </div>
-

@@ -7,10 +7,15 @@ Dev Date:   Spring 2016
 Status:     Staging; Idea Testing; Development
 -->
 <?php
+  // ini_set('display_errors', 1);
   include("modules/mainhead.php");
   if ($myACL->hasPermission('hd_portal') != true) {
     header("location: /");
     exit;
+  }
+
+  if (isset($_POST['submit_note'])) {
+    $dali->submitNewNote($_GET['sr'], $_SESSION['userID'], $_POST['owner'], $_POST['subject'], $_POST['note_editor']);
   }
 ?>
 <?php
@@ -29,7 +34,7 @@ Status:     Staging; Idea Testing; Development
 	            $sr = $_GET['sr'];
 				if ($sr == "all") {
 					$now = getdate();
-					$now = array($now[mday],$now[mon],$now[year]);
+					$now = array($now[mday]-1,$now[mon],$now[year]);
 					echo "<i class='fa fa-table fa-2x pull-left'> </i>All Service Records<br><small>As of $now[1]-$now[0]-$now[2]</small>";
 				} elseif (isset($sr) && is_numeric($sr)) {
 	              echo "<i class='fa fa-pencil-square-o fa-2x pull-left'> </i>Service Record: $sr<br><small>Yes, every thing you do is neccessary to be written down</small>";
@@ -72,12 +77,12 @@ Status:     Staging; Idea Testing; Development
                     <?= $thead ?>
 					    		</tfoot>
 				    		</table>
-		    		  <?php } 
+		    		  <?php }
 		    		  //show individual service record
 		    		  elseif (isset($sr) && is_numeric($sr)) {
 		    		  	$info = $dali->buildSRTicketViewHd($sr);
 		    		  	?>
-		    		  
+
 		    		  	<!-- User info -->
 		    		  	<div id="user_contact" class="col-md-6">
 		    		  		<div class="box box-solid box-purple">
@@ -92,7 +97,7 @@ Status:     Staging; Idea Testing; Development
 						      		<h4 style="font-weight: bold;"><?= $info['person_info'][1] . ' ' . $info['person_info'][2]; ?></h4>
 						      		<!-- email -->
 						            <div class="form-group">
-						              <label>FSU Email:</label>
+						              <label>Primary Email:</label>
 						              <div class="input-group">
 						                <div class="input-group-addon">
 						                  <i class="fa fa-envelope"></i>
@@ -111,19 +116,20 @@ Status:     Staging; Idea Testing; Development
 						              </div><!-- /.input group -->
 						            </div><!-- /.form group -->
 								    <!-- banner id -->
-						            <di	v class="form-group">
-						              <label>Banner ID:</label>
-						              <div class="input-group">
-						                <div class="input-group-addon">
-						                  <i>@</i>
-						                </div>
-						                <input type="text" class="form-control" value="<?= $info['person_info'][10]; ?>" data-inputmask='"mask": "@12345678"' data-mask>
-							      	   </div>
-						      		</div>
-							 	</div>
+                        <div class="form-group">
+                          <label>Banner ID:</label>
+                          <div class="input-group">
+                            <div class="input-group-addon">
+                            <i>@</i>
+                            </div>
+                            <input type="text" class="form-control" value="<?= $info['person_info'][10]; ?>" data-inputmask='"mask": "@12345678"' data-mask>
+                          </div>
+                        </div>
+  							 	    </div>
 		    		  		  </div>
-		    		  	   </div>
-		    		  
+                  </div>
+                </div>
+
 		    		  	<!-- Specific info -->
 		    		  	<div id="specific_info" class="col-md-6">
 		    		  		<div style="height: inherit;"class="box box-solid box-purple">
@@ -154,26 +160,30 @@ Status:     Staging; Idea Testing; Development
 						          Submitted by: <?= $info['submitted_by']; ?><br />
 						          Submitted: <?= $info['submitted_when']; ?></p>
 						        <p><?= $dali->getQRCode(); ?> Scan to mobile</p>
-								<p>Last Updated: <?= $info['last_updated']; ?></p>
+								    <p>Last Updated: <?= $info['last_updated']; ?></p>
 						        <!--<p><img src='https://chart.googleapis.com/chart?cht=qr&chl=http%3A%2F%2Fhelpdesk.bitcraftlabs.net%2FServiceRecord.php%3Fsr%3Dnew%26type%3D1&chs=180x180&choe=UTF-8&chld=L|2' width="120" alt="qr" /> Scan to mobile</p>-->
 						      </div> <!-- /Submission notes -->
-						      <div style="margin-top: -50px;" class="col-md-12"> <!-- Notes -->
+						      <div style="margin-top: -30px;" class="col-md-12">
+                    <!-- Notes -->
 						        <h4><strong>Notes:</strong></h4>
-						        <p>Record Submitted -- <em>Rose Tyler (01/07/2016 12:29pm)</em><br />
-						          "Student needs to purchase part -> http://amzn.to/XyZ134" -- <em>Clara Oswald (01/07/2016 02:37pm)</em><br />
-						          "Emailed student link to part" -- <em>Clara Oswald (01/07/2016 02:42pm)</em><br />
-						          Changed Status to "Waiting on Part" -- <em>Clara Oswald (01/07/2016 02:43pm)</em><br />
-						          "Received Part" -- <em>Rose Tyler (01/09/2016 09:12am)</em><br />
-						          "Replaced Screen" -- <em>Amelia Pond (01/09/2016 06:17pm)</em><br />
-						          "Called student for pickup" -- <em>Amelia Pond (01/09/2016 06:21pm)</em><br />
-						          Changed Status to "Waiting for Pickup" -- <em>Amelia Pond (01/09/2016 06:23pm)</em><br />
-						          Emailed Student the Status -- <em>System (01/09/2016 6:23pm)</em></p>
+                    <p id="notes_section"><?= $dali->getNotes($sr); ?></p>
 						      </div>
-						      
+
 							  </div><!-- /.box-body -->
 							  <div class="box-footer">
 							  	<!-- Implement way to add another comment -->
-							    <button style="margin: 10px;" type="button" class="btn btn-custom" onclick="">Add note</button>
+                  <div class="col-md-12" id="new_note_container">
+                    <form action="" method="post">
+                      <!-- <div class="form-control"> -->
+                        <label for="subject">Subject</label>
+                        <input type="text" name="subject" class="form-control input-md" placeholder="Subject" value="RE: <?= $info['problem'] ?>"><br>
+                        <input type="hidden" name="owner" value="<?= $info['person_info'][0] ?>">
+                        <textarea id="note_editor" name="note_editor"></textarea><br>
+                        <button type="submit" name="submit_note" class="btn btn-custom">Add Note</button>
+                      <!-- </div> -->
+                    </form>
+                  </div>
+							    <button style="margin: 10px;" type="button" class="btn btn-custom" onclick="add_note()" id="note_btn">Add note</button>
 							  </div><!-- box-footer -->
 							</div><!-- /.box -->
 						</div><!-- /checkup -->
@@ -225,8 +235,14 @@ Status:     Staging; Idea Testing; Development
     <script src="bower/AdminLTE/plugins/select2/select2.min.js"></script>
     <!-- AdminLTE App -->
     <script src="bower/AdminLTE/dist/js/app.min.js"></script>
+    <!-- Note Handler -->
+    <?php if (isset($_GET['sr']) && is_numeric($_GET['sr'])) {
+      echo '<script src="dist/js/new_note.js"></script>';
+      echo '<script src="bower/ckeditor/ckeditor.js"></script>';
+      echo '<script>CKEDITOR.replace("note_editor")</script>';
+    }?>
     <!-- page script -->
-    <?php 
+    <?php
     if($_GET['sr'] == 'new') {
    		echo '<script src="dist/js/generate_sr.js"></script>';
    	}
@@ -252,7 +268,7 @@ Status:     Staging; Idea Testing; Development
         $(".machine").select2();
         $(".request-type").select2();
       });
-     $('#sdesk ul').toggle(200);$('#sdesk').addClass("active"); 
+     $('#sdesk ul').toggle(200);$('#sdesk').addClass("active");
      $(".clickableRow").on("click",function() {
 	      if (this.parentNode.parentNode.getAttribute("id") === "downloads") {
 	        window.open($(this).attr("data-href"),"_blank");
@@ -278,7 +294,7 @@ Status:     Staging; Idea Testing; Development
 	    }, function () {
 	      $(this).removeClass("active");
 	    });
-       
+      $("#new_note_container").hide();
       });
     </script>
     <?php
