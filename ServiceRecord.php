@@ -7,7 +7,6 @@ Dev Date:   Spring 2016
 Status:     Staging; Idea Testing; Development
 -->
 <?php
-  ini_set('display_errors',1);
   include("modules/mainhead.php");
   if ($myACL->hasPermission('hd_portal') != true) {
     header("location: /");
