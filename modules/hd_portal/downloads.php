@@ -1,7 +1,7 @@
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <div class="ssp-title hd">
-      <h3><i class="fa fa-download fa-2x pull-left"> </i>User Downloads<br><small>Download all da things!</small></h3>
+      <h3><i class="fa fa-download fa-2x pull-left"> </i>User Downloads<br><small>Available software downloads</small></h3>
   </div>
 
 	<!-- Main content -->

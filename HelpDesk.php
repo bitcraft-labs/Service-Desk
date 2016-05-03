@@ -18,7 +18,7 @@ Status:     Staging; Idea Testing; Development
     include_once 'modules/head.php'; ?>
     <?php echo "<body class='hold-transition skin-$skin sidebar-mini'>"; ?>
     <div class="wrapper">
-		<?php 
+		<?php
 		// build the user interface
 		include_once 'modules/header.php';
 		include_once 'modules/left_sidebar.php';

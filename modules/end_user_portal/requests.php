@@ -2,7 +2,7 @@
 	<div class="ssp-title">
 		<div class="container">
 	      <h3><!--<i class="fa fa-laptop fa-2x pull-left"></i> -->Self-Service Portal <small>(Request List)<br>
-	  <!-- ADD NEW DESC -->These are not the droids you are looking for...</small></h3>
+			  Current Service Requests that you have</small></h3>
 	    </div>
 	</div>
 	<div class="container">
@@ -10,7 +10,7 @@
 			<div class="col-md-12">
 				<div class="box box-solid box-purple">
 				    <div class="box-header">
-				      <h3 class="box-title">Service Records</h3>
+				      <h3 class="box-title">Service Requests</h3>
 				    </div><!-- /.box-header -->
 			    <div class="box-body">
 			    	<table id="records" class="table table-bordered table-striped table-hover">

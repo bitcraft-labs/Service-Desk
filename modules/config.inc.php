@@ -104,7 +104,7 @@ if (file_exists("$path2/custom/config.php")) {
 /* ------------- APP NAME, VERSION NUMBER, ETC. ------------ */
 $app_name = "Bitcraft Service Desk";
 $app_name_short = "Service Desk";
-$app_version = "0.0.1";
+$app_version = "0.0.3";
 
 /* Sets the title in the header. This is what the page will be named by default when you
    make a "favorite" or "bookmark" in your browser. Change as you see fit. */
