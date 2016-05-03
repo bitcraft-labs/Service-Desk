@@ -223,6 +223,9 @@ Status:     Staging; Idea Testing; Development
 		include_once 'modules/footer.php';
 		include_once 'modules/control_sidebar.php'; ?>
     </div><!-- ./wrapper -->
+    <?php //if ($includeModal) {
+      include_once 'modules/service_record/machine.php';
+    //}?>
 
     <!-- REQUIRED JS SCRIPTS -->
 	<!-- jQuery -->

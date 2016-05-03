@@ -171,8 +171,114 @@ if ( !class_exists( 'DALi' ) ) {
       return $rt;
     }
 
+    public function getManufacturers() {
+      $sql = "SELECT * FROM manufacturer";
+      $res = $this->query($sql);
+      return $res;
+    }
+
+    // public function getWarrantyStatuses() {
+    //   $sql = "SELECT * FROM warr_status";
+    //   $res = $this->query($sql);
+    //   return $res;
+    // }
+
+    public function formBuilder($item) {
+      if ($item == 'mfr') {
+        $output = '<div class="form-group">';
+        $output .= '<label class="col-md-4 control-label" for="mfr">Manufacturer</label>';
+        $output .= '<div class="col-md-8">';
+        $output .= "<select id='mfr' name='mfr' class='form-control'>";
+        foreach ($this->getManufacturers() as $mfr) {
+          $output .= "<option value='$mfr[0]'>$mfr[1]</option>";
+        }
+        $output .= "</select>";
+        $output .= "</div>";
+        $output .= "</div>";
+        return $output;
+      } else if ($item == 'model') {
+        $output = '<div class="form-group">';
+        $output .= '<label class="col-md-4 control-label" for="model">Model Number</label>';
+        $output .= '<div class="col-md-8">';
+        $output .= '<input type="text" name="model" id="model" class="form-control input-md" placeholder="Model #">';
+        $output .= '</div>';
+        $output .= '</div>';
+        return $output;
+      } else if ($item == 'sn') {
+        $output = '<div class="form-group">';
+        $output .= '<label class="col-md-4 control-label" for="sn">Serial Number / Service Tag</label>';
+        $output .= '<div class="col-md-8">';
+        $output .= '<input type="text" name="sn" id="sn" class="form-control input-md" placeholder="Serial #">';
+        $output .= '</div>';
+        $output .= '</div>';
+        return $output;
+      } else if ($item == 'warr_status') {
+        $output = '<div class="form-group">';
+        $output .= '<label class="col-md-4 control-label" for="warr_status">Warranty Status</label>';
+        $output .= '<div class="col-md-8">';
+        $output .= '<input type="text" name="warr_status" id="warr_status" class="form-control input-md" placeholder="(e.g. Active Apple Care - June 2017)">';
+        $output .= '</div>';
+        $output .= '</div>';
+        return $output;
+      } else if ($item == 'password') {
+        $output = '<div class="form-group">';
+        $output .= '<label class="col-md-4 control-label" for="pass">Password</label>';
+        $output .= '<div class="col-md-8">';
+        $output .= '<input type="text" name="pass" id="pass" class="form-control input-md" placeholder="xxxxxxxx">';
+        $output .= '</div>';
+        $output .= '</div>';
+        return $output;
+      } else if ($item == 'encryption_key') {
+        $output = '<div class="form-group">';
+        $output .= '<label class="col-md-4 control-label" for="encryption_key">Encryption Key</label>';
+        $output .= '<div class="col-md-8">';
+        $output .= '<input type="text" name="encryption_key" id="encryption_key" class="form-control input-md" placeholder="(e.g. 12345 or abcde)">';
+        $output .= '</div>';
+        $output .= '</div>';
+        return $output;
+      } else if ($item == 'purchaser') {
+        $output = '<div class="form-group">';
+        $output .= '<label class="col-md-4 control-label" for="purchaser">Purchaser</label>';
+        $output .= '<div class="col-md-8">';
+        $output .= '<input type="text" name="purchaser" id="purchaser" class="form-control input-md" placeholder="Self">';
+        $output .= '</div>';
+        $output .= '</div>';
+        return $output;
+      } else if ($item == 'machineList') {
+        $output = '<div class="form-group">';
+        $output .= '<label class="col-md-4 control-label" for="machList">Choose Computer</label>';
+        $output .= '<div class="col-md-8">';
+        $output .= "<select id='machList' name='machList' class='form-control input-md'>";
+        $output .= '<option selected disabled>Choose Computer</option>';
+        foreach ($this->getMachines($this->getOwnerFromSR()) as $mach) {
+          $output .= "<option value='$mach[0]'>$mach[1] - $mach[2]</option>";
+        }
+        $output .= "</select>";
+        $output .= "</div>";
+        $output .= "</div>";
+        return $output;
+      }
+    }
+
+    public function getMachines($who) {
+      $sql = "SELECT mach_id, manufacturer.mfr, model FROM machine INNER JOIN manufacturer ON manufacturer.mfr_id = machine.mfr_id WHERE user_id = '$who'";
+      return $this->query($sql);
+    }
+
+    public function getOwnerFromSR() {
+      $sr = $_GET['sr'];
+      $sql = "SELECT owner FROM service_record WHERE sr_id = $sr LIMIT 1";
+      return $this->query($sql)[0][0];
+    }
+
+    public function addNewSystem($mfr, $model, $sn, $warr_status, $password, $encryption_key, $owner, $purchaser) {
+      $sql = "INSERT INTO machine (user_id, mfr_id, model, serial_num, warr_status, encryption_key, password, purchaser)
+              VALUES ('$owner', '$mfr', '$model', '$sn', '$warr_status', '$encryption_key', '$password', '$purchaser')";
+      $this->queryChange($sql);
+    }
+
     private function getMachineInfo($id) {
-      $sql = "SELECT mach_id, model, serial_num, warr_status, password, encryption_key FROM machine WHERE user_id='$id'";
+      $sql = "SELECT mach_id, model, serial_num, warr_status, password, encryption_key FROM machine WHERE mach_id='$id'";
       $result = $this->query($sql);
       return $result[0];
     }
@@ -293,14 +399,14 @@ if ( !class_exists( 'DALi' ) ) {
     */
 
     public function buildSRView($sr_num, $id) {
-        $sql = "SELECT title, submitted_when, last_updated, description, submitted_by, assigned_admin, bldg, room, owner
+        $sql = "SELECT title, submitted_when, last_updated, description, submitted_by, assigned_admin, bldg, room, owner, mach_id
         FROM service_record
         WHERE sr_id = '$sr_num'";
         $result = $this->query($sql);
         $title_info = $this->getTitleInfo($result[0][0]);
         $incident_type = $title_info[0][8];
         $building = $this->getBuildingsRow($result[0][6]);
-        $machine_info = $this->getMachineInfo($id);
+        $machine_info = $this->getMachineInfo($result[0][9]);
         $person = $this->getPersonInfo($result[0][4]);
         if($incident_type == 1) {
           $title_page = "<h3 class='box-title'><i class='fa fa-file-text-o'> </i> Service Report</h3>";
@@ -539,38 +645,62 @@ if ( !class_exists( 'DALi' ) ) {
     }
 
     public function buildSRTicketViewHd($sr) {
-       $sql = "SELECT title, submitted_when, last_updated, description, submitted_by, assigned_admin, bldg, room, owner
+       $sql = "SELECT title, submitted_when, last_updated, description, submitted_by, assigned_admin, bldg, room, owner, mach_id
         FROM service_record
         WHERE sr_id = '$sr'";
         $results = $this->query($sql);
         $title_info = $this->getTitleInfo($results[0][0]);
         $incident_type = $title_info[0][8];
+        $hasLocation = $title_info[0][9];
         $building = $this->getBuildingsRow($results[0][6]);
-        $machine_info = $this->getMachineInfo($results[0][4]);
+        $machine_info = $this->getMachineInfo($results[0][9]);
         $person = $this->getPersonInfo($results[0][4]);
         $user = $this->getPersonInfo($results[0][8]);
-        if($incident_type == 1) {
+        if (($incident_type == 1) && ($hasLocation == 1)) {
           $title_page = "<h3 class='box-title'><i class='fa fa-file-text-o'> </i> Service Report</h3>";
           $specific_info = '<div class="col-md-8">';
           $side_title = '<h3 class="box-title"><i class="fa fa-info"></i> Location Information</h3>';
           $specific_info .= '<div class="box-body">
               <p>
                 <strong>Building:</strong> '. $building[0][0] .'<br />
-                <strong>Room:</strong> '. $results[0][7] .'<br />
+                <strong>Room:</strong> '. $results[0][7] .'</p>
+            </div><!-- /.box-body -->
+            </div>';
+        } else if ($incident_type == 1) {
+          $title_page = "<h3 class='box-title'><i class='fa fa-file-text-o'> </i> Service Report</h3>";
+          $specific_info = '<div class="col-md-8">';
+          $side_title = '<h3 class="box-title"><i class="fa fa-info"></i> Additional Information</h3>';
+          $specific_info .= '<div class="box-body">
+              <p>No Additional Info.</p>
             </div><!-- /.box-body -->
             </div>';
         } else {
           $title_page = "<h3 class='box-title'><i class='fa fa-stethoscope'> </i> System Checkup Report</h3>";
           $specific_info = '<div class="col-md-8">';
           $side_title = '<h3 class="box-title"><i class="fa fa-desktop"> </i> System Information</h3>';
-          $specific_info .= '<div class="box-body">
+          $specific_info .= '<div class="box-body">';
+          if (1 != 1) {
+            $specific_info .= '
               <p>
                 <strong>Model:</strong> '. $machine_info[1] .'<br />
                 <strong>Serial:</strong> '. $machine_info[2] .'<br />
                 <strong>Warranty:</strong> '. $machine_info[3] .'</br />
                 <strong>Password:</strong> '. $machine_info[4] .'<br />
-                <strong>Encryption Key:</strong> '. $machine_info[5] .'</p>
+                <strong>Encryption Key:</strong> '. $machine_info[5] .'</p>';
+          } else {
+            $specific_info .= '<form action="" method="post" class="form-horizontal">';
+            $specific_info .= $this->formBuilder('machineList');
+            $specific_info .= '<div class="form-group">';
+            $specific_info .= '<button class="btn btn-custom" name="submit_tack_machine" type="submit">Apply</button>';
+            $specific_info .= '</div>';
+            $specific_info .= '</form>';
+          }
+            $specific_info .= '
             </div><!-- /.box-body -->
+            <br><br><br><br>
+            <div class="box-footer">
+              <button class="btn btn-custom btn-md" data-toggle="modal" data-target="#newMachine">Add Machine</button>
+            </div>
             </div>';
         }
         $result_array = array(

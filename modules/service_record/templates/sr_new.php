@@ -1,11 +1,13 @@
 <?php
-    if(isset($_POST['submit_sr'])) {
+    if (isset($_POST['submit_sr'])) {
       $building = $_POST['incident-building'] ? $_POST['incident-building'] : NULL;
       $room_number = $_POST['incident-room'] ? $_POST['incident-room'] : NULL;
       $dali->submitNewSR($_POST['sr_type'], $_POST['sr_cat'], $_POST['sr_subcat'], $_SESSION['userID'], $building, $room_number, NULL, $_POST['incident_phone'], $_POST['incident_description'], $_POST['incident_user']);
       $sr = $dali->getLastSR($_POST['incident_user']);
       header("Location: ServiceRecord.php?sr=$sr");
       exit;
+    } else if (isset($_POST['submit_tack_machine'])) {
+      //update ticket with associated computer
     }
 
  ?>
