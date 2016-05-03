@@ -545,18 +545,27 @@ if ( !class_exists( 'DALi' ) ) {
         $results = $this->query($sql);
         $title_info = $this->getTitleInfo($results[0][0]);
         $incident_type = $title_info[0][8];
+        $hasLocation = $title_info[0][9];
         $building = $this->getBuildingsRow($results[0][6]);
         $machine_info = $this->getMachineInfo($results[0][4]);
         $person = $this->getPersonInfo($results[0][4]);
         $user = $this->getPersonInfo($results[0][8]);
-        if($incident_type == 1) {
+        if (($incident_type == 1) && ($hasLocation == 1)) {
           $title_page = "<h3 class='box-title'><i class='fa fa-file-text-o'> </i> Service Report</h3>";
           $specific_info = '<div class="col-md-8">';
           $side_title = '<h3 class="box-title"><i class="fa fa-info"></i> Location Information</h3>';
           $specific_info .= '<div class="box-body">
               <p>
                 <strong>Building:</strong> '. $building[0][0] .'<br />
-                <strong>Room:</strong> '. $results[0][7] .'<br />
+                <strong>Room:</strong> '. $results[0][7] .'</p>
+            </div><!-- /.box-body -->
+            </div>';
+        } else if ($incident_type == 1) {
+          $title_page = "<h3 class='box-title'><i class='fa fa-file-text-o'> </i> Service Report</h3>";
+          $specific_info = '<div class="col-md-8">';
+          $side_title = '<h3 class="box-title"><i class="fa fa-info"></i> Additional Information</h3>';
+          $specific_info .= '<div class="box-body">
+              <p>No Additional Info.</p>
             </div><!-- /.box-body -->
             </div>';
         } else {
