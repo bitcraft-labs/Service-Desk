@@ -1,7 +1,7 @@
 <?php
 if (isset($_POST['submit_new_system'])) {
   $owner = $dali->getOwnerFromSR();
-  $dali->addNewSystem($_POST['mfr'], $_POST['model'], $_POST['sn'], $_POST['warr_status'], $_POST['pass'], $_POST['encryption_key'], $owner[0][0], $_POST['purchaser']);
+  $dali->addNewSystem($_POST['mfr'], $_POST['model'], $_POST['sn'], $_POST['warr_status'], $_POST['pass'], $_POST['encryption_key'], $owner, $_POST['purchaser']);
 }
 ?>
 <div id="newMachine" class="modal fade" role="dialog">

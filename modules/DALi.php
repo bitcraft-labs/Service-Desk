@@ -187,7 +187,7 @@ if ( !class_exists( 'DALi' ) ) {
       if ($item == 'mfr') {
         $output = '<div class="form-group">';
         $output .= '<label class="col-md-4 control-label" for="mfr">Manufacturer</label>';
-        $output .= '<div class="col-md-6">';
+        $output .= '<div class="col-md-8">';
         $output .= "<select id='mfr' name='mfr' class='form-control'>";
         foreach ($this->getManufacturers() as $mfr) {
           $output .= "<option value='$mfr[0]'>$mfr[1]</option>";
@@ -199,7 +199,7 @@ if ( !class_exists( 'DALi' ) ) {
       } else if ($item == 'model') {
         $output = '<div class="form-group">';
         $output .= '<label class="col-md-4 control-label" for="model">Model Number</label>';
-        $output .= '<div class="col-md-6">';
+        $output .= '<div class="col-md-8">';
         $output .= '<input type="text" name="model" id="model" class="form-control input-md" placeholder="Model #">';
         $output .= '</div>';
         $output .= '</div>';
@@ -207,7 +207,7 @@ if ( !class_exists( 'DALi' ) ) {
       } else if ($item == 'sn') {
         $output = '<div class="form-group">';
         $output .= '<label class="col-md-4 control-label" for="sn">Serial Number / Service Tag</label>';
-        $output .= '<div class="col-md-6">';
+        $output .= '<div class="col-md-8">';
         $output .= '<input type="text" name="sn" id="sn" class="form-control input-md" placeholder="Serial #">';
         $output .= '</div>';
         $output .= '</div>';
@@ -215,7 +215,7 @@ if ( !class_exists( 'DALi' ) ) {
       } else if ($item == 'warr_status') {
         $output = '<div class="form-group">';
         $output .= '<label class="col-md-4 control-label" for="warr_status">Warranty Status</label>';
-        $output .= '<div class="col-md-6">';
+        $output .= '<div class="col-md-8">';
         $output .= '<input type="text" name="warr_status" id="warr_status" class="form-control input-md" placeholder="(e.g. Active Apple Care - June 2017)">';
         $output .= '</div>';
         $output .= '</div>';
@@ -223,7 +223,7 @@ if ( !class_exists( 'DALi' ) ) {
       } else if ($item == 'password') {
         $output = '<div class="form-group">';
         $output .= '<label class="col-md-4 control-label" for="pass">Password</label>';
-        $output .= '<div class="col-md-6">';
+        $output .= '<div class="col-md-8">';
         $output .= '<input type="text" name="pass" id="pass" class="form-control input-md" placeholder="xxxxxxxx">';
         $output .= '</div>';
         $output .= '</div>';
@@ -231,7 +231,7 @@ if ( !class_exists( 'DALi' ) ) {
       } else if ($item == 'encryption_key') {
         $output = '<div class="form-group">';
         $output .= '<label class="col-md-4 control-label" for="encryption_key">Encryption Key</label>';
-        $output .= '<div class="col-md-6">';
+        $output .= '<div class="col-md-8">';
         $output .= '<input type="text" name="encryption_key" id="encryption_key" class="form-control input-md" placeholder="(e.g. 12345 or abcde)">';
         $output .= '</div>';
         $output .= '</div>';
@@ -239,7 +239,7 @@ if ( !class_exists( 'DALi' ) ) {
       } else if ($item == 'purchaser') {
         $output = '<div class="form-group">';
         $output .= '<label class="col-md-4 control-label" for="purchaser">Purchaser</label>';
-        $output .= '<div class="col-md-6">';
+        $output .= '<div class="col-md-8">';
         $output .= '<input type="text" name="purchaser" id="purchaser" class="form-control input-md" placeholder="Self">';
         $output .= '</div>';
         $output .= '</div>';
@@ -247,8 +247,8 @@ if ( !class_exists( 'DALi' ) ) {
       } else if ($item == 'machineList') {
         $output = '<div class="form-group">';
         $output .= '<label class="col-md-4 control-label" for="machList">Choose Computer</label>';
-        $output .= '<div class="col-md-6">';
-        $output .= "<select id='machList' name='machList' class='form-control'>";
+        $output .= '<div class="col-md-8">';
+        $output .= "<select id='machList' name='machList' class='form-control input-md'>";
         $output .= '<option selected disabled>Choose Computer</option>';
         foreach ($this->getMachines($this->getOwnerFromSR()) as $mach) {
           $output .= "<option value='$mach[0]'>$mach[1] - $mach[2]</option>";
@@ -690,6 +690,9 @@ if ( !class_exists( 'DALi' ) ) {
           } else {
             $specific_info .= '<form action="" method="post" class="form-horizontal">';
             $specific_info .= $this->formBuilder('machineList');
+            $specific_info .= '<div class="form-group">';
+            $specific_info .= '<button class="btn btn-custom" name="submit_tack_machine" type="submit">Apply</button>';
+            $specific_info .= '</div>';
             $specific_info .= '</form>';
           }
             $specific_info .= '
