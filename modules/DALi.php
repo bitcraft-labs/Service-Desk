@@ -244,13 +244,31 @@ if ( !class_exists( 'DALi' ) ) {
         $output .= '</div>';
         $output .= '</div>';
         return $output;
+      } else if ($item == 'machineList') {
+        $output = '<div class="form-group">';
+        $output .= '<label class="col-md-4 control-label" for="machList">Choose Computer</label>';
+        $output .= '<div class="col-md-6">';
+        $output .= "<select id='machList' name='machList' class='form-control'>";
+        $output .= '<option selected disabled>Choose Computer</option>';
+        foreach ($this->getMachines($this->getOwnerFromSR()) as $mach) {
+          $output .= "<option value='$mach[0]'>$mach[1] - $mach[2]</option>";
+        }
+        $output .= "</select>";
+        $output .= "</div>";
+        $output .= "</div>";
+        return $output;
       }
+    }
+
+    public function getMachines($who) {
+      $sql = "SELECT mach_id, manufacturer.mfr, model FROM machine INNER JOIN manufacturer ON manufacturer.mfr_id = machine.mfr_id WHERE user_id = '$who'";
+      return $this->query($sql);
     }
 
     public function getOwnerFromSR() {
       $sr = $_GET['sr'];
-      $sql = "SELECT owner FROM service_record WHERE sr_id = $sr";
-      return $this->query($sql);
+      $sql = "SELECT owner FROM service_record WHERE sr_id = $sr LIMIT 1";
+      return $this->query($sql)[0][0];
     }
 
     public function addNewSystem($mfr, $model, $sn, $warr_status, $password, $encryption_key, $owner, $purchaser) {
@@ -260,7 +278,7 @@ if ( !class_exists( 'DALi' ) ) {
     }
 
     private function getMachineInfo($id) {
-      $sql = "SELECT mach_id, model, serial_num, warr_status, password, encryption_key FROM machine WHERE user_id='$id'";
+      $sql = "SELECT mach_id, model, serial_num, warr_status, password, encryption_key FROM machine WHERE mach_id='$id'";
       $result = $this->query($sql);
       return $result[0];
     }
@@ -381,14 +399,14 @@ if ( !class_exists( 'DALi' ) ) {
     */
 
     public function buildSRView($sr_num, $id) {
-        $sql = "SELECT title, submitted_when, last_updated, description, submitted_by, assigned_admin, bldg, room, owner
+        $sql = "SELECT title, submitted_when, last_updated, description, submitted_by, assigned_admin, bldg, room, owner, mach_id
         FROM service_record
         WHERE sr_id = '$sr_num'";
         $result = $this->query($sql);
         $title_info = $this->getTitleInfo($result[0][0]);
         $incident_type = $title_info[0][8];
         $building = $this->getBuildingsRow($result[0][6]);
-        $machine_info = $this->getMachineInfo($id);
+        $machine_info = $this->getMachineInfo($result[0][9]);
         $person = $this->getPersonInfo($result[0][4]);
         if($incident_type == 1) {
           $title_page = "<h3 class='box-title'><i class='fa fa-file-text-o'> </i> Service Report</h3>";
@@ -627,7 +645,7 @@ if ( !class_exists( 'DALi' ) ) {
     }
 
     public function buildSRTicketViewHd($sr) {
-       $sql = "SELECT title, submitted_when, last_updated, description, submitted_by, assigned_admin, bldg, room, owner
+       $sql = "SELECT title, submitted_when, last_updated, description, submitted_by, assigned_admin, bldg, room, owner, mach_id
         FROM service_record
         WHERE sr_id = '$sr'";
         $results = $this->query($sql);
@@ -635,7 +653,7 @@ if ( !class_exists( 'DALi' ) ) {
         $incident_type = $title_info[0][8];
         $hasLocation = $title_info[0][9];
         $building = $this->getBuildingsRow($results[0][6]);
-        $machine_info = $this->getMachineInfo($results[0][4]);
+        $machine_info = $this->getMachineInfo($results[0][9]);
         $person = $this->getPersonInfo($results[0][4]);
         $user = $this->getPersonInfo($results[0][8]);
         if (($incident_type == 1) && ($hasLocation == 1)) {
@@ -660,13 +678,21 @@ if ( !class_exists( 'DALi' ) ) {
           $title_page = "<h3 class='box-title'><i class='fa fa-stethoscope'> </i> System Checkup Report</h3>";
           $specific_info = '<div class="col-md-8">';
           $side_title = '<h3 class="box-title"><i class="fa fa-desktop"> </i> System Information</h3>';
-          $specific_info .= '<div class="box-body">
+          $specific_info .= '<div class="box-body">';
+          if (1 != 1) {
+            $specific_info .= '
               <p>
                 <strong>Model:</strong> '. $machine_info[1] .'<br />
                 <strong>Serial:</strong> '. $machine_info[2] .'<br />
                 <strong>Warranty:</strong> '. $machine_info[3] .'</br />
                 <strong>Password:</strong> '. $machine_info[4] .'<br />
-                <strong>Encryption Key:</strong> '. $machine_info[5] .'</p>
+                <strong>Encryption Key:</strong> '. $machine_info[5] .'</p>';
+          } else {
+            $specific_info .= '<form action="" method="post" class="form-horizontal">';
+            $specific_info .= $this->formBuilder('machineList');
+            $specific_info .= '</form>';
+          }
+            $specific_info .= '
             </div><!-- /.box-body -->
             <br><br><br><br>
             <div class="box-footer">
