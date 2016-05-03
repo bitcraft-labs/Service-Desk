@@ -530,7 +530,7 @@ if ( !class_exists( 'DALi' ) ) {
                     . '<td>'. $this->getStatus($res[4])[0][0] .'</td>'
                     . '<td>'. $person[0][1] . ' ' . $person[0][2] .'</td>'
                     . '<td>'. $admin .'</td>'
-                    . '<td>'. 'test' .'</td>'
+                    . '<td>'. $this->getRole($res[19]) .'</td>'
                     . '<td>'. $res[12] .'</td>'
                     . '<td>'. $res[17] .'</td>'
                     .'</tr>';
@@ -598,6 +598,14 @@ if ( !class_exists( 'DALi' ) ) {
       $this->queryChange($sql);
     }
 
+    public function getLastSR($who) {
+      $sql = "SELECT sr_id, owner, last_updated FROM service_record WHERE owner = $who ORDER BY last_updated DESC LIMIT 1";
+      $res = array();
+      $res1 = $this->query($sql);
+      array_push($res,$res1[0]);
+      return $res[0][0];
+    }
+
     //-------Admin Functions--------------->
     public function getHDUsers() {
       $sql = "SELECT id, fname, lname, email
@@ -641,14 +649,15 @@ if ( !class_exists( 'DALi' ) ) {
       return $this->DoesThisExist($sql);
     }
 
-    public function getRoleID($name) {
-      $sql = "SELECT id FROM roles WHERE roleName='$name' LIMIT 1";
-      $result = $this->query($sql);
-      foreach ($result as $res) {
-        $id = $res[0];
+    function getRole($userID) {
+			$strSQL = "SELECT user_roles.userID as userID, user_roles.roleID as roleID, user_roles.addDate as addDate, roles.roleName FROM `user_roles` INNER JOIN roles on user_roles.roleID = roles.ID WHERE `userID` = $userID ORDER BY `roleName` DESC LIMIT 1";
+			$data = $this->query($strSQL);
+      $result = "";
+      foreach ($data as $role) {
+        $result .= $role[3] . " ";
       }
-      return $id;
-    }
+      return $result;
+		}
 
     public function addSecGroup() {
       $now = date("Y-m-d");

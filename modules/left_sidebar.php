@@ -41,9 +41,9 @@
           <a href="#"><i class="fa fa-file-text"></i> Service Desk <i class="fa fa-angle-left pull-right"></i></a>
           <ul class="treeview-menu">
             <li <?php if (($url == 'ServiceRecord.php') && ($_GET['sr']) || ($_GET['page'] == "tickets")) echo "class='active super_active'"; ?> ><a href="ServiceRecord.php?page=tickets&sr=all"><i class="fa fa-ticket"></i> Tickets</a></li>
-            <li <?php if (($url == 'HelpDesk.php') && ($_GET['page'] == "downloads")) echo "class='active super_active'"; ?> ><a href="HelpDesk.php?page=downloads"><i class="fa fa-download"></i> User Downloads</a></li>
+            <!-- <li <?php if (($url == 'HelpDesk.php') && ($_GET['page'] == "downloads")) echo "class='active super_active'"; ?> ><a href="HelpDesk.php?page=downloads"><i class="fa fa-download"></i> User Downloads</a></li> -->
             <li <?php if (($url == 'HelpDesk.php') && ($_GET['page'] == "knowledgebase")) echo "class='active super_active'"; ?> ><a href="HelpDesk.php?page=knowledgebase"><i class="fa fa-files-o"></i> Knowledgebase</a></li>
-            <li <?php if (($url == 'HelpDesk.php') && ($_GET['page'] == "announcements")) echo "class='active super_active'"; ?> ><a href="HelpDesk.php?page=announcements"><i class="fa fa-bell"></i> Announcements</a></li>
+            <!-- <li <?php if (($url == 'HelpDesk.php') && ($_GET['page'] == "announcements")) echo "class='active super_active'"; ?> ><a href="HelpDesk.php?page=announcements"><i class="fa fa-bell"></i> Announcements</a></li> -->
             <li <?php if (($url == 'ServiceRecord.php') && ($_GET['page'] == "configure")) echo "class='active super_active'"; ?> ><a href="ServiceRecord.php?page=configure"><i class="fa fa-cog"></i> Configuration</a></li>
           </ul>
         </li>
