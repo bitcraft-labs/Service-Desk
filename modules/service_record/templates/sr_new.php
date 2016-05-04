@@ -1,8 +1,13 @@
-<?php 
-    if(isset($_POST['submit_sr'])) {
+<?php
+    if (isset($_POST['submit_sr'])) {
       $building = $_POST['incident-building'] ? $_POST['incident-building'] : NULL;
       $room_number = $_POST['incident-room'] ? $_POST['incident-room'] : NULL;
       $dali->submitNewSR($_POST['sr_type'], $_POST['sr_cat'], $_POST['sr_subcat'], $_SESSION['userID'], $building, $room_number, NULL, $_POST['incident_phone'], $_POST['incident_description'], $_POST['incident_user']);
+      $sr = $dali->getLastSR($_POST['incident_user']);
+      header("Location: ServiceRecord.php?sr=$sr");
+      exit;
+    } else if (isset($_POST['submit_tack_machine'])) {
+      //update ticket with associated computer
     }
 
  ?>
@@ -15,7 +20,7 @@
                   <span class="asteriskField">*</span>
               </label>
               <select class="recordTypeList form-control" onChange="queryGenerator.init(this.value);" id="sr_type" name="sr_type">
-                <?= $dali->getRecordTypes(); ?> 
+                <?= $dali->getRecordTypes(); ?>
               </select>
               <span class="help-block" id="hint_sr_type">
                   Select type of service record
@@ -77,7 +82,7 @@
                </select>
                <span class="help-block" id="hint_building">
                    Select bulding from dropdown
-               </span> 
+               </span>
                 <label for="incident-room">Room<span class="asteriskField">
                         *
                     </span></label>
@@ -121,9 +126,7 @@
           </div>
           <div class="form-group">
               <div>
-                  <button class="btn btn-custom " name="submit_sr" type="submit">
-                      Submit
-                  </button>
+                  <button class="btn btn-custom" name="submit_sr" type="submit">Submit</button>
               </div>
           </div>
       </form>
