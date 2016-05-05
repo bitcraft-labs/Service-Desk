@@ -1,5 +1,4 @@
 <?php
-// ini_set('display_errors', 1);
 $rootdir =  $_SERVER['DOCUMENT_ROOT'];
 include_once "$rootdir/modules/mainhead.php";
 ?>

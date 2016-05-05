@@ -9,7 +9,6 @@ Status:     Staging; Idea Testing; Development
 <?php
   // ini_set('display_errors', 1);
   include("modules/mainhead.php");
-
   if ($myACL->hasPermission('hd_portal') != true) {
     header("location: /");
     exit;
@@ -17,14 +16,12 @@ Status:     Staging; Idea Testing; Development
   if (isset($_POST['submit_note'])) {
     $dali->submitNewNote($_GET['sr'], $_SESSION['userID'], $_POST['owner'], $_POST['subject'], $_POST['note_editor']);
   }
-
   if(isset($_GET['sr']) && is_numeric($_GET['sr']) ) {
   	if(!$dali->doesSRExist($_GET['sr'])) {
   		header("location: /");
   		exit;
   	}
   }
-
   include_once 'modules/head.php';
   echo "<body class='hold-transition skin-$skin sidebar-mini'>
     <div class='wrapper'>";
@@ -255,16 +252,7 @@ Status:     Staging; Idea Testing; Development
    	}
    	?>
     <script>
-      $(function() {
-        $(".building").select2();
-        $(".user-list").select2();
-        $(".machine").select2();
-        $(".request-type").select2();
-      });
-
       $(function () {
-        $(".repair").hide();
-        $(".incident").hide();
         $('#records').DataTable({
           "paging": true,
           "lengthChange": true,
@@ -275,7 +263,6 @@ Status:     Staging; Idea Testing; Development
           "autoWidth": false
         });
       });
-
       $(function() {
         $("#sr_type").select2();
         $("#sr_cat").select2();

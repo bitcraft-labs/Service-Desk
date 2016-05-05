@@ -537,6 +537,11 @@ tbody tr {
   border-left: 3px solid #605ca8;
 }
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> origin/pre-alpha
 /* ADMIN */
 .box_uploading, .box_success, .box_error, .box_dragndrop {
   display: none;

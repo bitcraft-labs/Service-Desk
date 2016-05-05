@@ -28,12 +28,10 @@
                 <a href="?page='Mailbox&mb=<?= $_GET['mb']; ?>'" class="btn btn-box-tool" data-toggle="tooltip" title="Next"><i class="fa fa-chevron-right"></i></a>
               </div>
             </div>
-
             <section class="content">
               <!-- /.box-header --><div id="print_div">
               <div class="box-body no-padding">
                 <div class="mailbox-read-info">
-
                   <h3><?= $info['subject']; ?></h3>
                   <h5>From: <?= $info['email']; ?>
                     <span class="mailbox-read-time pull-right"><?= $info['when']; ?></span></h5>
