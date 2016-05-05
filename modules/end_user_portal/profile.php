@@ -11,12 +11,20 @@
 	foreach ($personinfo as $prow) {}
 	$joindate = strtotime( $prow['creation_date'] );
 	$cdate = date( 'F d, Y', $joindate );
+
+	if(isset($_POST['submitted_pass'])) {
+	   if($authenticator->ChangePassword()) {
+		    $passStatus = "<br>Password Changed Successfully!";
+	   } else {
+		   $passStatus = "<br>Error changing password!";
+	   }
+	}
  ?>
 <div class="content-wrapper">
 	<div class="ssp-title">
 		<div class="container">
 	      <h3><!--<i class="fa fa-laptop fa-2x pull-left"></i> -->Self-Service Portal <small>(Profile)<br>
-	  <!-- ADD NEW DESC -->Live long and prosper</small></h3>
+			  Feel free to change your contact information so we can better serve you.</small></h3>
 	    </div>
 	</div>
 	<div class="container">
@@ -25,9 +33,9 @@
 				<!-- Content Header (Page header) -->
 				<h2><?= $authenticator->UserFullName() ?></h2>
 				<h4><?= "Member Since: ".$cdate ?></h4>
-
-				<!-- Main content -->
-					<p><a href="change-pass.php">Change Password</a></p><br>
+				<p><a href="javascript:;" data-toggle="modal" data-target="#changepass">Change Password</a>
+						<?=$passStatus?>
+				</p><br>
 				</div>
 			  	<!--<?php //echo "<h2>$prow->name<br /><small>$prow->user_type</small></h2>"; ?> -->
 			  	<!-- <h2>Jo Shmo<br /><small>Student</small></h2> -->
@@ -38,7 +46,7 @@
 					    <?php echo "<div><span class='error'></span></div>";?>
 					    <!-- email -->
 			            <div class="form-group">
-			              <label>FSU Email:</label>
+			              <label>Primary Email:</label>
 			              <div class="input-group">
 			                <div class="input-group-addon">
 			                  <i class="fa fa-envelope"></i>
@@ -75,4 +83,46 @@
 			  </div>
 		 </div>
 	</div>
+</div>
+
+<!-- Change Password Modal -->
+<div id="changepass" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+				<!-- Modal content-->
+				<div class="modal-content">
+						<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+								<h4 class="modal-title">Change Password</h4>
+						</div>
+						<div class="modal-body">
+								<form id='changepwd' class="col-md-12" action='' method='post' accept-charset='UTF-8'>
+										<fieldset>
+												<p>Need to change your password? No problem.</p>
+												<div><span class='error'><?php echo $authenticator->GetErrorMessage(); ?></span></div>
+												<div class="form-group">
+														<div class='pwdwidgetdiv' id='oldpwddiv'></div>
+
+														<input type='password' name='oldpwd' id="oldpwd" class="form-control input-md" placeholder="Old Password" />
+
+														<span id='changepwd_oldpwd_errorloc' class='error'></span>
+												</div>
+												<div class="form-group">
+														<div class='pwdwidgetdiv' id='newpwddiv'></div>
+
+														<input type='password' name='newpwd' id="newpwd" class="form-control input-md" placeholder="New Password" />
+
+														<span id='changepwd_newpwd_errorloc' class='error'></span>
+												</div>
+												<div class="form-group">
+														<button name='submitted_pass' type='submit' class="btn btn-custom btn-md btn-block">Change Password</button>
+												</div>
+												<fieldset>
+								</form>
+						</div>
+						<div class="modal-footer">
+								<!-- <button type="button" class="btn btn-custom" data-dismiss="modal">Close</button> -->
+						</div>
+				</div>
+		</div>
 </div>

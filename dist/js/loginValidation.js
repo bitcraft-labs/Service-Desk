@@ -5,19 +5,18 @@ var loginFormValidation = (function() {
 		var $error = '<div class="alert alert-danger alert-dismissable" id="error">';
 		var $formError = "";
 		/*
-			Regex checks for any characters that are not a word
+			Regex checks for any characters that are not a valid letter
 		*/
 		function calculatePossibleInjection(value) {
 			var isPossibleOfInjection = false;
-			var checkInject = /^\W/g;
+			var checkInject = /\W/g;
 			var injection = checkInject.exec(value);
-			if(!injection) {
-				isPossibleOfInjection = true;
-			} 
+			isPossibleOfInjection = !injection ? true : false;
 			return isPossibleOfInjection;
 		}
+	
 		// Handle username validation
-		if($username === "") {
+		if($username == "") {
 			 $formError += "<span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span>" +
                            "<span class='sr-only'>Error:</span>" +
                            " Username cannot be empty<br/>";
@@ -31,11 +30,7 @@ var loginFormValidation = (function() {
 			 $formError += "<span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span>" +
                            "<span class='sr-only'>Error:</span>" +
                            " Password cannot be empty<br/>";
-		} else if(!calculatePossibleInjection($password)) {
-			 $formError += "<span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span>" +
-                           "<span class='sr-only'>Error:</span>" +
-                           " Invalid characters in password<br/>";
-		}
+		} 
 		if($formError !== "") {
 			event.preventDefault();
             $error += ("<button type='button' class='close' data-dismiss='alert'>x</button>" + $formError);

@@ -24,7 +24,7 @@
           </ul>
         </div><!-- /.box-body -->
       </div><!-- /. box -->
-      <a href="compose.html"><button class="btn btn-primary btn-block margin-bottom">Compose New Message</button></a>
+      <a href="compose.html"><button class="btn btn-custom btn-block margin-bottom">Compose New Message</button></a>
     </div><!-- /.col -->
     <div class="col-md-9">
       <div class="box box-primary">

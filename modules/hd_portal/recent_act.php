@@ -3,12 +3,12 @@ TODO: Include database data into the tables
 
 --->
 <div class="col-md-6 col-xs-12">
-  <div class="box">
+  <div class="box box-solid box-purple">
     <div class="box-header">
       <h3 class="box-title">Recent Activity</h3>
     </div><!-- /.box-header -->
     <div class="box-body">
-      <table id="records" class="table table-bordered table-striped">
+      <table id="recent_activity" class="table table-bordered table-striped">
         <thead>
           <?php $thead = "
           <tr>
@@ -20,22 +20,22 @@ TODO: Include database data into the tables
           </tr>"; echo $thead;?>
         </thead>
         <tbody>
-          <tr>
-            <td><a href="?sr=1">1</a></td>
+          <tr class="clickableRow" data-href="ServiceRecord.php?sr=1">
+            <td>1</td>
             <td>Allen Perry</td>
             <td>In Progress</td>
             <td>Joshua Nasiatka</td>
             <td>12/2/2015</td>
           </tr>
-          <tr>
-            <td><a href="?sr=2">2</a></td>
+          <tr class="clickableRow" data-href="ServiceRecord.php?sr=2">
+            <td>2</td>
             <td>Jacob Lee</td>
             <td>In Progress</td>
             <td>Wade Wilson</td>
             <td>2/12/2016</td>
           </tr>
-          <tr>
-            <td><a href="?sr=2">3</a></td>
+          <tr class="clickableRow" data-href="ServiceRecord.php?sr=3">
+            <td>3</td>
             <td>Eugene Duffy</td>
             <td>In Progress</td>
             <td>Mac Admin</td>

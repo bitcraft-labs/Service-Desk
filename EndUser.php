@@ -127,6 +127,7 @@ Status:     Staging; Idea Testing; Development
           "autoWidth": false
         });
       });
+      $('ul#sdesk').toggle(200);
     </script>
     <?php
     include_once 'modules/modals.php'; ?>

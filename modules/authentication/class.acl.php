@@ -1,15 +1,12 @@
-<?php
+<?php 
+	class ACL {
 
-	class ACL
-	{
 		var $perms = array();		//Array : Stores the permissions for the user
 		var $userID = 0;			//Integer : Stores the ID of the current user
 		var $userRoles = array();	//Array : Stores the roles of the current user
 
-		function __constructor($userID = '')
-		{
-			if ($userID != '')
-			{
+		function __constructor($userID = '') {
+			if ($userID != '') {
 				$this->userID = floatval($userID);
 			} else {
 				$this->userID = floatval($_SESSION['userID']);
@@ -18,69 +15,58 @@
 			$this->buildACL();
 		}
 
-		function ACL($userID = '')
-		{
+		function ACL($userID = '') {
 			$this->__constructor($userID);
 			//crutch for PHP4 setups
 		}
 
-		function buildACL()
-		{
+		function buildACL() {
 			//first, get the rules for the user's role
-			if (count($this->userRoles) > 0)
-			{
+			if (count($this->userRoles) > 0) {
 				$this->perms = array_merge($this->perms,$this->getRolePerms($this->userRoles));
 			}
 			//then, get the individual user permissions
 			$this->perms = array_merge($this->perms,$this->getUserPerms($this->userID));
 		}
 
-		function getPermKeyFromID($permID)
-		{
+		function getPermKeyFromID($permID) {
 			$strSQL = "SELECT `permKey` FROM `permissions` WHERE `ID` = " . floatval($permID) . " LIMIT 1";
 			$data = mysql_query($strSQL);
 			$row = mysql_fetch_array($data);
 			return $row[0];
 		}
 
-		function getPermNameFromID($permID)
-		{
+		function getPermNameFromID($permID) {
 			$strSQL = "SELECT `permName` FROM `permissions` WHERE `ID` = " . floatval($permID) . " LIMIT 1";
 			$data = mysql_query($strSQL);
 			$row = mysql_fetch_array($data);
 			return $row[0];
 		}
 
-		function getRoleNameFromID($roleID)
-		{
+		function getRoleNameFromID($roleID) {
 			$strSQL = "SELECT `roleName` FROM `roles` WHERE `ID` = " . floatval($roleID) . " LIMIT 1";
 			$data = mysql_query($strSQL);
 			$row = mysql_fetch_array($data);
 			return $row[0];
 		}
 
-		function getUserRoles()
-		{
+		function getUserRoles() {
 			$strSQL = "SELECT * FROM `user_roles` WHERE `userID` = " . floatval($this->userID) . " ORDER BY `addDate` ASC";
 			$data = mysql_query($strSQL);
 			$resp = array();
-			while($row = mysql_fetch_array($data))
-			{
+			while($row = mysql_fetch_array($data)) {
 				$resp[] = $row['roleID'];
 			}
 			return $resp;
 		}
 
-		function getAllRoles($format='ids')
-		{
+		function getAllRoles($format='ids') {
 			$format = strtolower($format);
 			$strSQL = "SELECT * FROM `roles` ORDER BY `roleName` ASC";
 			$data = mysql_query($strSQL);
 			$resp = array();
-			while($row = mysql_fetch_array($data))
-			{
-				if ($format == 'full')
-				{
+			while($row = mysql_fetch_array($data)) {
+				if ($format == 'full') {
 					$resp[] = array("ID" => $row['ID'],"Name" => $row['roleName']);
 				} else {
 					$resp[] = $row['ID'];
@@ -89,16 +75,13 @@
 			return $resp;
 		}
 
-		function getAllPerms($format='ids')
-		{
+		function getAllPerms($format='ids') {
 			$format = strtolower($format);
 			$strSQL = "SELECT * FROM `permissions` ORDER BY `permName` ASC";
 			$data = mysql_query($strSQL);
 			$resp = array();
-			while($row = mysql_fetch_assoc($data))
-			{
-				if ($format == 'full')
-				{
+			while($row = mysql_fetch_assoc($data)) {
+				if ($format == 'full') {
 					$resp[$row['permKey']] = array('ID' => $row['ID'], 'Name' => $row['permName'], 'Key' => $row['permKey']);
 				} else {
 					$resp[] = $row['ID'];
@@ -107,18 +90,15 @@
 			return $resp;
 		}
 
-		function getRolePerms($role)
-		{
-			if (is_array($role))
-			{
+		function getRolePerms($role) {
+			if (is_array($role)) {
 				$roleSQL = "SELECT * FROM `role_perms` WHERE `roleID` IN (" . implode(",",$role) . ") ORDER BY `ID` ASC";
 			} else {
 				$roleSQL = "SELECT * FROM `role_perms` WHERE `roleID` = " . floatval($role) . " ORDER BY `ID` ASC";
 			}
 			$data = mysql_query($roleSQL);
 			$perms = array();
-			while($row = mysql_fetch_assoc($data))
-			{
+			while($row = mysql_fetch_assoc($data)) {
 				$pK = strtolower($this->getPermKeyFromID($row['permID']));
 				if ($pK == '') { continue; }
 				if ($row['value'] === '1') {
@@ -131,13 +111,11 @@
 			return $perms;
 		}
 
-		function getUserPerms($userID)
-		{
+		function getUserPerms($userID) {
 			$strSQL = "SELECT * FROM `user_perms` WHERE `userID` = " . floatval($userID) . " ORDER BY `addDate` ASC";
 			$data = mysql_query($strSQL);
 			$perms = array();
-			while($row = mysql_fetch_assoc($data))
-			{
+			while($row = mysql_fetch_assoc($data)) {
 				$pK = strtolower($this->getPermKeyFromID($row['permID']));
 				if ($pK == '') { continue; }
 				if ($row['value'] == '1') {
@@ -150,25 +128,19 @@
 			return $perms;
 		}
 
-		function userHasRole($roleID)
-		{
-			foreach($this->userRoles as $k => $v)
-			{
-				if (floatval($v) === floatval($roleID))
-				{
+		function userHasRole($roleID) {
+			foreach($this->userRoles as $k => $v) {
+				if (floatval($v) === floatval($roleID)) {
 					return true;
 				}
 			}
 			return false;
 		}
 
-		function hasPermission($permKey)
-		{
+		function hasPermission($permKey) {
 			$permKey = strtolower($permKey);
-			if (array_key_exists($permKey,$this->perms))
-			{
-				if ($this->perms[$permKey]['value'] === '1' || $this->perms[$permKey]['value'] === true)
-				{
+			if (array_key_exists($permKey,$this->perms)) {
+				if ($this->perms[$permKey]['value'] === '1' || $this->perms[$permKey]['value'] === true) {
 					return true;
 				} else {
 					return false;
@@ -192,13 +164,11 @@
 			}
 		}
 
-		function getUsername($userID)
-		{
+		function getUsername($userID) {
 			$strSQL = "SELECT `username` FROM `users` WHERE `id` = " . floatval($userID) . " LIMIT 1";
 			$data = mysql_query($strSQL);
 			$row = mysql_fetch_array($data);
 			return $row[0];
 		}
 	}
-
-?>
+ ?>

@@ -1,5 +1,13 @@
 body.dark {
-  background: #151616;
+  background:
+    linear-gradient(
+      rgba(14, 14, 14, 0.99),
+      rgba(35, 34, 38, 0.95)
+    ),
+    url('../../custom/img/data-center.jpg');
+  background-size: cover;
+
+  /*background: #151616;*/
 }
 
 .darktext {
@@ -15,6 +23,17 @@ body.dark {
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+}
+
+@media (max-width: 768px) {
+  #show_pass_button {
+    color: #111;
+  }
+
+  #show_pass_button:hover {
+    color: #fff;
+    background: #111;
+  }
 }
 @media (min-width: 768px) {
   .container {

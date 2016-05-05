@@ -9,11 +9,7 @@ if ($myACL->hasPermission('manage_users') != true) {
 		<?php $adminsub = 'Access Control List';
  			  $adminhsub = '<small>'.$adminsub.'</small>';
 		?>
-		<div class="box">
-			<div class="box-header">
-			  <h3 class="box-title"><?= $adminsub ?></h3>
-			</div><!-- /.box-header -->
-			<div class="box-body">
+			  <h2 class="skew-up-smidge"><?= $adminsub ?></h2>
 				<?php $list = $dali->getHDUsers();?>
 				<table id="adm_acl" class="table table-striped table-hover">
 					<thead>
@@ -35,12 +31,14 @@ if ($myACL->hasPermission('manage_users') != true) {
 							} else {
 								$highlight = false;
 							}
-						    echo "<tr class='clickableRow $highlight' data-href='?action=ViewAdmin&for=".$row['id']."&do=EditUser#access_users' $highlight>
+						    echo "<tr class='clickableRow $highlight' data-href='?page=users&action=ViewAdmin&for=".$row['id']."&do=EditUser' $highlight>
 									<td>".$row['id']."</td>
 									<td>".$row['fname']."</td>
 									<td>".$row['lname']."</td>
 									<td>".$row['email']."</td>
-									<td><a href='?action=ViewAdmin&for=$row[0]&do=EditUser#access_users'><img src='$icon_dir/user-edit-icon.png' height='24' /></a> <a href='?action=ViewAdmin&for=$row[0]&do=ChangeAccess#access_users'><img src='$icon_dir/group-key-icon.png' height='24' /></a>  <a href='?action=ViewAdmin&for=$row[0]&do=DeleteUser#access_users'><img src='$icon_dir/user-delete-icon.png' height='24' /></a></td>
+									<td><a href='?page=users&action=ViewAdmin&for=$row[0]&do=EditUser'><img src='$icon_dir/user-edit-icon.png' height='24' /></a> ".
+											"<a href='?page=users&action=ViewAdmin&for=$row[0]&do=ChangeAccess'><img src='$icon_dir/group-key-icon.png' height='24' /></a> ".
+											"<a href='?page=users&action=ViewAdmin&for=$row[0]&do=DeleteUser'><img src='$icon_dir/user-delete-icon.png' height='24' /></a></td>
 									</tr>";
 						}?>
 					</tbody>
@@ -52,13 +50,11 @@ if ($myACL->hasPermission('manage_users') != true) {
 				<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addUser">
 				  Add User
 				</button>
-			</div>
-		</div>
 	</div>
 	<div class="col-md-4" <?php if(!isset($_GET['do'])) echo "style='display: none;'"; ?> >
-		<div class="box">
+		<div class="box box-solid box-purple">
   		<div class="box-header">
-  			<h3 class="box-title">User Settings</h3>
+  			<h3 class="box-title"><i class="fa fa-user"></i> User Settings</h3>
   		</div><!-- /.box-header -->
   		<div class="box-body">
   			<?php

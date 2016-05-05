@@ -29,7 +29,7 @@
 .head-area {
   background: rgba(252, 54, 10, 0.7);
   border-bottom: 2px solid rgba(255,255,255,0.9);
-  min-height: 0px;
+  min-height: 125px;
   padding: 0px;
   padding-top: 15px;
   margin-right: auto;
@@ -44,5 +44,25 @@
 
 td, th {
   padding-right: 20px;
-  
+}
+
+.admin.content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-height: 100%;
+  width: 100%;
+  margin-left: 225px;
+  margin-top: 146px;
+}
+
+.admin-side {
+  min-height: 100%;
+  background: #1c1c1c;
+  padding-top: 10px;
+  color: #ccc;
+}
+
+.thumbnails li img{
+    height: 75px;
 }
