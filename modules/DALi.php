@@ -537,7 +537,7 @@ if ( !class_exists( 'DALi' ) ) {
         }
       }
       return $option_html;
-    }
+  }
 
     public function getRecordCategories($type, $selected) {
       if ($type) {
@@ -581,6 +581,12 @@ if ( !class_exists( 'DALi' ) ) {
       }
       return $this->query($sql);
     }
+    public function getCompleteRecords($name){
+      $sql = "SELECT COUNT(*) FROM service_record WHERE assigned_admin = '$name' AND status_id = '8' ";
+      $result = $this->query($sql);
+      $count = $result[0][0];
+      return $count;
+    }
 
     public function getNotes($sr) {
       $sql = "SELECT * FROM mailbox WHERE sr = $sr ORDER BY id DESC LIMIT 10";
@@ -610,6 +616,35 @@ if ( !class_exists( 'DALi' ) ) {
               VALUES ('$sr', '$to', '$subject', '$comment', '$from')";
       $this->queryChange($sql);
       return true;
+    }
+
+    public function getAssignedRecords($name){
+      $sql = "SELECT COUNT(*) FROM service_record WHERE assigned_admin = '$name' AND status_id != '8' ";
+      $result = $this->query($sql);
+      $count = $result[0][0];
+      return $count;
+    }
+    public function buildSRTable() {
+      $sql = "SELECT sr_id, title, status_id, submitted_when, assigned_admin, last_updated
+              FROM service_record";
+      $html = "";
+      $result = $this->query($sql);
+      foreach ($result as $res) {
+          $title_info = $this->getTitleInfo($res[1]);
+          $category = $this->getCategoryById($title_info[0][2])[0][1];
+          $status = $this->getStatus($res[2])[0][0];
+
+          $html .= '<tr class="clickableRow" data-href="?sr='. $res[0] .'">';
+          $html .= '<td>'. $res[0] . '</td>'
+                . '<td class="mobile-table">' . $category . '</td>'
+                . '<td>'. $status .'</td>'
+                . '<td>'. $title_info[0][3] .'</td>'
+                . '<td class="mobile-table">'. $res[4] .'</td>'
+                . '<td class="mobile-table">'. $res[3] .'</td>'
+                . '<td>'. $res[5] .'</td>'
+                . '</tr>';
+      }
+      return $html;
     }
 
     public function doesSRExist($sr_id) {
@@ -648,14 +683,14 @@ if ( !class_exists( 'DALi' ) ) {
        $sql = "SELECT title, submitted_when, last_updated, description, submitted_by, assigned_admin, bldg, room, owner, mach_id
         FROM service_record
         WHERE sr_id = '$sr'";
-        $results = $this->query($sql);
-        $title_info = $this->getTitleInfo($results[0][0]);
+        $result = $this->query($sql);
+        $title_info = $this->getTitleInfo($result[0][0]);
         $incident_type = $title_info[0][8];
         $hasLocation = $title_info[0][9];
-        $building = $this->getBuildingsRow($results[0][6]);
-        $machine_info = $this->getMachineInfo($results[0][9]);
-        $person = $this->getPersonInfo($results[0][4]);
-        $user = $this->getPersonInfo($results[0][8]);
+        $building = $this->getBuildingsRow($result[0][6]);
+        $machine_info = $this->getMachineInfo($result[0][9]);
+        $person = $this->getPersonInfo($result[0][4]);
+        $user = $this->getPersonInfo($result[0][8]);
         if (($incident_type == 1) && ($hasLocation == 1)) {
           $title_page = "<h3 class='box-title'><i class='fa fa-file-text-o'> </i> Service Report</h3>";
           $specific_info = '<div class="col-md-8">';
@@ -663,7 +698,7 @@ if ( !class_exists( 'DALi' ) ) {
           $specific_info .= '<div class="box-body">
               <p>
                 <strong>Building:</strong> '. $building[0][0] .'<br />
-                <strong>Room:</strong> '. $results[0][7] .'</p>
+                <strong>Room:</strong> '. $result[0][7] .'</p>
             </div><!-- /.box-body -->
             </div>';
         } else if ($incident_type == 1) {
@@ -706,11 +741,11 @@ if ( !class_exists( 'DALi' ) ) {
         $result_array = array(
                   "title"          => $title_page,
                   "problem"        => $title_info[0][3],
-                  "submitted_when" => $results[0][1],
-                  "last_updated"   => $results[0][2],
-                  "description"    => $results[0][3],
+                  "submitted_when" => $result[0][1],
+                  "last_updated"   => $result[0][2],
+                  "description"    => $result[0][3],
                   "submitted_by"   => $person[0][4],
-                  "assigned_admin" => $results[0][5],
+                  "assigned_admin" => $result[0][5],
                   "side"           => $specific_info,
                   "side_title"     => $side_title,
                   "person_info"    => $user[0]
@@ -735,7 +770,6 @@ if ( !class_exists( 'DALi' ) ) {
       array_push($res,$res1[0]);
       return $res[0][0];
     }
-
     //-------Admin Functions--------------->
     public function getHDUsers() {
       $sql = "SELECT id, fname, lname, email

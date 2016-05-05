@@ -31,7 +31,6 @@ var queryGenerator = (function() {
                   }
               }
           };
-          
           if (str2 && !str3) {
               xmlhttp.open("GET","/modules/service_record/ajax/sr_test.php?q="+str+"&k="+str2,true);
           } else if (str3) {
@@ -42,7 +41,6 @@ var queryGenerator = (function() {
           xmlhttp.send();
       }
     }
-    
     var publicAPI = {
       init : queryGenerator
     };
