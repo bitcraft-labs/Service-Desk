@@ -626,9 +626,20 @@ if ( !class_exists( 'DALi' ) ) {
     }
 
     public function buildKnowledgeBasePage($id) {
-       $sql = "SELECT * FROM knowledge";
+        $sql = "SELECT * FROM knowledge WHERE id = '$id'";
         $results = $this->query($sql);
-        $html = '';
+        $person = $this->getPersonInfo($results[0][7]);
+        $returned_array = array(
+            'title'         => $results[0][1],
+            'content'       => $results[0][2],
+            'category'      => $results[0][3],
+            'platform'      => $results[0][4],
+            'views'         => $results[0][5],
+            'date'          => $results[0][6],
+            'last_updated'  => $results[0][8],
+            'author'        => $person[0]
+        );
+        return $returned_array;
     }
     public function doesSRExist($sr_id) {
       $doesExist = true;
