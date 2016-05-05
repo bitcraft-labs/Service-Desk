@@ -2,11 +2,11 @@
 
 * [Introduction](Introduction.md)
 * [Installation](ch1/installation.md)
-   * [Retrieving source from Github Repository](ch1/retrieving_source.md)
+   <!-- * [Retrieving source from Github Repository](ch1/retrieving_source.md) -->
+   * [Server Prerequisites](ch1/server_prereqs.md)
    * [Initial Configuration Setup](ch1/initial_config.md)
-       * [Server Prerequisites](ch1/server_prereqs.md)
-       * [Application Setup](ch1/app_setup.md)
-       * [Customization Options](ch1/customization.md)
+       <!-- * [Application Setup](ch1/app_setup.md) -->
+   * [Customization Options](ch1/customization.md)
 * [Getting Started](ch2/getting_started.md)
    * [The User Interface](ch2/the_user_interface.md)
    * [Jump Start Guide for Server Administrator](ch2/super_admin.md)
@@ -21,4 +21,3 @@
 * [End-User Manager](ch7/enduser_manager.md)
 * [End-User Self-Service Portal](ch8/enduser_portal.md)
 * [About the Project](about_the_project.md)
-
