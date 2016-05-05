@@ -62,6 +62,6 @@ Change Log
 **v0.0.1 (upcoming, end of Feb '16)**
 - ~~Implement UI for HD Staff, Admin, and End-User~~
 - ~~A general working functionality of login authentication~~
-- Create Service Requests as End-User & HD Staff
-- Register new users from admin panel
+- ~~Create Service Requests as End-User & HD Staff~~
+- ~~Register new users from admin panel~~
 - ~~Modify user access from admin panel~~
