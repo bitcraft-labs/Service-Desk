@@ -3,7 +3,7 @@
   <div class="ssp-title hd">
       <h3><i class="fa fa-files-o fa-2x pull-left"> </i>Knowledgebase<br><small>Experiencing a problem? These should solve it.</small></h3>
   </div>
-
+  <?php if($_GET['page'] == 'knowledgebase' && !isset($_GET['kb'])) { ?>
 	<!-- Main content -->
 	<section class="content">
 	<div class="row">
@@ -12,67 +12,57 @@
         <thead>
           <?php $thead = "
           <tr>
-            <td>ID</td>
-            <td>Title</td>
-            <td>Category</td>
-            <td>Platform</td>
-            <td>Views</td>
-            <td>Publish Date</td>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Platform</th>
+            <th>Views</th>
+            <th>Publish Date</th>
           </tr>"; echo $thead; ?>
         </thead>
         <tbody>
-          <tr class='clickableRow' data-href='?page=knowledgebase&kb=1'>
-            <td>KB:00001</td>
-            <td>Troubleshooting javascript</td>
-            <td>Web Development</td>
-            <td>Everything</td>
-            <td>1</td>
-            <td>2016-04-10</td>
-          </tr>
-          <tr class='clickableRow' data-href='?page=knowledgebase&kb=2'>
-            <td>KB:00002</td>
-            <td>Obtaining MS Office 2016 for Mac</td>
-            <td>Software</td>
-            <td>Mac OS X</td>
-            <td>113</td>
-            <td>2016-04-10</td>
-          </tr>
-          <tr class='clickableRow' data-href='?page=knowledgebase&kb=3'>
-            <td>KB:00003</td>
-            <td>Keychain Issues</td>
-            <td>Login Issues</td>
-            <td>Mac OS X</td>
-            <td>217</td>
-            <td>2016-04-10</td>
-          </tr>
-          <tr class='clickableRow' data-href='?page=knowledgebase&kb=4'>
-            <td>KB:00004</td>
-            <td>Projector won't turn on</td>
-            <td>Instructional Technology</td>
-            <td>N/A</td>
-            <td>3</td>
-            <td>2016-04-10</td>
-          </tr>
-          <tr class='clickableRow' data-href='?page=knowledgebase&kb=5'>
-            <td>KB:00005</td>
-            <td>iPhone not connecting to WiFi</td>
-            <td>Wireless</td>
-            <td>iOS</td>
-            <td>13</td>
-            <td>2016-04-10</td>
-          </tr>
-          <tr class='clickableRow' data-href='?page=knowledgebase&kb=6'>
-            <td>KB:00006</td>
-            <td>Setting up Device on University Network</td>
-            <td>Networking</td>
-            <td>Everything</td>
-            <td>327</td>
-            <td>2016-04-10</td>
-          </tr>
+          <?= $dali->buildKnowledgeBase(); ?>        
         </tbody>
         <tfoot>
           <?= $thead ?>
         </tfoot>
       </table>
 	</section><!-- /.content -->
+  <?php } else if ($_GET['page'] == 'knowledgebase' && isset($_GET['kb'])) { ?>
+    <?php $info = $dali->buildKnowledgeBasePage($_GET['kb']); ?>
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="box box-solid box-purple">
+            <div class="box-header with-border">
+              <h3 class="box-title"><i class="fa fa-magic"></i>  Reading <?= $info['title'] ?></h3>
+            </div>
+            <section class="content">
+              <div class="box-body">
+                  <h3><?= $info['title']; ?></h3>
+                  <h5>From: <?= $info['category']; ?>
+                    <span class="mailbox-read-time pull-right">Last Updated - <?= $info['last_updated']; ?></span></h5>
+                </div>
+                <!-- /.mailbox-controls -->
+                <div class="mailbox-read-message">
+                  <p><?= $info['content']; ?></p>
+                </div>
+                <!-- /.mailbox-read-message -->
+              
+              <!-- /.box-body -->
+              <div class="box-footer">
+                <div class="pull-right">
+                <h4>Written By - <?= $info['author']['username']; ?></h4>
+                <small>Published - <?= $info['date']; ?></small>
+                </div>
+              </div>
+              <!-- /.box-footer -->
+            </div>
+          </div>
+          </div>
+          <!-- /.col -->
+        </section>
+  <?php } ?>
 </div><!-- /.content-wrapper -->
+

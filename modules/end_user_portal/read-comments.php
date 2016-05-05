@@ -8,14 +8,14 @@
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
+<div class="ssp-title">
+    <div class="container">
+      <h3>Self-Service Portal <small>(Mailbox)</small><br><small>
+      Reading Message # <?= $_GET['mb'] ?></small></h3>
+    </div>
+  </div>
   <div class="container">
-  <section class="content-header">
-    <h1>WebMail (<?= $_GET['mb']; ?>)</h1>
-    <ol class="breadcrumb">
-        <li><a href="/"><i class="fa fa-dashboard"></i> Top</a></li>
-        <li class="active">Mailbox</li>
-    </ol>
-  </section>
+  
   <!-- Main content -->
     <section class="content">
       <div class="row">
