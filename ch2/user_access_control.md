@@ -1,6 +1,6 @@
-# Getting Started
+# User Access Control
 
-This chapter is going to discuss the need-to-know information on working with Bitcraft Service Desk and has several sections, each depending on your role.
+This section is going to discuss permissioning and assigning users to different security groups.
 
 **Security Groups** are organized as two different layers, there are the containers which are just the names of the groups that different users will be added into, and then there are the actual permissions that are given to those groups. Most of the time the security groups will have the same level of permissions, the reason for duplication would be for assigning tickets to entire containers rather than single users.
 
