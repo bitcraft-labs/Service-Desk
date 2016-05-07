@@ -162,7 +162,7 @@ Status:     Staging; Idea Testing; Development
 						      </div> <!-- /Problem -->
 						      <div class="col-md-4"> <!-- Submission Notes -->
 						        <p>Assigned to: <?= $info['assigned_admin']; ?><br /> <!-- Added to array later -->
-						          Submitted by: <?= $info['submitted_by']; ?><br />
+						          Submitted by:  <?= $info['submitted_by']; ?><br />
 						          Submitted: <?= $info['submitted_when']; ?></p>
 						        <p><?= $dali->getQRCode(); ?> Scan to mobile</p>
 								    <p>Last Updated: <?= $info['last_updated']; ?></p>
