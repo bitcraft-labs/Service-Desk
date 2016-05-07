@@ -21,5 +21,5 @@
 <!-- * [NOC Change Notifications](ch5/noc_change_notifications.md) -->
 <!-- * [Communication / Mailbox](ch6/mailbox.md) -->
 <!-- * [End-User Manager](ch7/enduser_manager.md) -->
-* [For Developers](ch3/modules.md)
+* [For Developers](ch4/modules.md)
 * [About the Project](about_the_project.md)
