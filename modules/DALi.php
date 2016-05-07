@@ -491,14 +491,16 @@ if ( !class_exists( 'DALi' ) ) {
     public function submitModalForm($title, $building, $room_number, $description, $phone) {
       $title_number = intval($this->getTitleNumber($title));
       $record_type = intval($this->getRecordType($title));
+      $description = htmlspecialchars($description, ENT_QUOTES);
+      $room_number = htmlspecialchars($room_number, ENT_QUOTES);
       $username = $_SESSION['userID']; //intval($this->getUserID($_SESSION['username']));
       $now = date('Y-m-d H:i:s');
       if($building != null) {
-        $sql = "INSERT INTO service_record (title, type, description, bldg, room, owner, last_updated, phone)
-                VALUES('$title_number', '$record_type', '$description', '$building', '$room_number', '$username', '$now', '$phone')";
+        $sql = "INSERT INTO service_record (title, type, description, bldg, room, owner, last_updated, phone, submitted_by)
+                VALUES('$title_number', '$record_type', '$description', '$building', '$room_number', '$username', '$now', '$phone', '$username')";
       } else {
-        $sql = "INSERT INTO service_record (title, type, description, owner, last_updated, phone)
-                VALUES('$title_number', '$record_type', '$description', '$username', '$now', '$phone')";
+        $sql = "INSERT INTO service_record (title, type, description, owner, last_updated, phone, submitted_by)
+                VALUES('$title_number', '$record_type', '$description', '$username', '$now', '$phone', '$username')";
       }
       $this->queryChange($sql);
       return true;

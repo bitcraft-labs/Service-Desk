@@ -10,6 +10,6 @@
     }
     ?>
     <li class="divider"></li>
-    <li><a href="/logout.php">Log out</a></li>
+    <li><a href="/login.php?logout=1">Logout</a></li>
   </ul>
 </li>

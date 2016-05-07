@@ -1,12 +1,12 @@
 <?php
 require_once("./modules/authentication/config.php");
 
-if(isset($_POST['submit'])) {
+if (isset($_POST['submit'])) {
   $error = '<div class="alert alert-danger alert-dismissable" id="error">';
 
-   if($authenticator->Login()) {
+   if ($authenticator->Login()) {
       $authenticator->RedirectToURL("index.php");
-   } 
+   }
    else {
     $error .= "<button type='button' class='close' data-dismiss='alert'>x</button>";
     $error .= $authenticator->getErrorMessage() . '</div>';
@@ -14,14 +14,20 @@ if(isset($_POST['submit'])) {
 }
 
 $emailsent = false;
-if(isset($_POST['submitted_pass']))
-{
-   if($authenticator->EmailResetPasswordLink())
-   {
+if (isset($_POST['submitted_pass'])) {
+   if ($authenticator->EmailResetPasswordLink()) {
         $authenticator->RedirectToURL("reset-pwd-link-sent.html");
         exit;
    }
 }
+
+if (isset($_GET['logout'])) {
+  $error = '<div class="alert alert-success alert-dismissable" id="error">';
+  $authenticator->LogOut();
+  $error .= "<button type='button' class='close' data-dismiss='alert'>x</button>";
+  $error .= "You have successfully logged out" . '</div>';
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -115,7 +121,7 @@ if ($conf['customize']['darkmode'] == 'dark') {
     </div>
   </div>
 
-    
+
     <!-- jQuery -->
     <script src="bower/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
