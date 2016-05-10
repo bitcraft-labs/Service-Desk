@@ -94,7 +94,7 @@ if (isset($_POST['submitKB'])) {
 					</div>
           <div class="form-group">
 						<label for="article-content">Article Content</label>
-						<textarea class="form-control" rows="8" id="article-content" name="article-content" placeholder="e.g. Describe how to resolve the issue"></textarea>
+						<textarea class="form-control" style="resize:none" rows="8" id="article-content" name="article-content" placeholder="e.g. Describe how to resolve the issue"></textarea>
 					</div>
           <div class="form-group">
             <label for="article-category">Category</label>
