@@ -92,9 +92,9 @@ if ( !class_exists( 'DALi' ) ) {
         $hour = ($hour_now == $hour_date) ? 0 : (intval($hour_now) - intval($hour_date)) . ' hours ago';
         $min = ($min_date == $min_now) ? 0 : (intval($min_now) - intval($min_date)) . ' minutes ago';
         $sec = ($sec_now == $sec_date) ? 0 : (intval($sec_now) - intval($sec_date)) . ' seconds ago';
-        if($hour) return $hour; 
-        else if($min) return $min; 
-        else return $sec; 
+        if($hour) return $hour;
+        else if($min) return $min;
+        else return $sec;
       } else {
         $year_now = substr($now, 0, 4);
         $year_date = substr($date, 0, 4);
@@ -105,10 +105,10 @@ if ( !class_exists( 'DALi' ) ) {
         $year = ($year_now == $year_date) ? 0 : (intval($year_now) - intval($year_date)) . ' years ago';
         $month = ($month_now == $month_date) ? 0 : (intval($month_now) - intval($month_date)) . ' months ago';
         $day = ($day_now == $day_date) ? 0 : (intval($day_now) - intval($day_date)) . ' days ago';
-        if($year) return $year; 
-        else if($month) return $month; 
-        else if($day) return $day; 
-        else  return 0; 
+        if($year) return $year;
+        else if($month) return $month;
+        else if($day) return $day;
+        else  return 0;
       }
     }
     //--------EndUser Functions----------->
@@ -507,6 +507,21 @@ if ( !class_exists( 'DALi' ) ) {
     }
 
     //-------Help Desk Staff Functions ---->
+    public function submitKB($title, $content, $category, $platform) {
+      $author = $_SESSION['userID'];
+      $sql = "INSERT INTO knowledge (title, content, category, platform, author)
+              VALUES ('$title', '$content', '$category', '$platform', '$author')";
+      $this->queryChange($sql);
+    }
+
+    public function getKB($param1, $param2) {
+      if ($param2 == 'title') {
+        $sql = "SELECT id FROM knowledge WHERE title = '$param1' LIMIT 1";
+        $res = $this->query($sql);
+      }
+      return $res[0][0];
+    }
+
     public function maybeBuildingList($check) {
       $sql = "SELECT addition_info FROM sub_category WHERE id = '$check' LIMIT 1";
     	$result = $this->query($sql)[0][0];
