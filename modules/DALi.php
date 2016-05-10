@@ -683,6 +683,42 @@ if ( !class_exists( 'DALi' ) ) {
       return $doesExist;
     }
 
+    public function buildSRTicketHdDashboard($requests) {
+        if($requests == "all") {
+          $sql = "SELECT * FROM service_record ORDER BY sr_id DESC LIMIT 5";
+          $results = $this->query($sql);
+        }
+        $html = '';
+        $thead = '<thead>';
+        $head = "
+        <tr>
+          <th>SR#</th>
+          <th>Requester</th>
+          <th>Status</th>
+          <th>Updated By</th>
+          <th>Date Submitted</th>
+          <th>Last Updated</th>
+        </tr>";
+        $thead .= $head . '</thead><tbody>';
+        $html .= $thead;
+        foreach($results as $res) {
+          $person = $this->getPersonInfo($res[19]);
+          $admin = $this->getPersonInfo($res[5]) ? $this->getPersonInfo($res[5]) : $res[5];
+          $html .= '<tr class="clickableRow" data-href="ServiceRecord.php?sr='. $res[0]. "\">"
+                    . '<td>'. $res[0] .'</td>'
+                    . '<td>'. $person[0][1] . ' ' . $person[0][2] .'</td>'
+                    . '<td>'. $this->getStatus($res[4])[0][0] .'</td>'
+                    . '<td>'. $admin .'</td>'
+                    . '<td>'. $res[12] .'</td>'
+                    . '<td>'. $res[17] .'</td>'
+                    .'</tr>';
+        }
+        $tfoot = '</tbody><tfoot>';
+        $tfoot .= $head . '</tfoot>';
+        $html .= $tfoot;
+        return $html;
+    }
+
     public function buildSRTicketHd($requests) {
         if($requests == "all") {
           $sql = "SELECT * FROM service_record";
