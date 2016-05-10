@@ -522,6 +522,22 @@ if ( !class_exists( 'DALi' ) ) {
       return $res[0][0];
     }
 
+    //---Allen Functions-->
+    public function getCompleteRecords($name){
+      $sql = "SELECT COUNT(*) FROM service_record WHERE assigned_admin = '$name' AND status_id = '8' ";
+      $result = $this->query($sql);
+      $count = $result[0][0];
+      return $count;
+    }
+
+    public function getAssignedRecords($name){
+      $sql = "SELECT COUNT(*) FROM service_record WHERE assigned_admin = '$name' AND status_id != '8' ";
+      $result = $this->query($sql);
+      $count = $result[0][0];
+      return $count;
+    }
+    //<--End Allen Functions--|
+
     public function maybeBuildingList($check) {
       $sql = "SELECT addition_info FROM sub_category WHERE id = '$check' LIMIT 1";
     	$result = $this->query($sql)[0][0];

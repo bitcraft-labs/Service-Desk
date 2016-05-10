@@ -20,9 +20,9 @@
             </div>
             <div class="box-footer no-padding">
               <ul class="nav nav-stacked">
-                <li><a href="ServiceRecord.php?sr=all">Assigned Service Records <span class="pull-right badge bg-blue">31</span></a></li>
+                <li><a href="ServiceRecord.php?sr=all">Assigned Service Records <span class="pull-right badge bg-blue"><?= $dali->getAssignedRecords($_SESSION['userID']) ?></span></a></li>
                 <li><a href="Mailbox.php">Emails <span class="pull-right badge bg-aqua">5</span></a></li>
-                <li><a href="#">Completed Service Records <span class="pull-right badge bg-green">12</span></a></li>
+                <li><a href="#">Completed Service Records <span class="pull-right badge bg-green"><?= $dali->getCompleteRecords($_SESSION['userID']) ?></span></a></li>
               </ul>
             </div>
           </div><!-- /.widget-user -->
