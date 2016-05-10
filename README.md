@@ -25,10 +25,6 @@ git clone https://github.com/YOUR_USERNAME/Service-Desk.git
 bower install
 ```
 
-Documentation
--------------
-Full documentation available [here](http://itsm-docs.bitcraftlabs.net) and will be updated as changes are made.
-
 Browser Support
 ---------------
 - IE 9+
@@ -53,15 +49,32 @@ Contribution are always **welcome and recommended**! Here is how:
 - Contributions are only accepted through Github pull requests.
 - Finally, contributed code must work in all supported browsers (see above for browser support).
 
+Authors
+-------
+- **Joshua Nasiatka** (Project Manager / Lead Developer) - [Bitcraft Labs](https://www.bitcraftlabs.net)
+- **Gene Duffy** (Lead Developer) - [Gambit Reality](http://gambitreality.com)
+- **Allen Perry** (Quality Analyst) - [Personal](http://fitchburgcsclub.net/~aperry/)
+
 License
 -------
 Bitcraft Service Desk is an open source project by [Bitcraft Labs](https://bitcraftlabs.net) that is licensed under [MIT](http://opensource.org/licenses/MIT). Bitcraft Labs reserves the right to change the license of future releases.
 
 Change Log
-----------
-**v0.0.1 (upcoming, end of Feb '16)**
-- ~~Implement UI for HD Staff, Admin, and End-User~~
-- ~~A general working functionality of login authentication~~
+---------
+**v0.0.3 (In Progress)**
+- Knowledgebase (Basic Function in Help Desk)
+
+**v0.0.2 (March/April 2016)**
+- Complete login authentication and validation
+- Complete submission of general Service Requests
+- General functionality for Admin
+  - Enhanced User / Role Creation
+  - Maintenance Mode
+  - Semi-working portal customization settings
+
+**v0.0.1 (February 2016)**
+- Implement UI for HD Staff, Admin, and End-User
+- A general working functionality of login authentication
 - Create Service Requests as End-User & HD Staff
 - Register new users from admin panel
-- ~~Modify user access from admin panel~~
+- Modify user access from admin panel

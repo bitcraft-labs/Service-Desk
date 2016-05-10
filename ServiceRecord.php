@@ -277,7 +277,7 @@ Status:     Staging; Idea Testing; Development
         $(".machine").select2();
         $(".request-type").select2();
       });
-     $('#sdesk ul').toggle(200);$('#sdesk').addClass("active");
+     $('#sdesk ul').toggle(200);$('#sdesk').addClass("active"); 
      $(".clickableRow").on("click",function() {
 	      if (this.parentNode.parentNode.getAttribute("id") === "downloads") {
 	        window.open($(this).attr("data-href"),"_blank");

@@ -92,9 +92,9 @@ if ( !class_exists( 'DALi' ) ) {
         $hour = ($hour_now == $hour_date) ? 0 : (intval($hour_now) - intval($hour_date)) . ' hours ago';
         $min = ($min_date == $min_now) ? 0 : (intval($min_now) - intval($min_date)) . ' minutes ago';
         $sec = ($sec_now == $sec_date) ? 0 : (intval($sec_now) - intval($sec_date)) . ' seconds ago';
-        if($hour) { return $hour; }
-        else if($min) { return $min; }
-        else { return $sec; }
+        if($hour) return $hour; 
+        else if($min) return $min; 
+        else return $sec; 
       } else {
         $year_now = substr($now, 0, 4);
         $year_date = substr($date, 0, 4);
@@ -105,10 +105,10 @@ if ( !class_exists( 'DALi' ) ) {
         $year = ($year_now == $year_date) ? 0 : (intval($year_now) - intval($year_date)) . ' years ago';
         $month = ($month_now == $month_date) ? 0 : (intval($month_now) - intval($month_date)) . ' months ago';
         $day = ($day_now == $day_date) ? 0 : (intval($day_now) - intval($day_date)) . ' days ago';
-        if($year) { return $year; }
-        else if($month) { return $month; }
-        else if($day) { return $day; }
-        else { return 0; }
+        if($year) return $year; 
+        else if($month) return $month; 
+        else if($day) return $day; 
+        else  return 0; 
       }
     }
     //--------EndUser Functions----------->
@@ -394,10 +394,6 @@ if ( !class_exists( 'DALi' ) ) {
       return $html;
     }
 
-    /*
-      Needs Mailbox implementation
-    */
-
     public function buildSRView($sr_num, $id) {
         $sql = "SELECT title, submitted_when, last_updated, description, submitted_by, assigned_admin, bldg, room, owner, mach_id
         FROM service_record
@@ -614,6 +610,39 @@ if ( !class_exists( 'DALi' ) ) {
       return true;
     }
 
+    public function buildKnowledgeBase() {
+      $sql = "SELECT * FROM knowledge";
+      $results = $this->query($sql);
+      $html = '';
+      foreach ($results as $know) {
+        $html .= "<tr class='clickableRow' data-href='?page=knowledgebase&kb=$know[0]'>"
+                . "<td>". $know[0] ."</td>"
+                . "<td>". $know[1] ."</td>"
+                . "<td>". $know[3] ."</td>"
+                . "<td>". $know[4] ."</td>"
+                . "<td>". $know[5] ."</td>"
+                . "<td>". $know[6] ."</td>"
+                ."</tr>";
+      }
+      return $html;
+    }
+
+    public function buildKnowledgeBasePage($id) {
+        $sql = "SELECT * FROM knowledge WHERE id = '$id'";
+        $results = $this->query($sql);
+        $person = $this->getPersonInfo($results[0][7]);
+        $returned_array = array(
+            'title'         => $results[0][1],
+            'content'       => $results[0][2],
+            'category'      => $results[0][3],
+            'platform'      => $results[0][4],
+            'views'         => $results[0][5],
+            'date'          => $results[0][6],
+            'last_updated'  => $results[0][8],
+            'author'        => $person[0]
+        );
+        return $returned_array;
+    }
     public function doesSRExist($sr_id) {
       $doesExist = true;
       $sql = "SELECT sr_id FROM service_record WHERE sr_id = $sr_id";

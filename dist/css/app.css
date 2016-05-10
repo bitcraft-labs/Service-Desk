@@ -553,7 +553,7 @@ tbody tr {
 }
 
 .box.is-dragover {
-  background-color: grey;
+  background-color: #cdcdcd;
 }
 /* MEDIA QUERIES */
 
