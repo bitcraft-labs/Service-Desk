@@ -39,7 +39,7 @@
             <span class="info-box-icon bg-green"><i class="fa fa-files-o"></i></span>
             <div class="info-box-content">
               <span class="info-box-text">Assigned Tickets</span>
-              <span class="info-box-number">31</span>
+              <span class="info-box-number"><?= $dali->getAssignedRecords($_SESSION['userID']) ?></span>
             </div><!-- /.info-box-content -->
           </div><!-- /.info-box -->
 		</div>
